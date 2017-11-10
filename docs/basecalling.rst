@@ -56,3 +56,23 @@ Let's have a look at the usage message for read_fast5_basecaller.py::
                           include the read ID. Set to 0 to have all reads per
                           run ID written to one file.
     --disable_filtering   Disable filtering into pass/fail folders
+
+We need to specify at least the following options:
++------------------------------------------------------------------------+---------+----+
+| The flow cell version that was used                                    |         |    |
++------------------------------------------------------------------------+---------+----+
+| The flow cell version that was used                                    |         |    |
++------------------------------------------------------------------------+---------+----+
+|The sequencing kit version that was used                                |         |    |
++------------------------------------------------------------------------+---------+----+
+| Whether or not barcoding was performed                                 |         |    |
++------------------------------------------------------------------------+---------+----+
+| Which output file type you want (fast5, FASTQ, or both)                |         |    |
++------------------------------------------------------------------------+---------+----+
+| The full path to the directory where the raw read files are located    |         |    |
++------------------------------------------------------------------------+---------+----+
+| The full path to the directory where the basecalled files will be saved|         |    |
++------------------------------------------------------------------------+---------+----+
+| How many worker threads you are using                                  |         |    |
++------------------------------------------------------------------------+---------+----+
+
