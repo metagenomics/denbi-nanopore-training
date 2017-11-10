@@ -93,6 +93,7 @@ We can get a list of supported flowcell + kit combinations by::
   FLO-MIN107  VSK-VBK001             r95_450bps_linear.cfg
 
 We need to specify at least the following options:
+
 +------------------------------------------------------------------------+----+----+
 | What?                                                                  | -f |    |
 +========================================================================+====+====+
