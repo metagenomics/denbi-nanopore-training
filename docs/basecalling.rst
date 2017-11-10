@@ -57,22 +57,59 @@ Let's have a look at the usage message for read_fast5_basecaller.py::
                           run ID written to one file.
     --disable_filtering   Disable filtering into pass/fail folders
 
-We need to specify at least the following options:
-+------------------------------------------------------------------------+---------+----+
-| The flow cell version that was used                                    |         |    |
-+------------------------------------------------------------------------+---------+----+
-| The flow cell version that was used                                    |         |    |
-+------------------------------------------------------------------------+---------+----+
-|The sequencing kit version that was used                                |         |    |
-+------------------------------------------------------------------------+---------+----+
-| Whether or not barcoding was performed                                 |         |    |
-+------------------------------------------------------------------------+---------+----+
-| Which output file type you want (fast5, FASTQ, or both)                |         |    |
-+------------------------------------------------------------------------+---------+----+
-| The full path to the directory where the raw read files are located    |         |    |
-+------------------------------------------------------------------------+---------+----+
-| The full path to the directory where the basecalled files will be saved|         |    |
-+------------------------------------------------------------------------+---------+----+
-| How many worker threads you are using                                  |         |    |
-+------------------------------------------------------------------------+---------+----+
+We can get a list of supported flowcell + kit combinations by::
+  read_fast5_basecaller.py -l
+  Parsing config files in /opt/albacore.
+  Available flowcell + kit combinations are:
+  flowcell    kit         barcoding  config file
+  FLO-MIN106  SQK-DCS108             r94_450bps_linear.cfg
+  FLO-MIN106  SQK-LSK108             r94_450bps_linear.cfg
+  FLO-MIN106  SQK-LWB001  included   r94_450bps_linear.cfg
+  FLO-MIN106  SQK-LWP001             r94_450bps_linear.cfg
+  FLO-MIN106  SQK-PCS108             r94_450bps_linear.cfg
+  FLO-MIN106  SQK-RAB201  included   r94_450bps_linear.cfg
+  FLO-MIN106  SQK-RAD002             r94_450bps_linear.cfg
+  FLO-MIN106  SQK-RAD003             r94_450bps_linear.cfg
+  FLO-MIN106  SQK-RAS201             r94_450bps_linear.cfg
+  FLO-MIN106  SQK-RBK001  included   r94_450bps_linear.cfg
+  FLO-MIN106  SQK-RLB001  included   r94_450bps_linear.cfg
+  FLO-MIN106  SQK-RLI001             r94_450bps_linear.cfg
+  FLO-MIN106  SQK-RNA001             r94_70bps_rna_linear.cfg
+  FLO-MIN106  VSK-VBK001             r94_450bps_linear.cfg
+  FLO-MIN107  SQK-DCS108             r95_450bps_linear.cfg
+  FLO-MIN107  SQK-LSK108             r95_450bps_linear.cfg
+  FLO-MIN107  SQK-LWB001  included   r95_450bps_linear.cfg
+  FLO-MIN107  SQK-LWP001             r95_450bps_linear.cfg
+  FLO-MIN107  SQK-PCS108             r95_450bps_linear.cfg
+  FLO-MIN107  SQK-RAB201  included   r95_450bps_linear.cfg
+  FLO-MIN107  SQK-RAD002             r95_450bps_linear.cfg
+  FLO-MIN107  SQK-RAD003             r95_450bps_linear.cfg
+  FLO-MIN107  SQK-RAS201             r95_450bps_linear.cfg
+  FLO-MIN107  SQK-RBK001  included   r95_450bps_linear.cfg
+  FLO-MIN107  SQK-RLB001  included   r95_450bps_linear.cfg
+  FLO-MIN107  SQK-RLI001             r95_450bps_linear.cfg
+  FLO-MIN107  SQK-RNA001             r94_70bps_rna_linear.cfg
+  FLO-MIN107  VSK-VBK001             r95_450bps_linear.cfg
 
+We need to specify at least the following options:
++------------------------------------------------------------------------+----+----+
+| What?                                                                  | -f |    |
++========================================================================+====+====+
+| The flow cell version that was used                                    | -f |    |
++------------------------------------------------------------------------+----+----+
+|The sequencing kit version that was used                                | -k |    |
++------------------------------------------------------------------------+----+----+
+| Which output file type you want (fast5, FASTQ, or both)                | -o |    |
++------------------------------------------------------------------------+----+----+
+| The full path to the directory where the raw read files are located    | -i |    |
++------------------------------------------------------------------------+----+----+
+| The full path to the directory where the basecalled files will be saved| -s |    |
++------------------------------------------------------------------------+----+----+
+| How many worker threads you are using                                  | -t |    |
++------------------------------------------------------------------------+----+----+
+| Number of reads per FASTQ batch file                                   | -q |    |
++------------------------------------------------------------------------+----+----+
+
+
+read_fast5_basecaller.py -f FLO-MIN107 -k SQK-LSK308 -t 16 -s ephem/D1_basecall -o fastq -q 100000 -i DATA/Nanopore/Raw/
+full_1dsq_basecaller.py -f  FLO-MIN107 -k SQK-LSK308 -t 16 -s ephem/D1_2_basecall -o fastq -q 100000 -i DATA/Nanopore/Raw/
