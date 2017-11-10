@@ -58,6 +58,7 @@ Let's have a look at the usage message for read_fast5_basecaller.py::
     --disable_filtering   Disable filtering into pass/fail folders
 
 We can get a list of supported flowcell + kit combinations by::
+
   read_fast5_basecaller.py -l
   Parsing config files in /opt/albacore.
   Available flowcell + kit combinations are:
