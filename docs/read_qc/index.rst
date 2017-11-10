@@ -1,6 +1,10 @@
-***************
-FastQC Quality Control
-***************
+Quality control of reads
+========================
+
+FastQC
+------
+
+TODO: Anpassen!
 
 FastQC aims to provide a simple way to do some quality control checks
 on raw sequence data coming from high throughput sequencing
@@ -35,6 +39,9 @@ Now you can access the report at::
 Check out the `FastQC home page <http://www.bioinformatics.babraham.ac.uk/projects/fastqc/>`_ for examples
 of reports including bad data.
 
-.. toctree::
-   :maxdepth: 1
+Mapping to reference
+--------------------
 
+GraphMap?
+
+evtl. weiterverwendbar für nanopolish?
