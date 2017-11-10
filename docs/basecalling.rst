@@ -11,7 +11,7 @@ for linear chemistry, or::
   
 for 1D^2 chemistry.
 
-Let's have a look at the usage message for `read_fast5_basecaller.py`:
+Let's have a look at the usage message for `read_fast5_basecaller.py`::
 ```
 read_fast5_basecaller.py --help
 usage: read_fast5_basecaller.py [-h] [-l] [-v] [-i INPUT] -t WORKER_THREADS -s
