@@ -85,9 +85,11 @@ Genereate and assemble trimmed reads
 -----------------------
 
 Command::
+
   canu -trim-assemble -d ~/canu_assembly -p 'canuAssembly' 'genomeSize=3M' 'useGrid=false' 'minThreads=16' 'maxThreads=16' 'gnuPlotTested=true' -nanopore-corrected ~/canu_correct/canuAssembly.correctedReads.fasta.gz -nanopore-corrected ~/D1_2_basecall/workspace/fastq_runid_* 
   
 Or two commands? (not tested) ::
+
   canu -trim -d ~/canu_trim 'canuAssembly' 'genomeSize=3M' 'useGrid=false' 'minThreads=16' 'maxThreads=16' 'gnuPlotTested=true' -nanopore-corrected ~/canu_correct/canuAssembly.correctedReads.fasta.gz -nanopore-corrected ~/D1_2_basecall/workspace/fastq_runid_* 
   canu -assemble -d ~/canu_assemble 'canuAssembly' 'genomeSize=3M' 'useGrid=false' 'minThreads=16' 'maxThreads=16' 'gnuPlotTested=true' -nanopore-corrected ~/canu_trim/canuAssembly.trimmedReads.fasta.gz -nanopore-corrected ~/D1_2_basecall/workspace/fastq_runid_* 
   
