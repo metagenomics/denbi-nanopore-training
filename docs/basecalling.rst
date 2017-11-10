@@ -1,1 +1,3 @@
-Albacore...
+Basecalling with Albacore
+=========================
+
