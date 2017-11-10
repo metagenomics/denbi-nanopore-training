@@ -1,5 +1,7 @@
-Read Mapping
-============
+Quality control by mapping
+==========================
+
+Todo: Anpassen!
 
 In this part of the tutorial we will look at the assemblies by mapping
 the reads to the assembled contigs.  Different tools exists for
