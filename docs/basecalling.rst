@@ -94,24 +94,38 @@ We can get a list of supported flowcell + kit combinations by::
 
 We need to specify at least the following options:
 
-+------------------------------------------------------------------------+----+----+
-| What?                                                                  | -f |    |
-+========================================================================+====+====+
-| The flow cell version that was used                                    | -f |    |
-+------------------------------------------------------------------------+----+----+
-|The sequencing kit version that was used                                | -k |    |
-+------------------------------------------------------------------------+----+----+
-| Which output file type you want (fast5, FASTQ, or both)                | -o |    |
-+------------------------------------------------------------------------+----+----+
-| The full path to the directory where the raw read files are located    | -i |    |
-+------------------------------------------------------------------------+----+----+
-| The full path to the directory where the basecalled files will be saved| -s |    |
-+------------------------------------------------------------------------+----+----+
-| How many worker threads you are using                                  | -t |    |
-+------------------------------------------------------------------------+----+----+
-| Number of reads per FASTQ batch file                                   | -q |    |
-+------------------------------------------------------------------------+----+----+
++------------------------------------------------------------------------+----+------------------+
+| What?                                                                  | -f | Our value        |
++========================================================================+====+==================+
+| The flow cell version that was used                                    | -f | FLO-MIN107       |
++------------------------------------------------------------------------+----+------------------+
+|The sequencing kit version that was used                                | -k | SQK-LSK308       |
++------------------------------------------------------------------------+----+------------------+
+| Which output file type you want (fast5, FASTQ, or both)                | -o | fastq            |
++------------------------------------------------------------------------+----+------------------+
+| The full path to the directory where the raw read files are located    | -i | ~/Nanopore_small |
++------------------------------------------------------------------------+----+------------------+
+| The full path to the directory where the basecalled files will be saved| -s | ~/D1_basecall    |
++------------------------------------------------------------------------+----+------------------+
+| How many worker threads you are using                                  | -t | 16               |
++------------------------------------------------------------------------+----+------------------+
+| Number of reads per FASTQ batch file                                   | -q | 100000           |
++------------------------------------------------------------------------+----+------------------+
 
+Our complete command line is::
 
-read_fast5_basecaller.py -f FLO-MIN107 -k SQK-LSK308 -t 16 -s ephem/D1_basecall -o fastq -q 100000 -i DATA/Nanopore/Raw/
-full_1dsq_basecaller.py -f  FLO-MIN107 -k SQK-LSK308 -t 16 -s ephem/D1_2_basecall -o fastq -q 100000 -i DATA/Nanopore/Raw/
+  read_fast5_basecaller.py -f FLO-MIN107 -k SQK-LSK308 -t 16 -s ~/D1_basecall -o fastq -q 100000 -i ~/Nanopore_small/
+  
+and similar for the 1D^2 basecalling:
+  
+  full_1dsq_basecaller.py -f  FLO-MIN107 -k SQK-LSK308 -t 16 -s ~/D1_2_basecall -o fastq -q 100000 -i ~/Nanopore_small/
+  
+
+Inspect the output
+------------------
+
+Merge fastqs
+------------
+
+The results with complete data
+------------------------------
