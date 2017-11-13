@@ -1,6 +1,7 @@
 Assembly with canu
 ==================
-Canu is a fork of the Celera Assembler, designed for high-noise single-molecule sequencing (such as the PacBio RS II/Sequel or Oxford Nanopore MinION).
+Canu is a fork of the Celera Assembler, designed for high-noise single-molecule sequencing (such as the PacBio RS II/Sequel or Oxford Nanopore MinION). Documentation can be found here:
+http://canu.readthedocs.io/en/latest/
 
 Canu is a hierarchical assembly pipeline which runs in four steps:
 - Detect overlaps in high-noise sequences using MHAP
