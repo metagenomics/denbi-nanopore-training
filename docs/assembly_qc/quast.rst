@@ -14,13 +14,14 @@ not available, of course::
 
   cd
   
-  quast.py -t 16 -o ~/quast -R DATA/Reference/CXERO_10272017.fna ~/canu_assembly/canuAssembly.contigs.fasta
+  quast.py -t 16 -o ~/quast_canu_assembly -R ~/Reference/CXERO_10272017.fna ~/canu_assembly/canuAssembly.contigs.fasta
 
 QUAST generates HTML reports including a number of interactive graphics. To access these reports, copy the
 quast directory to your `www` folder::
 
-  cp -r quast ~/www/
+  cp -r quast_canu_assembly ~/www/
 
-After that, you can load the reports in your web browser::
+Open port 80 in your VM, after that, you can load the reports in your web browser::
 
-  http://YOUR_OPENSTACK_INSTANCE_IP/quast/summary/report.html
+  http://YOUR_OPENSTACK_INSTANCE_IP/quast_canu_assembly/summary/report.html
+
