@@ -1,5 +1,8 @@
+Basecalling and read statistics
+===============================
+
 Basecalling with Albacore
-=========================
+-------------------------
 
 Albacore is a data processing pipeline that provides the Oxford Nanopore basecalling algorithms, and several post-processing steps. It is run from the command line on Windows, Mac OS X, and multiple Linux platforms. A selection of configuration files allow basecalling DNA libraries made with the current range of sequencing kits and flow cells.
 
