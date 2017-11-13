@@ -90,16 +90,16 @@ Note, that there is an option for Oxford Nanopore 2D-reads::
                        ont2d: -k14 -W20 -r10 -A1 -B1 -O1 -E1 -L0  (Oxford Nanopore 2D-reads to ref)
                        intractg: -B9 -O16 -L5  (intra-species contigs to ref)
                        
-But we will adapt the parameters changed by this option a bit:
+But we will adapt the parameters changed by this option a bit, and use the SMALL dataset for nanopolish::
 
   mkdir Mapping_1D_basecall_to_assembly
-  bwa mem -t 16 -k11 -W17 -r10 -A1 -B1 -O1 -E1 -L0 canu_assembly/largestContig.fasta 1D_basecall.fastq > Mapping_1D_basecall_to_assembly/mapping.sam
+  bwa mem -t 16 -k11 -W17 -r10 -A1 -B1 -O1 -E1 -L0 canu_assembly/largestContig.fasta 1D_basecall_small.fastq > Mapping_1D_basecall_to_assembly/mapping.sam
   
 We need to convert the resulting sam file to a sorted and indexed bam file::
 
-  samtools view -Sb Mapping_1D_basecall_to_assembly/mapping.sam > Mapping_1D_basecall_to_assembly/mapping.bam
-  samtools sort -@16 Mapping_1D_basecall_to_assembly/mapping.bam Mapping_1D_basecall_to_assembly/mapping.sorted
-  samtools index Mapping_1D_basecall_to_assembly/mapping.sorted.bam
+  samtools view -Sb Mapping_1D_basecall_small_to_assembly/mapping.sam > Mapping_1D_basecall_small_to_assembly/mapping.bam
+  samtools sort -@16 Mapping_1D_basecall_small_to_assembly/mapping.bam Mapping_1D_basecall_small_to_assembly/mapping.sorted
+  samtools index Mapping_1D_basecall_small_to_assembly/mapping.sorted.bam
   
 
 Creating fastq from 1D^2 Basecalling
