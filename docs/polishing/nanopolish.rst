@@ -102,10 +102,10 @@ We need to convert the resulting sam file to a sorted and indexed bam file::
   samtools index Mapping_1D_basecall_small_to_assembly/mapping.sorted.bam
   
 
-Creating fastq from 1D^2 Basecalling
-------------------------------------
+Indexing fastq from 1D Basecalling
+----------------------------------
 
-In order to obtain a fastq format, that is readable by nanopolish, we need to extract the fastq files from the 1D² basecalling again with nanopolish::
+In order to prepare our 1D fastq file for nanopolish (so that the tool can find the original raw files), we need to index the fastq files from the 1D basecalling again with nanopolish::
 
   nanopolish index -d ~/Nanopore_small/ 1D_basecall_small.fastq
 
