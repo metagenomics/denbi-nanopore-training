@@ -80,6 +80,23 @@ The correction stage selects the best overlaps to use for correction, estimates 
 
   canu -correct -d ~/canu_correct -p 'canuAssembly' 'genomeSize=3m' 'gnuPlotTested=true' 'useGrid=false' -nanopore-raw 1D_basecall.fastq
 
+It is also possible to run multiple correction rounds to eliminate errors. This has been done on a S. cerevisae dataset in the canu publication. We will not do this in this course due to time limitations, but a script to do this, would look like this::
+
+  COUNT=0
+   NAME=input.fasta
+   for i in `seq 1 10`; do
+   canu -correct -p asm -d round$i \
+   corOutCoverage=500 corMinCoverage=0 corMhapSensitivity=high \
+   genomeSize=12.1m -nanopore-raw $NAME
+   NAME="round$i/asm.correctedReads.fasta.gz"
+   COUNT=`expr $COUNT + 1`
+   done
+   canu -p asm -d asm genomeSize=12.1m -nanopore-corrected $NAME utgGraphDeviation=50
+  batOptions=”-ca 500 -cp 50”
+  done
+
+
+
 
 Genereate and assemble trimmed reads
 -----------------------
