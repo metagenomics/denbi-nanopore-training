@@ -79,7 +79,7 @@ Generate corrected reads
 
 The correction stage selects the best overlaps to use for correction, estimates corrected read lengths, and generates corrected reads::
 
-  canu -correct -d ~/canu_correct -p 'canuAssembly' 'genomeSize=3m' 'gnuPlotTested=true' 'useGrid=false' -nanopore-raw 1D_basecall.fastq
+  canu -correct -d ~/canu_correct -p canuAssembly genomeSize=3m useGrid=false -nanopore-raw 1D_basecall.fastq
 
 It is also possible to run multiple correction rounds to eliminate errors. This has been done on a S. cerevisae dataset in the canu publication. We will not do this in this course due to time limitations, but a script to do this, would look like this::
 
