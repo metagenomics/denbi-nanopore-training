@@ -99,8 +99,8 @@ It is also possible to run multiple correction rounds to eliminate errors. This 
 
 
 
-Genereate and assemble trimmed reads
------------------------
+Generate and assemble trimmed reads
+-----------------------------------
 
 The trimming stage identifies unsupported regions in the input and trims or splits reads to their longest supported range. The assembly stage makes a final pass to identify sequencing errors; constructs the best overlap graph (BOG); and outputs contigs, an assembly graph, and summary statistics::
 
