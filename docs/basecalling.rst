@@ -136,7 +136,7 @@ Both directories contain a number of fastq files::
   -rw-rw-r-- 1 ubuntu ubuntu 1.4M Nov 13 10:17 fastq_runid_cdd5fefcf4478e23e0628e437f145a503cffa888_0.fastq
   -rw-rw-r-- 1 ubuntu ubuntu 865K Nov 13 10:17 fastq_runid_fa18a6a6c046ba9c4e91a6381be34a7eb06afbff_0.fastq
 
-The D1^2 basecalling also creates a copy of the raw fast5 data in the workspace. Keep that in mind, when disk space is limited.
+The D1^2 basecalling also creates additional fast5 data in the workspace. Keep that in mind, when disk space is limited.
 
   ls -lh D1_2_basecall_small/workspace/
   
@@ -160,6 +160,9 @@ Merge fastqs
 The results with complete data
 ------------------------------
 
-We have precomputed the D1 and D1^2 basecalling for you to save time, please continue the assembly with that data:
+We have precomputed the D1 and D1^2 basecalling for you to save time, please continue the assembly with that data in the home directory::
 
-ls -l 
+  drwxrwxr-x 4 ubuntu ubuntu    4096 Nov 13 10:28 D1_2_basecall
+  drwxrwxr-x 3 ubuntu ubuntu    4096 Nov 13 10:29 D1_basecall
+
+
