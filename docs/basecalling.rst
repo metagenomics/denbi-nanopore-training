@@ -195,6 +195,8 @@ Merge fastqs
 
 To make life easier for future computations, we will merge the fastq files into one::
 
+  cat ~/1D_basecall_small/workspace/pass/*.fastq > ~/1D_basecall_small.fastq
+  cat ~/1D_2_basecall_small/1dsq_analysis/workspace/pass/*.fastq > ~/1D_basecall_small.fastq
   cat ~/1D_basecall/workspace/pass/*.fastq > ~/1D_basecall.fastq
   cat ~/1D_2_basecall/1dsq_analysis/workspace/pass/*.fastq > ~/1D_basecall.fastq
 
