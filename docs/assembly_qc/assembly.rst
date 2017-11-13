@@ -104,7 +104,7 @@ Genereate and assemble trimmed reads
 
 The trimming stage identifies unsupported regions in the input and trims or splits reads to their longest supported range. The assembly stage makes a final pass to identify sequencing errors; constructs the best overlap graph (BOG); and outputs contigs, an assembly graph, and summary statistics::
 
-  canu -trim-assemble -d ~/canu_assembly -p 'canuAssembly' 'genomeSize=3M' 'useGrid=false' 'minThreads=16' 'maxThreads=16' 'gnuPlotTested=true' -nanopore-corrected ~/canu_correct/canuAssembly.correctedReads.fasta.gz -nanopore-corrected ~/D1_2_basecall/workspace/fastq_runid_* 
+  canu -trim-assemble -d ~/canu_assembly -p canuAssembly genomeSize=3M useGrid=false minThreads=16 maxThreads=16 -nanopore-corrected ~/canu_correct/canuAssembly.correctedReads.fasta.gz -nanopore-corrected ~/1D2_basecall.fastq
   
 Or two commands? (not tested) ::
 
