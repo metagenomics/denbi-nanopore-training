@@ -141,7 +141,7 @@ The D1^2 basecalling also creates additional fast5 data in the workspace. Keep t
   ls -lh D1_2_basecall_small/workspace/
   
   total 13M
-  drwxrwxr-x 2 ubuntu ubuntu 144K Nov 13 10:19 0
+  drwxrwxr-x 2 ubuntu ubuntu 144K Nov 13 10:19 0   <-- additional fast5 data
   -rw-rw-r-- 1 ubuntu ubuntu 4.6M Nov 13 10:19 fastq_runid_04d71dafbed4e1a2c29d48873533c94070985063_0.fastq
   -rw-rw-r-- 1 ubuntu ubuntu 101K Nov 13 10:19 fastq_runid_307482bb8322e11a4f92efefd01364754f9c271f_0.fastq
   -rw-rw-r-- 1 ubuntu ubuntu 778K Nov 13 10:19 fastq_runid_492de34daf0e1e3648eed3c976ecf01b9ae1a60f_0.fastq
@@ -149,6 +149,17 @@ The D1^2 basecalling also creates additional fast5 data in the workspace. Keep t
   -rw-rw-r-- 1 ubuntu ubuntu 1.6M Nov 13 10:19 fastq_runid_cdd5fefcf4478e23e0628e437f145a503cffa888_0.fastq
   -rw-rw-r-- 1 ubuntu ubuntu 961K Nov 13 10:19 fastq_runid_fa18a6a6c046ba9c4e91a6381be34a7eb06afbff_0.fastq
 
+Also note, that the D1-basecalling is compute by the D1^2 basecalling and located in the result directory::
+
+  ls -lh D1_2_basecall_small/
+  
+  total 472K
+  drwxrwxr-x 3 ubuntu ubuntu 4.0K Nov 13 10:19 1dsq_analysis
+  -rw-rw-r-- 1 ubuntu ubuntu 1.2K Nov 13 10:18 configuration.cfg
+  -rw-rw-r-- 1 ubuntu ubuntu  866 Nov 13 10:22 full_1dsq_pipeline.log
+  -rw-rw-r-- 1 ubuntu ubuntu 212K Nov 13 10:19 pipeline.log
+  -rw-rw-r-- 1 ubuntu ubuntu 197K Nov 13 10:19 sequencing_summary.txt
+  drwxrwxr-x 3 ubuntu ubuntu  44K Nov 13 10:19 workspace
 
 
 
