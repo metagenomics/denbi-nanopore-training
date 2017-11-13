@@ -3,3 +3,4 @@
 
    nanopolish
    pilon
+   quast
