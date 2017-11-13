@@ -16,7 +16,7 @@ Extracting first contig from Assembly
 
 The ``variants --consensus`` option of nanopolish only works with one contig. We are extracting the first (and largest) contig from our assembly::
 
-  samtools faidx ...
+  samtools faidx ~/canu_assembly/canuAssembly.contigs.fasta tig00000001 > ~/canu_assembly/largestContig.fasta
 
 Mapping of reads to assembly
 ----------------------------
@@ -92,8 +92,8 @@ Note, that there is an option for Oxford Nanopore 2D-reads::
                        
 But we will adapt the parameters changed by this option a bit, and use the SMALL dataset for nanopolish::
 
-  mkdir Mapping_1D_basecall_to_assembly
-  bwa mem -t 16 -k11 -W17 -r10 -A1 -B1 -O1 -E1 -L0 canu_assembly/largestContig.fasta 1D_basecall_small.fastq > Mapping_1D_basecall_to_assembly/mapping.sam
+  mkdir Mapping_1D_basecall_small_to_assembly
+  bwa mem -t 16 -k11 -W17 -r10 -A1 -B1 -O1 -E1 -L0 canu_assembly/largestContig.fasta 1D_basecall_small.fastq > Mapping_1D_basecall_small_to_assembly/mapping.sam
   
 We need to convert the resulting sam file to a sorted and indexed bam file::
 
@@ -105,12 +105,34 @@ We need to convert the resulting sam file to a sorted and indexed bam file::
 Creating fastq from 1D^2 Basecalling
 ------------------------------------
 
+In order to obtain a fastq format, that is readable by nanopolish, we need to extract the fastq files from the 1D² basecalling again with nanopolish::
+
+  nanopolish index -d ~/Nanopore_small/ 1D_basecall_small.fastq
+
+Call nanopolish
+---------------
+
+Now that all pieces are together, we can call nanopolish with:
+
+- our largest contig
+- our indexed fastq files from 1D basecalling
+- our mapping of 1D fastq vs. our largest contig
+
+Put together::
+
+  nanopolish variants --threads 16 --consensus polishedContig_small.fasta -b Mapping_1D_basecall_small_to_assembly/mapping.sorted.bam -r 1D_basecall_small.fastq -g canu_assembly/largestContig.fasta
+
+
+
+
+Remove later:
+
 Alt::
   # Only run this if you used Albacore 1.2 or later
   nanopolish extract -q -r -o 1D2Nanopolish/1D2_Nanopolish.fastq D1_2_basecall/workspace/
 
 Wg. Albacore > 2.0::
   # Only run this if you used Albacore 2.0 or later
-  nanopolish index -d /path/to/raw_fast5s/ albacore_output.fastq
+  
   
  
