@@ -1,7 +1,20 @@
 Basecalling with Albacore
 =========================
 
-There are two commands for basecalling with Albacore available::
+Albacore is a data processing pipeline that provides the Oxford Nanopore basecalling algorithms, and several post-processing steps. It is run from the command line on Windows, Mac OS X, and multiple Linux platforms. A selection of configuration files allow basecalling DNA libraries made with the current range of sequencing kits and flow cells.
+
+The Albacore pipeline contains:
+
+1. Basecalling: a similar implementation of algorithms as found in MinKNOW basecalling. However, it also contains configuration files for basecalling chemistry that is not currently handled by MinKNOW, e.g. 1D2 reads.
+
+2. Calibration Strand Detection: Reads are aligned against a calibration strand reference via the integrated minimap2 aligner. Calibration strands serve as a quality control for pore and experiment. If the current read is identified as a calibration strand, no barcoding or alignment steps are performed.
+
+3. Barcoding/Demultiplexing: The beginning and the end of each strand are aligned against the barcodes currently provided by Oxford Nanopore Technologies. The reads are demultiplexed by the barcoding results.
+
+4. Alignment: The user can provide a reference file in FASTA, lastdb or minimap2 index format. If so, the reads are aligned against this reference via the integrated minimap2 aligner.
+
+
+There are two commands for basecalling with Albacore which we will use available::
 
   read_fast5_basecaller.py
   
@@ -9,7 +22,12 @@ for linear chemistry, or::
 
   full_1dsq_basecaller.py
   
-for 1D^2 chemistry.
+for 1D^2 chemistry. ``full_1dsq_basecaller.py`` basically just wraps the two successive commands::
+  
+  read_fast5_basecaller.py
+  paired_read_basecaller.py
+
+into one command.
 
 Let's have a look at the usage message for read_fast5_basecaller.py::
 
@@ -149,9 +167,9 @@ The D1^2 basecalling also creates additional fast5 data in the workspace. Keep t
   -rw-rw-r-- 1 ubuntu ubuntu 1.6M Nov 13 10:19 fastq_runid_cdd5fefcf4478e23e0628e437f145a503cffa888_0.fastq
   -rw-rw-r-- 1 ubuntu ubuntu 961K Nov 13 10:19 fastq_runid_fa18a6a6c046ba9c4e91a6381be34a7eb06afbff_0.fastq
 
-The workspace directory above contains the 1D basecalling, whereas the D1^2 basecalling is located in::
+The workspace directory above contains the 1D basecalling, whereas the 1D^2 basecalling is located in::
 
-  ls -l 1D_2_basecall_small/1dsq_analysis/workspace/pass/
+  ls -lh 1D_2_basecall_small/1dsq_analysis/workspace/pass/
 
   total 1180
   -rw-rw-r-- 1 ubuntu ubuntu 559842 Nov 13 10:21 fastq_runid_04d71dafbed4e1a2c29d48873533c94070985063_0.fastq
@@ -165,8 +183,8 @@ The results with complete data
 
 We have precomputed the D1 and D1^2 basecalling for you to save time, please continue the assembly with that data in the home directory::
 
-  drwxrwxr-x 4 ubuntu ubuntu    4096 Nov 13 10:28 D1_2_basecall
-  drwxrwxr-x 3 ubuntu ubuntu    4096 Nov 13 10:29 D1_basecall
+  drwxrwxr-x 4 ubuntu ubuntu    4096 Nov 13 10:28 1D_2_basecall
+  drwxrwxr-x 3 ubuntu ubuntu    4096 Nov 13 10:29 1D_basecall
 
 
 Merge fastqs
@@ -174,6 +192,8 @@ Merge fastqs
 
 To make life easier for future computations, we will merge the fastq files into one::
 
+  cat ~/1D_basecall/workspace/pass/*.fastq > ~/1D_basecall.fastq
+  cat ~/1D_2_basecall/1dsq_analysis/workspace/pass/*.fastq > ~/1D_basecall.fastq
 
 
 
