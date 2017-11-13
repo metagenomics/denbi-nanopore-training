@@ -1,1 +1,5 @@
-123
+.. toctree::
+   :maxdepth: 1
+
+   circlator
+   prokka
