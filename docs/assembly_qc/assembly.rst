@@ -76,15 +76,15 @@ We will run the assembly in two steps.
 Generate corrected reads
 ------------------------
 
-Command::
+The correction stage selects the best overlaps to use for correction, estimates corrected read lengths, and generates corrected reads::
 
-  canu -correct -d ~/canu_correct -p 'canuAssembly' 'genomeSize=3m' 'gnuPlotTested=true' 'useGrid=false' 'maxThreads=16' 'minThreads=16' -nanopore-raw D1_basecall/workspace/pass/
+  canu -correct -d ~/canu_correct -p 'canuAssembly' 'genomeSize=3m' 'gnuPlotTested=true' 'useGrid=false' -nanopore-raw 1D_basecall.fastq
 
 
 Genereate and assemble trimmed reads
 -----------------------
 
-Command::
+The trimming stage identifies unsupported regions in the input and trims or splits reads to their longest supported range. The assembly stage makes a final pass to identify sequencing errors; constructs the best overlap graph (BOG); and outputs contigs, an assembly graph, and summary statistics::
 
   canu -trim-assemble -d ~/canu_assembly -p 'canuAssembly' 'genomeSize=3M' 'useGrid=false' 'minThreads=16' 'maxThreads=16' 'gnuPlotTested=true' -nanopore-corrected ~/canu_correct/canuAssembly.correctedReads.fasta.gz -nanopore-corrected ~/D1_2_basecall/workspace/fastq_runid_* 
   
