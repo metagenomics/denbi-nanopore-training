@@ -65,8 +65,6 @@ Repeat this for 3-4 rounds like this::
 Assembly evaluation with quast
 ------------------------------
 
-TODO: ANPASSEN!
-
 As usual, we are going to use quast for assembly evaluation::
 
   cd
