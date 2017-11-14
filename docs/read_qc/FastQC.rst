@@ -1,6 +1,3 @@
-Quality control of reads
-========================
-
 FastQC
 ------
 
