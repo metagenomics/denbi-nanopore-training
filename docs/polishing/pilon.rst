@@ -35,17 +35,18 @@ Then we are mapping all reads to the contig. Note that we are shortening the pro
 
   mkdir Illumina_mappings
 
-  bwa mem -t 16 ~/canu_assembly/largestContig.fasta ~/Illumina/TSPf_R1.fastq.gz ~/Illumina/TSPf_R2.fastq.gz | samtools sort --threads 16 -o ~/Illumina_mappings/WGS.bam
-  samtools index ~/Illumina_mappings/WGS.bam
+ bwa mem -t 16 ~/canu_assembly/largestContig.fasta ~/Illumina/TSPf_R1.fastq.gz ~/Illumina/TSPf_R2.fastq.gz | samtools view - -Sb | samtools sort - -@16 -o sorted > ~/Illumina_mappings/WGS.sorted.bam
+  samtools index ~/Illumina_mappings/WGS.sorted.bam
   
-  bwa mem -t 16 ~/canu_assembly/largestContig.fasta ~/Illumina/MP2.fastq.fwd ~/Illumina/MP2.fastq.rev | samtools sort --threads 16 -o ~/Illumina_mappings/MP.bam
-  samtools index ~/Illumina_mappings/MP.bam
+  bwa mem -t 16 ~/canu_assembly/largestContig.fasta ~/Illumina/MP2.fastq.fwd ~/Illumina/MP2.fastq.rev | samtools view - -Sb | samtools sort - -@16 -o sorted > ~/Illumina_mappings/MP.sorted.bam
+  samtools index ~/Illumina_mappings/MP.sorted.bam
   
 In the next step, we call pilon with the mappings to polish our assembly::
   
-  ~> java -Xmx32G -jar ~/pilon-1.22.jar --genome ~/largestContig.fasta --fix all --changes --frags ~/Illumina_mappings/WGS.bam --jumps ~/Illumina_mappings/MP.bam --threads 16 --output Pilon_round1 | tee round1.pilon
+  java -Xmx32G -jar ~/pilon-1.22.jar --genome ~/canu_assembly/largestContig.fasta --fix all --changes --frags ~/Illumina_mappings/WGS.sorted.bam --jumps ~/Illumina_mappings/MP.sorted.bam --threads 16 --output Pilon_round1 | tee round1.pilon
   
-Repeat this for 3-4 rounds. 
+Repeat this for 3-4 rounds.
+
 
 Assembly evaluation with quast
 ------------------------------
