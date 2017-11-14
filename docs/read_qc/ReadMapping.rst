@@ -1,6 +1,6 @@
 
 Mapping to reference
-==================
+--------------------
 
 GraphMap is a novel mapper targeted at aligning long, error-prone third-generation sequencing data.
 It is designed to handle Oxford Nanopore MinION 1d and 2d reads with very high sensitivity and accuracy, and also presents a significant improvement over the state-of-the-art for PacBio read mappers.
@@ -9,7 +9,7 @@ GraphMap was also designed for ease-of-use: the default parameters can handle a 
 
 The usage message of the aligner::
 
-graphmap align --help
+  graphmap align --help
 
 Usage:
 	graphmap [options] -r <reference_file> -d <reads_file> -o <output_sam_path>
