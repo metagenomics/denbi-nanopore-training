@@ -38,10 +38,3 @@ Now you can access the report at::
 
 Check out the `FastQC home page <http://www.bioinformatics.babraham.ac.uk/projects/fastqc/>`_ for examples
 of reports including bad data.
-
-Mapping to reference
---------------------
-
-GraphMap?
-
-evtl. weiterverwendbar für nanopolish?
