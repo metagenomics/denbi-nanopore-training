@@ -7,7 +7,7 @@ It is designed to handle Oxford Nanopore MinION 1d and 2d reads with very high s
 
 GraphMap was also designed for ease-of-use: the default parameters can handle a wide range of read lengths and error profiles, including: Illumina, PacBio and Oxford Nanopore. Currently, graphmapper provides two core modules, an aligner and an overlapper. We're using the aligner here for the mapping procedure.
 
-The usage message of the aligner::
+The shortened usage message of the aligner:
 
   graphmap align --help
 
@@ -34,22 +34,13 @@ Options
     -L, --out-fmt            STR   Format in which to output results. Options are:
                                     sam  - Standard SAM output (in normal and '-w overlap' modes).
                                     m5   - BLASR M5 format. [sam]
-    -I, --index-only          -    Build only the index from the given reference and exit. If not specified, index will
-                                   automatically be built if it does not exist, or loaded from file otherwise. [false]
-        --rebuild-index       -    Always rebuild index even if it already exists in given path. [false]
-        --auto-rebuild-index  -    Rebuild index only if an existing index is of an older version or corrupt. [false]
-    -u, --ordered             -    SAM alignments will be output after the processing has finished, in the order of
-                                   input reads. [false]
-    -B, --batch-mb           INT   Reads will be loaded in batches of the size specified in megabytes. Value <= 0 loads
-                                   the entire file. [1024]
 
   General-purpose pre-set options
     -x, --preset             STR   Pre-set parameters to increase sensitivity for different sequencing technologies.
                                    Valid options are
-                                    illumina  - Equivalent to: '-a gotoh -w normal -M 5 -X 4 -G 8 -E 6'
-                                    overlap   - Equivalent to: '-a anchor -w normal --overlapper --evalue 1e0
-                                   --ambiguity 0.50 --secondary'
-                                    sensitive - Equivalent to: '--freq-percentile 1.0 --minimizer-window 1'
+                                    illumina  - Equivalent to '-a gotoh -w normal -M 5 -X 4 -G 8 -E 6'
+                                    overlap   - Equivalent to '-a anchor -w normal --overlapper --evalue 1e0                                    --ambiguity 0.50 --secondary'
+                                    sensitive - Equivalent to '--freq-percentile 1.0 --minimizer-window 1'
 
   Alignment options
     -a, --alg                STR   Specifies which algorithm should be used for alignment. Options are:
@@ -60,7 +51,7 @@ Options
                                     anchorgotoh - anchored alignment with Gotoh.
                                                   Uses Gotoh global alignment to align between anchors. [anchor]
     -w, --approach           STR   Additional alignment approaches. Changes the way alignment algorithm is applied.
-                                   Options are:
+                                   Options are
                                     normal         - Normal alignment of reads to the reference.
                                     (Currently no other options are provided. This is a placeholder for future features,
                                    such as cDNA mapping) [normal]
