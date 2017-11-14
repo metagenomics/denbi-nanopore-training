@@ -135,7 +135,7 @@ We are going to evaluate our polished assembly. To call ``quast.py`` we have to 
 QUAST generates HTML reports including a number of interactive graphics. To access these reports, copy the
 quast directory to your `www` folder::
 
-  cp -r quast_canu_assembly ~/www/
+  cp -r quast_nanopolished_assembly ~/www/
 
 You can load the reports in your web browser::
 
