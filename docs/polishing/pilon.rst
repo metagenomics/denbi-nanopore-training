@@ -35,10 +35,10 @@ Then we are mapping all reads to the contig. Note that we are shortening the pro
 
   mkdir Illumina_mappings
 
-  bwa mem -t 16 ~/largestContig.fasta ~/Illumina/TSPf_R1.fastq.gz ~//Illumina/TSPf_R2.fastq.gz | samtools sort --threads 16 -o ~/Illumina_mappings/WGS.bam
+  bwa mem -t 16 ~/canu_assembly/largestContig.fasta ~/Illumina/TSPf_R1.fastq.gz ~/Illumina/TSPf_R2.fastq.gz | samtools sort --threads 16 -o ~/Illumina_mappings/WGS.bam
   samtools index ~/Illumina_mappings/WGS.bam
   
-  bwa mem -t 16 ID.contigs.fasta ~/Illumina/MP2.fastq.fwd ~/Illumina/MP2.fastq.rev | samtools sort --threads 16 -o ~/Illumina_mappings/MP.bam
+  bwa mem -t 16 ~/canu_assembly/largestContig.fasta ~/Illumina/MP2.fastq.fwd ~/Illumina/MP2.fastq.rev | samtools sort --threads 16 -o ~/Illumina_mappings/MP.bam
   samtools index ~/Illumina_mappings/MP.bam
   
 In the next step, we call pilon with the mappings to polish our assembly::
