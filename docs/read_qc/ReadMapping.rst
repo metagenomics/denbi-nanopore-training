@@ -11,7 +11,7 @@ The shortened usage message of the aligner:
 
   graphmap align --help
 
-Usage
+Usage::
 	graphmap [options] -r <reference_file> -d <reads_file> -o <output_sam_path>
 
 Options
