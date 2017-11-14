@@ -11,14 +11,11 @@ The usage message of the aligner::
 
   graphmap align --help
 
-Usage:
+Usage
 	graphmap [options] -r <reference_file> -d <reads_file> -o <output_sam_path>
 
-Usage:
-  graphmap [options]
-
 Options
-  Input/Output options:
+  Input/Output options
     -r, --ref                STR   Path to the reference sequence (fastq or fasta).
     -i, --index              STR   Path to the index of the reference sequence. If not specified, index is generated in
                                    the same folder as the reference file, with .gmidx extension. For non-parsimonious
@@ -46,15 +43,15 @@ Options
     -B, --batch-mb           INT   Reads will be loaded in batches of the size specified in megabytes. Value <= 0 loads
                                    the entire file. [1024]
 
-  General-purpose pre-set options:
+  General-purpose pre-set options
     -x, --preset             STR   Pre-set parameters to increase sensitivity for different sequencing technologies.
-                                   Valid options are:
+                                   Valid options are
                                     illumina  - Equivalent to: '-a gotoh -w normal -M 5 -X 4 -G 8 -E 6'
                                     overlap   - Equivalent to: '-a anchor -w normal --overlapper --evalue 1e0
                                    --ambiguity 0.50 --secondary'
                                     sensitive - Equivalent to: '--freq-percentile 1.0 --minimizer-window 1'
 
-  Alignment options:
+  Alignment options
     -a, --alg                STR   Specifies which algorithm should be used for alignment. Options are:
                                     sg       - Myers' bit-vector approach. Semiglobal. Edit dist. alignment.
                                     sggotoh       - Gotoh alignment with affine gaps. Semiglobal.
@@ -86,7 +83,7 @@ Options
         --max-indel-error    FLT   If an alignment has indel error rate (I+D) larger than this, it won't be taken into
                                    account. If >= 1.0, this filter is disabled. [1.0]
 
-  Algorithmic options:
+  Algorithmic options
     -k                       INT   Graph construction kmer size. [6]
     -l                       INT   Number of edges per vertex. [9]
     -A, --minbases           INT   Minimum number of match bases in an anchor. [12]
@@ -116,14 +113,14 @@ Options
         --fly-index           -    Index will be constructed on the fly, without storing it to disk. If it already
                                    exists on disk, it will be loaded unless --rebuild-index is specified. [false]
 
-  Other options:
+  Other options
     -t, --threads            INT   Number of threads to use. If '-1', number of threads will be equal to min(24, num_cores/2). [-1]
     -v, --verbose            INT   Verbose level. If equal to 0 nothing except strict output will be placed on stdout. [5]
     -s, --start              INT   Ordinal number of the read from which to start processing data. [0]
     -n, --numreads           INT   Number of reads to process per batch. Value of '-1' processes all reads. [-1]
     -h, --help                -    View this help. [false]
 
-  Debug options:
+  Debug options
     -y, --debug-read         INT   ID of the read to give the detailed verbose output. [-1]
     -Y, --debug-qname        STR   QNAME of the read to give the detailed verbose output. Has precedence over -y. Use
                                    quotes to specify.
