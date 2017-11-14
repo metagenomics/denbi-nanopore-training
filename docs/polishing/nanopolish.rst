@@ -123,6 +123,26 @@ Put together::
   nanopolish variants --threads 16 --consensus polishedContig_small.fasta -b Mapping_1D_basecall_small_to_assembly/mapping.sorted.bam -r 1D_basecall_small.fastq -g canu_assembly/largestContig.fasta
 
 
+Assembly evaluation with quast
+------------------------------
+
+We are going to evaluate our polished assembly. To call ``quast.py`` we have to provide a reference genome and an assembly as before::
+
+  cd
+  
+  quast.py -t 16 -o ~/quast_nanopolished_assembly -R ~/Reference/CXERO_10272017.fna ~/polishedContig_small.fasta
+
+QUAST generates HTML reports including a number of interactive graphics. To access these reports, copy the
+quast directory to your `www` folder::
+
+  cp -r quast_canu_assembly ~/www/
+
+You can load the reports in your web browser::
+
+  http://YOUR_OPENSTACK_INSTANCE_IP/quast_nanopolished_assembly/summary/report.html
+
+Compare to the previous results without polishing.
+
 
 
 Remove later:
