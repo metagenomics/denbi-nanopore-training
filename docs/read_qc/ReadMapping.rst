@@ -7,14 +7,16 @@ It is designed to handle Oxford Nanopore MinION 1d and 2d reads with very high s
 
 GraphMap was also designed for ease-of-use: the default parameters can handle a wide range of read lengths and error profiles, including: Illumina, PacBio and Oxford Nanopore. Currently, graphmapper provides two core modules, an aligner and an overlapper. We're using the aligner here for the mapping procedure.
 
-The shortened usage message of the aligner:
+The shortened usage message of the aligner::
 
   graphmap align --help
 
 Usage::
+	
 	graphmap [options] -r <reference_file> -d <reads_file> -o <output_sam_path>
 
  Options
+ 
   Input/Output options
     -r, --ref                STR   Path to the reference sequence (fastq or fasta).
     -i, --index              STR   Path to the index of the reference sequence. If not specified, index is generated in
@@ -102,17 +104,20 @@ Usage::
     -n, --numreads           INT   Number of reads to process per batch. Value of '-1' processes all reads. [-1]
     -h, --help                -    View this help. [false]
  
+
 We now use graphmap to align the different read sets to the reference, starting with the raw 1d reads::
 
-  graphmap align -r ~/Data/Reference/CXERO_10272017.fna -t 16 -C -d ~/workdir/D1.fastq -o D1.graphmap.sam 2>&1 > D1.graphmap.sam.log
+  cd ~/workdir
+  graphmap align -r ~/Data/Reference/CXERO_10272017.fna -t 16 -C -d ~/workdir/1D_basecall.fastq -o 1D.graphmap.sam 2>&1 > 1D.graphmap.sam.log
   
-The 2d reads:
+The 2d reads::
 
-  graphmap align -r ~/Data/Reference/CXERO_10272017.fna -t 16 -C -d D1.fastq -o D1.graphmap.sam 2>&1 > D1.graphmap.sam.log
+  graphmap align -r ~/Data/Reference/CXERO_10272017.fna -t 16 -C -d ~/workdir/1D2_basecall.fastq -o 1D2.graphmap.sam 2>&1 > 1D2.graphmap.sam.log
 
-And the illumina reads:
+For the illumina reads we will use another aligner, as this one is more suited for this kind of data::
 
-  graphmap align -r ~/Data/Reference/CXERO_10272017.fna -t 16 -C -d D1.fastq -o D1.graphmap.sam 2>&1 > D1.graphmap.sam.log
+  bwa -t 16 -r ~/Data/Reference/CXERO_10272017.fna ~/Data/Illumina/TSPf_R1.fastq.gz ~/Data/Illumina/TSPf_R2.fastq.gz
+  
 
 
 
