@@ -43,9 +43,13 @@ Then we are mapping all reads to the contig. Note that we are shortening the pro
   
 In the next step, we call pilon with the mappings to polish our assembly::
   
-  java -Xmx32G -jar ~/pilon-1.22.jar --genome ~/canu_assembly/largestContig.fasta --fix all --changes --frags ~/Illumina_mappings/WGS.sorted.bam --jumps ~/Illumina_mappings/MP.sorted.bam --threads 16 --output Pilon_round1 | tee round1.pilon
+  mkdir Pilon
+  java -Xmx32G -jar ~/pilon-1.22.jar --genome ~/canu_assembly/largestContig.fasta --fix all --changes --frags ~/Illumina_mappings/WGS.sorted.bam --jumps ~/Illumina_mappings/MP.sorted.bam --threads 16 --output ~/Pilon/Pilon_round1 | tee ~/Pilon/round1.pilon
   
-Repeat this for 3-4 rounds.
+Repeat this for 3-4 rounds like this::
+
+  java -Xmx32G -jar ~/pilon-1.22.jar --genome ~/Pilon/Pilon_round1.fasta --fix all --changes --frags ~/Illumina_mappings/WGS.sorted.bam --jumps ~/Illumina_mappings/MP.sorted.bam --threads 16 --output ~/Pilon/Pilon_round2 | tee ~/Pilon/round2.pilon
+  ...
 
 
 Assembly evaluation with quast
