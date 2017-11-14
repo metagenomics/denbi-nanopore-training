@@ -14,7 +14,7 @@ The shortened usage message of the aligner:
 Usage::
 	graphmap [options] -r <reference_file> -d <reads_file> -o <output_sam_path>
 
-Options
+ Options
   Input/Output options
     -r, --ref                STR   Path to the reference sequence (fastq or fasta).
     -i, --index              STR   Path to the index of the reference sequence. If not specified, index is generated in
@@ -38,27 +38,18 @@ Options
   General-purpose pre-set options
     -x, --preset             STR   Pre-set parameters to increase sensitivity for different sequencing technologies.
                                    Valid options are
-                                    illumina  - Equivalent to '-a gotoh -w normal -M 5 -X 4 -G 8 -E 6'
-                                    overlap   - Equivalent to '-a anchor -w normal --overlapper --evalue 1e0                                    --ambiguity 0.50 --secondary'
-                                    sensitive - Equivalent to '--freq-percentile 1.0 --minimizer-window 1'
+				   illumina  - Equivalent to '-a gotoh -w normal -M 5 -X 4 -G 8 -E 6'
+				   overlap   - Equivalent to '-a anchor -w normal --overlapper --evalue 1e0                                    --ambiguity 0.50 --secondary'
+				   sensitive - Equivalent to '--freq-percentile 1.0 --minimizer-window 1'
 
   Alignment options
-    -a, --alg                STR   Specifies which algorithm should be used for alignment. Options are:
-                                    sg       - Myers' bit-vector approach. Semiglobal. Edit dist. alignment.
-                                    sggotoh       - Gotoh alignment with affine gaps. Semiglobal.
+    -a, --alg                STR   Specifies which algorithm should be used for alignment. Options are
+                                    sg          - Myers' bit-vector approach. Semiglobal. Edit dist. alignment.
+                                    sggotoh     - Gotoh alignment with affine gaps. Semiglobal.
                                     anchor      - anchored alignment with end-to-end extension.
                                                   Uses Myers' global alignment to align between anchors.
                                     anchorgotoh - anchored alignment with Gotoh.
-                                                  Uses Gotoh global alignment to align between anchors. [anchor]
-    -w, --approach           STR   Additional alignment approaches. Changes the way alignment algorithm is applied.
-                                   Options are
-                                    normal         - Normal alignment of reads to the reference.
-                                    (Currently no other options are provided. This is a placeholder for future features,
-                                   such as cDNA mapping) [normal]
-        --overlapper          -    Perform overlapping instead of mapping. Skips self-hits if reads and reference files
-                                   contain same sequences, and outputs lenient secondary alignments. [false]
-        --no-self-hits        -    Similar to overlapper, but skips mapping of sequences with same headers. Same
-                                   sequences can be located on different paths, and their overlap still skipped. [false]
+                                                  Uses Gotoh global alignment to align between anchors. [anchor]    
     -M, --match              INT   Match score for the DP alignment. Ignored for Myers alignment. [5]
     -X, --mismatch           INT   Mismatch penalty for the DP alignment. Ignored for Myers alignment. [4]
     -G, --gapopen            INT   Gap open penalty for the DP alignment. Ignored for Myers alignment. [8]
@@ -110,26 +101,20 @@ Options
     -s, --start              INT   Ordinal number of the read from which to start processing data. [0]
     -n, --numreads           INT   Number of reads to process per batch. Value of '-1' processes all reads. [-1]
     -h, --help                -    View this help. [false]
+ 
+We now use graphmap to align the different read sets to the reference, starting with the raw 1d reads::
 
-  Debug options
-    -y, --debug-read         INT   ID of the read to give the detailed verbose output. [-1]
-    -Y, --debug-qname        STR   QNAME of the read to give the detailed verbose output. Has precedence over -y. Use
-                                   quotes to specify.
-    -b, --verbose-sam        INT   Helpful debug comments can be placed in SAM output lines (at the end). Comments can
-                                   be turned off by setting this parameter to 0. Different values increase/decrease
-                                   verbosity level.
-                                   0 - verbose off
-                                   1 - server mode, command line will be omitted to obfuscate paths.
-                                   2 - umm this one was skipped by accident. The same as 0.
-                                   >=3 - detailed verbose is added for each alignment, including timing measurements and
-                                   other.
-                                   4 - qnames and rnames will not be trimmed to the first space.
-                                   5 - QVs will be omitted (if available). [0]
-
-
-
-We now map the different read sets to the reference, starting with the raw 1d reads:
-  graphmap align -r CXERO_10272017.fna -t 16 -C -d D1.fastq -o D1.graphmap.sam 2>&1 > D1.graphmap.sam.log
+  graphmap align -r ~/Data/Reference/CXERO_10272017.fna -t 16 -C -d ~/workdir/D1.fastq -o D1.graphmap.sam 2>&1 > D1.graphmap.sam.log
   
+The 2d reads:
+
+  graphmap align -r ~/Data/Reference/CXERO_10272017.fna -t 16 -C -d D1.fastq -o D1.graphmap.sam 2>&1 > D1.graphmap.sam.log
+
+And the illumina reads:
+
+  graphmap align -r ~/Data/Reference/CXERO_10272017.fna -t 16 -C -d D1.fastq -o D1.graphmap.sam 2>&1 > D1.graphmap.sam.log
+
+
+
 Nanopore sequencing data of E. Coli UTI89 generated in-house and used in the paper now available on ENA:
 PRJEB9557
