@@ -1,6 +1,9 @@
 
-Error Profiles
---------------
+Generating Error Profiles
+-------------------------
+
+Mapping the data
+~~~~~~~~~~~~~~~~
 
 GraphMap is a novel mapper targeted at aligning long, error-prone third-generation sequencing data.
 It is designed to handle Oxford Nanopore MinION 1d and 2d reads with very high sensitivity and accuracy, and also presents a significant improvement over the state-of-the-art for PacBio read mappers.
@@ -11,9 +14,9 @@ The shortened usage message of the aligner::
 
   graphmap align --help
 
-Usage::
+Usage:
 	
-	graphmap [options] -r <reference_file> -d <reads_file> -o <output_sam_path>
+ graphmap [options] -r <reference_file> -d <reads_file> -o <output_sam_path>
 
  Options
  
@@ -116,8 +119,10 @@ The 2d reads::
 
 For the illumina reads we will use another aligner, as this one is more suited for this kind of data::
 
-  bwa -t 16 -r ~/Data/Reference/CXERO_10272017.fna ~/Data/Illumina/TSPf_R1.fastq.gz ~/Data/Illumina/TSPf_R2.fastq.gz
+  bwa -t 16 -r ~/Data/Reference/CXERO_10272017.fna ~/Data/Illumina/TSPf_R1.fastq.gz ~/Data/Illumina/TSPf_R2.fastq.gz > TSPf.bwa.sam
   
+Inferring error profiles
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
