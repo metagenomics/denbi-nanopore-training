@@ -4,49 +4,57 @@ Quality control by mapping
 Todo: Anpassen!
 
 In this part of the tutorial we will look at the assemblies by mapping
-the reads to the assembled contigs.  Different tools exists for
-mapping reads to genomic sequences such as `bowtie
-<http://bowtie-bio.sourceforge.net/bowtie2/index.shtml>`_ or `bwa
-<http://bio-bwa.sourceforge.net/>`_. Today, we will use the tool
-BBMap.
+the contigs of our first assembly to the reference genome using LAST. 
+ 
+LAST is designed for comparing large datasets to each other (e.g. 
+vertebrate genomes and/or large numbers of DNA reads). It can:
 
-BBMap: Short read aligner for DNA and RNA-seq data. Capable of
-handling arbitrarily large genomes with millions of scaffolds. Handles
-Illumina, PacBio, 454, and other reads; very high sensitivity and
-tolerant of errors and numerous large indels. Very fast. See the
-`BBMap home page <http://sourceforge.net/projects/bbmap/>`_ for more
-info.
+- Indicate the (un)ambiguity of each column in an alignment.
+- Use sequence quality data in a rigorous fashion.
+- Align DNA to proteins with frameshifts.
+- Compare PSSMs to sequences.
+- Calculate the likelihood of chance similarities between random sequences.
+- Do split and spliced alignment.
+- Train alignment parameters for unusual kinds of sequence (e.g. nanopore).
 
+See the `LAST webpage <http://last.cbrc.jp/>`_ for more details.
 
-``bbmap`` needs to build an index for the contigs sequences before it
-can map the reads onto them. Here is an example command line for
-mapping the reads back to the MEGAHIT assembly::
+LAST needs to build an index for the reference before we can align 
+our assembly to it. This is done by the using the command ``lastdb``::
 
-  cd /vol/spool/workdir/assembly/megahit_out
-
-  qsub -cwd -N bbmap_index -b y \
-  /usr/local/bin/bbmap.sh ref=final.contigs.fa
+  cd ~
+  mkdir last_1st_assembly
+  cd last_1st_assembly
+  lastdb CXERO_10272017.db ~/Reference/CXERO_10272017.fna
   
-Now that we have an index, we can map the reads::
+Now that we have an index, we can map the assembly to the reference::
 
-  qsub -cwd -pe multislot 12 -N bbmap -b y \
-  /usr/local/bin/bbmap.sh in=../read1.fq in2=../read2.fq out=megahit.sam bamscript=sam2bam.sh threads=12
+  lastal CXERO_10272017.db ~/canu_assembly/canuAssembly.contigs.fasta > canu_1st_Assembly.maf
   
-``bbmap`` produces output in `SAM format
-<http://samtools.github.io/hts-specs/SAMv1.pdf>`_ by default, usually
-you want to convert this into a sorted BAM file. ``bbmap`` creates a
-shell script which can be used to convert ``bbmap``'s output into BAM
-format::
+``lastal`` produces output in `MAF format
+<http://genome.ucsc.edu/FAQ/FAQformat.html#format5>`_ by default. As we are going to
+inspect the alignment in a genome viewer, we have to convert this into a sorted BAM file. 
+LAST provides the script `maf-convert <http://last.cbrc.jp/doc/maf-convert.html>`_ 
+to convert MAF to different other formats::
 
-  qsub -cwd -pe multislot 4 -N bbmap_sam2bam sam2bam.sh
+  maf-convert sam canu_1st_Assembly.maf > canu_1st_Assembly.sam
 
-SAM and BAM files can be viewed and manipulated with `SAMtools <http://samtools.sourceforge.net/>`_. Let's first build an index for the FASTA file::
+SAM and BAM files can be viewed and manipulated with `SAMtools <http://samtools.sourceforge.net/>`_. 
+Let's first build an index for the FASTA file of the reference sequence::
 
-  samtools faidx final.contigs.fa
+  samtools faidx ~/Reference/CXERO_10272017.fna
 
+Now we can convert the SAM file into the binary BAM format and add an appropriate header to the BAM
+file. After that we need to sort the alignments in the BAM file by starting position (``samtools sort``)
+and index the file for fast access (``samtools index``)::
+
+  samtools view -bt ~/Reference/CXERO_10272017.fna canu_1st_Assembly.sam > canu_1st_Assembly.bam
+  samtools sort canu_1st_Assembly.bam > canu_1st_Assembly_sorted.bam
+  samtoold index canu_1st_Assembly_sorted.bam
+  
 To look at the BAM file use::
 
-  samtools view megahit_sorted.bam | less
+  samtools view canu_1st_Assembly_sorted.bam | less
   
 We will use a genome browser to look at the mappings. For this, you
 have to 
@@ -57,16 +65,14 @@ have to
 
 Here are the commands to copy the files and open the IGV::
 
-  cd ~/mg-tutorial
-  scp -i PATH_TO_YOUR_SECRET_SSH_KEY_FILE ubuntu@$BIBIGRID_MASTER:workdir/assembly/megahit_out/final.contigs.fa* .
-  scp -i PATH_TO_YOUR_SECRET_SSH_KEY_FILE ubuntu@$BIBIGRID_MASTER:workdir/assembly/megahit_out/*.bam* .
-  scp -i PATH_TO_YOUR_SECRET_SSH_KEY_FILE ubuntu@$BIBIGRID_MASTER:workdir/assembly/megahit_out/*.gff .
+  cd ~
+  mkdir IGV_mappings
+  cd IGV_mappings
+  scp -i PATH_TO_YOUR_SECRET_SSH_KEY_FILE ubuntu@YOUR_OPENSTACK_INSTANCE_IP:~/Reference/CXERO_10272017.fna* .
+  scp -i PATH_TO_YOUR_SECRET_SSH_KEY_FILE ubuntu@YOUR_OPENSTACK_INSTANCE_IP:~/last_1st_assembly/canu_1st_Assembly_sorted.bam* .
   igv.sh
   
-Now let's look at the mapped reads:
+Now let's look at the mapped contigs:
 
-1. Load the contig sequences into IGV. Use the menu ``Genomes->Load Genome from File...`` 
+1. Load the reference genome into IGV. Use the menu ``Genomes->Load Genome from File...`` 
 2. Load the BAM file into IGV. Use menu ``File->Load from File...`` 
-3. Load the predicted genes as another track. Use menu ``File->Load from File...`` to load the GFF file.
-
-
