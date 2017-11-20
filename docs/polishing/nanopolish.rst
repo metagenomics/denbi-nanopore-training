@@ -86,15 +86,15 @@ Note, that there is an option for Oxford Nanopore 2D-reads::
 But we will adapt the parameters changed by this option a bit, and use the SMALL dataset for nanopolish::
 
   cd
-  mkdir Mapping_1D_basecall_small_to_assembly
-  bwa mem -t 16 -k11 -W17 -r10 -A1 -B1 -O1 -E1 -L0 ~/workdir/canu_assembly/largestContig.fasta ~/workdir/1D_basecall_small.fastq > ~/workdir/Mapping_1D_basecall_small_to_assembly/mapping.sam
+  mkdir Mapping_1D_basecall_to_assembly
+  bwa mem -t 16 -k11 -W17 -r10 -A1 -B1 -O1 -E1 -L0 ~/workdir/canu_assembly/largestContig.fasta ~/workdir/1D_basecall.fastq > ~/workdir/Mapping_1D_basecall_to_assembly/mapping.sam
   
 We need to convert the resulting sam file to a sorted and indexed bam file::
   
   -bT ~/Data/Reference/CXERO_10272017.fna?
-  samtools view -Sb ~/workdir/Mapping_1D_basecall_small_to_assembly/mapping.sam > ~/workdir/Mapping_1D_basecall_small_to_assembly/mapping.bam
-  samtools sort -@16 ~/workdir/Mapping_1D_basecall_small_to_assembly/mapping.bam ~/workdir/Mapping_1D_basecall_small_to_assembly/mapping.sorted
-  samtools index ~/workdir/Mapping_1D_basecall_small_to_assembly/mapping.sorted.bam
+  samtools view -Sb ~/workdir/Mapping_1D_basecall_to_assembly/mapping.sam > ~/workdir/Mapping_1D_basecall_to_assembly/mapping.bam
+  samtools sort -@16 ~/workdir/Mapping_1D_basecall_to_assembly/mapping.bam ~/workdir/Mapping_1D_basecall_to_assembly/mapping.sorted
+  samtools index ~/workdir/Mapping_1D_basecall_to_assembly/mapping.sorted.bam
   
 
 Indexing fastq from 1D Basecalling
@@ -102,7 +102,7 @@ Indexing fastq from 1D Basecalling
 
 In order to prepare our 1D fastq file for nanopolish (so that the tool can find the original raw files), we need to index the fastq files from the 1D basecalling again with nanopolish::
 
-  nanopolish index -d ~/workdir/Nanopore_small/ ~/workdir/1D_basecall_small.fastq
+  nanopolish index -d ~/Data/Nanopore/Raw/ ~/Results/1D_basecall.fastq
 
 Call nanopolish
 ---------------
@@ -115,17 +115,17 @@ Now that all pieces are together, we can call nanopolish with:
 
 Put together::
 
-  nanopolish variants --threads 16 --consensus ~/workdir/polishedContig_small.fasta -b ~/workdir/Mapping_1D_basecall_small_to_assembly/mapping.sorted.bam -r ~/workdir/1D_basecall_small.fastq -g ~/workdir/canu_assembly/largestContig.fasta
+  nanopolish variants --threads 16 --consensus ~/workdir/polishedContig.fasta -b ~/workdir/Mapping_1D_basecall_to_assembly/mapping.sorted.bam -r ~/Results/1D_basecall.fastq -g ~/workdir/canu_assembly/largestContig.fasta
+
+This will run a few hours over night and we can get to dinner. :)
 
 
 Assembly evaluation with quast
 ------------------------------
 
-We are going to evaluate our polished assembly. To call ``quast.py`` we have to provide a reference genome and an assembly as before::
-
-  cd
-  
-  quast.py -t 16 -o ~/workdir/quast_nanopolished_assembly -R ~/Reference/CXERO_10272017.fna ~/workdir/polishedContig_small.fasta
+We are going to evaluate our polished assembly. To call ``quast.py`` we have to provide a reference genome and an assembly as before. We will include our original canu assembly for comparison::
+   
+  quast.py -t 16 -o ~/workdir/quast_nanopolished_assembly -R ~/Reference/CXERO_10272017.fna ~/workdir/polishedContig.fasta ~/workdir/canu_assembly/largestContig.fasta
 
 QUAST generates HTML reports including a number of interactive graphics. To access these reports, copy the
 quast directory to your `www` folder::
