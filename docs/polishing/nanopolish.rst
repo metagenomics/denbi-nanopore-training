@@ -10,21 +10,14 @@ Nanopolish is a software package for signal-level analysis of Oxford Nanopore se
   nanopolish eventalign: align signal-level events to k-mers of a reference genome
 
 
-
-Extracting first contig from Assembly
--------------------------------------
-
-The ``variants --consensus`` option of nanopolish only works with one contig. We are extracting the first (and largest) contig from our assembly::
-
-  samtools faidx ~/canu_assembly/canuAssembly.contigs.fasta tig00000001 > ~/canu_assembly/largestContig.fasta
-
 Mapping of reads to assembly
 ----------------------------
 
 In order to correct a given assembly, nanopolish needs a mapping of the original reads to this assembly. We are using the software package BWA to do this. BWA is a software package for mapping low-divergent sequences against a large reference genome. It consists of three algorithms: BWA-backtrack, BWA-SW and BWA-MEM. The first algorithm is designed for Illumina sequence reads up to 100bp, while the rest two for longer sequences ranged from 70bp to 1Mbp. BWA-MEM and BWA-SW share similar features such as long-read support and split alignment, but BWA-MEM, which is the latest, is generally recommended for high-quality queries as it is faster and more accurate.
 
-First we need to create an index on our largest contig::
+First we need to create an index on our largest contig, this has already been done for the pilon polishing::
   
+  #already done for pilon
   bwa index ~/canu_assembly/largestContig.fasta
 
 Then we will run the mapping. Check the usage of ``bwa mem``::
