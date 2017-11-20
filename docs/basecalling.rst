@@ -135,11 +135,11 @@ We need to specify at least the following options:
 
 Our complete command line is::
 
-  read_fast5_basecaller.py -f FLO-MIN107 -k SQK-LSK308 -t 16 -s ~/workspace/1D_basecall_small -o fastq -q 100000 -i ~/workspace/Nanopore_small/
+  read_fast5_basecaller.py -f FLO-MIN107 -k SQK-LSK308 -t 16 -s ~/workdir/1D_basecall_small -o fastq -q 100000 -i ~/workdir/Nanopore_small/
   
 and similar for the 1D² basecalling::
   
-  full_1dsq_basecaller.py -f  FLO-MIN107 -k SQK-LSK308 -t 16 -s ~/workspace/1D_2_basecall_small -o fastq -q 100000 -i ~/workspace/Nanopore_small/
+  full_1dsq_basecaller.py -f  FLO-MIN107 -k SQK-LSK308 -t 16 -s ~/workdir/1D_2_basecall_small -o fastq -q 100000 -i ~/workdir/Nanopore_small/
   
 
 Inspect the output
@@ -186,18 +186,18 @@ The results with complete data
 
 We have precomputed the D1 and D1² basecalling with the complete basecalling for you to save time, please copy that data into your working directory::
 
-  cp -r ~/Results/1D_basecall/ ~/workspace/
-  cp -r ~/Results/1D2_basecall/ ~/workspace/
+  cp -r ~/Results/1D_basecall/ ~/workdir/
+  cp -r ~/Results/1D2_basecall/ ~/workdir/
 
 Merge fastqs
 ------------
 
 To make life easier for future computations, we will merge the fastq files into one::
 
-  cat ~/workspace/1D_basecall_small/workspace/pass/*.fastq > ~/workspace/1D_basecall_small.fastq
-  cat ~/workspace/1D_2_basecall_small/1dsq_analysis/workspace/pass/*.fastq > ~/workspace/1D_basecall_small.fastq
-  cat ~/workspace/1D_basecall/workspace/pass/*.fastq > ~/workspace/1D_basecall.fastq
-  cat ~/workspace/1D_2_basecall/1dsq_analysis/workspace/pass/*.fastq > ~/workspace/1D_basecall.fastq
+  cat ~/workdir/1D_basecall_small/workspace/pass/*.fastq > ~/workdir/1D_basecall_small.fastq
+  cat ~/workdir/1D_2_basecall_small/1dsq_analysis/workspace/pass/*.fastq > ~/workdir/1D_basecall_small.fastq
+  cat ~/workdir/1D_basecall/workspace/pass/*.fastq > ~/workdir/1D_basecall.fastq
+  cat ~/workdir/1D_2_basecall/1dsq_analysis/workspace/pass/*.fastq > ~/workdir/1D_basecall.fastq
 
 
 
