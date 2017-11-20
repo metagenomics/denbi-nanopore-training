@@ -13,10 +13,13 @@ Pilon requires as input a FASTA file of the genome along with one or more BAM fi
 Pilon then outputs a FASTA file containing an improved representation of the genome from the read data and an optional VCF file detailing variation seen between the read data and the input genome.
 
 To aid manual inspection and improvement by an analyst, Pilon can optionally produce tracks that can be displayed in genome viewers such as IGV and GenomeView, and it reports other events (such as possible large collapsed repeat regions) in its standard output.
+More information on pilon can be found here:
+https://github.com/broadinstitute/pilon/wiki
+
 
 We have prepared a set of Illumina data for you, which we are now using for polishing with pilon::
 
-  ls -l ~/Illumina/
+  ls -l ~/Data/Illumina/
   
   total 726604
   -rw-r--r-- 1 ubuntu ubuntu       432 Nov  7 08:55 assembly_stats.txt
@@ -26,10 +29,9 @@ We have prepared a set of Illumina data for you, which we are now using for poli
   -rw-r--r-- 1 ubuntu ubuntu 315258550 Nov  7 08:55 TSPf_R1.fastq.gz
   -rw-r--r-- 1 ubuntu ubuntu 354446667 Nov  7 08:55 TSPf_R2.fastq.gz
 
-First we are mapping the Illumina reads to the largest contig of our assembly. We already created an index, so we can skip this step::
+First we are mapping the Illumina reads to the largest contig of our assembly. First, we will create an index on the largestContig, to allow mapping::
   
-  #already done
-  bwa index ~/canu_assembly/largestContig.fasta
+  bwa index ~/Results/canu_assembly/largestContig.fasta
   
 Then we are mapping all reads to the contig. Note that we are shortening the process of creating a sorted and indexed bam file by piping the output of bwa directly to samtools, thereby avoiding temporary files::
 
