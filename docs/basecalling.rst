@@ -147,7 +147,7 @@ Inspect the output
 
 Both directories contain a number of fastq files::
 
-  ls -lh ~/workspace/1D_basecall_small/workspace/pass/
+  ls -lh ~/workdir/1D_basecall_small/workspace/pass/
   
   total 12M
   -rw-rw-r-- 1 ubuntu ubuntu 4.6M Nov 13 10:17 fastq_runid_04d71dafbed4e1a2c29d48873533c94070985063_0.fastq
@@ -159,7 +159,7 @@ Both directories contain a number of fastq files::
 
 The D1^2 basecalling also creates additional fast5 data in the workspace. Keep that in mind, when disk space is limited. ::
 
-  ls -lh ~/workspace/1D_2_basecall_small/workspace/
+  ls -lh ~/workdir/1D2_basecall_small/workspace/
   
   total 13M
   drwxrwxr-x 2 ubuntu ubuntu 144K Nov 13 10:19 0   <-- additional fast5 data
@@ -172,7 +172,7 @@ The D1^2 basecalling also creates additional fast5 data in the workspace. Keep t
 
 The workspace directory above contains the 1D basecalling, whereas the 1D² basecalling is located in::
 
-  ls -lh ~/workspace/1D_2_basecall_small/1dsq_analysis/workspace/pass/
+  ls -lh ~/workdir/1D2_basecall_small/1dsq_analysis/workspace/pass/
 
   total 1180
   -rw-rw-r-- 1 ubuntu ubuntu 559842 Nov 13 10:21 fastq_runid_04d71dafbed4e1a2c29d48873533c94070985063_0.fastq
@@ -195,9 +195,9 @@ Merge fastqs
 To make life easier for future computations, we will merge the fastq files into one::
 
   cat ~/workdir/1D_basecall_small/workspace/pass/*.fastq > ~/workdir/1D_basecall_small.fastq
-  cat ~/workdir/1D_2_basecall_small/1dsq_analysis/workspace/pass/*.fastq > ~/workdir/1D_basecall_small.fastq
+  cat ~/workdir/1D2_basecall_small/1dsq_analysis/workspace/pass/*.fastq > ~/workdir/1D2_basecall_small.fastq
   cat ~/workdir/1D_basecall/workspace/pass/*.fastq > ~/workdir/1D_basecall.fastq
-  cat ~/workdir/1D_2_basecall/1dsq_analysis/workspace/pass/*.fastq > ~/workdir/1D_basecall.fastq
+  cat ~/workdir/1D2_basecall/1dsq_analysis/workspace/pass/*.fastq > ~/workdir/1D2_basecall.fastq
 
 
 
