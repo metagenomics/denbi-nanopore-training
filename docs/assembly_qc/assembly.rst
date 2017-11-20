@@ -72,14 +72,24 @@ Get a usage message of canu on how to use the assembler::
       -nanopore-raw       <files>
       -nanopore-corrected <files>
 
-We will run the assembly in two steps.
+We will run the assembly on the small dataset, for which we have computed the basecalling to save time. The assembly for the complete dataset will take about 2 and a half hours. 
+We will perform the assembly in two steps:
+
+Error correction with the parameter::
+
+  -correct       - generate corrected reads
+  
+followed by trimming and assembly with the following parameters::
+
+  -trim-assemble - generate trimmed reads and then assemble them
+
 
 Generate corrected reads
 ------------------------
 
 The correction stage selects the best overlaps to use for correction, estimates corrected read lengths, and generates corrected reads::
 
-  canu -correct -d ~/canu_correct -p canuAssembly genomeSize=3m useGrid=false -nanopore-raw 1D_basecall.fastq
+  canu -correct -d ~/workspace/canu_correct_small -p canuAssembly genomeSize=3m useGrid=false -nanopore-raw ~/workspace/1D_basecall_small.fastq
 
 It is also possible to run multiple correction rounds to eliminate errors. This has been done on a S. cerevisae dataset in the canu publication. We will not do this in this course due to time limitations, but a script to do this, would look like this::
 
@@ -104,13 +114,13 @@ Generate and assemble trimmed reads
 
 The trimming stage identifies unsupported regions in the input and trims or splits reads to their longest supported range. The assembly stage makes a final pass to identify sequencing errors; constructs the best overlap graph (BOG); and outputs contigs, an assembly graph, and summary statistics::
 
-  canu -trim-assemble -d ~/canu_assembly -p canuAssembly genomeSize=3M useGrid=false -nanopore-corrected ~/canu_correct/canuAssembly.correctedReads.fasta.gz -nanopore-corrected ~/1D2_basecall.fastq
+  canu -trim-assemble -d ~/workspace/canu_assembly_small -p canuAssembly genomeSize=3M useGrid=false -nanopore-corrected ~/workspace/canu_correct_small/canuAssembly.correctedReads.fasta.gz -nanopore-corrected ~/workspace/1D2_basecall.fastq
   
-Or two commands? (not tested) ::
 
-  canu -trim -d ~/canu_trim 'canuAssembly' 'genomeSize=3M' 'useGrid=false' 'minThreads=16' 'maxThreads=16' 'gnuPlotTested=true' -nanopore-corrected ~/canu_correct/canuAssembly.correctedReads.fasta.gz -nanopore-corrected ~/D1_2_basecall/workspace/fastq_runid_* 
-  canu -assemble -d ~/canu_assemble 'canuAssembly' 'genomeSize=3M' 'useGrid=false' 'minThreads=16' 'maxThreads=16' 'gnuPlotTested=true' -nanopore-corrected ~/canu_trim/canuAssembly.trimmedReads.fasta.gz -nanopore-corrected ~/D1_2_basecall/workspace/fastq_runid_* 
-  
+After that is done, inspect the results and copy the precomputed assembly with the complete dataset into your working directory::
+
+  cp -r ~/Results/canu_assembly/ ~/workspace/
+
   
   
   
