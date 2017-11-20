@@ -20,14 +20,14 @@ See the `LAST webpage <http://last.cbrc.jp/>`_ for more details.
 LAST needs to build an index for the reference before we can align 
 our assembly to it. This is done by the using the command ``lastdb``::
 
-  cd ~
+  cd ~/workdir/
   mkdir last_1st_assembly
   cd last_1st_assembly
   lastdb CXERO_10272017.db ~/Data/Reference/CXERO_10272017.fna
   
 Now that we have an index, we can map the assembly to the reference::
 
-  lastal CXERO_10272017.db ~/canu_assembly/canuAssembly.contigs.fasta > canu_1st_Assembly.maf
+  lastal CXERO_10272017.db ~/workdir/canu_assembly/canuAssembly.contigs.fasta > canu_1st_Assembly.maf
   
 ``lastal`` produces output in `MAF format
 <http://genome.ucsc.edu/FAQ/FAQformat.html#format5>`_ by default. As we are going to
