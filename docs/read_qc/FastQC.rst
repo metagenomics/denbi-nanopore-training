@@ -25,9 +25,9 @@ Evaluate with fastqc::
   mkdir -p ~/www/FastQC/1D_fastqc
   mkdir -p ~/www/FastQC/1D2_fastqc
   mkdir -p ~/www/FastQC/illumina
-  fastqc -o www/FastQC/fastqc_1D/ ~/Results/1D_basecall.fastq
-  fastqc -o www/FastQC/fastqc_1D2/ ~/Results/1D2basecall.fastq
-  fastqc -o www/FastQC/illumina/ ~/Data/Illumina/TSPf_R1.fastq.gz ~/Data/Illumina/TSPf_R2.fastq.gz
+  fastqc -t 16 -o www/FastQC/fastqc_1D/ ~/Results/1D_basecall.fastq
+  fastqc -t 16 -o www/FastQC/fastqc_1D2/ ~/Results/1D2basecall.fastq
+  fastqc -t 16 -o www/FastQC/illumina/ ~/Data/Illumina/TSPf_R1.fastq.gz ~/Data/Illumina/TSPf_R2.fastq.gz
   
 After that, you can load the reports in your web browser::
 
