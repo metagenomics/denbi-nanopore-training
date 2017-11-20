@@ -71,15 +71,11 @@ Usage:
                                    account. If >= 1.0, this filter is disabled. [1.0]
 
   Algorithmic options
-    -k                       INT   Graph construction kmer size. [6]
-    -l                       INT   Number of edges per vertex. [9]
+    -k                       INT   Graph construction kmer size. [6]    
     -A, --minbases           INT   Minimum number of match bases in an anchor. [12]
     -e, --error-rate         FLT   Approximate error rate of the input read sequences. [0.45]
     -g, --max-regions        INT   If the final number of regions exceeds this amount, the read will be called
-                                   unmapped. If 0, value will be dynamically determined. If < 0, no limit is set. [0]
-    -q, --reg-reduce         INT   Attempt to heuristically reduce the number of regions if it exceeds this amount.
-                                   Value <= 0 disables reduction but only if param -g is not 0. If -g is 0, the value of
-                                   this parameter is set to 1/5 of maximum number of regions. [0]
+                                   unmapped. If 0, value will be dynamically determined. If < 0, no limit is set. [0]    
     -C, --circular            -    Reference sequence is a circular genome. [false]
     -F, --ambiguity          FLT   All mapping positions within the given fraction of the top score will be counted for
                                    ambiguity (mapping quality). Value of 0.0 counts only identical mappings. [0.02]
@@ -102,27 +98,43 @@ Usage:
 
   Other options
     -t, --threads            INT   Number of threads to use. If '-1', number of threads will be equal to min(24, num_cores/2). [-1]
-    -v, --verbose            INT   Verbose level. If equal to 0 nothing except strict output will be placed on stdout. [5]
-    -s, --start              INT   Ordinal number of the read from which to start processing data. [0]
-    -n, --numreads           INT   Number of reads to process per batch. Value of '-1' processes all reads. [-1]
+    -v, --verbose            INT   Verbose level. If equal to 0 nothing except strict output will be placed on stdout. [5]    
     -h, --help                -    View this help. [false]
  
 
 We now use graphmap to align the different read sets to the reference, starting with the raw 1d reads::
 
   cd ~/workdir
-  graphmap align -r ~/Data/Reference/CXERO_10272017.fna -t 16 -C -d ~/workdir/1D_basecall.fastq -o 1D.graphmap.sam 2>&1 > 1D.graphmap.sam.log
+  graphmap align -r ~/Data/Reference/CXERO_10272017.fna -t 16 -C -d ~/Results/1D_basecall.fastq -o 1D.graphmap.sam > 1D.graphmap.sam.log 2>&1 
   
 The 2d reads::
 
-  graphmap align -r ~/Data/Reference/CXERO_10272017.fna -t 16 -C -d ~/workdir/1D2_basecall.fastq -o 1D2.graphmap.sam 2>&1 > 1D2.graphmap.sam.log
+  graphmap align -r ~/Data/Reference/CXERO_10272017.fna -t 16 -C -d ~/Results/1D2_basecall.fastq -o 1D2.graphmap.sam > 1D2.graphmap.sam.log 2>&1 
 
-For the illumina reads we will use another aligner, as this one is more suited for this kind of data::
-
-  bwa -t 16 -r ~/Data/Reference/CXERO_10272017.fna ~/Data/Illumina/TSPf_R1.fastq.gz ~/Data/Illumina/TSPf_R2.fastq.gz > TSPf.bwa.sam
+For the illumina reads we will use another aligner, as this one is more suited for this kind of data. Bute before we can do so, we need to create an index structure on the reference first::
+  
+  bwa index ~/Data/Reference/CXERO_10272017.fna
+  bwa mem -t 16 ~/Data/Reference/CXERO_10272017.fna ~/Data/Illumina/TSPf_R1.fastq.gz ~/Data/Illumina/TSPf_R2.fastq.gz > TSPf.bwa.sam
   
 Inferring error profiles
 ~~~~~~~~~~~~~~~~~~~~~~~~
+
+After mapping the reads on the reference Genome, we can infer various statistics as e.g., number of succesful aligned reads and bases, or number of mismatches and indels, and so on. For this you could easily use the tool collection **samtools**, which offers a range of simple CLI modules all operating on mapping output (SAM and BAM format). We will use the ``stats`` module now::
+ 
+  samtools stats -d -@ 16 1D.graphmap.sam > 1D.graphmap.sam.stats
+  samtools stats -d -@ 16 1D2.graphmap.sam > 1D2.graphmap.sam.stats
+  samtools stats -d -@ 16 TSPf.bwa.sam > TSPf.bwa.sam.stats
+
+We can inspect these results now by simply view at the top 40 lines of the output::
+  
+  head -n 40 1D.graphmap.sam.stats
+  head -n 40 1D2.graphmap.sam.stats
+  head -n 40 TSPf.bwa.sam.stats
+
+To get a more in depth info on the actual accuracy of the data at hand, we're going to use a software likewise to FastQC which is called **AlignQC**::
+
+
+
 
 
 
