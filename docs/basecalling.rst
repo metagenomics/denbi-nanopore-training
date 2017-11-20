@@ -200,19 +200,5 @@ To make life easier for future computations, we will merge the fastq files into 
   cat ~/1D_basecall/workspace/pass/*.fastq > ~/1D_basecall.fastq
   cat ~/1D_2_basecall/1dsq_analysis/workspace/pass/*.fastq > ~/1D_basecall.fastq
 
-Quality statistics with FASTQC
-------------------------------
-
-Evaluate with fastqc::
-  
-  mkdir ~/www/1D_fastqc
-  mkdir ~/www/1D2_fastqc
-  fastqc -o www/fastqc_1D/ 1D_basecall.fastq
-  fastqc -o www/fastqc_1D2/ 1D2basecall.fastq
-  
-After that, you can load the reports in your web browser::
-
-  http://YOUR_OPENSTACK_INSTANCE_IP/
-
 
 
