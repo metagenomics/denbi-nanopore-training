@@ -85,15 +85,16 @@ Note, that there is an option for Oxford Nanopore 2D-reads::
                        
 But we will adapt the parameters changed by this option a bit, and use the SMALL dataset for nanopolish::
 
+  cd
   mkdir Mapping_1D_basecall_small_to_assembly
-  bwa mem -t 16 -k11 -W17 -r10 -A1 -B1 -O1 -E1 -L0 canu_assembly/largestContig.fasta 1D_basecall_small.fastq > Mapping_1D_basecall_small_to_assembly/mapping.sam
+  bwa mem -t 16 -k11 -W17 -r10 -A1 -B1 -O1 -E1 -L0 ~/workdir/canu_assembly/largestContig.fasta ~/workdir/1D_basecall_small.fastq > ~/workdir/Mapping_1D_basecall_small_to_assembly/mapping.sam
   
 We need to convert the resulting sam file to a sorted and indexed bam file::
   
   -bT ~/Data/Reference/CXERO_10272017.fna?
-  samtools view -Sb Mapping_1D_basecall_small_to_assembly/mapping.sam > Mapping_1D_basecall_small_to_assembly/mapping.bam
-  samtools sort -@16 Mapping_1D_basecall_small_to_assembly/mapping.bam Mapping_1D_basecall_small_to_assembly/mapping.sorted
-  samtools index Mapping_1D_basecall_small_to_assembly/mapping.sorted.bam
+  samtools view -Sb ~/workdir/Mapping_1D_basecall_small_to_assembly/mapping.sam > ~/workdir/Mapping_1D_basecall_small_to_assembly/mapping.bam
+  samtools sort -@16 ~/workdir/Mapping_1D_basecall_small_to_assembly/mapping.bam ~/workdir/Mapping_1D_basecall_small_to_assembly/mapping.sorted
+  samtools index ~/workdir/Mapping_1D_basecall_small_to_assembly/mapping.sorted.bam
   
 
 Indexing fastq from 1D Basecalling
@@ -101,7 +102,7 @@ Indexing fastq from 1D Basecalling
 
 In order to prepare our 1D fastq file for nanopolish (so that the tool can find the original raw files), we need to index the fastq files from the 1D basecalling again with nanopolish::
 
-  nanopolish index -d ~/Nanopore_small/ 1D_basecall_small.fastq
+  nanopolish index -d ~/workdir/Nanopore_small/ ~/workdir/1D_basecall_small.fastq
 
 Call nanopolish
 ---------------
@@ -114,7 +115,7 @@ Now that all pieces are together, we can call nanopolish with:
 
 Put together::
 
-  nanopolish variants --threads 16 --consensus polishedContig_small.fasta -b Mapping_1D_basecall_small_to_assembly/mapping.sorted.bam -r 1D_basecall_small.fastq -g canu_assembly/largestContig.fasta
+  nanopolish variants --threads 16 --consensus ~/workdir/polishedContig_small.fasta -b ~/workdir/Mapping_1D_basecall_small_to_assembly/mapping.sorted.bam -r ~/workdir/1D_basecall_small.fastq -g ~/workdir/canu_assembly/largestContig.fasta
 
 
 Assembly evaluation with quast
@@ -124,12 +125,12 @@ We are going to evaluate our polished assembly. To call ``quast.py`` we have to 
 
   cd
   
-  quast.py -t 16 -o ~/quast_nanopolished_assembly -R ~/Reference/CXERO_10272017.fna ~/polishedContig_small.fasta
+  quast.py -t 16 -o ~/workdir/quast_nanopolished_assembly -R ~/Reference/CXERO_10272017.fna ~/workdir/polishedContig_small.fasta
 
 QUAST generates HTML reports including a number of interactive graphics. To access these reports, copy the
 quast directory to your `www` folder::
 
-  cp -r quast_nanopolished_assembly ~/www/
+  cp -r ~/workdir/quast_nanopolished_assembly ~/www/
 
 You can load the reports in your web browser::
 
@@ -137,16 +138,3 @@ You can load the reports in your web browser::
 
 Compare to the previous results without polishing.
 
-
-
-Remove later:
-
-Alt::
-  # Only run this if you used Albacore 1.2 or later
-  nanopolish extract -q -r -o 1D2Nanopolish/1D2_Nanopolish.fastq D1_2_basecall/workspace/
-
-Wg. Albacore > 2.0::
-  # Only run this if you used Albacore 2.0 or later
-  
-  
- 
