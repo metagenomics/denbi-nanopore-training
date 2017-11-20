@@ -21,10 +21,13 @@ QA with FASTQC
 ``````````````
 Evaluate with fastqc::
   
-  mkdir ~/www/1D_fastqc
-  mkdir ~/www/1D2_fastqc
-  fastqc -o www/fastqc_1D/ 1D_basecall.fastq
-  fastqc -o www/fastqc_1D2/ 1D2basecall.fastq
+  cd workdir
+  mkdir -p ~/www/FastQC/1D_fastqc
+  mkdir -p ~/www/FastQC/1D2_fastqc
+  mkdir -p ~/www/FastQC/illumina
+  fastqc -o www/FastQC/fastqc_1D/ ~/Results/1D_basecall.fastq
+  fastqc -o www/FastQC/fastqc_1D2/ ~/Results/1D2basecall.fastq
+  fastqc -o www/FastQC/illumina/ ~/Data/Illumina/TSPf_R1.fastq.gz ~/Data/Illumina/TSPf_R2.fastq.gz
   
 After that, you can load the reports in your web browser::
 
