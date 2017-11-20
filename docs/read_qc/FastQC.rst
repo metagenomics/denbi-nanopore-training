@@ -32,6 +32,8 @@ Evaluate with fastqc::
 After that, you can load the reports in your web browser::
 
   http://YOUR_OPENSTACK_INSTANCE_IP/
+  
+We will inspect the results together now ...
 
-Check out the `FastQC home page <http://www.bioinformatics.babraham.ac.uk/projects/fastqc/>`_ for examples
+You should also check out the `FastQC home page <http://www.bioinformatics.babraham.ac.uk/projects/fastqc/>`_ for examples
 of reports including bad data.
