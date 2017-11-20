@@ -184,7 +184,7 @@ The workspace directory above contains the 1D basecalling, whereas the 1D² base
 The results with complete data
 ------------------------------
 
-We have precomputed the D1 and D1² basecalling with the complete basecalling for you to save time, please copy that data into your home directory::
+We have precomputed the D1 and D1² basecalling with the complete basecalling for you to save time, please copy that data into your working directory::
 
   cp -r ~/Results/1D_basecall/ ~/workspace/
   cp -r ~/Results/1D2_basecall/ ~/workspace/
