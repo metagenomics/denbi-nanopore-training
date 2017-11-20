@@ -97,7 +97,7 @@ But we will adapt the parameters changed by this option a bit, and use the SMALL
   
 We need to convert the resulting sam file to a sorted and indexed bam file::
   
-  -bT ?
+  -bT ~/Data/Reference/CXERO_10272017.fna?
   samtools view -Sb Mapping_1D_basecall_small_to_assembly/mapping.sam > Mapping_1D_basecall_small_to_assembly/mapping.bam
   samtools sort -@16 Mapping_1D_basecall_small_to_assembly/mapping.bam Mapping_1D_basecall_small_to_assembly/mapping.sorted
   samtools index Mapping_1D_basecall_small_to_assembly/mapping.sorted.bam
