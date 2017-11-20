@@ -29,39 +29,53 @@ We have prepared a set of Illumina data for you, which we are now using for poli
   -rw-r--r-- 1 ubuntu ubuntu 315258550 Nov  7 08:55 TSPf_R1.fastq.gz
   -rw-r--r-- 1 ubuntu ubuntu 354446667 Nov  7 08:55 TSPf_R2.fastq.gz
 
-First we are mapping the Illumina reads to the largest contig of our assembly. First, we will create an index on the largestContig, to allow mapping::
+Extracting first contig from Assembly
+-------------------------------------
+
+The ``variants --consensus`` option of nanopolish, which we will use later, only works on one contig. We continue to work only with the largest contig. We can do this, because we know, that this contig covers the complete reference. We are extracting the first (and largest) contig from our assembly::
+
+  samtools faidx ~/workdir/canu_assembly/canuAssembly.contigs.fasta tig00000001 > ~/workdir/canu_assembly/largestContig.fasta
+
+Mapping of Illumina reads to assembly 
+-------------------------------------
+
+We are mapping the Illumina reads to the largest contig of our assembly. The first step is to create an index on the largestContig, to allow mapping::
   
-  bwa index ~/Results/canu_assembly/largestContig.fasta
+  bwa index ~/workdir/canu_assembly/largestContig.fasta
   
 Then we are mapping all reads to the contig. Note that we are shortening the process of creating a sorted and indexed bam file by piping the output of bwa directly to samtools, thereby avoiding temporary files::
 
+  cd
   mkdir Illumina_mappings
 
-  bwa mem -t 16 ~/canu_assembly/largestContig.fasta ~/Illumina/TSPf_R1.fastq.gz ~/Illumina/TSPf_R2.fastq.gz | samtools view - -Sb | samtools sort - -@16 -o sorted > ~/Illumina_mappings/WGS.sorted.bam
-  samtools index ~/Illumina_mappings/WGS.sorted.bam
+  bwa mem -t 16 ~/workdir/canu_assembly/largestContig.fasta ~/Data/Illumina/TSPf_R1.fastq.gz ~/Data/Illumina/TSPf_R2.fastq.gz | samtools view - -Sb | samtools sort - -@16 -o sorted > ~/workdir/Illumina_mappings/WGS.sorted.bam
+  samtools index ~/workdir/Illumina_mappings/WGS.sorted.bam
   
-  bwa mem -t 16 ~/canu_assembly/largestContig.fasta ~/Illumina/MP2.fastq.fwd ~/Illumina/MP2.fastq.rev | samtools view - -Sb | samtools sort - -@16 -o sorted > ~/Illumina_mappings/MP.sorted.bam
-  samtools index ~/Illumina_mappings/MP.sorted.bam
+  bwa mem -t 16 ~/workdir/canu_assembly/largestContig.fasta ~/Data/Illumina/MP2.fastq.fwd ~/Data/Illumina/MP2.fastq.rev | samtools view - -Sb | samtools sort - -@16 -o sorted > ~/workdir/Illumina_mappings/MP.sorted.bam
+  samtools index ~/workdir/Illumina_mappings/MP.sorted.bam
   
 In the next step, we call pilon with the mappings to polish our assembly::
   
+  cd
   mkdir Pilon
-  java -Xmx32G -jar ~/pilon-1.22.jar --genome ~/canu_assembly/largestContig.fasta --fix all --changes --frags ~/Illumina_mappings/WGS.sorted.bam --jumps ~/Illumina_mappings/MP.sorted.bam --threads 16 --output ~/Pilon/Pilon_round1 | tee ~/Pilon/round1.pilon
+  java -Xmx32G -jar ~/pilon-1.22.jar --genome ~/workdir/canu_assembly/largestContig.fasta --fix all --changes --frags ~/workdir/Illumina_mappings/WGS.sorted.bam --jumps ~/workdir/Illumina_mappings/MP.sorted.bam --threads 16 --output ~/Pilon/Pilon_round1 | tee ~/Pilon/round1.pilon
   
 Repeat this for 3-4 rounds like this::
 
-  bwa index ~/Pilon/Pilon_round1.fasta
+  bwa index ~/workdir/Pilon/Pilon_round1.fasta
 
-  bwa mem -t 16 ~/Pilon/Pilon_round1.fasta ~/Illumina/TSPf_R1.fastq.gz ~/Illumina/TSPf_R2.fastq.gz | samtools view - -Sb | samtools sort - -@16 -o sorted > ~/Illumina_mappings/WGS.sorted.bam
+  bwa mem -t 16 ~/workdir/Pilon/Pilon_round1.fasta ~/Data/Illumina/TSPf_R1.fastq.gz ~/Data/Illumina/TSPf_R2.fastq.gz | samtools view - -Sb | samtools sort - -@16 -o sorted > ~/workdir/Illumina_mappings/WGS.sorted.bam
   
-  samtools index ~/Illumina_mappings/WGS.sorted.bam
+  samtools index ~/workdir/Illumina_mappings/WGS.sorted.bam
   
-  bwa mem -t 16 ~/Pilon/Pilon_round1.fasta ~/Illumina/MP2.fastq.fwd ~/Illumina/MP2.fastq.rev | samtools view - -Sb | samtools sort - -@16 -o sorted > ~/Illumina_mappings/MP.sorted.bam
+  bwa mem -t 16 ~/workdir/Pilon/Pilon_round1.fasta ~/Data/Illumina/MP2.fastq.fwd ~/Data/Illumina/MP2.fastq.rev | samtools view - -Sb | samtools sort - -@16 -o sorted > ~/workdir/Illumina_mappings/MP.sorted.bam
   
-  samtools index ~/Illumina_mappings/MP.sorted.bam
+  samtools index ~/workdir/Illumina_mappings/MP.sorted.bam
   
-  java -Xmx32G -jar ~/pilon-1.22.jar --genome ~/Pilon/Pilon_round1.fasta --fix all --changes --frags ~/Illumina_mappings/WGS.sorted.bam --jumps ~/Illumina_mappings/MP.sorted.bam --threads 16 --output ~/Pilon/Pilon_round2 | tee ~/Pilon/round2.pilon
+  java -Xmx32G -jar ~/pilon-1.22.jar --genome ~/workdir/Pilon/Pilon_round1.fasta --fix all --changes --frags ~/workdir/Illumina_mappings/WGS.sorted.bam --jumps ~/workdir/Illumina_mappings/MP.sorted.bam --threads 16 --output ~/workdir/Pilon/Pilon_round2 | tee ~/workdir/Pilon/round2.pilon
   ...
+
+You can inspect the ``Pilon_roundX.changes`` file to see if there are changes to the previous round.
 
 
 Assembly evaluation with quast
@@ -70,13 +84,13 @@ Assembly evaluation with quast
 As usual, we are going to use quast for assembly evaluation::
 
   cd
-  quast.py -t 16 -o ~/pilon_round1/ -R ~/Reference/CXERO_10272017.fna ~/Pilon/Pilon_round1.fasta
+  quast.py -t 16 -o ~/quast_pilon -R ~/Reference/CXERO_10272017.fna ~/workdir/Pilon/Pilon_round1.fasta
   #and so on for other pilon rounds
 
 QUAST generates HTML reports including a number of interactive graphics. To access these reports, copy the
 quast directory to your `www` folder::
 
-  cp -r pilon_round1 ~/www/
+  cp -r ~/workdir/quast_pilon ~/www/
 
 You can load the reports in your web browser::
 
