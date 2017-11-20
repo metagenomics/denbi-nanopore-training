@@ -17,20 +17,20 @@ The Albacore pipeline contains:
 4. Alignment: The user can provide a reference file in FASTA, lastdb or minimap2 index format. If so, the reads are aligned against this reference via the integrated minimap2 aligner.
 
 
-There are two commands for basecalling with Albacore which we will use available::
+There are two commands for basecalling with Albacore which we will use available - for linear chemistry::
 
   read_fast5_basecaller.py
   
-for linear chemistry, or::
+or, for 1D² chemistry::
 
   full_1dsq_basecaller.py
   
-for 1D^2 chemistry. ``full_1dsq_basecaller.py`` basically just wraps the two successive commands::
+The ``full_1dsq_basecaller.py`` basically just wraps the two successive commands, which could also be used independently::
   
   read_fast5_basecaller.py
   paired_read_basecaller.py
 
-into one command.
+
 
 Let's have a look at the usage message for read_fast5_basecaller.py::
 
@@ -135,11 +135,11 @@ We need to specify at least the following options:
 
 Our complete command line is::
 
-  read_fast5_basecaller.py -f FLO-MIN107 -k SQK-LSK308 -t 16 -s ~/1D_basecall_small -o fastq -q 100000 -i ~/Nanopore_small/
+  read_fast5_basecaller.py -f FLO-MIN107 -k SQK-LSK308 -t 16 -s ~/workspace/1D_basecall_small -o fastq -q 100000 -i ~/workspace/Nanopore_small/
   
-and similar for the 1D^2 basecalling::
+and similar for the 1D² basecalling::
   
-  full_1dsq_basecaller.py -f  FLO-MIN107 -k SQK-LSK308 -t 16 -s ~/1D_2_basecall_small -o fastq -q 100000 -i ~/Nanopore_small/
+  full_1dsq_basecaller.py -f  FLO-MIN107 -k SQK-LSK308 -t 16 -s ~/workspace/1D_2_basecall_small -o fastq -q 100000 -i ~/workspace/Nanopore_small/
   
 
 Inspect the output
@@ -147,7 +147,7 @@ Inspect the output
 
 Both directories contain a number of fastq files::
 
-  ls -lh 1D_basecall_small/workspace/pass/
+  ls -lh ~/workspace/1D_basecall_small/workspace/pass/
   
   total 12M
   -rw-rw-r-- 1 ubuntu ubuntu 4.6M Nov 13 10:17 fastq_runid_04d71dafbed4e1a2c29d48873533c94070985063_0.fastq
@@ -159,7 +159,7 @@ Both directories contain a number of fastq files::
 
 The D1^2 basecalling also creates additional fast5 data in the workspace. Keep that in mind, when disk space is limited. ::
 
-  ls -lh 1D_2_basecall_small/workspace/
+  ls -lh ~/workspace/1D_2_basecall_small/workspace/
   
   total 13M
   drwxrwxr-x 2 ubuntu ubuntu 144K Nov 13 10:19 0   <-- additional fast5 data
@@ -170,9 +170,9 @@ The D1^2 basecalling also creates additional fast5 data in the workspace. Keep t
   -rw-rw-r-- 1 ubuntu ubuntu 1.6M Nov 13 10:19 fastq_runid_cdd5fefcf4478e23e0628e437f145a503cffa888_0.fastq
   -rw-rw-r-- 1 ubuntu ubuntu 961K Nov 13 10:19 fastq_runid_fa18a6a6c046ba9c4e91a6381be34a7eb06afbff_0.fastq
 
-The workspace directory above contains the 1D basecalling, whereas the 1D^2 basecalling is located in::
+The workspace directory above contains the 1D basecalling, whereas the 1D² basecalling is located in::
 
-  ls -lh 1D_2_basecall_small/1dsq_analysis/workspace/pass/
+  ls -lh ~/workspace/1D_2_basecall_small/1dsq_analysis/workspace/pass/
 
   total 1180
   -rw-rw-r-- 1 ubuntu ubuntu 559842 Nov 13 10:21 fastq_runid_04d71dafbed4e1a2c29d48873533c94070985063_0.fastq
@@ -184,21 +184,20 @@ The workspace directory above contains the 1D basecalling, whereas the 1D^2 base
 The results with complete data
 ------------------------------
 
-We have precomputed the D1 and D1^2 basecalling for you to save time, please continue the assembly with that data in the home directory::
+We have precomputed the D1 and D1² basecalling with the complete basecalling for you to save time, please copy that data into your home directory::
 
-  drwxrwxr-x 4 ubuntu ubuntu    4096 Nov 13 10:28 1D_2_basecall
-  drwxrwxr-x 3 ubuntu ubuntu    4096 Nov 13 10:29 1D_basecall
-
+  cp -r ~/Results/1D_basecall/ ~/workspace/
+  cp -r ~/Results/1D2_basecall/ ~/workspace/
 
 Merge fastqs
 ------------
 
 To make life easier for future computations, we will merge the fastq files into one::
 
-  cat ~/1D_basecall_small/workspace/pass/*.fastq > ~/1D_basecall_small.fastq
-  cat ~/1D_2_basecall_small/1dsq_analysis/workspace/pass/*.fastq > ~/1D_basecall_small.fastq
-  cat ~/1D_basecall/workspace/pass/*.fastq > ~/1D_basecall.fastq
-  cat ~/1D_2_basecall/1dsq_analysis/workspace/pass/*.fastq > ~/1D_basecall.fastq
+  cat ~/workspace/1D_basecall_small/workspace/pass/*.fastq > ~/workspace/1D_basecall_small.fastq
+  cat ~/workspace/1D_2_basecall_small/1dsq_analysis/workspace/pass/*.fastq > ~/workspace/1D_basecall_small.fastq
+  cat ~/workspace/1D_basecall/workspace/pass/*.fastq > ~/workspace/1D_basecall.fastq
+  cat ~/workspace/1D_2_basecall/1dsq_analysis/workspace/pass/*.fastq > ~/workspace/1D_basecall.fastq
 
 
 
