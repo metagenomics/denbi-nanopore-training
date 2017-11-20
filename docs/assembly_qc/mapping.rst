@@ -68,7 +68,7 @@ Here are the commands to copy the files and open the IGV::
   cd IGV_mappings
   scp -i $PATH_TO_YOUR_SECRET_SSH_KEY_FILE ubuntu@$YOUR_OPENSTACK_INSTANCE_IP:~/Data/Reference/CXERO_10272017.fna .
   scp -i $PATH_TO_YOUR_SECRET_SSH_KEY_FILE ubuntu@$YOUR_OPENSTACK_INSTANCE_IP:~/Data/Reference/CXERO_10272017.fna.fai .
-  scp -i $PATH_TO_YOUR_SECRET_SSH_KEY_FILE ubuntu@$YOUR_OPENSTACK_INSTANCE_IP:~/last_1st_assembly/canu_1st_Assembly_sorted.bam* .
+  scp -i $PATH_TO_YOUR_SECRET_SSH_KEY_FILE ubuntu@$YOUR_OPENSTACK_INSTANCE_IP:~/workdir/last_1st_assembly/canu_1st_Assembly_sorted.bam* .
   igv.sh
   
 Now let's look at the mapped contigs:
