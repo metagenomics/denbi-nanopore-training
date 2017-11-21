@@ -29,10 +29,12 @@ We have prepared a set of Illumina data for you, which we are now using for poli
   -rw-r--r-- 1 ubuntu ubuntu 315258550 Nov  7 08:55 TSPf_R1.fastq.gz
   -rw-r--r-- 1 ubuntu ubuntu 354446667 Nov  7 08:55 TSPf_R2.fastq.gz
   
-  .. toctree::
-   :maxdepth: 1
 
-   extract
-   mapping
-   pilon
-   quast
+
+.. toctree::
+ :maxdepth: 1
+
+ extract
+ mapping
+ pilon
+ quast
