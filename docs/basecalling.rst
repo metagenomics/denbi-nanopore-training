@@ -1,5 +1,5 @@
-Basecalling and read statistics
-===============================
+Basecalling 
+===========
 
 Basecalling with Albacore
 -------------------------
