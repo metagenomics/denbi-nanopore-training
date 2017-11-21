@@ -139,10 +139,10 @@ To get a more in depth info on the actual accuracy of the data at hand, includin
 First, we convert the SAM files into BAM format and sort them::
 
   samtools view -bS 1D.graphmap.sam | samtools sort - -f 1D.graphmap.sorted.bam
-  samtools view -bS 1D2.graphmap.sam | samtools sort - -f 1D.graphmap.sorted.bam
+  samtools view -bS 1D2.graphmap.sam | samtools sort - -f 1D2.graphmap.sorted.bam
   samtools view -bS TSPf.bwa.sam | samtools sort - -f TSPf.bwa.sorted.bam
 
-Then we can run **qualimap** on those BAM files::
+Then we can run **qualimap** on those BAM files now::
   
   qualimap bamqc -bam ~/workdir/1D.graphmap.sorted.bam -nw 5000 -outdir ~/www/qualimap/1D.graphmap
   qualimap bamqc -bam ~/workdir/1D2.graphmap.sorted.bam -nw 5000 -outdir ~/www/qualimap/1D2.graphmap
@@ -154,8 +154,13 @@ Qualimap can also be run interactively, which can be used, e.g., to compare all 
   
   --> File --> New Analysis --> Multi Sample BAM QC
 
+References
+~~~~~~~~~~
 
+**GraphMap** https://github.com/isovic/graphmap
 
+**BWA** http://bio-bwa.sourceforge.net/
 
-Nanopore sequencing data of E. Coli UTI89 generated in-house and used in the paper now available on ENA:
-PRJEB9557
+**Samtools** http://samtools.sourceforge.net/
+
+**QualiMap** http://qualimap.bioinfo.cipf.es/doc_html/index.html
