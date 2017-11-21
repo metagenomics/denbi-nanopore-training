@@ -16,10 +16,10 @@ The complete test dataset is already located in the ubuntu home directory of you
 First, copy the data into the working directory of your OpenStack instance using `scp`::
 
   cd /vol/porecourse/
-  scp -r -i <your openstack private key> Nanopore_small ubuntu@<your VM's IP>:~/workspace/.
+  scp -r -i $PATH_TO_YOUR_SECRET_SSH_KEY_FILE Nanopore_small ubuntu@$YOUR_OPENSTACK_INSTANCE_IP:~/workspace/.
 
 From here on, make sure you are actually working on the OpenStack
 cloud instance (logged in via ssh) and not on your local workstation::
 
-  ssh -X -i <your openstack private key> ubuntu@<your VM's IP>
+  ssh -X -i $PATH_TO_YOUR_SECRET_SSH_KEY_FILE ubuntu@$YOUR_OPENSTACK_INSTANCE_IP
 
