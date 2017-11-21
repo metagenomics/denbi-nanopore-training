@@ -9,7 +9,7 @@ microbial genome.
    :maxdepth: 2
    
    data
-   basecalling
+   basecalling/index
    read_qc/index
    assembly/index
    assembly_qc/index
