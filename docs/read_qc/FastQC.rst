@@ -15,16 +15,17 @@ The main functions of FastQC are
 * Export of results to an HTML based permanent report
 * Offline operation to allow automated generation of reports without running the interactive application
 
-You can run FastQC interactively or using ht CLI, which offers the following options:
+You can run FastQC interactively or using ht CLI, which offers the following options::
 
- fastqc --help
+  fastqc --help
             
   SYNOPSIS
 
     fastqc seqfile1 seqfile2 .. seqfileN
+
     fastqc [-o output dir] [--(no)extract] [-f fastq|bam|sam] [-c contaminant file] seqfile1 .. seqfileN
 
-  OPTIONS
+  OPTIONS:
 
     -o --outdir     Create all output files in the specified output directory.
                     Please note that this directory must exist as the program
