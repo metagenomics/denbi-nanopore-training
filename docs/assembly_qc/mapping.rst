@@ -75,3 +75,10 @@ Now let's look at the mapped contigs:
 
 1. Load the reference genome into IGV. Use the menu ``Genomes->Load Genome from File...`` 
 2. Load the BAM file into IGV. Use menu ``File->Load from File...`` 
+
+References
+^^^^^^^^^^
+
+**LAST** http://last.cbrc.jp/
+**samtools** http://www.htslib.org
+**IGV** http://www.broadinstitute.org/igv/
