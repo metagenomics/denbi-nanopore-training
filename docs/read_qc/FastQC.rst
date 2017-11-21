@@ -97,7 +97,7 @@ You can run FastQC interactively or using ht CLI, which offers the following opt
 See the `FastQC home page <http://www.bioinformatics.babraham.ac.uk/projects/fastqc/>`_ for more info.
 
 QA with FastQC
-``````````````
+^^^^^^^^^^^^^^
 Evaluate with fastqc::
   
   cd workdir
@@ -116,6 +116,9 @@ We will inspect the results together now ...
 
 You should also check out the `FastQC home page <http://www.bioinformatics.babraham.ac.uk/projects/fastqc/>`_ for examples
 of reports including bad data.
+
+Handle adapter contamination
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 As we see some strange GC content at the 5' end of our nanopore reads, we can alter the way the plots are generated and turn off the grouping of reads into bins. Notice, this will generate very huge plots!::
 
@@ -150,9 +153,9 @@ We will again look into the results of FastQC::
   mkdir -p ~/www/FastQC/1D_fastqc_trimmed
   fastqc -t 16 -o ~/www/FastQC/1D_fastqc_trimmed/ 1D_basecall.trimmed.fastqc
   
-  
 References
-``````````
+^^^^^^^^^^
+
 **FastQC** https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
 
 **Prechop** https://github.com/rrwick/Porechop
