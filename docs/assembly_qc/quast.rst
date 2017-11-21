@@ -21,8 +21,7 @@ Make sure, that port 80 is open in your VM, after that, you can load the reports
   http://YOUR_OPENSTACK_INSTANCE_IP/quast_canu_assembly/summary/report.html
 
 
-We can further use mauve to inspect the results of our assembly::
+References
+^^^^^^^^^^
 
-  Mauve
-  
-Which contigs of our assembly match to the reference?
+**quast** http://sourceforge.net/projects/quast
