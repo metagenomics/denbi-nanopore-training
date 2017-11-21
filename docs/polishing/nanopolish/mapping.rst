@@ -6,7 +6,7 @@ In order to correct a given assembly, nanopolish needs a mapping of the original
 First we need to create an index on our largest contig, this has already been done for the pilon polishing::
   
   #already done for pilon
-  bwa index ~/canu_assembly/largestContig.fasta
+  bwa index ~/workdir/canu_assembly/largestContig.fasta
 
 Then we will run the mapping. Check the usage of ``bwa mem``::
 
