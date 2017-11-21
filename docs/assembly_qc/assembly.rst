@@ -122,5 +122,8 @@ After that is done, inspect the results and copy the precomputed assembly with t
   cp -r ~/Results/canu_assembly/ ~/workspace/
 
   
-  
+References
+^^^^^^^^^^
+
+**Canu** https://github.com/marbl/canu
   
