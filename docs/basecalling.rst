@@ -139,7 +139,7 @@ Our complete command line is::
   
 and similar for the 1D² basecalling::
   
-  full_1dsq_basecaller.py -f  FLO-MIN107 -k SQK-LSK308 -t 16 -s ~/workdir/1D_2_basecall_small -o fastq -q 100000 -i ~/workdir/Nanopore_small/
+  full_1dsq_basecaller.py -f  FLO-MIN107 -k SQK-LSK308 -t 16 -s ~/workdir/1D2_basecall_small -o fastq -q 100000 -i ~/workdir/Nanopore_small/
   
 
 Inspect the output
