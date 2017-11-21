@@ -38,3 +38,8 @@ We have prepared a set of Illumina data for you, which we are now using for poli
  mapping
  pilon
  quast
+
+References
+^^^^^^^^^^
+
+**pilon** https://github.com/broadinstitute/pilon
