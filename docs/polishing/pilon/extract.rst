@@ -5,3 +5,9 @@ The ``variants --consensus`` option of nanopolish, which we will use later, only
   
   cd ~/workdir/
   samtools faidx ~/workdir/canu_assembly/canuAssembly.contigs.fasta tig00000001 > ~/workdir/canu_assembly/largestContig.fasta
+
+
+References
+^^^^^^^^^^
+
+**samtools** http://www.htslib.org
