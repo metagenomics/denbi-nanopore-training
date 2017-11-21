@@ -116,8 +116,8 @@ For the illumina reads we will use another aligner, as this one is more suited f
   bwa index ~/Data/Reference/CXERO_10272017.fna
   bwa mem -t 16 ~/Data/Reference/CXERO_10272017.fna ~/Data/Illumina/TSPf_R1.fastq.gz ~/Data/Illumina/TSPf_R2.fastq.gz > TSPf.bwa.sam
   
-Inferring error profiles
-~~~~~~~~~~~~~~~~~~~~~~~~
+Inferring error profiles using samtools
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 After mapping the reads on the reference Genome, we can infer various statistics as e.g., number of succesful aligned reads and bases, or number of mismatches and indels, and so on. For this you could easily use the tool collection **samtools**, which offers a range of simple CLI modules all operating on mapping output (SAM and BAM format). We will use the ``stats`` module now::
  
@@ -131,9 +131,28 @@ We can inspect these results now by simply view at the top 40 lines of the outpu
   head -n 40 1D2.graphmap.sam.stats
   head -n 40 TSPf.bwa.sam.stats
 
-To get a more in depth info on the actual accuracy of the data at hand, we're going to use a software likewise to FastQC which is called **AlignQC**::
+Enhanced mapping statistics
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+To get a more in depth info on the actual accuracy of the data at hand, including the genome coverage, we're going to use a more comprehensive and interactive software comparable to FastQC which is called **Qualimap**.
 
+First, we convert the SAM files into BAM format and sort them::
+
+  samtools view -bS 1D.graphmap.sam | samtools sort - -f 1D.graphmap.sorted.bam
+  samtools view -bS 1D2.graphmap.sam | samtools sort - -f 1D.graphmap.sorted.bam
+  samtools view -bS TSPf.bwa.sam | samtools sort - -f TSPf.bwa.sorted.bam
+
+Then we can run **qualimap** on those BAM files::
+  
+  qualimap bamqc -bam ~/workdir/1D.graphmap.sorted.bam -nw 5000 -outdir ~/www/qualimap/1D.graphmap
+  qualimap bamqc -bam ~/workdir/1D2.graphmap.sorted.bam -nw 5000 -outdir ~/www/qualimap/1D2.graphmap
+  qualimap bamqc -bam ~/workdir/TSPf.bwa.sorted.bam -nw 5000 -outdir ~/www/qualimap/TSPf.bwa
+
+Qualimap can also be run interactively, which can be used, e.g., to compare all mapping with each other::
+
+  qualimap
+  
+  --> File --> New Analysis --> Multi Sample BAM QC
 
 
 
