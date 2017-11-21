@@ -3,7 +3,7 @@ Generating Error Profiles
 -------------------------
 
 Mapping the data
-~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^
 
 GraphMap is a novel mapper targeted at aligning long, error-prone third-generation sequencing data.
 It is designed to handle Oxford Nanopore MinION 1d and 2d reads with very high sensitivity and accuracy, and also presents a significant improvement over the state-of-the-art for PacBio read mappers.
@@ -117,7 +117,7 @@ For the illumina reads we will use another aligner, as this one is more suited f
   bwa mem -t 16 ~/Data/Reference/CXERO_10272017.fna ~/Data/Illumina/TSPf_R1.fastq.gz ~/Data/Illumina/TSPf_R2.fastq.gz > TSPf.bwa.sam
   
 Inferring error profiles using samtools
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 After mapping the reads on the reference Genome, we can infer various statistics as e.g., number of succesful aligned reads and bases, or number of mismatches and indels, and so on. For this you could easily use the tool collection **samtools**, which offers a range of simple CLI modules all operating on mapping output (SAM and BAM format). We will use the ``stats`` module now::
  
@@ -132,7 +132,7 @@ We can inspect these results now by simply view at the top 40 lines of the outpu
   head -n 40 TSPf.bwa.sam.stats
 
 Enhanced mapping statistics
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To get a more in depth info on the actual accuracy of the data at hand, including the genome coverage, we're going to use a more comprehensive and interactive software comparable to FastQC which is called **Qualimap**.
 
@@ -155,7 +155,7 @@ Qualimap can also be run interactively, which can be used, e.g., to compare all 
   --> File --> New Analysis --> Multi Sample BAM QC
 
 References
-~~~~~~~~~~
+^^^^^^^^^^
 
 **GraphMap** https://github.com/isovic/graphmap
 
