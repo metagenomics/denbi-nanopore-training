@@ -5,7 +5,7 @@ In the next step, we call pilon with the mappings to polish our assembly::
   
   cd ~/workdir/
   mkdir Pilon
-  java -Xmx32G -jar ~/pilon-1.22.jar --genome ~/workdir/canu_assembly/largestContig.fasta --fix all --changes --frags ~/workdir/Illumina_mappings/WGS.sorted.bam --jumps ~/workdir/Illumina_mappings/MP.sorted.bam --threads 16 --output ~/Pilon/Pilon_round1 | tee ~/Pilon/round1.pilon
+  java -Xmx32G -jar ~/pilon-1.22.jar --genome ~/workdir/canu_assembly/largestContig.fasta --fix all --changes --frags ~/workdir/Illumina_mappings/WGS.sorted.bam --jumps ~/workdir/Illumina_mappings/MP.sorted.bam --threads 16 --output ~/workdir/Pilon/Pilon_round1 | tee ~/workdir/Pilon/round1.pilon
   
 Repeat this for 3-4 rounds like this::
 
