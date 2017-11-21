@@ -115,11 +115,18 @@ Generate and assemble trimmed reads
 The trimming stage identifies unsupported regions in the input and trims or splits reads to their longest supported range. The assembly stage makes a final pass to identify sequencing errors; constructs the best overlap graph (BOG); and outputs contigs, an assembly graph, and summary statistics::
 
   canu -trim-assemble -d ~/workdir/canu_assembly_small -p canuAssembly genomeSize=3M useGrid=false -nanopore-corrected ~/workdir/canu_correct_small/canuAssembly.correctedReads.fasta.gz -nanopore-corrected ~/workdir/1D2_basecall.fastq
-  
 
-After that is done, inspect the results and copy the precomputed assembly with the complete dataset into your working directory::
+After that is done, inspect the results. We can get a quick view on the number of generated contigs with::
+
+  grep '>' ~/workdir/canu_assembly_small/canuAssembly.contigs.fasta
+
+Copy the precomputed assembly with the complete dataset into your working directory::
 
   cp -r ~/Results/canu_assembly/ ~/workdir/
+
+and have a quick look on the number of contigs::
+
+  grep '>' ~/workdir/canu_assembly/canuAssembly.contigs.fasta
 
   
 References
