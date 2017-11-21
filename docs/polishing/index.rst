@@ -6,6 +6,6 @@ We are going to polish the canu assembly using pilon together with Illumina data
 .. toctree::
    :maxdepth: 1
 
-   pilon
+   pilon/index.rst
    nanopolish/index.rst
 
