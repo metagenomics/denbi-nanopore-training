@@ -1,7 +1,9 @@
 Mapping of Illumina reads to assembly 
 -------------------------------------
 
-We are mapping the Illumina reads to the largest contig of our assembly. The first step is to create an index on the largestContig, to allow mapping::
+We are mapping the Illumina reads to the largest contig of our assembly with BWA. BWA is a software package for mapping low-divergent sequences against a large reference genome. It consists of three algorithms: BWA-backtrack, BWA-SW and BWA-MEM. The first algorithm is designed for Illumina sequence reads up to 100bp, while the rest two for longer sequences ranged from 70bp to 1Mbp. BWA-MEM and BWA-SW share similar features such as long-read support and split alignment, but BWA-MEM, which is the latest, is generally recommended for high-quality queries as it is faster and more accurate.
+
+The first step is to create an index on the largestContig, to allow mapping::
   
   bwa index ~/workdir/canu_assembly/largestContig.fasta
   
