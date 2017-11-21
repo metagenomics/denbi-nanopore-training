@@ -127,7 +127,7 @@ As we see some strange GC content at the 5' end of our nanopore reads, we can al
   fastqc -t 16 -o FastQC/1D_fastqc_nogroup/ --nogroup --extract ~/Results/1D_basecall.fastq  
   grep -A 50 "Per base sequence" FastQC/1D_fastqc_nogroup/1D_basecall_fastqc/fastqc_data.txt
   
-So the first bases may indicate a adaptor contamination. For workflows including de novo assembly refined with nanopolish adaptor trimming is not necessary, but in other workflow scenarios this can be important to do and good there are tools which can handel this, as e.g. **porechop**.
+So the first bases may indicate an adaptor contamination. For workflows including de novo assembly refined with nanopolish adaptor trimming is not necessary, but in other workflow scenarios this can be important to do and good there are tools which can handle this, as e.g. **porechop**.
 
 Porechop is a tool for finding and removing adapters from Oxford Nanopore reads. Adapters on the ends of reads are trimmed off, and when a read has an adapter in its middle, it is treated as chimeric and chopped into separate reads. Porechop performs thorough alignments to effectively find adapters, even at low sequence identity::
 
