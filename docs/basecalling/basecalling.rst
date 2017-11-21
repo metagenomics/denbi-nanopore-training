@@ -1,6 +1,3 @@
-Basecalling 
-===========
-
 Basecalling with Albacore
 -------------------------
 
