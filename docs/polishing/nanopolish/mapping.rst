@@ -84,3 +84,8 @@ We need to convert the resulting sam file to a sorted and indexed bam file::
   samtools sort -@16 ~/workdir/Mapping_1D_basecall_to_assembly/mapping.bam ~/workdir/Mapping_1D_basecall_to_assembly/mapping.sorted
   samtools index ~/workdir/Mapping_1D_basecall_to_assembly/mapping.sorted.bam
   
+
+References
+^^^^^^^^^^
+
+**BWA** http://bio-bwa.sourceforge.net/
