@@ -80,5 +80,7 @@ References
 ^^^^^^^^^^
 
 **LAST** http://last.cbrc.jp/
+
 **samtools** http://www.htslib.org
+
 **IGV** http://www.broadinstitute.org/igv/
