@@ -7,7 +7,7 @@ We are mapping the Illumina reads to the largest contig of our assembly. The fir
   
 Then we are mapping all reads to the contig. Note that we are shortening the process of creating a sorted and indexed bam file by piping the output of bwa directly to samtools, thereby avoiding temporary files::
 
-  cd
+  cd ~/workdir/
   mkdir Illumina_mappings
 
   bwa mem -t 16 ~/workdir/canu_assembly/largestContig.fasta ~/Data/Illumina/TSPf_R1.fastq.gz ~/Data/Illumina/TSPf_R2.fastq.gz | samtools view - -Sb | samtools sort - -@16 -o sorted > ~/workdir/Illumina_mappings/WGS.sorted.bam
