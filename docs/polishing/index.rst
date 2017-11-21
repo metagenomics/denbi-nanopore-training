@@ -7,5 +7,5 @@ We are going to polish the canu assembly using pilon together with Illumina data
    :maxdepth: 1
 
    pilon
-   nanopolish
+   nanopolish/index.rst
 
