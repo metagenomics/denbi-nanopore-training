@@ -15,3 +15,8 @@ Then we are mapping all reads to the contig. Note that we are shortening the pro
   
   bwa mem -t 16 ~/workdir/canu_assembly/largestContig.fasta ~/Data/Illumina/MP2.fastq.fwd ~/Data/Illumina/MP2.fastq.rev | samtools view - -Sb | samtools sort - -@16 -o sorted > ~/workdir/Illumina_mappings/MP.sorted.bam
   samtools index ~/workdir/Illumina_mappings/MP.sorted.bam
+
+References
+^^^^^^^^^^
+
+**BWA** http://bio-bwa.sourceforge.net/
