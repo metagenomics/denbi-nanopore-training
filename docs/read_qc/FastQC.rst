@@ -136,6 +136,7 @@ Let's inspect the log file::
   cat porechop.log | more
   
 So here, the following adapters were found and trimmed of in 16,500 of 20,051 cases::
+
   SQK-NSK007_Y_Top:     AATGTACTTCGTTCAGTTACGTATTGCT
   SQK-NSK007_Y_Bottom:  GCAATACGTAACTGAACGAAGT
   1D2_part_1_start:     GAGAGGTTCCAAGTCAGAGAGGTTCCT
