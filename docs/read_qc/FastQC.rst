@@ -116,3 +116,20 @@ We will inspect the results together now ...
 
 You should also check out the `FastQC home page <http://www.bioinformatics.babraham.ac.uk/projects/fastqc/>`_ for examples
 of reports including bad data.
+
+As we see some strange GC content at the 5' end of our nanopore reads, we can alter the way the plots are generated and turn off the grouping of reads into bins. Notice, this will generate very huge plots!::
+
+  cd ~/workdir
+  mkdir -p FastQC/1D_fastqc_nogroup
+  fastqc -t 16 -o FastQC/1D_fastqc_nogroup/ --nogroup --extract ~/Results/1D_basecall.fastq  
+  grep -A 50 "Per base sequence" FastQC/1D_fastqc_nogroup/1D_basecall_fastqc/fastqc_data.txt
+  
+So the first bases may indicate a adaptor contamination. For workflows including de novo assembly refined with nanopolish adaptor trimming is not necessary, but otherwise there are tools which can handel this, as e.g. **porechop**::
+
+  cd ~/workdir
+  porechop -i ~/Results/1D_basecall.fastq -t 16 -o 1D_basecall.trimmed.fastqc
+
+We will again look into the results of FastQC::
+
+  mkdir -p ~/www/FastQC/1D_fastqc_trimmed
+  fastqc -t 16 -o ~/www/FastQC/1D_fastqc_trimmed/ 1D_basecall.trimmed.fastqc
