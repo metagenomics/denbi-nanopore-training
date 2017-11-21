@@ -24,6 +24,10 @@ Repeat this for 3-4 rounds like this::
 
 You can inspect the ``Pilon_roundX.changes`` file to see if there are changes to the previous round.
 
+You can copy further rounds from the precomputed Result directory to your workdir::
+
+  cp -r ~/Results/Pilon/Pilon_round{3,4}* ~/workdir/Pilon/.
+
 
 References
 ^^^^^^^^^^
