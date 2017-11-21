@@ -73,7 +73,7 @@ Note, that there is an option for Oxford Nanopore 2D-reads::
                        
 But we will adapt the parameters changed by this option a bit, and use the SMALL dataset for nanopolish::
 
-  cd
+  cd ~/workdir/
   mkdir Mapping_1D_basecall_to_assembly
   bwa mem -t 16 -k11 -W17 -r10 -A1 -B1 -O1 -E1 -L0 ~/workdir/canu_assembly/largestContig.fasta ~/workdir/1D_basecall.fastq > ~/workdir/Mapping_1D_basecall_to_assembly/mapping.sam
   
@@ -89,3 +89,5 @@ References
 ^^^^^^^^^^
 
 **BWA** http://bio-bwa.sourceforge.net/
+
+**samtools** http://www.htslib.org/
