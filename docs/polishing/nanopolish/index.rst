@@ -16,3 +16,9 @@ Nanopolish is a software package for signal-level analysis of Oxford Nanopore se
    indexing
    nanopolish
    quast
+
+
+References
+^^^^^^^^^^
+
+**nanopolish** https://github.com/jts/nanopolish
