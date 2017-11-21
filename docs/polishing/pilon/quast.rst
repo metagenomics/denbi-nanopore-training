@@ -17,3 +17,8 @@ You can load the reports in your web browser::
   http://YOUR_OPENSTACK_INSTANCE_IP/pilon_round1/summary/report.html
 
 Compare to the previous results without polishing.
+
+References
+^^^^^^^^^^
+
+**quast** http://sourceforge.net/projects/quast
