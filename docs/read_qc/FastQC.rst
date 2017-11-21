@@ -158,4 +158,4 @@ References
 
 **FastQC** https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
 
-**Prechop** https://github.com/rrwick/Porechop
+**Porechop** https://github.com/rrwick/Porechop
