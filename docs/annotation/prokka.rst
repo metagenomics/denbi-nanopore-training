@@ -14,8 +14,8 @@ Then we call Prokka with the genome sequence and specify an output directory::
 We will use a genome browser to look at the annotated genome. For this, you have to
 
 1. open a terminal window on **your local workstation**
-2. download the BAM file 
-3. start `IGV: Integrative Genomics Viewer <http://www.broadinstitute.org/igv/>`_
+2. download the prokka files
+3. start `IGV: Integrative Genomics Viewer`_
 
 Here are the commands to copy the files and open the IGV::
 
