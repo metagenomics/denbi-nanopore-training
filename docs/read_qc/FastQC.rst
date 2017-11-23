@@ -151,7 +151,7 @@ So here, the following adapters were found and trimmed of in 16,500 of 20,051 ca
 We will again look into the results of FastQC::
 
   mkdir -p ~/www/FastQC/1D_fastqc_trimmed
-  fastqc -t 16 -o ~/www/FastQC/1D_fastqc_trimmed/ 1D_basecall.trimmed.fastqc
+  fastqc -t 16 -o ~/www/FastQC/1D_fastqc_trimmed/ 1D_basecall.trimmed.fastq
   
 References
 ^^^^^^^^^^
