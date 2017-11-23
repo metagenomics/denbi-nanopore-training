@@ -13,7 +13,7 @@ convert the output to SAM and finally to BAM format::
   maf-convert sam Pilon_round4.maf > Pilon_round4.sam
   samtools faidx ~/Data/Reference/CXERO_10272017.fna
   samtools view -bT ~/Data/Reference/CXERO_10272017.fna Pilon_round4.sam > Pilon_round4.bam
-  samtools sort -o Pilon_round4_sorted Pilon_round4.bam
+  samtools sort -o Pilon_round4_sorted.bam Pilon_round4.bam
   samtools index Pilon_round4_sorted.bam
   
 To look at the BAM file use::
