@@ -1,5 +1,5 @@
-Quality control by mapping the polished assembly to the reference
-=================================================================
+Mapping the polished assembly to the reference
+==============================================
 
 To evaluate the polishing of the first assembly we will now map
 the polished contigs to the reference genome using LAST. 
