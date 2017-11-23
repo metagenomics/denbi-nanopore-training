@@ -104,8 +104,8 @@ Evaluate with fastqc::
   mkdir -p ~/www/FastQC/1D_fastqc
   mkdir -p ~/www/FastQC/1D2_fastqc
   mkdir -p ~/www/FastQC/illumina_fastqc
-  fastqc -t 16 -o ~/www/FastQC/1D_fastqc/ ~/workdir/1D_basecall.fastq
-  fastqc -t 16 -o ~/www/FastQC/1D2_fastqc/ ~/workdir/1D2_basecall.fastq
+  fastqc -t 16 -o ~/www/FastQC/1D_fastqc/ 1D_basecall.fastq
+  fastqc -t 16 -o ~/www/FastQC/1D2_fastqc/ 1D2_basecall.fastq
   fastqc -t 16 -o ~/www/FastQC/illumina_fastqc/ ~/Data/Illumina/TSPf_R1.fastq.gz ~/Data/Illumina/TSPf_R2.fastq.gz
   
 After that, you can load the reports in your web browser::
@@ -124,7 +124,7 @@ As we see some strange GC content at the 5' end of our nanopore reads, we can al
 
   cd ~/workdir
   mkdir -p FastQC/1D_fastqc_nogroup
-  fastqc -t 16 -o FastQC/1D_fastqc_nogroup/ --nogroup --extract ~/Results/1D_basecall.fastq  
+  fastqc -t 16 -o FastQC/1D_fastqc_nogroup/ --nogroup --extract 1D_basecall.fastq  
   grep -A 50 "Per base sequence" FastQC/1D_fastqc_nogroup/1D_basecall_fastqc/fastqc_data.txt
   
 So the first bases may indicate an adaptor contamination. For workflows including de novo assembly refined with nanopolish adaptor trimming is not necessary, but in other workflow scenarios this can be important to do and good there are tools which can handle this, as e.g. **porechop**.
