@@ -9,7 +9,7 @@ Now that we have an index, we can map the assembly to the reference,
 convert the output to SAM and finally to BAM format::
 
   cd ~/workdir/Pilon
-  lastal ~/Data/Reference/CXERO_10272017.db ~/workdir/Pilon/Pilon_round4.fasta > Pilon_round4.maf
+  lastal ~/workdir/last_1st_assembly/CXERO_10272017.db ~/workdir/Pilon/Pilon_round4.fasta > Pilon_round4.maf
   maf-convert Pilon_round4.maf > Pilon_round4.sam
   samtools faidx ~/Data/Reference/CXERO_10272017.fna
   samtools view -bT ~/Data/Reference/CXERO_10272017.fna Pilon_round4.sam > Pilon_round4.bam
