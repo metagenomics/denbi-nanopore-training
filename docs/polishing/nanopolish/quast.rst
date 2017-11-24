@@ -29,7 +29,7 @@ We will have a look on the quast results containing all polished and unpolished 
 
 Inspect in your web browser::
 
-  http://YOUR_OPENSTACK_INSTANCE_IP/quast_polish_compare/summary/report.html
+  http://YOUR_OPENSTACK_INSTANCE_IP/quast_polish_compare/report.html
 
 References
 ^^^^^^^^^^
