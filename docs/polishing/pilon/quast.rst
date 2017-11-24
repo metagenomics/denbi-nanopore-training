@@ -13,7 +13,7 @@ quast directory to your `www` folder::
 
 You can load the reports in your web browser::
 
-  http://YOUR_OPENSTACK_INSTANCE_IP/quast_pilon/summary/report.html
+  http://YOUR_OPENSTACK_INSTANCE_IP/quast_pilon/report.html
 
 Compare to the previous results without polishing.
 
