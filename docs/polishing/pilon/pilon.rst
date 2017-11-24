@@ -7,7 +7,7 @@ In the next step, we call pilon with the mappings to polish our assembly::
   mkdir Pilon
   java -Xmx32G -jar ~/pilon-1.22.jar --genome ~/workdir/canu_assembly/largestContig.fasta --fix all --changes --frags ~/workdir/Illumina_mappings/WGS.sorted.bam --jumps ~/workdir/Illumina_mappings/MP.sorted.bam --threads 16 --output ~/workdir/Pilon/Pilon_round1 | tee ~/workdir/Pilon/round1.pilon
   
-Repeat this for 3-4 rounds like this::
+You can repeat this for several rounds like this::
 
   bwa index ~/workdir/Pilon/Pilon_round1.fasta
 
@@ -24,9 +24,9 @@ Repeat this for 3-4 rounds like this::
 
 You can inspect the ``Pilon_roundX.changes`` file to see if there are changes to the previous round.
 
-You can copy further rounds from the precomputed Result directory to your workdir::
+We have precomputed some pilon rounds for you. You can copy those rounds from the precomputed Result directory to your workdir::
 
-  cp -r ~/Results/Pilon/Pilon_round{3,4}* ~/workdir/Pilon/.
+  cp -r ~/Results/Pilon/Pilon_round{2..4}* ~/workdir/Pilon/.
 
 
 References
