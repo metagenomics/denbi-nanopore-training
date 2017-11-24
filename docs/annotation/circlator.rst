@@ -7,7 +7,7 @@ We will use circlator::
 
   cd ~/workdir/
   mkdir Annotation
-  circlator minimus2 ~/workdir/Pilon_after_nanopolish/Pilon_round5.fasta ~/workdir/Annotation/circlator
+  circlator minimus2 ~/Results/Pilon_after_nanopolish/Pilon_round5.fasta ~/workdir/Annotation/circlator
   
   
 
