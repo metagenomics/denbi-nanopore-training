@@ -18,7 +18,7 @@ quast directory to your `www` folder::
 
 Make sure, that port 80 is open in your VM, after that, you can load the reports in your web browser::
 
-  http://YOUR_OPENSTACK_INSTANCE_IP/quast_canu_assembly/summary/report.html
+  http://YOUR_OPENSTACK_INSTANCE_IP/quast_canu_assembly/report.html
 
 
 References
