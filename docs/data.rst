@@ -1,25 +1,18 @@
 The Tutorial Data Set
 ================================
 
-We have prepared a small toy data set for this tutorial. The data is
-located in the `/vol/porecourse/` directory, which has the following
-content:
+We are going to download the tutorial dataset and some precomputed results into the virtual machine. First, assign the ephemeral folder to the ubuntu user and create a link to the ephemeral disk in your home directory, to access it more easily:
 
-+-------------------+---------------------------------------------------------------------------+
-| File              | Content                                                                   |
-+===================+===========================================================================+
-| Nanopore_small    | Directory containing a small portion of our test dataset.                 |
-+-------------------+---------------------------------------------------------------------------+
+  sudo chown ubuntu:ubuntu /mnt/
+  ln -s /mnt/ workdir
 
-The complete test dataset is already located in the ubuntu home directory of your virtual machine.
+The test dataset is located in the object store of our cloud. Since it is publicly available, we can download it into our working directory using wget:
 
-First, copy the data into the working directory of your OpenStack instance using `scp`::
+  cd workdir
+  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/nanopore_training_data/Results.tar.gz
+  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/nanopore_training_data/Data.tar.gz
 
-  cd /vol/porecourse/
-  scp -r -i $PATH_TO_YOUR_SECRET_SSH_KEY_FILE Nanopore_small ubuntu@$YOUR_OPENSTACK_INSTANCE_IP:~/workdir/
+Then, unpack bot tar archives:
 
-From here on, make sure you are actually working on the OpenStack
-cloud instance (logged in via ssh) and not on your local workstation::
-
-  ssh -X -i $PATH_TO_YOUR_SECRET_SSH_KEY_FILE ubuntu@$YOUR_OPENSTACK_INSTANCE_IP
-
+  tar -xzvf Data.tar.gz
+  tar -xzvf Results.tar.gz
