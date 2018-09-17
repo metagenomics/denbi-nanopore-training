@@ -100,7 +100,7 @@ QA with FastQC
 ^^^^^^^^^^^^^^
 Evaluate with fastqc::
   
-  cd workdir
+  cd ~/workdir
   mkdir -p ~/www/FastQC/1D_fastqc
   mkdir -p ~/www/FastQC/1D2_fastqc
   mkdir -p ~/www/FastQC/illumina_fastqc
