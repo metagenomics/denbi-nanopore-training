@@ -80,7 +80,7 @@ But we will adapt the parameters changed by this option a bit, and use the SMALL
 We need to convert the resulting sam file to a sorted and indexed bam file::
   
   samtools view -Sb ~/workdir/Mapping_1D_basecall_to_assembly/mapping.sam > ~/workdir/Mapping_1D_basecall_to_assembly/mapping.bam
-  samtools sort -@16 ~/workdir/Mapping_1D_basecall_to_assembly/mapping.bam ~/workdir/Mapping_1D_basecall_to_assembly/mapping.sorted.bam
+  samtools sort -@16 ~/workdir/Mapping_1D_basecall_to_assembly/mapping.bam > ~/workdir/Mapping_1D_basecall_to_assembly/mapping.sorted.bam
   samtools index ~/workdir/Mapping_1D_basecall_to_assembly/mapping.sorted.bam
   
 
