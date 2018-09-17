@@ -122,7 +122,7 @@ After that is done, inspect the results. We can get a quick view on the number o
 
 Copy the precomputed assembly with the complete dataset into your working directory::
 
-  cp -r ~/Results/canu_assembly/ ~/workdir/
+  cp -r ~/workdir/Results/canu_assembly/ ~/workdir/
 
 and have a quick look on the number of contigs::
 
