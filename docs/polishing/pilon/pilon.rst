@@ -26,7 +26,7 @@ You can inspect the ``Pilon_roundX.changes`` file to see if there are changes to
 
 We have precomputed some pilon rounds for you. You can copy those rounds from the precomputed Result directory to your workdir::
 
-  cp -r ~/Results/Pilon/Pilon_round{2..4}* ~/workdir/Pilon/.
+  cp -r ~/workdir/Results/Pilon/Pilon_round{2..4}* ~/workdir/Pilon/.
 
 
 References
