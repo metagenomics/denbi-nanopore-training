@@ -132,11 +132,11 @@ We need to specify at least the following options:
 
 Our complete command line is::
 
-  read_fast5_basecaller.py -f FLO-MIN107 -k SQK-LSK308 -t 16 -s ~/workdir/1D_basecall_small -o fastq -q 100000 -i ~/workdir/Nanopore_small/
+  read_fast5_basecaller.py -f FLO-MIN107 -k SQK-LSK308 -t 16 -s ~/workdir/1D_basecall_small -o fastq -q 100000 -i ~/workdir/Data/Nanopore_small/
   
 and similar for the 1D² basecalling::
   
-  full_1dsq_basecaller.py -f  FLO-MIN107 -k SQK-LSK308 -t 16 -s ~/workdir/1D2_basecall_small -o fastq -q 100000 -i ~/workdir/Nanopore_small/
+  full_1dsq_basecaller.py -f  FLO-MIN107 -k SQK-LSK308 -t 16 -s ~/workdir/1D2_basecall_small -o fastq -q 100000 -i ~/workdir/Data/Nanopore_small/
  
 References
 ^^^^^^^^^^
