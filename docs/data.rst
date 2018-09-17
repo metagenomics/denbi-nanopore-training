@@ -21,3 +21,10 @@ and remove the tar archives::
 
   rm Data.tar.gz
   rm Results.tar.gz
+  
+  
+Lastly, please paste this command::
+
+  sudo update-java-alternatives --set /usr/lib/jvm/java-1.8.0-openjdk-amd64
+  
+which will set the correct java path for later program executions.
