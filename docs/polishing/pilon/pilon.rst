@@ -11,11 +11,11 @@ You can repeat this for several rounds like this::
 
   bwa index ~/workdir/Pilon/Pilon_round1.fasta
 
-  bwa mem -t 16 ~/workdir/Pilon/Pilon_round1.fasta ~/Data/Illumina/TSPf_R1.fastq.gz ~/Data/Illumina/TSPf_R2.fastq.gz | samtools view - -Sb | samtools sort - -@16 -o ~/workdir/Illumina_mappings/WGS.sorted.bam
+  bwa mem -t 16 ~/workdir/Pilon/Pilon_round1.fasta ~/workdir/Data/Illumina/TSPf_R1.fastq.gz ~/workdir/Data/Illumina/TSPf_R2.fastq.gz | samtools view - -Sb | samtools sort - -@16 -o ~/workdir/Illumina_mappings/WGS.sorted.bam
   
   samtools index ~/workdir/Illumina_mappings/WGS.sorted.bam
   
-  bwa mem -t 16 ~/workdir/Pilon/Pilon_round1.fasta ~/Data/Illumina/MP2.fastq.fwd ~/Data/Illumina/MP2.fastq.rev | samtools view - -Sb | samtools sort - -@16 -o ~/workdir/Illumina_mappings/MP.sorted.bam
+  bwa mem -t 16 ~/workdir/Pilon/Pilon_round1.fasta ~/workdir/Data/Illumina/MP2.fastq.fwd ~/workdir/Data/Illumina/MP2.fastq.rev | samtools view - -Sb | samtools sort - -@16 -o ~/workdir/Illumina_mappings/MP.sorted.bam
   
   samtools index ~/workdir/Illumina_mappings/MP.sorted.bam
   
