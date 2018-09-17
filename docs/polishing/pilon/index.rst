@@ -19,7 +19,7 @@ https://github.com/broadinstitute/pilon/wiki
 
 We have prepared a set of Illumina data for you, which we are now using for polishing with pilon::
 
-  ls -l ~/Data/Illumina/
+  ls -l ~/workdir/Data/Illumina/
   
   total 726604
   -rw-r--r-- 1 ubuntu ubuntu       432 Nov  7 08:55 assembly_stats.txt
