@@ -124,7 +124,7 @@ As we see some strange GC content at the 5' end of our nanopore reads, we can al
 
   cd ~/workdir
   mkdir -p FastQC/1D_fastqc_nogroup
-  fastqc -t 16 -o FastQC/1D_fastqc_nogroup/ --nogroup --extract 1D_basecall.fastq  
+  fastqc -t 14 -o FastQC/1D_fastqc_nogroup/ --nogroup --extract 1D_basecall.fastq  
   grep -A 100 "Per base sequence" FastQC/1D_fastqc_nogroup/1D_basecall_fastqc/fastqc_data.txt
   
 So the first bases may indicate an adaptor contamination. For workflows including de novo assembly refined with nanopolish adaptor trimming is not necessary, but in other workflow scenarios this can be important to do and good there are tools which can handle this, as e.g. **porechop**.
