@@ -139,9 +139,9 @@ To get a more in depth info on the actual accuracy of the data at hand, includin
 First, we convert the SAM files into BAM format and sort them::
 
   cd ~/workdir
-  samtools view -bS 1D.graphmap.sam | samtools sort - -o 1D.graphmap.sorted.bam
-  samtools view -bS 1D2.graphmap.sam | samtools sort - -o 1D2.graphmap.sorted.bam
-  samtools view -bS TSPf.bwa.sam | samtools sort - -o TSPf.bwa.sorted.bam
+  samtools view -@ 4 -bS 1D.graphmap.sam | samtools sort - -@ 8 -o 1D.graphmap.sorted.bam
+  samtools view -@ 4 -bS 1D2.graphmap.sam | samtools sort - -@ 8 -o 1D2.graphmap.sorted.bam
+  samtools view -@ 4 -bS TSPf.bwa.sam | samtools sort - -@ 8 -o TSPf.bwa.sorted.bam
 
 Then we can run **qualimap** on those BAM files now::
   
