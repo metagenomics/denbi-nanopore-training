@@ -27,14 +27,14 @@ have to
 2. download the BAM file 
 3. start `IGV: Integrative Genomics Viewer <http://www.broadinstitute.org/igv/>`_
 
-Here are the commands to copy the files and open the IGV::
+Download the following files::
 
-  cd ~
-  mkdir IGV_mappings
-  cd IGV_mappings
-  scp -i $PATH_TO_YOUR_SECRET_SSH_KEY_FILE ubuntu@$YOUR_OPENSTACK_INSTANCE_IP:~/Data/Reference/CXERO_10272017.fna .
-  scp -i $PATH_TO_YOUR_SECRET_SSH_KEY_FILE ubuntu@$YOUR_OPENSTACK_INSTANCE_IP:~/Data/Reference/CXERO_10272017.fna.fai .
-  scp -i $PATH_TO_YOUR_SECRET_SSH_KEY_FILE ubuntu@$YOUR_OPENSTACK_INSTANCE_IP:~/workdir/Pilon/Pilon_round4_sorted.bam* .
+  ~/workdir/Data/Reference/CXERO_10272017.fna
+  ~/workdir/Data/Reference/CXERO_10272017.fna.fai
+  ~/workdir/Pilon/Pilon_round4_sorted.bam*
+
+Here ist the command to open the IGV::
+
   /vol/cmg/bin/igv.sh
   
 Now let's look at the mapped contigs:
