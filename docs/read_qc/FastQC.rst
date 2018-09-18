@@ -123,6 +123,7 @@ As we see some strange GC content at the 5' end of our nanopore reads, we can al
 
   cd ~/workdir
   mkdir -p ~/www/FastQC/1D_fastqc_nogroup
+  #Achtung: java.lang.OutOfMemoryError
   fastqc -t 14 -o ~/www/FastQC/1D_fastqc_nogroup/ --nogroup --extract 1D_basecall.fastq  
   grep -A 100 "Per base sequence" ~/www/FastQC/1D_fastqc_nogroup/1D_basecall_fastqc/fastqc_data.txt
   
