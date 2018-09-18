@@ -11,15 +11,7 @@ To call ``quast.py`` we have to provide a reference genome and one or more assem
 
   quast.py -t 14 -o ~/workdir/quast_canu_assembly -R ~/workdir/Data/Reference/CXERO_10272017.fna ~/workdir/canu_assembly/canuAssembly.contigs.fasta ~/workdir/canu_assembly_small/canuAssembly.contigs.fasta ~/workdir/Results/Illumina_assembly_with_spades/contigs.fasta
 
-QUAST generates HTML reports including a number of interactive graphics. To access these reports, copy the
-quast directory to your `www` folder::
-
-  cp -r ~/workdir/quast_canu_assembly ~/www/
-
-Make sure, that port 80 is open in your VM, after that, you can load the reports in your web browser::
-
-  http://YOUR_OPENSTACK_INSTANCE_IP/quast_canu_assembly/report.html
-
+QUAST generates HTML reports including a number of interactive graphics. To access these reports, open them using your Cloud9 Interface.
 
 References
 ^^^^^^^^^^
