@@ -131,7 +131,7 @@ So the first bases may indicate an adaptor contamination. For workflows includin
 Porechop is a tool for finding and removing adapters from Oxford Nanopore reads. Adapters on the ends of reads are trimmed off, and when a read has an adapter in its middle, it is treated as chimeric and chopped into separate reads. Porechop performs thorough alignments to effectively find adapters, even at low sequence identity::
 
   cd ~/workdir
-  porechop -i 1D_basecall.fastq -t 14 -v 2 -o 1D_basecall.trimmed.fastqc > porechop.log
+  porechop -i 1D_basecall.fastq -t 14 -v 2 -o 1D_basecall.trimmed.fastq > porechop.log
 
 Let's inspect the log file::
 
