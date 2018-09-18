@@ -105,25 +105,25 @@ Usage:
 We now use graphmap to align the different read sets to the reference, starting with the raw 1d reads::
 
   cd ~/workdir
-  graphmap align -r ~/Data/Reference/CXERO_10272017.fna -t 16 -C -d ~/Results/1D_basecall.fastq -o ~/workdir/1D.graphmap.sam > 1D.graphmap.sam.log 2>&1 
+  graphmap align -r ~/workdir/Data/Reference/CXERO_10272017.fna -t 14 -C -d ~/workdir/Results/1D_basecall.fastq -o ~/workdir/1D.graphmap.sam > 1D.graphmap.sam.log 2>&1 
   
 The 2d reads::
 
-  graphmap align -r ~/Data/Reference/CXERO_10272017.fna -t 16 -C -d ~/Results/1D2_basecall.fastq -o ~/workdir/1D2.graphmap.sam > ~/workdir/1D2.graphmap.sam.log 2>&1 
+  graphmap align -r ~/workdir/Data/Reference/CXERO_10272017.fna -t 14 -C -d ~/workdir/Results/1D2_basecall.fastq -o ~/workdir/1D2.graphmap.sam > ~/workdir/1D2.graphmap.sam.log 2>&1 
 
 For the illumina reads we will use another aligner, as this one is more suited for this kind of data. Bute before we can do so, we need to create an index structure on the reference first::
   
-  bwa index ~/Data/Reference/CXERO_10272017.fna
-  bwa mem -t 16 ~/Data/Reference/CXERO_10272017.fna ~/Data/Illumina/TSPf_R1.fastq.gz ~/Data/Illumina/TSPf_R2.fastq.gz > ~/workdir/TSPf.bwa.sam
+  bwa index ~/workdir/Data/Reference/CXERO_10272017.fna
+  bwa mem -t 16 ~/workdir/Data/Reference/CXERO_10272017.fna ~/workdir/Data/Illumina/TSPf_R1.fastq.gz ~/workdir/Data/Illumina/TSPf_R2.fastq.gz > ~/workdir/TSPf.bwa.sam
   
 Inferring error profiles using samtools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 After mapping the reads on the reference Genome, we can infer various statistics as e.g., number of succesful aligned reads and bases, or number of mismatches and indels, and so on. For this you could easily use the tool collection **samtools**, which offers a range of simple CLI modules all operating on mapping output (SAM and BAM format). We will use the ``stats`` module now::
  
-  samtools stats -d -@ 16 ~/workdir/1D.graphmap.sam > ~/workdir/1D.graphmap.sam.stats
-  samtools stats -d -@ 16 ~/workdir/1D2.graphmap.sam > ~/workdir/1D2.graphmap.sam.stats
-  samtools stats -d -@ 16 ~/workdir/TSPf.bwa.sam > ~/workdir/TSPf.bwa.sam.stats
+  samtools stats -d -@ 14 ~/workdir/1D.graphmap.sam > ~/workdir/1D.graphmap.sam.stats
+  samtools stats -d -@ 14 ~/workdir/1D2.graphmap.sam > ~/workdir/1D2.graphmap.sam.stats
+  samtools stats -d -@ 14 ~/workdir/TSPf.bwa.sam > ~/workdir/TSPf.bwa.sam.stats
 
 We can inspect these results now by simply view at the top 40 lines of the output::
   
