@@ -5,7 +5,8 @@ The multiplex capability and high yield of current day DNA-sequencing instrument
 
 In order to call prokka, we first need to shorten the name of our largest contig (the genome sequence) because it has gotten quite long due to several pilon rounds. We use a simple shell command to do that::
 
-  cat ~/workdir/Annotation/circlator.circularise.fasta | sed -e 's/>tig.*/>genome_sequence/g' > ~/workdir/Annotation/genome.fasta
+  mkdir Annotation
+  cat ~/workdir/Results/Pilon_after_nanopolish/Pilon_round5.fasta | sed -e 's/>tig.*/>genome_sequence/g' > ~/workdir/Annotation/genome.fasta
 
 Then we call Prokka with the genome sequence and specify an output directory::
 
@@ -14,15 +15,11 @@ Then we call Prokka with the genome sequence and specify an output directory::
 We will use a genome browser to look at the annotated genome. For this, you have to
 
 1. open a terminal window on **your local workstation**
-2. download the prokka files
+2. download the prokka files using Cloud9
 3. start `IGV: Integrative Genomics Viewer`_
 
-Here are the commands to copy the files and open the IGV::
+Here is the command to open the IGV::
 
-  cd ~
-  mkdir prokka_genome
-  cd prokka_genome
-  scp -r -i $PATH_TO_YOUR_SECRET_SSH_KEY_FILE ubuntu@$YOUR_OPENSTACK_INSTANCE_IP:~/workdir/Annotation/prokka/ .
   /vol/cmg/bin/igv.sh
   
 Now let's look at the annoated genome in IGV. Use the menu ``Genomes->Load Genome from File...``
