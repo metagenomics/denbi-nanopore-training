@@ -106,11 +106,10 @@ Evaluate with fastqc::
   mkdir -p ~/www/FastQC/illumina_fastqc
   fastqc -t 14 -o ~/www/FastQC/1D_fastqc/ 1D_basecall.fastq
   fastqc -t 14 -o ~/www/FastQC/1D2_fastqc/ 1D2_basecall.fastq
-  fastqc -t 14 -o ~/www/FastQC/illumina_fastqc/ ~/Data/Illumina/TSPf_R1.fastq.gz ~/Data/Illumina/TSPf_R2.fastq.gz
+  fastqc -t 14 -o ~/www/FastQC/illumina_fastqc/ ~/workdir/Data/Illumina/TSPf_R1.fastq.gz ~/workdir/Data/Illumina/TSPf_R2.fastq.gz
   
-After that, you can load the reports in your web browser::
-
-  http://YOUR_OPENSTACK_INSTANCE_IP/
+After that, you can load the reports in your web browser. Just right-click on the file in the
+directory tree on the left side of your Cloud9 window and choose "Preview".
   
 We will inspect the results together now ...
 
