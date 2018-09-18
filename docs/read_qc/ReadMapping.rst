@@ -111,10 +111,10 @@ The 2d reads::
 
   graphmap align -r ~/workdir/Data/Reference/CXERO_10272017.fna -t 14 -C -d ~/workdir/Results/1D2_basecall.fastq -o ~/workdir/1D2.graphmap.sam > ~/workdir/1D2.graphmap.sam.log 2>&1 
 
-For the illumina reads we will use another aligner, as this one is more suited for this kind of data. Bute before we can do so, we need to create an index structure on the reference first::
+For the illumina reads we will use another aligner, as this one is more suited for this kind of data. But before we can do so, we need to create an index structure on the reference::
   
   bwa index ~/workdir/Data/Reference/CXERO_10272017.fna
-  bwa mem -t 16 ~/workdir/Data/Reference/CXERO_10272017.fna ~/workdir/Data/Illumina/TSPf_R1.fastq.gz ~/workdir/Data/Illumina/TSPf_R2.fastq.gz > ~/workdir/TSPf.bwa.sam
+  bwa mem -t 14 ~/workdir/Data/Reference/CXERO_10272017.fna ~/workdir/Data/Illumina/TSPf_R1.fastq.gz ~/workdir/Data/Illumina/TSPf_R2.fastq.gz > ~/workdir/TSPf.bwa.sam
   
 Inferring error profiles using samtools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
