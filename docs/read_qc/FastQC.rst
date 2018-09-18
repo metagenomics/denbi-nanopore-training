@@ -104,9 +104,9 @@ Evaluate with fastqc::
   mkdir -p ~/www/FastQC/1D_fastqc
   mkdir -p ~/www/FastQC/1D2_fastqc
   mkdir -p ~/www/FastQC/illumina_fastqc
-  fastqc -t 16 -o ~/www/FastQC/1D_fastqc/ 1D_basecall.fastq
-  fastqc -t 16 -o ~/www/FastQC/1D2_fastqc/ 1D2_basecall.fastq
-  fastqc -t 16 -o ~/www/FastQC/illumina_fastqc/ ~/Data/Illumina/TSPf_R1.fastq.gz ~/Data/Illumina/TSPf_R2.fastq.gz
+  fastqc -t 14 -o ~/www/FastQC/1D_fastqc/ 1D_basecall.fastq
+  fastqc -t 14 -o ~/www/FastQC/1D2_fastqc/ 1D2_basecall.fastq
+  fastqc -t 14 -o ~/www/FastQC/illumina_fastqc/ ~/Data/Illumina/TSPf_R1.fastq.gz ~/Data/Illumina/TSPf_R2.fastq.gz
   
 After that, you can load the reports in your web browser::
 
@@ -132,7 +132,7 @@ So the first bases may indicate an adaptor contamination. For workflows includin
 Porechop is a tool for finding and removing adapters from Oxford Nanopore reads. Adapters on the ends of reads are trimmed off, and when a read has an adapter in its middle, it is treated as chimeric and chopped into separate reads. Porechop performs thorough alignments to effectively find adapters, even at low sequence identity::
 
   cd ~/workdir
-  porechop -i 1D_basecall.fastq -t 16 -v 2 -o 1D_basecall.trimmed.fastqc > porechop.log
+  porechop -i 1D_basecall.fastq -t 14 -v 2 -o 1D_basecall.trimmed.fastqc > porechop.log
 
 Let's inspect the log file::
 
@@ -151,7 +151,7 @@ So here, the following adapters were found and trimmed of in 16,500 of 20,051 ca
 We will again look into the results of FastQC::
 
   mkdir -p ~/www/FastQC/1D_fastqc_trimmed
-  fastqc -t 16 -o ~/www/FastQC/1D_fastqc_trimmed/ 1D_basecall.trimmed.fastq
+  fastqc -t 14 -o ~/www/FastQC/1D_fastqc_trimmed/ 1D_basecall.trimmed.fastq
   
 References
 ^^^^^^^^^^
