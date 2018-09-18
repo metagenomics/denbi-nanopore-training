@@ -18,7 +18,7 @@ We will use a genome browser to look at the annotated genome. For this, you have
 2. download the prokka files using Cloud9
 3. start `IGV: Integrative Genomics Viewer`_
 
-Here is the command to open the IGV::
+Here is the command to open the IGV on your local workstation::
 
   /vol/cmg/bin/igv.sh
   
