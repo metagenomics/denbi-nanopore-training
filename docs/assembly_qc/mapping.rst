@@ -23,7 +23,7 @@ our assembly to it. This is done by the using the command ``lastdb``::
   cd ~/workdir/
   mkdir last_1st_assembly
   cd last_1st_assembly
-  lastdb CXERO_10272017.db ~/Data/Reference/CXERO_10272017.fna
+  lastdb CXERO_10272017.db ~/workdir/Data/Reference/CXERO_10272017.fna
   
 Now that we have an index, we can map the assembly to the reference::
 
@@ -40,13 +40,13 @@ to convert MAF to different other formats::
 SAM and BAM files can be viewed and manipulated with `SAMtools <http://www.htslib.org/>`_. 
 Let's first build an index for the FASTA file of the reference sequence::
 
-  samtools faidx ~/Data/Reference/CXERO_10272017.fna
+  samtools faidx ~/workdir/Data/Reference/CXERO_10272017.fna
 
 Now we can convert the SAM file into the binary BAM format and add an appropriate header to the BAM
 file. After that we need to sort the alignments in the BAM file by starting position (``samtools sort``)
 and index the file for fast access (``samtools index``)::
 
-  samtools view -bT ~/Data/Reference/CXERO_10272017.fna canu_1st_Assembly.sam > canu_1st_Assembly.bam
+  samtools view -bT ~/workdir/Data/Reference/CXERO_10272017.fna canu_1st_Assembly.sam > canu_1st_Assembly.bam
   samtools sort -o canu_1st_Assembly_sorted.bam canu_1st_Assembly.bam
   samtools index canu_1st_Assembly_sorted.bam
   
@@ -61,14 +61,8 @@ have to
 2. download the BAM file 
 3. start `IGV: Integrative Genomics Viewer <http://www.broadinstitute.org/igv/>`_
 
-Here are the commands to copy the files and open the IGV::
+To open the IGV **your local workstation** just type::
 
-  cd ~
-  mkdir IGV_mappings
-  cd IGV_mappings
-  scp -i $PATH_TO_YOUR_SECRET_SSH_KEY_FILE ubuntu@$YOUR_OPENSTACK_INSTANCE_IP:~/Data/Reference/CXERO_10272017.fna .
-  scp -i $PATH_TO_YOUR_SECRET_SSH_KEY_FILE ubuntu@$YOUR_OPENSTACK_INSTANCE_IP:~/Data/Reference/CXERO_10272017.fna.fai .
-  scp -i $PATH_TO_YOUR_SECRET_SSH_KEY_FILE ubuntu@$YOUR_OPENSTACK_INSTANCE_IP:~/workdir/last_1st_assembly/canu_1st_Assembly_sorted.bam* .
   /vol/cmg/bin/igv.sh
   
 Now let's look at the mapped contigs:
