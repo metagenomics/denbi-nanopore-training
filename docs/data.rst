@@ -1,10 +1,9 @@
 The Tutorial Data Set
 ================================
 
-We are going to download the tutorial dataset and some precomputed results into the virtual machine. First, assign the ephemeral folder to the ubuntu user and create a link to the ephemeral disk in your home directory, to access it more easily::
+We are going to download the tutorial dataset and some precomputed results into the virtual machine. First, create a workdir in your home directory::
 
-  sudo chown ubuntu:ubuntu /mnt/
-  ln -s /mnt/ workdir
+  mkdir ~/workdir
 
 The test dataset is located in the object store of our cloud. Since it is publicly available, we can download it into our working directory using wget::
 
@@ -22,9 +21,4 @@ and remove the tar archives::
   rm Data.tar.gz
   rm Results.tar.gz
   
-  
-Lastly, please paste this command::
-
-  sudo update-java-alternatives --set /usr/lib/jvm/java-1.8.0-openjdk-amd64
-  
-which will set the correct java path for later program executions.
+ 
