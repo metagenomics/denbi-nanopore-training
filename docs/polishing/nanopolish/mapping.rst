@@ -71,7 +71,7 @@ Note, that there is an option for Oxford Nanopore 2D-reads::
                        ont2d: -k14 -W20 -r10 -A1 -B1 -O1 -E1 -L0  (Oxford Nanopore 2D-reads to ref)
                        intractg: -B9 -O16 -L5  (intra-species contigs to ref)
                        
-But we will adapt the parameters changed by this option a bit, and use the SMALL dataset for nanopolish::
+But we will adapt the parameters changed by this option a bit::
 
   cd ~/workdir/
   mkdir Mapping_1D_basecall_to_assembly
