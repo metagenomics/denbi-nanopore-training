@@ -75,12 +75,12 @@ But we will adapt the parameters changed by this option a bit, and use the SMALL
 
   cd ~/workdir/
   mkdir Mapping_1D_basecall_to_assembly
-  bwa mem -t 16 -k11 -W17 -r10 -A1 -B1 -O1 -E1 -L0 ~/workdir/canu_assembly/largestContig.fasta ~/workdir/1D_basecall.fastq > ~/workdir/Mapping_1D_basecall_to_assembly/mapping.sam
+  bwa mem -t 14 -k11 -W17 -r10 -A1 -B1 -O1 -E1 -L0 ~/workdir/canu_assembly/largestContig.fasta ~/workdir/1D_basecall.fastq > ~/workdir/Mapping_1D_basecall_to_assembly/mapping.sam
   
 We need to convert the resulting sam file to a sorted and indexed bam file::
   
   samtools view -Sb ~/workdir/Mapping_1D_basecall_to_assembly/mapping.sam > ~/workdir/Mapping_1D_basecall_to_assembly/mapping.bam
-  samtools sort -@16 ~/workdir/Mapping_1D_basecall_to_assembly/mapping.bam > ~/workdir/Mapping_1D_basecall_to_assembly/mapping.sorted.bam
+  samtools sort -@14 ~/workdir/Mapping_1D_basecall_to_assembly/mapping.bam > ~/workdir/Mapping_1D_basecall_to_assembly/mapping.sorted.bam
   samtools index ~/workdir/Mapping_1D_basecall_to_assembly/mapping.sorted.bam
   
 
