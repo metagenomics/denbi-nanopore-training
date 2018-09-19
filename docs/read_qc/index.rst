@@ -6,5 +6,6 @@ In the following, we will assess the data quality by looking at the raw reads an
 .. toctree::
    :maxdepth: 1
 
+   MinionQC
    FastQC
    ReadMapping
