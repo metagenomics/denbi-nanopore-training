@@ -101,14 +101,14 @@ QA with FastQC
 Evaluate with fastqc::
   
   cd ~/workdir
-  mkdir -p ~/www/FastQC/1D_fastqc
-  mkdir -p ~/www/FastQC/1D2_fastqc
-  mkdir -p ~/www/FastQC/illumina_fastqc
-  fastqc -t 14 -o ~/www/FastQC/1D_fastqc/ 1D_basecall.fastq
-  fastqc -t 14 -o ~/www/FastQC/1D2_fastqc/ 1D2_basecall.fastq
-  fastqc -t 14 -o ~/www/FastQC/illumina_fastqc/ ~/workdir/Data/Illumina/TSPf_R1.fastq.gz ~/workdir/Data/Illumina/TSPf_R2.fastq.gz
+  mkdir -p ~/workdir/FastQC/1D_fastqc
+  mkdir -p ~/workdir/FastQC/1D2_fastqc
+  mkdir -p ~/workdir/FastQC/illumina_fastqc
+  fastqc -t 14 -o ~/workdir/FastQC/1D_fastqc/ 1D_basecall.fastq
+  fastqc -t 14 -o ~/workdir/FastQC/1D2_fastqc/ 1D2_basecall.fastq
+  fastqc -t 14 -o ~/workdir/FastQC/illumina_fastqc/ ~/workdir/Data/Illumina/TSPf_R1.fastq.gz ~/workdir/Data/Illumina/TSPf_R2.fastq.gz
   
-After that, you can load the reports in your web browser. Just right-click on the file in the
+After that, you can load the reports in your web browser via Cloud9. Just right-click on the file in the
 directory tree on the left side of your Cloud9 window and choose "Preview".
   
 We will inspect the results together now ...
@@ -122,7 +122,7 @@ Handle adapter contamination
 As we see some strange GC content at the 5' end of our nanopore reads, we can alter the way the plots are generated and turn off the grouping of reads into bins. Notice, this will generate very huge plots!::
 
   cd ~/workdir
-  mkdir -p ~/www/FastQC/1D_fastqc_nogroup
+  mkdir -p ~/workdir/FastQC/1D_fastqc_nogroup
   #Achtung: java.lang.OutOfMemoryError
   fastqc -t 14 -o ~/www/FastQC/1D_fastqc_nogroup/ --nogroup --extract 1D_basecall.fastq  
   grep -A 100 "Per base sequence" ~/www/FastQC/1D_fastqc_nogroup/1D_basecall_fastqc/fastqc_data.txt
