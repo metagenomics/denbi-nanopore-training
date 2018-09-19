@@ -123,7 +123,7 @@ As we see some strange GC content at the 5' end of our nanopore reads, we can al
 
   cd ~/workdir
   mkdir -p ~/workdir/FastQC/1D_fastqc_nogroup
-  cat ~/workdir/1D_basecall.fastq  | perl -ne '{chomp; if ($_ =~ m/^@.{8}-.{4}-.{4}-.{12}/) {print $_."\n"} else {print substr($_,0,100)."\n"} }' > ~/workdir/1D_basecall_100.fastq
+  cat ~/workdir/1D_basecall.fastq  | perl -ne '{chomp; if ($.%2) {print $_."\n"} else {print substr($_,0,100)."\n"} }' > ~/workdir/1D_basecall_100.fastq
   fastqc -t 14 -o ~/workdir/FastQC/1D_fastqc_nogroup/ --nogroup --extract 1D_basecall_100.fastq  
   grep -A 100 "Per base sequence" ~/workdir/FastQC/1D_fastqc_nogroup/1D_basecall_100_fastqc/fastqc_data.txt 
   
