@@ -9,9 +9,6 @@ Script collection taht will generate a range of diagnostic plots for quality con
 MinIONQC works directly with the sequencing_summary.txt files produced by ONT's Albacore or Guppy base callers.
 This allows MinIONQC for quick-and-easy comparison of data from one or multiple flowcells.
 
-Fast and effective quality control for MinION sequencing data
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 Complete manual can be looked up at: https://github.com/roblanf/minion_qc
 
 Usage::
@@ -39,8 +36,8 @@ Options:
 		TRUE or FALSE (the default). When true, MinIONQC will output smaller figures, e.g. suitable for publications or presentations. The default is to produce larger figures optimised for display on screen. Some figures just require small text, and cannot be effectively resized.
 
 
-Inspect raw sequencing effort with MinIONQC
-^^^^^^^^^^^^^^
+Fast and effective quality control for MinION sequencing data
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Run MinIONQC on 1D and 1D2 data::
 
