@@ -1,4 +1,4 @@
-Fast and effective quality control for MinION sequencing data
+MinIONQC
 ------
 Developed by Rob Lanfear::
 
@@ -9,8 +9,8 @@ Script collection taht will generate a range of diagnostic plots for quality con
 MinIONQC works directly with the sequencing_summary.txt files produced by ONT's Albacore or Guppy base callers.
 This allows MinIONQC for quick-and-easy comparison of data from one or multiple flowcells.
 
-MinIONQC
-------
+Fast and effective quality control for MinION sequencing data
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Complete manual can be looked up at: https://github.com/roblanf/minion_qc
 
