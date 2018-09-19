@@ -41,7 +41,9 @@ Options:
 
 Inspect raw sequencing effort with MinIONQC
 ^^^^^^^^^^^^^^
-::
+
+Run MinIONQC on 1D and 1D2 data::
+
   cd ~/workdir/1D2_basecall/1dsq_analysis
   ln -s sequencing_1dsq_summary.txt sequencing_summary.txt
   cd ~/workdir
