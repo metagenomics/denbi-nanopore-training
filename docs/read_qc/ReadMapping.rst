@@ -145,15 +145,11 @@ First, we convert the SAM files into BAM format and sort them::
 
 Then we can run **qualimap** on those BAM files now::
   
-  qualimap bamqc -bam ~/workdir/1D.graphmap.sorted.bam -nw 5000 -outdir ~/www/qualimap/1D.graphmap
-  qualimap bamqc -bam ~/workdir/1D2.graphmap.sorted.bam -nw 5000 -outdir ~/www/qualimap/1D2.graphmap
-  qualimap bamqc -bam ~/workdir/TSPf.bwa.sorted.bam -nw 5000 -outdir ~/www/qualimap/TSPf.bwa
+  qualimap bamqc -bam ~/workdir/1D.graphmap.sorted.bam -nw 5000 -outdir ~/workdir/qualimap/1D.graphmap
+  qualimap bamqc -bam ~/workdir/1D2.graphmap.sorted.bam -nw 5000 -outdir ~/workdir/qualimap/1D2.graphmap
+  qualimap bamqc -bam ~/workdir/TSPf.bwa.sorted.bam -nw 5000 -outdir ~/workdir/qualimap/TSPf.graphmap
 
-Qualimap can also be run interactively, which can be used, e.g., to compare all mapping with each other::
-
-  qualimap
-  
-  --> File --> New Analysis --> Multi Sample BAM QC
+Qualimap can also be run interactively, which can be used, e.g., to compare all mapping with each other, but that will not work here using the Cloud9 desktop.
 
 References
 ^^^^^^^^^^
