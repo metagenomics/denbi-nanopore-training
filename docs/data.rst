@@ -5,11 +5,11 @@ We are going to download the tutorial dataset and some precomputed results into 
 
   mkdir ~/workdir
 
-The test dataset is located in the object store of our cloud. Since it is publicly available, we can download it into our working directory using wget::
+The test dataset is already located in your virtual machine. Move it into your working directory::
 
   cd workdir
-  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/nanopore_training_data/Results.tar.gz
-  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/nanopore_training_data/Data.tar.gz
+  mv ~/Results.tar.gz ~/workdir/Results.tar.gz
+  mv ~/Data.tar.gz ~/workdir/Data.tar.gz
 
 Then, unpack both tar archives::
 
