@@ -45,7 +45,7 @@ Run MinIONQC on 1D and 1D2 data::
   ln -s sequencing_1dsq_summary.txt sequencing_summary.txt
   cd ~/workdir
   mkdir -p ~/workdir/MinIONQC  
-  Rscript ~/MinIONQC.R -i 1D2_basecall -q 12 d-o MinIONQC -p 14
+  Rscript ~/MinIONQC.R -i 1D2_basecall -q 12 -o MinIONQC -p 14
     
 This will create several analysis plots for the 1D and the 1D2 data as well as for both combined. After that, you can load the plots in your web browser via Cloud9. Just right-click on the file in the
 directory tree on the left side of your Cloud9 window and choose "Preview".
