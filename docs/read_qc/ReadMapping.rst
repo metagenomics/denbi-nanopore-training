@@ -107,7 +107,7 @@ We now use graphmap to align the different read sets to the reference, starting 
   cd ~/workdir
   graphmap align -r ~/workdir/Data/Reference/CXERO_10272017.fna -t 14 -C -d ~/workdir/Results/1D_basecall.fastq -o ~/workdir/1D.graphmap.sam > 1D.graphmap.sam.log 2>&1 
   
-The 2d reads::
+The 1d2 reads::
 
   graphmap align -r ~/workdir/Data/Reference/CXERO_10272017.fna -t 14 -C -d ~/workdir/Results/1D2_basecall.fastq -o ~/workdir/1D2.graphmap.sam > ~/workdir/1D2.graphmap.sam.log 2>&1 
 
