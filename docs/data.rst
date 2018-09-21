@@ -12,6 +12,7 @@ The test dataset is already located in your virtual machine. Move it into your w
   mv ~/Data.tar.gz ~/workdir/Data.tar.gz
 
 If it is not located in your virtual machine, you can get the data here::
+
   cd ~/workdir
   wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/nanopore_training_data/Results.tar.gz
   wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/nanopore_training_data/Data.tar.gz
