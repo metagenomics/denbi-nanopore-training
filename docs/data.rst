@@ -12,6 +12,7 @@ Then, you need to format and mount the volume we have attached to our virtual ma
   sudo mkfs.ext4 /dev/vdc
   sudo mkdir /mnt/data/
   sudo mount /dev/vdc /mnt/data/
+  sudo chown ubuntu:ubuntu /mnt/data/
   
 Create a link in your home directory to the mounted volume::
 
