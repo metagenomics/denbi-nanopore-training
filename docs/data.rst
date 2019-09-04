@@ -17,20 +17,26 @@ Create a link in your home directory to the mounted volume::
 
   ln -s /mnt/data/ workdir 
 
-The tutorial dataset is located in our object store, you can get the data here::
+The tutorial dataset is located in our object store, you can get the data here (Group 1)::
 
   cd ~/workdir
-  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/nanopore_training_data/Results.tar.gz
-  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/nanopore_training_data/Data.tar.gz
+  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/nanopore_course_data/Data_Group1.tar.gz
 
-Then, unpack both tar archives::
+... and for Group 2::
 
-  tar -xzvf Data.tar.gz
-  tar -xzvf Results.tar.gz
+  cd ~/workdir
+  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/nanopore_course_data/Data_Group2.tar.gz
+
+Then, unpack the tar archive::
+
+  tar -xzvf Data_Group1.tar.gz
+  or
+  tar -xzvf Data_Group2.tar.gz
 
 and remove the tar archives::
 
-  rm Data.tar.gz
-  rm Results.tar.gz
+  rm Data_Group1.tar.gz
+  or
+  rm Data_Group2.tar.gz
   
  
