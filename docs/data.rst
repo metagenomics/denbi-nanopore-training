@@ -6,7 +6,6 @@ https://wiki.x2go.org/doku.php/download:start
 
 Enter the IP of your virtual machine, the port, the username "ubuntu" and select your ssh key. When you have successfully connected to your machine, open a terminal.
 
-
 Then, you need to format and mount the volume we have attached to our virtual machine::
 
   sudo mkfs.ext4 /dev/vdc
@@ -40,4 +39,6 @@ and remove the tar archives::
   or
   rm Data_Group2.tar.gz
   
- 
+If you want to disable system beep sounds::
+
+  xset -b
