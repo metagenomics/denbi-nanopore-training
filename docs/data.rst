@@ -39,6 +39,12 @@ and remove the tar archives::
   or
   rm Data_Group2.tar.gz
   
+Rename Data folder::
+
+  mv Data_Group1 data
+  or
+  mv Data_Group2 data
+  
 If you want to disable system beep sounds::
 
   xset -b
