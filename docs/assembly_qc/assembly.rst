@@ -128,7 +128,13 @@ and have a quick look on the number of contigs::
 
   grep '>' ~/workdir/canu_assembly/canuAssembly.contigs.fasta
 
-  
+
+New command::
+
+  canu -d results/assembly/ -p assembly genomeSize='3M' -nanopore-raw data/basecall/ONT.fastq.gz
+
+
+
 References
 ^^^^^^^^^^
 
