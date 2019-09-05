@@ -14,7 +14,7 @@ Create a directory first::
 
 Call nanopolish::
 
-  nanopolish variants --threads 14 --consensus -o ~/workdir/nanopolish/polishedContig.vcf -b ~/workdir/nanopore_mapping/mapping.sorted.bam -r ~/workdir/basecall/ONT.fastq.gz -g ~/workdir/assembly/assembly.contigs.fasta | tee ~/workdir/nanopolish/nanopolish.log 2> nanopolish/nanopolish.err
+  python /usr/local/lib/nanopolish/scripts/nanopolish_makerange.py ~/workdir/assembly/assembly.contigs.fasta | parallel --results nanopolish.results -P 7 nanopolish variants --consensus -o ~/workdir/nanopolish/polished.{1}.vcf -w {1} -r ~/workdir/basecall/ONT.fastq.gz -b ~/workdir/nanopore_mapping/mapping.sorted.bam -g ~/workdir/assembly/assembly.contigs.fasta -t 2
 
 This will run a few hours over night and we can get to dinner. :)
 
