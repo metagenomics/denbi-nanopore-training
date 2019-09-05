@@ -3,10 +3,10 @@ Mapping of reads to assembly
 
 In order to correct a given assembly, nanopolish needs a mapping of the original reads to this assembly. We are using the software package BWA to do this. BWA is a software package for mapping low-divergent sequences against a large reference genome. It consists of three algorithms: BWA-backtrack, BWA-SW and BWA-MEM. The first algorithm is designed for Illumina sequence reads up to 100bp, while the rest two for longer sequences ranged from 70bp to 1Mbp. BWA-MEM and BWA-SW share similar features such as long-read support and split alignment, but BWA-MEM, which is the latest, is generally recommended for high-quality queries as it is faster and more accurate.
 
-First we need to create an index on our largest contig, this has already been done for the pilon polishing::
+First we need to create an index on our assembly, this has already been done for the pilon polishing::
   
   #already done for pilon
-  bwa index ~/workdir/canu_assembly/largestContig.fasta
+  bwa index ~/workdir/assembly/assembly.contigs.fasta
 
 Then we will run the mapping. Check the usage of ``bwa mem``::
 
@@ -71,17 +71,15 @@ Note, that there is an option for Oxford Nanopore 2D-reads::
                        ont2d: -k14 -W20 -r10 -A1 -B1 -O1 -E1 -L0  (Oxford Nanopore 2D-reads to ref)
                        intractg: -B9 -O16 -L5  (intra-species contigs to ref)
                        
-But we will adapt the parameters changed by this option a bit::
+We use this default option for our mapping::
 
   cd ~/workdir/
-  mkdir Mapping_1D_basecall_to_assembly
-  bwa mem -t 14 -k11 -W17 -r10 -A1 -B1 -O1 -E1 -L0 ~/workdir/canu_assembly/largestContig.fasta ~/workdir/1D_basecall.fastq > ~/workdir/Mapping_1D_basecall_to_assembly/mapping.sam
-  
+  mkdir nanopore_mapping
+  bwa mem -t 14 -x ont2d ~/workdir/assembly/assembly.contigs.fasta ~/workdir/ONT.fastq.gz | samtools view - -Sb | samtools sort - -@14 > ~/workdir/nanopore_mapping/mapping.sorted.bam
+
 We need to convert the resulting sam file to a sorted and indexed bam file::
-  
-  samtools view -Sb ~/workdir/Mapping_1D_basecall_to_assembly/mapping.sam > ~/workdir/Mapping_1D_basecall_to_assembly/mapping.bam
-  samtools sort -@14 ~/workdir/Mapping_1D_basecall_to_assembly/mapping.bam > ~/workdir/Mapping_1D_basecall_to_assembly/mapping.sorted.bam
-  samtools index ~/workdir/Mapping_1D_basecall_to_assembly/mapping.sorted.bam
+
+  samtools index ~/workdir/nanopore_mapping/mapping.sorted.bam
   
 
 References
