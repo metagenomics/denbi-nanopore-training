@@ -13,6 +13,8 @@ Then we are mapping all reads to the contig. Note that we are shortening the pro
   mkdir illumina_mapping
 
   bwa mem -t 14 ~/workdir/assembly/assembly.contigs.fasta ~/workdir/data/illumina/Illumina_R1.fastq.gz ~/workdir/data/illumina/Illumina_R2.fastq.gz | samtools view - -Sb | samtools sort - -@14 -o ~/workdir/illumina_mapping/mapping.sorted.bam
+  
+  bwa index ~/workdir/illumina_mapping/mapping.sorted.bam
 
 References
 ^^^^^^^^^^
