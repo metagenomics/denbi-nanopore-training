@@ -75,7 +75,7 @@ We use this default option for our mapping::
 
   cd ~/workdir/
   mkdir nanopore_mapping
-  bwa mem -t 14 -x ont2d ~/workdir/assembly/assembly.contigs.fasta ~/workdir/ONT.fastq.gz | samtools view - -Sb | samtools sort - -@14 > ~/workdir/nanopore_mapping/mapping.sorted.bam
+  bwa mem -t 14 -x ont2d ~/workdir/assembly/assembly.contigs.fasta ~/workdir/basecall/ONT.fastq.gz | samtools view - -Sb | samtools sort - -@14 > ~/workdir/nanopore_mapping/mapping.sorted.bam
 
 We need to convert the resulting sam file to a sorted and indexed bam file::
 
