@@ -19,17 +19,11 @@ https://github.com/broadinstitute/pilon/wiki
 
 We have prepared a set of Illumina data for you, which we are now using for polishing with pilon::
 
-  ls -l ~/workdir/Data/Illumina/
+  ls -l ~/workdir/data/illumina/
   
-  total 726604
-  -rw-r--r-- 1 ubuntu ubuntu       432 Nov  7 08:55 assembly_stats.txt
-  -rw-r--r-- 1 ubuntu ubuntu  28924964 Nov  7 08:55 MP2.fastq.fwd
-  -rw-r--r-- 1 ubuntu ubuntu  29457256 Nov  7 08:55 MP2.fastq.rev
-  -rw-r--r-- 1 ubuntu ubuntu  15943849 Nov  7 08:55 MP2.fastq.uni
-  -rw-r--r-- 1 ubuntu ubuntu 315258550 Nov  7 08:55 TSPf_R1.fastq.gz
-  -rw-r--r-- 1 ubuntu ubuntu 354446667 Nov  7 08:55 TSPf_R2.fastq.gz
-  
-
+  total 164068
+  -rw-r--r-- 1 ubuntu ubuntu 78277075 Aug 30 08:20 Illumina_R1.fastq.gz
+  -rw-r--r-- 1 ubuntu ubuntu 89724312 Aug 30 08:20 Illumina_R2.fastq.gz
 
 .. toctree::
  :maxdepth: 1
