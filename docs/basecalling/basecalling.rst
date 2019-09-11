@@ -156,9 +156,9 @@ We need to specify the following options:
 +------------------------------------------------------------------------+-----------+----------------------------+ 
 | Compress the fastq output                                              | --compress_fastq                       |
 +------------------------------------------------------------------------+-----------+----------------------------+
-| The full path to the directory where the raw read files are located    | -i        | ~/workdir/Nanopore_small   |
+| The full path to the directory where the raw read files are located    | -i        | ~/workdir/data/fast5_small |
 +------------------------------------------------------------------------+-----------+----------------------------+
-| The full path to the directory where the basecalled files will be saved| -s        | ~/workdir/1D_basecall_small|
+| The full path to the directory where the basecalled files will be saved| -s        | ~/workdir/basecall_small/  |
 +------------------------------------------------------------------------+-----------+----------------------------+
 | How many worker threads you are using                                  | -t        | 14                         |
 +------------------------------------------------------------------------+-----------+----------------------------+
