@@ -1,133 +1,166 @@
-Basecalling with Albacore
+Basecalling with Guppy
 -------------------------
 
-Albacore is a data processing pipeline that provides the Oxford Nanopore basecalling algorithms, and several post-processing steps. It is run from the command line on Windows, Mac OS X, and multiple Linux platforms. A selection of configuration files allow basecalling DNA libraries made with the current range of sequencing kits and flow cells.
 
-The Albacore pipeline contains:
+Guppy is a data processing toolkit that contains the Oxford Nanopore Technologies' basecalling algorithms, and several bioinformatic post-processing features. It is provided as binaries to run on Windows, OS X and Linux platforms, as well as being integrated with MinKNOW, the Oxford Nanopore device control software.
 
-1. Basecalling: a similar implementation of algorithms as found in MinKNOW basecalling. However, it also contains configuration files for basecalling chemistry that is not currently handled by MinKNOW, e.g. 1D2 reads.
+Early downstream analysis components such as barcoding/demultiplexing, adapter trimming and alignment are contained within Guppy. Furthermore, Guppy now performs modified basecalling (5mC, 6mA and CpG) from the raw signal data, producing an additional FAST5 file of modified base probabilities.
 
-2. Calibration Strand Detection: Reads are aligned against a calibration strand reference via the integrated minimap2 aligner. Calibration strands serve as a quality control for pore and experiment. If the current read is identified as a calibration strand, no barcoding or alignment steps are performed.
+The command we are using for for basecalling with Guppy is::
 
-3. Barcoding/Demultiplexing: The beginning and the end of each strand are aligned against the barcodes currently provided by Oxford Nanopore Technologies. The reads are demultiplexed by the barcoding results.
-
-4. Alignment: The user can provide a reference file in FASTA, lastdb or minimap2 index format. If so, the reads are aligned against this reference via the integrated minimap2 aligner.
-
-
-There are two commands for basecalling with Albacore which we will use available - for linear chemistry::
-
-  read_fast5_basecaller.py
+  guppy_basecaller
   
-or, for 1D² chemistry::
-
-  full_1dsq_basecaller.py
-  
-The ``full_1dsq_basecaller.py`` basically just wraps the two successive commands, which could also be used independently::
-  
-  read_fast5_basecaller.py
-  paired_read_basecaller.py
-
-
 
 Let's have a look at the usage message for read_fast5_basecaller.py::
 
-  read_fast5_basecaller.py --help
-  usage: read_fast5_basecaller.py [-h] [-l] [-v] [-i INPUT] -t WORKER_THREADS -s
-                                  SAVE_PATH [-f FLOWCELL] [-k KIT] [--barcoding]
-                                  [-c CONFIG] [-d DATA_PATH] [-b] [-r]
-                                  [-n FILES_PER_BATCH_FOLDER] [-o OUTPUT_FORMAT]
-                                  [-q READS_PER_FASTQ_BATCH]
-                                  [--disable_filtering]
+  guppy_basecaller ==help
+  
+  : Guppy Basecalling Software, (C) Oxford Nanopore Technologies, Limited. Version 3.1.5+781ed57
 
-  ONT Albacore Sequencing Pipeline Software
+  Usage:
 
-  optional arguments:
-    -h, --help            show this help message and exit
-    -l, --list_workflows  List standard flowcell / kit combinations.
-    -v, --version         Print the software version.
-    -i INPUT, --input INPUT
-                          Folder containing read fast5 files (if not present,
-                          will expect file names on stdin).
-    -t WORKER_THREADS, --worker_threads WORKER_THREADS
-                          Number of worker threads to use.
-    -s SAVE_PATH, --save_path SAVE_PATH
-                          Path to save output.
-    -f FLOWCELL, --flowcell FLOWCELL
-                          Flowcell used during the sequencing run.
-    -k KIT, --kit KIT     Kit used during the sequencing run.
-    --barcoding           Search for barcodes to demultiplex sequencing data.
-    -c CONFIG, --config CONFIG
-                          Optional configuration file to use.
-    -d DATA_PATH, --data_path DATA_PATH
-                          Optional path to model files.
-    -b, --debug           Output additional debug information to the log.
-    -r, --recursive       Recurse through subfolders for input data files.
-    -n FILES_PER_BATCH_FOLDER, --files_per_batch_folder FILES_PER_BATCH_FOLDER
-                          Maximum number of files in each batch subfolder. Set
-                          to 0 to disable batch subfolders.
-    -o OUTPUT_FORMAT, --output_format OUTPUT_FORMAT
-                          desired output format, can be fastq,fast5 or only one
-                          of these.
-    -q READS_PER_FASTQ_BATCH, --reads_per_fastq_batch READS_PER_FASTQ_BATCH
-                          number of reads per FastQ batch file. Set to 1 to
-                          receive one reads per file and file names which
-                          include the read ID. Set to 0 to have all reads per
-                          run ID written to one file.
-    --disable_filtering   Disable filtering into pass/fail folders
+  With config file:
+    guppy_basecaller -i <input path> -s <save path> -c <config file> [options]
+  With flowcell and kit name:
+    guppy_basecaller -i <input path> -s <save path> --flowcell <flowcell name>
+      --kit <kit name>
+  List supported flowcells and kits:
+    guppy_basecaller --print_workflows
 
-We can get a list of supported flowcell + kit combinations by::
+Beside the path of our fast5 files (-i), the basecaller requires an output path (-s) and a config file or the flowcell/kit combination. In order to get a list of possible flowcell/kit combinations and config files, we use::
 
-  read_fast5_basecaller.py -l
-  Parsing config files in /opt/albacore.
+  guppy_basecaller --print_workflows
+  
   Available flowcell + kit combinations are:
-  flowcell    kit         barcoding  config file
-  FLO-MIN106  SQK-DCS108             r94_450bps_linear.cfg
-  FLO-MIN106  SQK-LSK108             r94_450bps_linear.cfg
-  FLO-MIN106  SQK-LWB001  included   r94_450bps_linear.cfg
-  FLO-MIN106  SQK-LWP001             r94_450bps_linear.cfg
-  FLO-MIN106  SQK-PCS108             r94_450bps_linear.cfg
-  FLO-MIN106  SQK-RAB201  included   r94_450bps_linear.cfg
-  FLO-MIN106  SQK-RAD002             r94_450bps_linear.cfg
-  FLO-MIN106  SQK-RAD003             r94_450bps_linear.cfg
-  FLO-MIN106  SQK-RAS201             r94_450bps_linear.cfg
-  FLO-MIN106  SQK-RBK001  included   r94_450bps_linear.cfg
-  FLO-MIN106  SQK-RLB001  included   r94_450bps_linear.cfg
-  FLO-MIN106  SQK-RLI001             r94_450bps_linear.cfg
-  FLO-MIN106  SQK-RNA001             r94_70bps_rna_linear.cfg
-  FLO-MIN106  VSK-VBK001             r94_450bps_linear.cfg
-  FLO-MIN107  SQK-DCS108             r95_450bps_linear.cfg
-  FLO-MIN107  SQK-LSK108             r95_450bps_linear.cfg
-  FLO-MIN107  SQK-LWB001  included   r95_450bps_linear.cfg
-  FLO-MIN107  SQK-LWP001             r95_450bps_linear.cfg
-  FLO-MIN107  SQK-PCS108             r95_450bps_linear.cfg
-  FLO-MIN107  SQK-RAB201  included   r95_450bps_linear.cfg
-  FLO-MIN107  SQK-RAD002             r95_450bps_linear.cfg
-  FLO-MIN107  SQK-RAD003             r95_450bps_linear.cfg
-  FLO-MIN107  SQK-RAS201             r95_450bps_linear.cfg
-  FLO-MIN107  SQK-RBK001  included   r95_450bps_linear.cfg
-  FLO-MIN107  SQK-RLB001  included   r95_450bps_linear.cfg
-  FLO-MIN107  SQK-RLI001             r95_450bps_linear.cfg
-  FLO-MIN107  SQK-RNA001             r94_70bps_rna_linear.cfg
-  FLO-MIN107  VSK-VBK001             r95_450bps_linear.cfg
+  flowcell   kit        barcoding config_name
+  FLO-MIN107 SQK-DCS108           dna_r9.5_450bps
+  FLO-MIN107 SQK-DCS109           dna_r9.5_450bps
+  FLO-MIN107 SQK-LRK001           dna_r9.5_450bps
+  FLO-MIN107 SQK-LSK108           dna_r9.5_450bps
+  FLO-MIN107 SQK-LSK109           dna_r9.5_450bps
+  FLO-MIN107 SQK-LSK308           dna_r9.5_450bps
+  FLO-MIN107 SQK-LSK309           dna_r9.5_450bps
+  FLO-MIN107 SQK-LSK319           dna_r9.5_450bps
+  FLO-MIN107 SQK-LWP001           dna_r9.5_450bps
+  FLO-MIN107 SQK-PCS108           dna_r9.5_450bps
+  FLO-MIN107 SQK-PCS109           dna_r9.5_450bps
+  FLO-MIN107 SQK-PSK004           dna_r9.5_450bps
+  FLO-MIN107 SQK-RAD002           dna_r9.5_450bps
+  FLO-MIN107 SQK-RAD003           dna_r9.5_450bps
+  FLO-MIN107 SQK-RAD004           dna_r9.5_450bps
+  FLO-MIN107 SQK-RAS201           dna_r9.5_450bps
+  FLO-MIN107 SQK-RLI001           dna_r9.5_450bps
+  FLO-MIN107 VSK-VBK001           dna_r9.5_450bps
+  FLO-MIN107 VSK-VSK001           dna_r9.5_450bps
+  FLO-MIN107 VSK-VSK002           dna_r9.5_450bps
+  FLO-MIN107 SQK-LWB001 included  dna_r9.5_450bps
+  FLO-MIN107 SQK-PBK004 included  dna_r9.5_450bps
+  FLO-MIN107 SQK-RAB201 included  dna_r9.5_450bps
+  FLO-MIN107 SQK-RAB204 included  dna_r9.5_450bps
+  FLO-MIN107 SQK-RBK001 included  dna_r9.5_450bps
+  FLO-MIN107 SQK-RBK004 included  dna_r9.5_450bps
+  FLO-MIN107 SQK-RLB001 included  dna_r9.5_450bps
+  FLO-MIN107 SQK-RPB004 included  dna_r9.5_450bps
+  FLO-MIN107 VSK-VMK001 included  dna_r9.5_450bps
+  FLO-MIN107 VSK-VMK002 included  dna_r9.5_450bps
+  FLO-FLG001 SQK-RNA001           rna_r9.4.1_70bps_hac
+  FLO-FLG001 SQK-RNA002           rna_r9.4.1_70bps_hac
+  FLO-MIN106 SQK-RNA001           rna_r9.4.1_70bps_hac
+  FLO-MIN106 SQK-RNA002           rna_r9.4.1_70bps_hac
+  FLO-MIN107 SQK-RNA001           rna_r9.4.1_70bps_hac
+  FLO-MIN107 SQK-RNA002           rna_r9.4.1_70bps_hac
+  FLO-PRO001 SQK-LSK109           dna_r9.4.1_450bps_hac_prom
+  FLO-PRO001 SQK-LSK109-XL          dna_r9.4.1_450bps_hac_prom
+  FLO-PRO001 SQK-DCS109           dna_r9.4.1_450bps_hac_prom
+  FLO-PRO001 SQK-PCS109           dna_r9.4.1_450bps_hac_prom
+  FLO-PRO001 SQK-PCB109 included  dna_r9.4.1_450bps_hac_prom
+  FLO-PRO002 SQK-LSK109           dna_r9.4.1_450bps_hac_prom
+  FLO-PRO002 SQK-LSK109-XL          dna_r9.4.1_450bps_hac_prom
+  FLO-PRO002 SQK-DCS109           dna_r9.4.1_450bps_hac_prom
+  FLO-PRO002 SQK-PCS109           dna_r9.4.1_450bps_hac_prom
+  FLO-PRO002 SQK-PCB109 included  dna_r9.4.1_450bps_hac_prom
+  FLO-FLG001 SQK-CAS109           dna_r9.4.1_450bps_hac
+  FLO-FLG001 SQK-DCS108           dna_r9.4.1_450bps_hac
+  FLO-FLG001 SQK-DCS109           dna_r9.4.1_450bps_hac
+  FLO-FLG001 SQK-LRK001           dna_r9.4.1_450bps_hac
+  FLO-FLG001 SQK-LSK108           dna_r9.4.1_450bps_hac
+  FLO-FLG001 SQK-LSK109           dna_r9.4.1_450bps_hac
+  FLO-FLG001 SQK-LSK109-XL          dna_r9.4.1_450bps_hac
+  FLO-FLG001 SQK-LWP001           dna_r9.4.1_450bps_hac
+  FLO-FLG001 SQK-PCS108           dna_r9.4.1_450bps_hac
+  FLO-FLG001 SQK-PCS109           dna_r9.4.1_450bps_hac
+  FLO-FLG001 SQK-PSK004           dna_r9.4.1_450bps_hac
+  FLO-FLG001 SQK-RAD002           dna_r9.4.1_450bps_hac
+  FLO-FLG001 SQK-RAD003           dna_r9.4.1_450bps_hac
+  FLO-FLG001 SQK-RAD004           dna_r9.4.1_450bps_hac
+  FLO-FLG001 SQK-RAS201           dna_r9.4.1_450bps_hac
+  FLO-FLG001 SQK-RLI001           dna_r9.4.1_450bps_hac
+  FLO-FLG001 VSK-VBK001           dna_r9.4.1_450bps_hac
+  FLO-FLG001 VSK-VSK001           dna_r9.4.1_450bps_hac
+  FLO-FLG001 VSK-VSK002           dna_r9.4.1_450bps_hac
+  FLO-FLG001 SQK-16S024 included  dna_r9.4.1_450bps_hac
+  FLO-FLG001 SQK-PCB109 included  dna_r9.4.1_450bps_hac
+  FLO-FLG001 SQK-RBK001 included  dna_r9.4.1_450bps_hac
+  FLO-FLG001 SQK-RBK004 included  dna_r9.4.1_450bps_hac
+  FLO-FLG001 SQK-RLB001 included  dna_r9.4.1_450bps_hac
+  FLO-FLG001 SQK-LWB001 included  dna_r9.4.1_450bps_hac
+  FLO-FLG001 SQK-PBK004 included  dna_r9.4.1_450bps_hac
+  FLO-FLG001 SQK-RAB201 included  dna_r9.4.1_450bps_hac
+  FLO-FLG001 SQK-RAB204 included  dna_r9.4.1_450bps_hac
+  FLO-FLG001 SQK-RPB004 included  dna_r9.4.1_450bps_hac
+  FLO-FLG001 VSK-VMK001 included  dna_r9.4.1_450bps_hac
+  FLO-FLG001 VSK-VMK002 included  dna_r9.4.1_450bps_hac
+  FLO-MIN106 SQK-CAS109           dna_r9.4.1_450bps_hac
+  FLO-MIN106 SQK-DCS108           dna_r9.4.1_450bps_hac
+  FLO-MIN106 SQK-DCS109           dna_r9.4.1_450bps_hac
+  FLO-MIN106 SQK-LRK001           dna_r9.4.1_450bps_hac
+  FLO-MIN106 SQK-LSK108           dna_r9.4.1_450bps_hac
+  FLO-MIN106 SQK-LSK109           dna_r9.4.1_450bps_hac
+  FLO-MIN106 SQK-LSK109-XL          dna_r9.4.1_450bps_hac
+  FLO-MIN106 SQK-LWP001           dna_r9.4.1_450bps_hac
+  FLO-MIN106 SQK-PCS108           dna_r9.4.1_450bps_hac
+  FLO-MIN106 SQK-PCS109           dna_r9.4.1_450bps_hac
+  FLO-MIN106 SQK-PSK004           dna_r9.4.1_450bps_hac
+  FLO-MIN106 SQK-RAD002           dna_r9.4.1_450bps_hac
+  FLO-MIN106 SQK-RAD003           dna_r9.4.1_450bps_hac
+  FLO-MIN106 SQK-RAD004           dna_r9.4.1_450bps_hac
+  FLO-MIN106 SQK-RAS201           dna_r9.4.1_450bps_hac
+  FLO-MIN106 SQK-RLI001           dna_r9.4.1_450bps_hac
+  FLO-MIN106 VSK-VBK001           dna_r9.4.1_450bps_hac
+  FLO-MIN106 VSK-VSK001           dna_r9.4.1_450bps_hac
+  FLO-MIN106 VSK-VSK002           dna_r9.4.1_450bps_hac
+  FLO-MIN106 SQK-16S024 included  dna_r9.4.1_450bps_hac
+  FLO-MIN106 SQK-PCB109 included  dna_r9.4.1_450bps_hac
+  FLO-MIN106 SQK-RBK001 included  dna_r9.4.1_450bps_hac
+  FLO-MIN106 SQK-RBK004 included  dna_r9.4.1_450bps_hac
+  FLO-MIN106 SQK-RLB001 included  dna_r9.4.1_450bps_hac
+  FLO-MIN106 SQK-LWB001 included  dna_r9.4.1_450bps_hac
+  FLO-MIN106 SQK-PBK004 included  dna_r9.4.1_450bps_hac
+  FLO-MIN106 SQK-RAB201 included  dna_r9.4.1_450bps_hac
+  FLO-MIN106 SQK-RAB204 included  dna_r9.4.1_450bps_hac
+  FLO-MIN106 SQK-RPB004 included  dna_r9.4.1_450bps_hac
+  FLO-MIN106 VSK-VMK001 included  dna_r9.4.1_450bps_hac
+  FLO-MIN106 VSK-VMK002 included  dna_r9.4.1_450bps_hac
+  FLO-PRO001 SQK-RNA002           rna_r9.4.1_70bps_hac_prom
+  FLO-PRO002 SQK-RNA002           rna_r9.4.1_70bps_hac_prom
 
-We need to specify at least the following options:
+
+Our dataset was generated using the FLO-MIN106 flowcell, and the LSK109 kit, so we can use the dna_r9.4.1_450bps_hac model.
+
+We need to specify the following options:
 
 +------------------------------------------------------------------------+-----------+----------------------------+
 | What?                                                                  | parameter | Our value                  |
 +========================================================================+===========+============================+
-| The flow cell version that was used                                    | -f        | FLO-MIN107                 |
+| The config file for our flowcell/kit combination                       | -c        | dna_r9.4.1_450bps_hac_model|
 +------------------------------------------------------------------------+-----------+----------------------------+ 
-|The sequencing kit version that was used                                | -k        | SQK-LSK308                 |
-+------------------------------------------------------------------------+-----------+----------------------------+
-| Which output file type you want (fast5, FASTQ, or both)                | -o        | fastq                      |
+| Compress the fastq output                                              | --compress_fastq                       |
 +------------------------------------------------------------------------+-----------+----------------------------+
 | The full path to the directory where the raw read files are located    | -i        | ~/workdir/Nanopore_small   |
 +------------------------------------------------------------------------+-----------+----------------------------+
 | The full path to the directory where the basecalled files will be saved| -s        | ~/workdir/1D_basecall_small|
 +------------------------------------------------------------------------+-----------+----------------------------+
 | How many worker threads you are using                                  | -t        | 14                         |
-+------------------------------------------------------------------------+-----------+----------------------------+
-| Number of reads per FASTQ batch file                                   | -q        | 100000                     |
 +------------------------------------------------------------------------+-----------+----------------------------+
 
 Our complete command line is::
