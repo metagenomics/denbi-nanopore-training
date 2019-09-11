@@ -149,21 +149,23 @@ Our dataset was generated using the FLO-MIN106 flowcell, and the LSK109 kit, so 
 
 We need to specify the following options:
 
-+------------------------------------------------------------------------+-----------+--------------------------------+
-| What?                                                                  | parameter | Our value                      |
-+========================================================================+===========+================================+
-| The config file for our flowcell/kit combination                       | -c        | dna_r9.4.1_450bps_hac_model.cfg|
-+------------------------------------------------------------------------+-----------+--------------------------------+ 
-| Compress the fastq output                                              | --compress_fastq                           |
-+------------------------------------------------------------------------+-----------+--------------------------------+
-| The full path to the directory where the raw read files are located    | -i        | ~/workdir/data/fast5_small     |
-+------------------------------------------------------------------------+-----------+--------------------------------+
-| The full path to the directory where the basecalled files will be saved| -s        | ~/workdir/basecall_small/      |
-+------------------------------------------------------------------------+-----------+--------------------------------+
-| How many worker threads you are using                                  | -t        | 14                             |
-+------------------------------------------------------------------------+-----------+--------------------------------+
++------------------------------------------------------------------------+-------------------------+--------------------------------+
+| What?                                                                  | parameter               | Our value                      |
++========================================================================+=========================+================================+
+| The config file for our flowcell/kit combination                       | -c                      | dna_r9.4.1_450bps_hac_model.cfg|
++------------------------------------------------------------------------+-------------------------+--------------------------------+ 
+| Compress the fastq output                                              | --compress_fastq                                                            |
++------------------------------------------------------------------------+-------------------------+--------------------------------+
+| The full path to the directory where the raw read files are located    | -i                      | ~/workdir/data/fast5_small     |
++------------------------------------------------------------------------+-------------------------+--------------------------------+
+| The full path to the directory where the basecalled files will be saved| -s                      | ~/workdir/basecall_small/      |
++------------------------------------------------------------------------+-------------------------+--------------------------------+
+| How many worker threads you are using                                  | --cpu_threads_per_caller| 14                             |
++------------------------------------------------------------------------+-------------------------+--------------------------------+
 
 Our complete command line is::
+
+ --compress_fastq -i ~/workdir/data/fast5_small/ -s ~/workdir/basecall_small/ --cpu_threads_per_caller 14 -c dna_r9.4.1_450bps_hac.cfg
 
   guppy_basecaller --compress_fastq -i ~/workdir/data/fast5_small/ -s ~/workdir/basecall_small/ -t 14 -c dna_r9.4.1_450bps_hac.cfg
  
