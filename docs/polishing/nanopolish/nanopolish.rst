@@ -20,4 +20,4 @@ This will run a few hours over night and we can get to dinner. :)
 
 Next morning, we need to create the corrected fasta file from the generated vcf::
 
-  nanopolish vcf2fasta -g ~/workdir/assembly/assembly.contigs.fasta ~/workdir/nanopolish/polished.*.vcf > ~/workdir/nanopolish/polished_genome.fa
+  nanopolish vcf2fasta -g ~/workdir/assembly/assembly.contigs.fasta ~/workdir/nanopolish/polished.*.vcf > ~/workdir/nanopolish/polished_genome.fasta
