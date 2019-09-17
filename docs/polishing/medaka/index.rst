@@ -1,1 +1,25 @@
-medaka commands...
+medaka is a tool to create a consensus sequence of nanopore sequencing data. This task is performed using neural networks applied a pileup of individual sequencing reads against a draft assembly. It outperforms graph-based methods operating on basecalled data, and can be competitive with state-of-the-art signal-based methods whilst being much faster.
+
+As input medaka accepts reads in either a .fasta or a .fastq file. It requires a draft assembly as a .fasta.
+
+medaka usage::
+
+  medaka_consensus [-h] -i <fastx>
+
+    -h  show this help text.
+    -i  fastx input basecalls (required).
+    -d  fasta input assembly (required). 
+    -o  output folder (default: medaka).
+    -m  medaka model, (default: r941_min_high).
+        Available: r941_trans, r941_flip213, r941_flip235, r941_min_fast, r941_min_high, r941_prom_fast, r941_prom_high.
+        Alternatively a .hdf file from 'medaka train'. 
+    -t  number of threads with which to create features (default: 1).
+    -b  batchsize, controls memory use (default: 200).
+
+  -i must be specified.
+
+
+medaka commandline::
+
+  medaka_consensus -i basecall/basecall.fastq.gz -d assembly/assembly.contigs.fasta -o medaka -t 14 -m r941_min_high
+
