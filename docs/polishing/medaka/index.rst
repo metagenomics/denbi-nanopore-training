@@ -32,4 +32,11 @@ medaka usage::
 medaka commandline::
 
   medaka_consensus -i basecall/basecall.fastq.gz -d assembly/assembly.contigs.fasta -o medaka -t 14 -m r941_min_high
+  
+medaka after racon::
+
+  medaka_consensus -i basecall/basecall.fastq.gz -d racon/racon.fasta -o racon_medaka -t 14 -m r941_min_high
+
+
+
 
