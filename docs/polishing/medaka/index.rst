@@ -1,3 +1,12 @@
+racon first::
+  
+  cd ~/workdir/nanopore_mapping
+  samtools view -S mapping.sorted.bam > mapping.sorted.sam
+  cd ~/workdir/
+  racon -t 14 ~/workdir/basecall/basecall.fastq.gz ~/workdir/nanopore_mapping/mapping.sorted.sam ~/workdir/assembly/assembly.contigs.fasta
+  
+
+
 medaka is a tool to create a consensus sequence of nanopore sequencing data. This task is performed using neural networks applied a pileup of individual sequencing reads against a draft assembly. It outperforms graph-based methods operating on basecalled data, and can be competitive with state-of-the-art signal-based methods whilst being much faster.
 
 As input medaka accepts reads in either a .fasta or a .fastq file. It requires a draft assembly as a .fasta.
