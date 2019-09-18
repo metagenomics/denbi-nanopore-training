@@ -8,11 +8,11 @@ Enter the IP of your virtual machine, the port, the username "ubuntu" and select
 
 As you have started the VM with a volume attached, this volume needs to be given to the ubuntu user for easy access::
 
-  sudo chown ubuntu:ubuntu /mnt/data/
+  sudo chown ubuntu:ubuntu /mnt/volume/
   
 Create a link in your home directory to the mounted volume::
 
-  ln -s /mnt/data/ workdir 
+  ln -s /mnt/volume/ workdir 
 
 The tutorial dataset is located in our object store, you can get the data here (Group 1)::
 
