@@ -13,7 +13,7 @@ The command we are using for for basecalling with Guppy is::
 
 Let's have a look at the usage message for read_fast5_basecaller.py::
 
-  guppy_basecaller ==help
+  guppy_basecaller --help
   
   : Guppy Basecalling Software, (C) Oxford Nanopore Technologies, Limited. Version 3.1.5+781ed57
 
@@ -165,9 +165,7 @@ We need to specify the following options:
 
 Our complete command line is::
 
- --compress_fastq -i ~/workdir/data/fast5_small/ -s ~/workdir/basecall_small/ --cpu_threads_per_caller 14 -c dna_r9.4.1_450bps_hac.cfg
-
-  guppy_basecaller --compress_fastq -i ~/workdir/data/fast5_small/ -s ~/workdir/basecall_small/ -t 14 -c dna_r9.4.1_450bps_hac.cfg
+  guppy_basecaller --compress_fastq -i ~/workdir/data/fast5_small/ -s ~/workdir/basecall_small/ --cpu_threads_per_caller 14 -c dna_r9.4.1_450bps_hac.cfg
  
 References
 ^^^^^^^^^^
