@@ -14,21 +14,27 @@ Create a link in your home directory to the mounted volume::
 
   ln -s /mnt/volume/ workdir 
 
-The tutorial dataset is located in our object store, you can get the data here (Group 1)::
+The tutorial dataset is located in our object store. We have also prepared some precomputed results.You can get both here (Group 1)::
 
   cd ~/workdir
   wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/nanopore_course_data/Data_Group1.tar.gz
+  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/nanopore_course_data/Results_Group1.tar.gz
 
 ... and for Group 2::
 
   cd ~/workdir
   wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/nanopore_course_data/Data_Group2.tar.gz
+  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/nanopore_course_data/Results_Group2.tar.gz
 
 Then, unpack the tar archive::
 
   tar -xzvf Data_Group1.tar.gz
+  tar -xzvf Results_Group1.tar.gz
+
   or
+  
   tar -xzvf Data_Group2.tar.gz
+  tar -xzvf Results_Group2.tar.gz
 
 Rename Data folder::
 
@@ -39,8 +45,10 @@ Rename Data folder::
 and finally remove the tar archives::
 
   rm Data_Group1.tar.gz
+  rm Results_Group1.tar.gz
   or
   rm Data_Group2.tar.gz
+  rm Results_Group2.tar.gz
   
   
 If you want to disable system beep sounds::
