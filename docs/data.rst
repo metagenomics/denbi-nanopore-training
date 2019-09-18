@@ -36,13 +36,7 @@ Then, unpack the tar archive::
   tar -xzvf Data_Group2.tar.gz
   tar -xzvf Results_Group2.tar.gz
 
-Rename Data folder::
-
-  mv Data_Group1 data
-  or
-  mv Data_Group2 data
-
-and finally remove the tar archives::
+and remove the tar archives::
 
   rm Data_Group1.tar.gz
   rm Results_Group1.tar.gz
