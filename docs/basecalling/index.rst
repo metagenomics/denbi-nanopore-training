@@ -1,7 +1,7 @@
 Basecalling
 ===========
 
-We will perform a basecalling of the raw data with Albacore.
+We will perform a basecalling of the raw data with guppy.
 
 .. toctree::
    :maxdepth: 1
