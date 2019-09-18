@@ -6,11 +6,8 @@ https://wiki.x2go.org/doku.php/download:start
 
 Enter the IP of your virtual machine, the port, the username "ubuntu" and select your ssh key. When you have successfully connected to your machine, open a terminal.
 
-Then, you need to format and mount the volume we have attached to our virtual machine::
+As you have started the VM with a volume attached, this volume needs to be given to the ubuntu user for easy access::
 
-  sudo mkfs.ext4 /dev/vdc
-  sudo mkdir /mnt/data/
-  sudo mount /dev/vdc /mnt/data/
   sudo chown ubuntu:ubuntu /mnt/data/
   
 Create a link in your home directory to the mounted volume::
