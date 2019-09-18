@@ -30,17 +30,18 @@ Then, unpack the tar archive::
   or
   tar -xzvf Data_Group2.tar.gz
 
-and remove the tar archives::
-
-  rm Data_Group1.tar.gz
-  or
-  rm Data_Group2.tar.gz
-  
 Rename Data folder::
 
   mv Data_Group1 data
   or
   mv Data_Group2 data
+
+and finally remove the tar archives::
+
+  rm Data_Group1.tar.gz
+  or
+  rm Data_Group2.tar.gz
+  
   
 If you want to disable system beep sounds::
 
