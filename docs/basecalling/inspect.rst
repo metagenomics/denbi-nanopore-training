@@ -13,7 +13,7 @@ The directory contains the following output::
 
 So we have one fastq file in our directory - since we started with one fast5 file. Ususally, we should merge all resulting fastq files into a single file::
 
-  cat basecall_tiny/*.fastq.gz > basecall.fastq.gz
+  cat ~/workdir/basecall_tiny/*.fastq.gz > ~/workdir/basecall_tiny/basecall.fastq.gz
 
 In order to get the number of reads in our fastq file, we can count the number of lines and divide by 4::
 
@@ -26,8 +26,8 @@ Since this dataset was only a fraction of our real data, we have precomputed the
   
 And again, we are merging all fastq files::
 
-  cat ~/workdir/basecall/*.fastq.gz > basecall.fastq.gz
-  cat ~/workdir/basecall_small/*.fastq.gz > basecall.fastq.gz
+  cat ~/workdir/basecall/*.fastq.gz > ~/workdir/basecall/basecall.fastq.gz
+  cat ~/workdir/basecall_small/*.fastq.gz > ~/workdir/basecall_small/basecall.fastq.gz
   
 If you want, you can check again for the number of reads::
 
