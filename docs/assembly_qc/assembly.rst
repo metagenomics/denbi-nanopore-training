@@ -72,7 +72,7 @@ Get a usage message of canu on how to use the assembler::
       -nanopore-raw       <files>
       -nanopore-corrected <files>
 
-We will run the assembly on the small dataset, for which we have computed the basecalling to save time. The assembly for the complete dataset will take about 2 and a half hours. 
+We will run the assembly on the small dataset, to save time. The assembly for the complete dataset will take about one hour.
 We will perform the assembly in two steps:
 
 Error correction with the parameter::
@@ -83,13 +83,15 @@ followed by trimming and assembly with the following parameters::
 
   -trim-assemble - generate trimmed reads and then assemble them
 
+You could also run the assembly completely in one step by leaving out both of these parameters. Running it in two steps has the advantage, that both steps can be tested individually for good parameters without running both each time again.
+
 
 Generate corrected reads
 ------------------------
 
 The correction stage selects the best overlaps to use for correction, estimates corrected read lengths, and generates corrected reads::
 
-  canu -correct -d ~/workdir/canu_correct_small -p canuAssembly genomeSize=3m useGrid=false -nanopore-raw ~/workdir/1D_basecall_small.fastq
+  canu -correct -d ~/workdir/correct_small -p assembly genomeSize=3m useGrid=false -nanopore-raw ~/workdir/basecall_small/basecall.fastq
 
 It is also possible to run multiple correction rounds to eliminate errors. This has been done on a S. cerevisae dataset in the canu publication. We will not do this in this course due to time limitations, but a script to do this, would look like this::
 
@@ -107,31 +109,25 @@ It is also possible to run multiple correction rounds to eliminate errors. This 
   done
 
 
-
-
 Generate and assemble trimmed reads
 -----------------------------------
 
 The trimming stage identifies unsupported regions in the input and trims or splits reads to their longest supported range. The assembly stage makes a final pass to identify sequencing errors; constructs the best overlap graph (BOG); and outputs contigs, an assembly graph, and summary statistics::
 
-  canu -trim-assemble -d ~/workdir/canu_assembly_small -p canuAssembly genomeSize=3M useGrid=false -nanopore-corrected ~/workdir/canu_correct_small/canuAssembly.correctedReads.fasta.gz -nanopore-corrected ~/workdir/1D2_basecall.fastq
+  canu -trim-assemble -d ~/workdir/assembly_small -p assembly genomeSize=3M useGrid=false -nanopore-corrected ~/workdir/correct_small/assembly.correctedReads.fasta.gz
 
 After that is done, inspect the results. We can get a quick view on the number of generated contigs with::
 
-  grep '>' ~/workdir/canu_assembly_small/canuAssembly.contigs.fasta
+  grep '>' ~/workdir/assembly_small/assembly.contigs.fasta
 
 Copy the precomputed assembly with the complete dataset into your working directory::
 
-  cp -r ~/workdir/Results/canu_assembly/ ~/workdir/
+  cp -r ~/workdir/results/assembly/ ~/workdir/
 
 and have a quick look on the number of contigs::
 
-  grep '>' ~/workdir/canu_assembly/canuAssembly.contigs.fasta
+  grep '>' ~/workdir/assembly/assembly.contigs.fasta
 
-
-New command::
-
-  canu -d results/assembly/ -p assembly genomeSize='3M' -nanopore-raw data/basecall/ONT.fastq.gz
 
 
 
@@ -139,4 +135,5 @@ References
 ^^^^^^^^^^
 
 **Canu** https://github.com/marbl/canu
+**Bandage** https://rrwick.github.io/Bandage/
   
