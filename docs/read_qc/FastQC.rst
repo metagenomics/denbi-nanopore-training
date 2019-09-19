@@ -101,15 +101,12 @@ QA with FastQC
 Evaluate with fastqc::
   
   cd ~/workdir
-  mkdir -p ~/workdir/FastQC/1D_fastqc
-  mkdir -p ~/workdir/FastQC/1D2_fastqc
-  mkdir -p ~/workdir/FastQC/illumina_fastqc
-  fastqc -t 14 -o ~/workdir/FastQC/1D_fastqc/ 1D_basecall.fastq
-  fastqc -t 14 -o ~/workdir/FastQC/1D2_fastqc/ 1D2_basecall.fastq
-  fastqc -t 14 -o ~/workdir/FastQC/illumina_fastqc/ ~/workdir/Data/Illumina/TSPf_R1.fastq.gz ~/workdir/Data/Illumina/TSPf_R2.fastq.gz
+  mkdir -p ~/workdir/fastqc/nanopore_fastqc
+  mkdir -p ~/workdir/fastqc/illumina_fastqc
+  fastqc -t 14 -o ~/workdir/fastqc/nanopore_fastqc ~/workdir/basecall/basecall.fastq.gz
+  fastqc -t 14 -o ~/workdir/fastqc/illumina_fastqc ~/workdir/data/illumina/Illumina_R1.fastq.gz ~/workdir/data/illumina/Illumina_R2.fastq.gz
   
-After that, you can load the reports in your web browser via Cloud9. Just right-click on the file in the
-directory tree on the left side of your Cloud9 window and choose "Preview".
+After that, you can load the reports in your web browser. Open a file browser, go to your workdir/fastqc/ directory and double click the html file.
   
 We will inspect the results together now ...
 
