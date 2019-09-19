@@ -12,7 +12,9 @@ and load the following file::
    ~/workdir/assembly/assembly.contigs.gfa
 
 and click on "Draw Graph"
-This is the assembly graph of our Nanopore Assembly. Compare it to a graph computed with Illumina data::
+This is the assembly graph of our Nanopore Assembly. You can BLAST your contigs vs each other to identify further assembly problems  by clicking "Create/View BLAST search".
+
+Compare this graph to a graph computed with Illumina data::
 
    ~/workdir/assembly/assembly_graph_with_scaffolds.gfa
 
