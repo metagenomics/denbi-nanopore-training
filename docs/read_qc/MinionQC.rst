@@ -4,7 +4,7 @@ Developed by Rob Lanfear::
 
   R Lanfear, M Schalamun, D Kainer, W Wang, B Schwessinger; MinIONQC: fast and simple quality control for MinION sequencing data, Bioinformatics, , bty654, https://doi.org/10.1093/bioinformatics/bty654
 
-Script collection taht will generate a range of diagnostic plots for quality control of sequencing data from Oxford Nanopore's MinION sequencer.
+Script collection that will generate a range of diagnostic plots for quality control of sequencing data from Oxford Nanopore's MinION sequencer.
 
 MinIONQC works directly with the sequencing_summary.txt files produced by ONT's Albacore or Guppy base callers.
 This allows MinIONQC for quick-and-easy comparison of data from one or multiple flowcells.
@@ -39,16 +39,13 @@ Options:
 Fast and effective quality control for MinION sequencing data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Run MinIONQC on 1D and 1D2 data::
+Run MinIONQC on nanopore data::
 
-  cd ~/workdir/1D2_basecall/1dsq_analysis
-  ln -s sequencing_1dsq_summary.txt sequencing_summary.txt
   cd ~/workdir
   mkdir -p ~/workdir/MinIONQC  
-  Rscript ~/MinIONQC.R -i 1D2_basecall -q 12 -o MinIONQC -p 14
+  Rscript ~/MinIONQC.R -i basecall -q 12 -o MinIONQC -p 14
     
-This will create several analysis plots for the 1D and the 1D2 data as well as for both combined. After that, you can load the plots in your web browser via Cloud9. Just right-click on the file in the
-directory tree on the left side of your Cloud9 window and choose "Preview".
+This will create several analysis plots. After that, you can load the plots in your web browser by using a file browser.
   
 We will inspect the results together now ...
 
