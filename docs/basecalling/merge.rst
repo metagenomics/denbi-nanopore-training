@@ -1,12 +1,13 @@
 Merge fastqs
 ------------
 
-To make life easier for future computations, we will merge the fastq files into one::
+And again, we are merging all fastq files::
 
-  cat ~/workdir/1D_basecall_small/workspace/pass/*.fastq > ~/workdir/1D_basecall_small.fastq
-  cat ~/workdir/1D2_basecall_small/1dsq_analysis/workspace/pass/*.fastq > ~/workdir/1D2_basecall_small.fastq
-  cat ~/workdir/1D_basecall/workspace/pass/*.fastq > ~/workdir/1D_basecall.fastq
-  cat ~/workdir/1D2_basecall/1dsq_analysis/workspace/pass/*.fastq > ~/workdir/1D2_basecall.fastq
+  cat ~/workdir/basecall/*.fastq.gz > ~/workdir/basecall/basecall.fastq.gz
+  cat ~/workdir/basecall_small/*.fastq.gz > ~/workdir/basecall_small/basecall.fastq.gz
+  
+If you want, you can check again for the number of reads::
 
-
-
+  zcat ~/workdir/basecall_small/basecall.fastq.gz | wc | awk '{print $1/4}'
+  or 
+  zcat ~/workdir/basecall/basecall.fastq.gz | wc | awk '{print $1/4}'
