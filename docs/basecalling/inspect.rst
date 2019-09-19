@@ -18,20 +18,3 @@ So we have one fastq file in our directory - since we started with one fast5 fil
 In order to get the number of reads in our fastq file, we can count the number of lines and divide by 4::
 
   zcat ~/workdir/basecall_tiny/basecall.fastq.gz | wc -l | awk '{print $1/4}'
-  
-Since this dataset was only a fraction of our real data, we have precomputed the basecalling of the complete dataset (and another smaller subset) for you. It is located in the results folder, copy it into your workdir::
-
-  cp -r ~/workdir/results/basecall_small/ ~/workdir/.
-  cp -r ~/workdir/results/basecall/ ~/workdir/.
-  
-And again, we are merging all fastq files::
-
-  cat ~/workdir/basecall/*.fastq.gz > ~/workdir/basecall/basecall.fastq.gz
-  cat ~/workdir/basecall_small/*.fastq.gz > ~/workdir/basecall_small/basecall.fastq.gz
-  
-If you want, you can check again for the number of reads::
-
-  zcat ~/workdir/basecall_small/basecall.fastq.gz | wc | awk '{print $1/4}'
-  or 
-  zcat ~/workdir/basecall/basecall.fastq.gz | wc | awk '{print $1/4}'
-
