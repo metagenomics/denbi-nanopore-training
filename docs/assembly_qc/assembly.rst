@@ -135,5 +135,4 @@ References
 ^^^^^^^^^^
 
 **Canu** https://github.com/marbl/canu
-**Bandage** https://rrwick.github.io/Bandage/
   
