@@ -105,32 +105,26 @@ Usage:
 We now use graphmap to align the different read sets to the reference, starting with the nanopore reads::
 
   cd ~/workdir
-  mkdir ~/workdir/graphmap
-  graphmap align -r ~/workdir/data/Reference.fna -t 14 -C -d ~/workdir/basecall/basecall.fastq -o ~/workdir/graphmap/nanopore.graphmap.sam > nanopore.graphmap.sam.log 2>&1 
+  mkdir ~/workdir/map_to_ref
+  graphmap align -r ~/workdir/data/Reference.fna -t 14 -C -d ~/workdir/basecall/basecall.fastq.gz -o ~/workdir/map_to_ref/nanopore.graphmap.sam > nanopore.graphmap.sam.log 2>&1 
   
-The 1d2 reads::
-
-  graphmap align -r ~/workdir/Data/Reference/CXERO_10272017.fna -t 14 -C -d ~/workdir/Results/1D2_basecall.fastq -o ~/workdir/1D2.graphmap.sam > ~/workdir/1D2.graphmap.sam.log 2>&1 
-
 For the illumina reads we will use another aligner, as this one is more suited for this kind of data. But before we can do so, we need to create an index structure on the reference::
   
-  bwa index ~/workdir/Data/Reference/CXERO_10272017.fna
-  bwa mem -t 14 ~/workdir/Data/Reference/CXERO_10272017.fna ~/workdir/Data/Illumina/TSPf_R1.fastq.gz ~/workdir/Data/Illumina/TSPf_R2.fastq.gz > ~/workdir/TSPf.bwa.sam
+  bwa index ~/workdir/data/Reference.fna
+  bwa mem -t 14 ~/workdir/data/Reference.fna ~/workdir/data/illumina/Illumina_R1.fastq.gz ~/workdir/data/illumina/Illumina_R2.fastq.gz > ~/workdir/map_to_ref/illumina.bwa.sam
   
 Inferring error profiles using samtools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 After mapping the reads on the reference Genome, we can infer various statistics as e.g., number of succesful aligned reads and bases, or number of mismatches and indels, and so on. For this you could easily use the tool collection **samtools**, which offers a range of simple CLI modules all operating on mapping output (SAM and BAM format). We will use the ``stats`` module now::
  
-  samtools stats -d -@ 14 ~/workdir/1D.graphmap.sam > ~/workdir/1D.graphmap.sam.stats
-  samtools stats -d -@ 14 ~/workdir/1D2.graphmap.sam > ~/workdir/1D2.graphmap.sam.stats
-  samtools stats -d -@ 14 ~/workdir/TSPf.bwa.sam > ~/workdir/TSPf.bwa.sam.stats
+  samtools stats -d -@ 14 ~/workdir/map_to_ref/nanopore.graphmap.sam > ~/workdir/map_to_ref/nanopore.graphmap.sam.stats
+  samtools stats -d -@ 14 ~/workdir/map_to_ref/illumina.bwa.sam > ~/workdir/map_to_ref/illumina.bwa.sam.stats
 
 We can inspect these results now by simply view at the top 40 lines of the output::
   
-  head -n 40 ~/workdir/1D.graphmap.sam.stats
-  head -n 40 ~/workdir/1D2.graphmap.sam.stats
-  head -n 40 ~/workdir/TSPf.bwa.sam.stats
+  head -n 40 ~/workdir/map_to_ref/nanopore.graphmap.sam.stats
+  head -n 40 ~/workdir/map_to_ref/illumina.bwa.sam.stats
 
 Enhanced mapping statistics
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -140,17 +134,16 @@ To get a more in depth info on the actual accuracy of the data at hand, includin
 First, we convert the SAM files into BAM format and sort them::
 
   cd ~/workdir
-  samtools view -@ 4 -bS 1D.graphmap.sam | samtools sort - -@ 8 -m 4G -o 1D.graphmap.sorted.bam
-  samtools view -@ 4 -bS 1D2.graphmap.sam | samtools sort - -@ 8 -m 4G -o 1D2.graphmap.sorted.bam
-  samtools view -@ 4 -bS TSPf.bwa.sam | samtools sort - -@ 8 -m 4G -o TSPf.bwa.sorted.bam
+  samtools view -@ 4 -bS  ~/workdir/map_to_ref/nanopore.graphmap.sam | samtools sort - -@ 8 -m 4G -o ~/workdir/map_to_ref/nanopore.graphmap.sorted.bam
+  samtools view -@ 4 -bS ~/workdir/map_to_ref/illumina.bwa.sam | samtools sort - -@ 8 -m 4G -o ~/workdir/map_to_ref/illumina.bwa.sorted.bam
 
 Then we can run **qualimap** on those BAM files now::
   
-  qualimap bamqc -bam ~/workdir/1D.graphmap.sorted.bam -nw 5000 -nt 14 -outdir ~/workdir/qualimap/1D.graphmap
-  qualimap bamqc -bam ~/workdir/1D2.graphmap.sorted.bam -nw 5000 -nt 14 -outdir ~/workdir/qualimap/1D2.graphmap
-  qualimap bamqc -bam ~/workdir/TSPf.bwa.sorted.bam -nw 5000 -nt 14 -outdir ~/workdir/qualimap/TSPf.graphmap
+  qualimap bamqc -bam ~/workdir/map_to_ref/nanopore.graphmap.sorted.bam -nw 5000 -nt 14 -outdir ~/workdir/map_to_ref/nanopore.graphmap
+  qualimap bamqc -bam ~/workdir/map_to_ref/illumina.bwa.sorted.bam
+ -nw 5000 -nt 14 -outdir ~/workdir/map_to_ref/illumina.graphmap
 
-Qualimap can also be run interactively, which can be used, e.g., to compare all mapping with each other, but that will not work here using the Cloud9 desktop.
+Qualimap can also be run interactively.
 
 References
 ^^^^^^^^^^
