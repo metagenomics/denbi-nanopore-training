@@ -102,6 +102,8 @@ Which will give you the raw signal of that specific read::
     (193) 425, 421, 421, 437, 433, 422, 430, 412, 426, 416, 427, 426, 417, 420, 427, 417, 426, 427, 422, 435, 429, 425, 428, 428, 395, 432, 424,
 
 
+Now that you have an idea of how the raw data out of the machine looks like, we can start the basecalling.
+
  
 References
 ^^^^^^^^^^
