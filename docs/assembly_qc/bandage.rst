@@ -14,7 +14,7 @@ and load the following file::
 and click on "Draw Graph"
 This is the assembly graph of our Nanopore Assembly. Compare it to a graph computed with Illumina data::
 
-   ~/workdir/assembly/assembly.contigs.gfa
+   ~/workdir/assembly/assembly_graph_with_scaffolds.gfa
 
 
 
