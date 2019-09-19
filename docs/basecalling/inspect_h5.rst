@@ -17,6 +17,7 @@ In order to get the complete content of a fast5 in readable form, you can use::
 Inspect the output. The file starts with a root group::
   
   GROUP "/" {
+  [...]
 
 
     
