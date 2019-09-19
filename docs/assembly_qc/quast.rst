@@ -11,7 +11,7 @@ To call ``quast.py`` we have to provide a reference genome and one or more assem
 
   quast.py -t 14 -o ~/workdir/quast_canu_assembly -R ~/workdir/data/Reference.fna ~/workdir/assembly/assembly.contigs.fasta ~/workdir/assembly_small/assembly.contigs.fasta ~/workdir/results/illumina_assembly/contigs.fasta
 
-QUAST generates HTML reports including a number of interactive graphics. To access these reports, open them using your Cloud9 Interface.
+QUAST generates HTML reports including a number of interactive graphics. To access these reports, open them using a file browser.
 
 References
 ^^^^^^^^^^
