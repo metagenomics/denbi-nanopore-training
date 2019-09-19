@@ -18,6 +18,22 @@ Inspect the output. The file starts with a root group::
   
   GROUP "/" {
   [...]
+  
+followed by the first read::
+  
+  GROUP "read_0061d165-af04-4c39-ad5e-8c4ebe3caa80" {
+  [...]
+  
+at some point, the actual data is stored as a dataset::
+
+  DATASET "Signal" {
+    DATATYPE  H5T_STD_I16LE
+    DATASPACE  SIMPLE { ( 104805 ) / ( H5S_UNLIMITED ) }
+    DATA {
+    (0): 450, 414, 428, 435, 445, 439, 439, 416, 432, 437, 410, 403,
+    (12): 429, 410, 415, 426, 424, 409, 415, 416, 422, 421, 422, 418,
+    [...]
+  
 
 
     
