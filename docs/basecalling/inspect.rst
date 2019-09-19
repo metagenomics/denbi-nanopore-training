@@ -31,7 +31,7 @@ And again, we are merging all fastq files::
   
 If you want, you can check again for the number of reads::
 
-  zcat ~/workdir/basecall_small/basecall.fastq.gz | wc -l | awk '{print $1/4}'
+  zcat ~/workdir/basecall_small/basecall.fastq.gz | wc | awk '{print $1/4}'
   or 
-  zcat ~/workdir/basecall/basecall.fastq.gz | wc -l | awk '{print $1/4}'
+  zcat ~/workdir/basecall/basecall.fastq.gz | wc | awk '{print $1/4}'
 
