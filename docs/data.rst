@@ -44,7 +44,18 @@ and remove the tar archives::
   rm Data_Group2.tar.gz
   rm Results_Group2.tar.gz
   
-  
+
+Have a short look, on what is contained within the data directory::
+
+  ls -l ~/workdir/data/
+  -rw-r--r-- 1 ubuntu ubuntu 4372654 Aug 30 08:24 Reference.fna
+  drwxr-xr-x 2 ubuntu ubuntu   24576 Aug 30 08:24 fast5
+  drwxrwxr-x 2 ubuntu ubuntu    4096 Sep  5 07:23 fast5_small
+  drwxrwxr-x 2 ubuntu ubuntu    4096 Sep 12 08:01 fast5_tiny
+  drwxr-xr-x 2 ubuntu ubuntu    4096 Aug 30 08:36 illumina
+
+There are three folders with Nanopore fast5 data, a Reference genome for later comparisons and some illumina data.
+
 If you want to disable system beep sounds::
 
   xset -b
