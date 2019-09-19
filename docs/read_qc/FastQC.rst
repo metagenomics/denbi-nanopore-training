@@ -122,14 +122,14 @@ As we see some strange GC content at the 5' end of our nanopore reads, we can al
   mkdir -p ~/workdir/fastqc/nanopore_fastqc_nogroup
   zcat ~/workdir/basecall/basecall.fastq.gz  | perl -ne '{chomp; if ($.%2) {print $_."\n"} else {print substr($_,0,100)."\n"} }' | gzip > ~/workdir/basecall/basecall_100.fastq.gz
   fastqc -t 14 -o ~/workdir/fastqc/nanopore_fastqc_nogroup --nogroup --extract ~/workdir/basecall/basecall_100.fastq.gz
-  grep -A 100 "Per base sequence" ~/workdir/FastQC/1D_fastqc_nogroup/1D_basecall_100_fastqc/fastqc_data.txt 
+  grep -A 100 "Per base sequence" ~/workdir/fastqc/nanopore_fastqc_nogroup/basecall_100_fastqc/fastqc_data.txt 
   
-So the first bases may indicate an adaptor contamination. For workflows including de novo assembly refined with nanopolish adaptor trimming is not necessary, but in other workflow scenarios this can be important to do and good there are tools which can handle this, as e.g. **porechop**.
+So the first bases may indicate an adaptor contamination. For workflows including de novo assembly refined with nanopolish or medaka adaptor trimming is not necessary, but in other workflow scenarios this can be important to do and good there are tools which can handle this, as e.g. **porechop**.
 
 Porechop is a tool for finding and removing adapters from Oxford Nanopore reads. Adapters on the ends of reads are trimmed off, and when a read has an adapter in its middle, it is treated as chimeric and chopped into separate reads. Porechop performs thorough alignments to effectively find adapters, even at low sequence identity::
 
   cd ~/workdir
-  porechop -i 1D_basecall.fastq -t 14 -v 2 -o 1D_basecall.trimmed.fastq > porechop.log
+  porechop -i ~/workdir/basecall/basecall.fastq.gz -t 14 -v 2 -o ~/workdir/basecall/basecall_trimmed.fastq > porechop.log
 
 Let's inspect the log file::
 
