@@ -1,41 +1,37 @@
 Inspect the output
 ------------------
 
-Both directories contain a number of fastq files::
+The directory contains the following output::
 
-  ls -lh ~/workdir/1D_basecall_small/workspace/pass/
+  ls -l ~/workdir/basecall_tiny/
   
-  total 12M
-  -rw-rw-r-- 1 ubuntu ubuntu 4.6M Nov 13 10:17 fastq_runid_04d71dafbed4e1a2c29d48873533c94070985063_0.fastq
-  -rw-rw-r-- 1 ubuntu ubuntu  98K Nov 13 10:17 fastq_runid_307482bb8322e11a4f92efefd01364754f9c271f_0.fastq
-  -rw-rw-r-- 1 ubuntu ubuntu 664K Nov 13 10:17 fastq_runid_492de34daf0e1e3648eed3c976ecf01b9ae1a60f_0.fastq
-  -rw-rw-r-- 1 ubuntu ubuntu 3.6M Nov 13 10:17 fastq_runid_940cafc8dbea461f32589d22e3095264700230fb_0.fastq
-  -rw-rw-r-- 1 ubuntu ubuntu 1.4M Nov 13 10:17 fastq_runid_cdd5fefcf4478e23e0628e437f145a503cffa888_0.fastq
-  -rw-rw-r-- 1 ubuntu ubuntu 865K Nov 13 10:17 fastq_runid_fa18a6a6c046ba9c4e91a6381be34a7eb06afbff_0.fastq
+  total 4456
+  -rw-rw-r-- 1 ubuntu ubuntu 3995875 Sep 18 09:56 fastq_runid_b110eefd3ba5e91817c69585fcd2257218eeb796_0.fastq.gz
+  -rw-rw-r-- 1 ubuntu ubuntu  261383 Sep 18 09:56 guppy_basecaller_log-2019-09-18_09-49-20.log
+  -rw-rw-r-- 1 ubuntu ubuntu  179651 Sep 18 09:56 sequencing_summary.txt
+  -rw-rw-r-- 1 ubuntu ubuntu  121167 Sep 18 09:56 sequencing_telemetry.js
 
-The D1^2 basecalling also creates additional fast5 data in the workspace. Keep that in mind, when disk space is limited. ::
+So we have one fastq file in our directory - since we started with one fast5 file. Ususally, we should merge all resulting fastq files into a single file::
 
-  ls -lh ~/workdir/1D2_basecall_small/workspace/
+  cat basecall_tiny/*.fastq.gz > basecall.fastq.gz
+
+In order to get the number of reads in our fastq file, we can count the number of lines and divide by 4::
+
+  zcat ~/workdir/basecall_tiny/basecall.fastq.gz | wc -l | awk '{print $1/4}'
   
-  total 13M
-  drwxrwxr-x 2 ubuntu ubuntu 144K Nov 13 10:19 0   <-- additional fast5 data
-  -rw-rw-r-- 1 ubuntu ubuntu 4.6M Nov 13 10:19 fastq_runid_04d71dafbed4e1a2c29d48873533c94070985063_0.fastq
-  -rw-rw-r-- 1 ubuntu ubuntu 101K Nov 13 10:19 fastq_runid_307482bb8322e11a4f92efefd01364754f9c271f_0.fastq
-  -rw-rw-r-- 1 ubuntu ubuntu 778K Nov 13 10:19 fastq_runid_492de34daf0e1e3648eed3c976ecf01b9ae1a60f_0.fastq
-  -rw-rw-r-- 1 ubuntu ubuntu 4.2M Nov 13 10:19 fastq_runid_940cafc8dbea461f32589d22e3095264700230fb_0.fastq
-  -rw-rw-r-- 1 ubuntu ubuntu 1.6M Nov 13 10:19 fastq_runid_cdd5fefcf4478e23e0628e437f145a503cffa888_0.fastq
-  -rw-rw-r-- 1 ubuntu ubuntu 961K Nov 13 10:19 fastq_runid_fa18a6a6c046ba9c4e91a6381be34a7eb06afbff_0.fastq
+Since this dataset was only a fraction of our real data, we have precomputed the basecalling of the complete dataset (and another smaller subset) for you. It is located in the results folder, copy it into your workdir::
 
-The workspace directory above contains the 1D basecalling, whereas the 1D² basecalling is located in::
+  cp -r ~/workdir/results/basecall_small/ ~/workdir/.
+  cp -r ~/workdir/results/basecall/ ~/workdir/.
+  
+And again, we are merging all fastq files::
 
-  ls -lh ~/workdir/1D2_basecall_small/1dsq_analysis/workspace/pass/
+  cat ~/workdir/basecall/*.fastq.gz > basecall.fastq.gz
+  cat ~/workdir/basecall_small/*.fastq.gz > basecall.fastq.gz
+  
+If you want, you can check again for the number of reads::
 
-  total 1180
-  -rw-rw-r-- 1 ubuntu ubuntu 559842 Nov 13 10:21 fastq_runid_04d71dafbed4e1a2c29d48873533c94070985063_0.fastq
-  -rw-rw-r-- 1 ubuntu ubuntu  61776 Nov 13 10:21 fastq_runid_492de34daf0e1e3648eed3c976ecf01b9ae1a60f_0.fastq
-  -rw-rw-r-- 1 ubuntu ubuntu 447404 Nov 13 10:22 fastq_runid_940cafc8dbea461f32589d22e3095264700230fb_0.fastq
-  -rw-rw-r-- 1 ubuntu ubuntu  98055 Nov 13 10:22 fastq_runid_cdd5fefcf4478e23e0628e437f145a503cffa888_0.fastq
-  -rw-rw-r-- 1 ubuntu ubuntu  31740 Nov 13 10:22 fastq_runid_fa18a6a6c046ba9c4e91a6381be34a7eb06afbff_0.fastq
-
-
+  zcat ~/workdir/basecall_small/basecall.fastq.gz | wc -l | awk '{print $1/4}'
+  or 
+  zcat ~/workdir/basecall/basecall.fastq.gz | wc -l | awk '{print $1/4}'
 
