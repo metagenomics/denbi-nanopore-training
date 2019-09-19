@@ -135,7 +135,7 @@ Let's inspect the log file::
 
   more porechop.log 
   
-So here, the following adapters were found and trimmed of in 16,500 of 20,051 cases::
+So here, the following adapters were found and trimmed::
 
   Trimming adapters from read ends
     Rapid_adapter: GTTTTCGCATTTATCGTGAAACGCTTTCGCGTTTTTCGTGCGCCGCTTCA
@@ -145,6 +145,16 @@ So here, the following adapters were found and trimmed of in 16,500 of 20,051 ca
              BC11: GTTTCATCTATCGGAGGGAATGGA
              BC06: TTCTCGCAAAGGCAGAAAGTAGTC
          BC06_rev: GACTACTTTCTGCCTTTGCGAGAA
+
+Too see how many reads were trimmed, grep for reads::
+
+  grep reads porechop.log
+  
+  52,536 reads loaded
+  51,299 / 52,536 reads had adapters trimmed from their start (5,257,865 bp removed)
+  4,890 / 52,536 reads had adapters trimmed from their end (47,632 bp removed)
+  794 / 52,536 reads were split based on middle adapters
+
 
 We will again look into the results of FastQC::
 
