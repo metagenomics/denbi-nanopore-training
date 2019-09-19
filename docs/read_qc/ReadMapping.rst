@@ -102,10 +102,11 @@ Usage:
     -h, --help                -    View this help. [false]
  
 
-We now use graphmap to align the different read sets to the reference, starting with the raw 1d reads::
+We now use graphmap to align the different read sets to the reference, starting with the nanopore reads::
 
   cd ~/workdir
-  graphmap align -r ~/workdir/Data/Reference/CXERO_10272017.fna -t 14 -C -d ~/workdir/Results/1D_basecall.fastq -o ~/workdir/1D.graphmap.sam > 1D.graphmap.sam.log 2>&1 
+  mkdir ~/workdir/graphmap
+  graphmap align -r ~/workdir/data/Reference.fna -t 14 -C -d ~/workdir/basecall/basecall.fastq -o ~/workdir/graphmap/nanopore.graphmap.sam > nanopore.graphmap.sam.log 2>&1 
   
 The 1d2 reads::
 
