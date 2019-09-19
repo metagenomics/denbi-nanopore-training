@@ -23,11 +23,11 @@ our assembly to it. This is done by the using the command ``lastdb``::
   cd ~/workdir/
   mkdir last_1st_assembly
   cd last_1st_assembly
-  lastdb CXERO_10272017.db ~/workdir/Data/Reference/CXERO_10272017.fna
+  lastdb Reference.db ~/workdir/data/Reference.fna
   
 Now that we have an index, we can map the assembly to the reference::
 
-  lastal CXERO_10272017.db ~/workdir/canu_assembly/canuAssembly.contigs.fasta > canu_1st_Assembly.maf
+  lastal Reference.db ~/workdir/assembly/assembly.contigs.fasta > canu_1st_Assembly.maf
   
 ``lastal`` produces output in `MAF format
 <http://genome.ucsc.edu/FAQ/FAQformat.html#format5>`_ by default. As we are going to
@@ -40,13 +40,13 @@ to convert MAF to different other formats::
 SAM and BAM files can be viewed and manipulated with `SAMtools <http://www.htslib.org/>`_. 
 Let's first build an index for the FASTA file of the reference sequence::
 
-  samtools faidx ~/workdir/Data/Reference/CXERO_10272017.fna
+  samtools faidx ~/workdir/data/Reference.fna
 
 Now we can convert the SAM file into the binary BAM format and add an appropriate header to the BAM
 file. After that we need to sort the alignments in the BAM file by starting position (``samtools sort``)
 and index the file for fast access (``samtools index``)::
 
-  samtools view -bT ~/workdir/Data/Reference/CXERO_10272017.fna canu_1st_Assembly.sam > canu_1st_Assembly.bam
+  samtools view -bT ~/workdir/data/Reference.fna canu_1st_Assembly.sam > canu_1st_Assembly.bam
   samtools sort -o canu_1st_Assembly_sorted.bam canu_1st_Assembly.bam
   samtools index canu_1st_Assembly_sorted.bam
   
