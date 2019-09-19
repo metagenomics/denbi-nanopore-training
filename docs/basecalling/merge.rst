@@ -3,8 +3,8 @@ Merge fastqs
 
 And again, we are merging all fastq files::
 
-  cat ~/workdir/basecall/*.fastq.gz > ~/workdir/basecall/basecall.fastq.gz
-  cat ~/workdir/basecall_small/*.fastq.gz > ~/workdir/basecall_small/basecall.fastq.gz
+  cat ~/workdir/basecall/*runid*.fastq.gz > ~/workdir/basecall/basecall.fastq.gz
+  cat ~/workdir/basecall_small/*runid*.fastq.gz > ~/workdir/basecall_small/basecall.fastq.gz
   
 If you want, you can check again for the number of reads::
 
