@@ -23,7 +23,7 @@ Repeat several rounds:
 
 We have also precomputed the polishing for you, if we are short on time::
 
-  cp ...
+  cp -r ~/workdir/racon_medaka_pilon/ ~/workdir/
 
 References
 ^^^^^^^^^^
