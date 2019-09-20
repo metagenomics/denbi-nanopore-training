@@ -7,7 +7,7 @@ In earlier courses, we used nanopolish for polishing but it is outperformed by m
 
 As input medaka accepts reads in either a .fasta or a .fastq file. It requires a draft assembly as a .fasta.
 
-medaka usage::
+Check the useage of medaka_consensus::
 
   medaka_consensus [-h] -i <fastx>
 
@@ -24,13 +24,16 @@ medaka usage::
   -i must be specified.
 
 
-medaka commandline::
+For comparison, we run medaka on our inital assembly and on the one polished with racon.
+We use the model r941_min_high. So we can call medaka with::
 
-  medaka_consensus -i basecall/basecall.fastq.gz -d assembly/assembly.contigs.fasta -o medaka -t 14 -m r941_min_high
+  medaka_consensus -i basecall/basecall_trimmed.fastq.gz -d assembly/assembly.contigs.fasta -o medaka -t 14 -m r941_min_high
   
-medaka after racon::
+To run medaka on the racon polished assembly::
 
-  medaka_consensus -i basecall/basecall.fastq.gz -d racon/racon.fasta -o racon_medaka -t 14 -m r941_min_high
+  medaka_consensus -i basecall/basecall_trimmed.fastq.gz -d racon/racon.fasta -o racon_medaka -t 14 -m r941_min_high
+
+Next, we are going to further polish with pilon.
 
 
 References
