@@ -28,7 +28,6 @@ We have prepared a set of Illumina data for you, which we are now using for poli
 .. toctree::
  :maxdepth: 1
 
- extract
  mapping
  pilon
  quast
