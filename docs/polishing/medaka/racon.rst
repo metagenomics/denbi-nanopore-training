@@ -145,7 +145,7 @@ Then we can call racon with our mapping, the read file and the assembly file. We
 
   cd ~/workdir/
   mkdir racon
-  racon -t 14 ~/workdir/basecall/basecall_trimmed.fastq.gz ~/workdir/nanopore_mapping/mapping.sorted.sam ~/workdir/assembly/assembly.contigs.fasta > racon/racon.fasta
+  racon -t 14 ~/workdir/basecall/basecall_trimmed.fastq.gz ~/workdir/nanopore_mapping/mapping.sam ~/workdir/assembly/assembly.contigs.fasta > racon/racon.fasta
 
   
 References
