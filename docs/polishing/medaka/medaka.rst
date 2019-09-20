@@ -29,3 +29,9 @@ medaka commandline::
 medaka after racon::
 
   medaka_consensus -i basecall/basecall.fastq.gz -d racon/racon.fasta -o racon_medaka -t 14 -m r941_min_high
+
+
+References
+^^^^^^^^^^
+
+**medaka** https://github.com/nanoporetech/medaka
