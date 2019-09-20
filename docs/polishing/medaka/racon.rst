@@ -93,7 +93,7 @@ We use this default option for our mapping (Note that we need a sam file for rac
 Run racon
 ^^^^^^^^^^^^^^^^^^^^^
 
-Then we can call racon with out mapping and 
+Then we can call racon with our mapping, the read file and the assembly file::
 
   cd ~/workdir/
   mkdir racon
