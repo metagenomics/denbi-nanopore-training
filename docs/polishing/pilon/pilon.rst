@@ -19,6 +19,7 @@ You can repeat this for several rounds like this::
   
   java -Xmx32G -jar ~/pilon-1.22.jar --genome ~/workdir/pilon/pilon_round1.fasta --fix all --changes --frags ~/workdir/illumina_mapping/mapping_pilon1.sorted.bam --threads 14 --output ~/workdir/pilon/pilon_round2 | tee ~/workdir/pilon/round2.pilon
   
+  
   Round3:
   
   bwa index ~/workdir/pilon/pilon_round2.fasta
