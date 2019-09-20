@@ -20,27 +20,24 @@ To look at the BAM file use::
 
   samtools view pilon_round4_sorted.bam | less
   
-We will use a genome browser to look at the mappings. For this, you
-have to 
 
-1. open a terminal window on **your local workstation**
-2. download the BAM file 
-3. start `IGV: Integrative Genomics Viewer <http://www.broadinstitute.org/igv/>`_
+We will use a genome browser to look at the mappings. For this, you have to change java version to java 8::
 
-Download the following files::
+  sudo update-alternatives --config java
 
-  ~/workdir/data/Reference.fna
-  ~/workdir/data/Reference.fna.fai
-  ~/workdir/pilon/pilon_round4_sorted.bam*
+Choose java 8. Then start IGV::
 
-Here ist the command to open the IGV::
-
-  /vol/cmg/bin/igv.sh
+  igv
+  
   
 Now let's look at the mapped contigs:
 
 1. Load the reference genome into IGV. Use the menu ``Genomes->Load Genome from File...`` 
 2. Load the BAM file into IGV. Use menu ``File->Load from File...`` 
+
+Change java back to version 11 when done::
+
+  sudo update-alternatives --config java
 
 References
 ^^^^^^^^^^
