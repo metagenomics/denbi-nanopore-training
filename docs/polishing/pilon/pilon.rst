@@ -34,7 +34,7 @@ You can repeat this for several rounds like this::
 
 You can inspect the ``Pilon_roundX.changes`` file to see if there are changes to the previous round.
 
-We have precomputed some pilon rounds for you. You can copy those rounds from the precomputed Result directory to your workdir::
+In case, you don't want to do these steps for yourself, we have precomputed some pilon rounds for you. You can copy those rounds from the precomputed Result directory to your workdir::
 
   cp -r ~/workdir/results/pilon/pilon_round{2..4}* ~/workdir/pilon/.
 
