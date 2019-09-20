@@ -6,7 +6,7 @@ The multiplex capability and high yield of current day DNA-sequencing instrument
 In order to call prokka, we first need to shorten the name of our largest contig (the genome sequence) because it has gotten quite long due to several pilon rounds. We use a simple shell command to do that::
 
   mkdir Annotation
-  cat ~/workdir/Pilon_after_nanopolish/Pilon_round5.fasta | sed -e 's/>tig.*/>genome_sequence/g' > ~/workdir/Annotation/genome.fasta
+  cat ~/workdir/racon_medaka_pilon/pilon_round4.fasta | sed -e 's/>tig.*/>genome_sequence/g' > ~/workdir/Annotation/genome.fasta
 
 Then we call Prokka with the genome sequence and specify an output directory::
 
