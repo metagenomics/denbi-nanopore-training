@@ -54,6 +54,8 @@ Which you can simply count to get the number of reads in your fast5 file::
     
 In order to inspect what is stored for an individual read, you can specify that read, as if it were a directory using h5ls::
 
+  h5ls data/fast5_tiny/GXB01322_20181217_FAK35493_GA10000_sequencing_run_Run00014_MIN106_RBK004_46674_0.fast5/read_a3d14887-0d45-4ef5-8a20-42af8257053d
+  or (group2):
   h5ls data/fast5_tiny/GXB01322_20181217_FAK35493_GA10000_sequencing_run_Run00014_MIN106_RBK004_46674_0.fast5/read_0061d165-af04-4c39-ad5e-8c4ebe3caa80
   
 Which gives you the groups ("subdirectories") for that Read::
@@ -66,6 +68,8 @@ Which gives you the groups ("subdirectories") for that Read::
   
 Let's assume, we are interested in the raw data of a specific read::
 
+  h5ls data/fast5_tiny/GXB01322_20181217_FAK35493_GA10000_sequencing_run_Run00014_MIN106_RBK004_46674_0.fast5/read_a3d14887-0d45-4ef5-8a20-42af8257053d/Raw
+  or (group2):
   h5ls data/fast5_tiny/GXB01322_20181217_FAK35493_GA10000_sequencing_run_Run00014_MIN106_RBK004_46674_0.fast5/read_0061d165-af04-4c39-ad5e-8c4ebe3caa80/Raw
   
 The output is::
@@ -74,7 +78,9 @@ The output is::
   
 So we have reached the actual raw data (indicated by "Dataset"). To view a dataset, h5ls has a '-d' option::
 
-  h5ls -d data/fast5_tiny/GXB01322_20181217_FAK35493_GA10000_sequencing_run_Run00014_MIN106_RBK004_46674_0.fast5/read_0061d165-af04-4c39-ad5e-8c4ebe3caa80/Raw/Signal
+  h5ls data/fast5_tiny/GXB01322_20181217_FAK35493_GA10000_sequencing_run_Run00014_MIN106_RBK004_46674_0.fast5/read_a3d14887-0d45-4ef5-8a20-42af8257053d/Raw/Signal
+  or (group2):
+  h5ls data/fast5_tiny/GXB01322_20181217_FAK35493_GA10000_sequencing_run_Run00014_MIN106_RBK004_46674_0.fast5/read_0061d165-af04-4c39-ad5e-8c4ebe3caa80/Raw/Signal
   
 Which will give you the raw signal of that specific read::
 
