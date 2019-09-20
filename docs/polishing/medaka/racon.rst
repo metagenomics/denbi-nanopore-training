@@ -89,6 +89,10 @@ We use this default option for our mapping (Note that we need a sam file for rac
   mkdir nanopore_mapping
   bwa mem -t 14 -x ont2d ~/workdir/assembly/assembly.contigs.fasta ~/workdir/basecall/basecall_trimmed.fastq.gz > ~/workdir/nanopore_mapping/mapping.sam
 
+
+Run racon
+^^^^^^^^^^^^^^^^^^^^^
+
 Then we can call racon with out mapping and 
 
   cd ~/workdir/
