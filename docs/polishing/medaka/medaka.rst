@@ -1,7 +1,9 @@
 Polishing with medaka
 -----------------------
 
-medaka is a tool to create a consensus sequence of nanopore sequencing data. This task is performed using neural networks applied a pileup of individual sequencing reads against a draft assembly. It outperforms graph-based methods operating on basecalled data, and can be competitive with state-of-the-art signal-based methods whilst being much faster.
+Medaka is a tool to create a consensus sequence of nanopore sequencing data. This task is performed using neural networks applied a pileup of individual sequencing reads against a draft assembly. It outperforms graph-based methods operating on basecalled data, and can be competitive with state-of-the-art signal-based methods whilst being much faster.
+
+In earlier courses, we used nanopolish for polishing but it is outperformed by medaka in both runtime and accuracy.
 
 As input medaka accepts reads in either a .fasta or a .fastq file. It requires a draft assembly as a .fasta.
 
