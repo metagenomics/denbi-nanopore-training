@@ -8,17 +8,17 @@ We will re-use the index we generated earlier for the reference.
 Now that we have an index, we can map the assembly to the reference,
 convert the output to SAM and finally to BAM format::
 
-  cd ~/workdir/Pilon
-  lastal ~/workdir/last_1st_assembly/CXERO_10272017.db ~/workdir/Pilon/Pilon_round4.fasta > Pilon_round4.maf
-  maf-convert sam Pilon_round4.maf > Pilon_round4.sam
-  samtools faidx ~/workdir/Data/Reference/CXERO_10272017.fna
-  samtools view -bT ~/workdir/Data/Reference/CXERO_10272017.fna Pilon_round4.sam > Pilon_round4.bam
-  samtools sort -o Pilon_round4_sorted.bam Pilon_round4.bam
-  samtools index Pilon_round4_sorted.bam
+  cd ~/workdir/pilon
+  lastal ~/workdir/last_1st_assembly/Reference.db ~/workdir/pilon/pilon_round4.fasta > pilon_round4.maf
+  maf-convert sam pilon_round4.maf > pilon_round4.sam
+  samtools faidx ~/workdir/data/Reference.fna
+  samtools view -bT ~/workdir/data/Reference.fna pilon_round4.sam > pilon_round4.bam
+  samtools sort -o pilon_round4_sorted.bam pilon_round4.bam
+  samtools index pilon_round4_sorted.bam
   
 To look at the BAM file use::
 
-  samtools view Pilon_round4_sorted.bam | less
+  samtools view pilon_round4_sorted.bam | less
   
 We will use a genome browser to look at the mappings. For this, you
 have to 
@@ -29,9 +29,9 @@ have to
 
 Download the following files::
 
-  ~/workdir/Data/Reference/CXERO_10272017.fna
-  ~/workdir/Data/Reference/CXERO_10272017.fna.fai
-  ~/workdir/Pilon/Pilon_round4_sorted.bam*
+  ~/workdir/data/Reference.fna
+  ~/workdir/data/Reference.fna.fai
+  ~/workdir/pilon/pilon_round4_sorted.bam*
 
 Here ist the command to open the IGV::
 
