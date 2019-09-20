@@ -120,6 +120,13 @@ After that is done, inspect the results. We can get a quick view on the number o
 
   grep '>' ~/workdir/assembly_small/assembly.contigs.fasta
 
+If there is time, we start the actual assembly with all data now::
+
+  Group 1:
+  canu -d ~/workdir/assembly -p assembly "genomeSize=4.3M" useGrid=false -nanopore-raw ~/workdir/basecall/basecall_trimmed.fastq.gz
+  Group 2:
+  canu -d ~/workdir/assembly -p assembly "genomeSize=6.8M" useGrid=false -nanopore-raw ~/workdir/basecall/basecall_trimmed.fastq.gz
+
 Copy the precomputed assembly with the complete dataset into your working directory::
 
   cp -r ~/workdir/results/assembly/ ~/workdir/
