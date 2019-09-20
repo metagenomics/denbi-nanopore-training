@@ -10,6 +10,10 @@ Racon takes as input only three files: contigs in FASTA/FASTQ format, reads in F
 
 We are going to use racon to do an initial correction. It is advised to do one or two rounds with racon before polishing with medaka.
 
+Mapping of Nanopore reads to the assembly
+^^^^^^^^^^^^^^^^^^^^^
+
+In order to use racon, we need a mapping of the reads to assembly. We use bwa for this task.
 
 First we need to create an index on our assembly, this has already been done for the pilon polishing::
   
