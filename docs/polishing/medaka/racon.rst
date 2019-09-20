@@ -145,8 +145,13 @@ Then we can call racon with our mapping, the read file and the assembly file. We
 
   cd ~/workdir/
   mkdir racon
-  racon -t 14 ~/workdir/basecall/basecall_trimmed.fastq.gz ~/workdir/nanopore_mapping/mapping.sam ~/workdir/assembly/assembly.contigs.fasta > racon/racon.fasta
+  racon -m 8 -x -6 -g -8 -w 500 -t 14 ~/workdir/basecall/basecall_trimmed.fastq.gz ~/workdir/nanopore_mapping/mapping.sam ~/workdir/assembly/assembly.contigs.fasta > racon/racon.fasta
+  
+The options::
 
+  -m 8 -x -6 -g -8 -w 500
+  
+are used, because they were also used for the training of medaka and we want to have similar error profiles of the draft. 
   
 References
 ^^^^^^^^^^
