@@ -1,7 +1,7 @@
 Further polishing with pilon
 ----------------------------
 
-Before we have a look on the results, we will further polish with pilon.
+We will further polish with pilon.
 
 
 As usual, we need to map the data to the assembly and run several pilon rounds::
