@@ -8,7 +8,7 @@ Racon can be used as a polishing tool after the assembly with either Illumina da
 Racon takes as input only three files: contigs in FASTA/FASTQ format, reads in FASTA/FASTQ format and overlaps/alignments between the reads and the contigs in MHAP/PAF/SAM format. Output is a set of polished contigs in FASTA format printed to stdout. All input files can be compressed with gzip (which will have impact on parsing time).
 
 
-We are going to use racon to do an initial correction. It is advised to do one or two rounds with racon before polishing with medaka.
+We are going to use racon to do an initial correction. The medaka documentation advises to do four rounds with racon before polishing with medaka since medaka has been trained with racon polished assemblies. We are only doing one round here.
 
 Mapping of Nanopore reads to the assembly
 ^^^^^^^^^^^^^^^^^^^^^
