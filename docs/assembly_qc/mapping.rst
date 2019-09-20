@@ -54,21 +54,23 @@ To look at the BAM file use::
 
   samtools view canu_1st_Assembly_sorted.bam | less
   
-We will use a genome browser to look at the mappings. For this, you
-have to 
+We will use a genome browser to look at the mappings. For this, you have to change java version to java 8::
 
-1. open a terminal window on **your local workstation**
-2. download the BAM file 
-3. start `IGV: Integrative Genomics Viewer <http://www.broadinstitute.org/igv/>`_
+  sudo update-alternatives --config java
 
-To open the IGV **your local workstation** just type::
+Choose java 8. Then start IGV::
 
-  /vol/cmg/bin/igv.sh
+  igv
   
 Now let's look at the mapped contigs:
 
 1. Load the reference genome into IGV. Use the menu ``Genomes->Load Genome from File...`` 
 2. Load the BAM file into IGV. Use menu ``File->Load from File...`` 
+
+Change java version back to Java 11::
+
+  sudo update-alternatives --config java
+
 
 References
 ^^^^^^^^^^
