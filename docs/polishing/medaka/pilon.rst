@@ -27,7 +27,6 @@ As usual, we need to map the data to the assembly and run several pilon rounds::
   samtools index ~/workdir/illumina_mapping_consensus/mapping_pilon2.sorted.bam
   java -Xmx32G -jar ~/pilon-1.22.jar --genome ~/workdir/racon_medaka_pilon/pilon_round2.fasta --fix all --changes --frags illumina_mapping_consensus/mapping_pilon2.sorted.bam --threads 14 --output racon_medaka_pilon/pilon_round3 | tee racon_medaka_pilon/round3.pilon
   
-  
   Round 4:
   
   bwa mem -t 14 ~/workdir/racon_medaka_pilon/pilon_round3.fasta ~/workdir/data/illumina/Illumina_R1.fastq.gz ~/workdir/data/illumina/Illumina_R2.fastq.gz | samtools view - -Sb | samtools sort - -@14 -o ~/workdir/illumina_mapping_consensus/mapping_pilon3.sorted.bam
