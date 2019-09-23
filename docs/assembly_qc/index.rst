@@ -8,6 +8,6 @@ We are going to create an assembly with canu and evaluate it with a mapping to t
    :maxdepth: 1
 
    assembly
-   bandage
    quast
+   bandage
    mapping
