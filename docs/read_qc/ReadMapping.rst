@@ -139,8 +139,8 @@ First, we convert the SAM files into BAM format and sort them::
 
 Then we can run **qualimap** on those BAM files now::
   
-  qualimap bamqc -bam ~/workdir/map_to_ref/nanopore.graphmap.sorted.bam -nw 5000 -nt 14 -outdir ~/workdir/map_to_ref/nanopore.graphmap
-  qualimap bamqc -bam ~/workdir/map_to_ref/illumina.bwa.sorted.bam -nw 5000 -nt 14 -outdir ~/workdir/map_to_ref/illumina.graphmap
+  qualimap bamqc -bam ~/workdir/map_to_ref/nanopore.graphmap.sorted.bam -nw 5000 -nt 14 -c -outdir ~/workdir/map_to_ref/nanopore.graphmap
+  qualimap bamqc -bam ~/workdir/map_to_ref/illumina.bwa.sorted.bam -nw 5000 -nt 14 -c -outdir ~/workdir/map_to_ref/illumina.graphmap
 
 Qualimap can also be run interactively.
 
