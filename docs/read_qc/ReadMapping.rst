@@ -106,7 +106,7 @@ We now use graphmap to align the different read sets to the reference, starting 
 
   cd ~/workdir
   mkdir ~/workdir/map_to_ref
-  graphmap align -r ~/workdir/data/Reference.fna -t 14 -c -d ~/workdir/basecall/basecall.fastq.gz -o ~/workdir/map_to_ref/nanopore.graphmap.sam >  ~/workdir/map_to_ref/nanopore.graphmap.sam.log 2>&1 
+  graphmap align -r ~/workdir/data/Reference.fna -t 14 -C -d ~/workdir/basecall/basecall.fastq.gz -o ~/workdir/map_to_ref/nanopore.graphmap.sam >  ~/workdir/map_to_ref/nanopore.graphmap.sam.log 2>&1 
   
 For the illumina reads we will use another aligner, as this one is more suited for this kind of data. But before we can do so, we need to create an index structure on the reference::
   
