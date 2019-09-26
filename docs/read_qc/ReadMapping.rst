@@ -134,8 +134,8 @@ To get a more in depth info on the actual accuracy of the data at hand, includin
 First, we convert the SAM files into BAM format and sort them::
 
   cd ~/workdir
-  samtools view -@ 4 -bS  ~/workdir/map_to_ref/nanopore.graphmap.sam | samtools sort - -@ 8 -m 2G -o ~/workdir/map_to_ref/nanopore.graphmap.sorted.bam
-  samtools view -@ 4 -bS ~/workdir/map_to_ref/illumina.bwa.sam | samtools sort - -@ 8 -m 2G -o ~/workdir/map_to_ref/illumina.bwa.sorted.bam
+  samtools view -@ 4 -bS  ~/workdir/map_to_ref/nanopore.graphmap.sam | samtools sort - -@ 8 -o ~/workdir/map_to_ref/nanopore.graphmap.sorted.bam
+  samtools view -@ 4 -bS ~/workdir/map_to_ref/illumina.bwa.sam | samtools sort - -@ 8 -o ~/workdir/map_to_ref/illumina.bwa.sorted.bam
 
 Then we can run **qualimap** on those BAM files now::
   
