@@ -146,7 +146,7 @@ So here, the following adapters were found and trimmed::
              BC06: TTCTCGCAAAGGCAGAAAGTAGTC
          BC06_rev: GACTACTTTCTGCCTTTGCGAGAA
 
-Too see how many reads were trimmed, grep for reads::
+To see how many reads were trimmed, grep for reads::
 
   grep reads porechop.log
   
