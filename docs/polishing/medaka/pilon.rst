@@ -38,7 +38,7 @@ As usual, we need to map the data to the assembly and run several pilon rounds::
 
 We have also precomputed the polishing for you, if we are short on time::
 
-  cp -r ~/workdir/racon_medaka_pilon/ ~/workdir/
+  cp -r ~/workdir/results/racon_medaka_pilon/ ~/workdir/
 
 References
 ^^^^^^^^^^
