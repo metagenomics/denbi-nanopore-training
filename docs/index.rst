@@ -15,4 +15,5 @@ Welcome to the three-day nanopore Hands-On training course. This tutorial will g
    assembly_qc/index
    polishing/index
    annotation/index
+   artic/index
 
