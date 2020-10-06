@@ -9,10 +9,16 @@ Enter the IP of your virtual machine, the port, the username "ubuntu" and select
 As you have started the VM with a volume attached, this volume needs to be given to the ubuntu user for easy access::
 
   sudo chown ubuntu:ubuntu /mnt/volume/
+
+When using an ephemeral drive, the "volume" is in /mnt/. Make it owned by the ubuntu user::
+
+  sudo chown ubuntu:ubuntu /mnt/
   
 Create a link in your home directory to the mounted volume::
 
   ln -s /mnt/volume/ workdir 
+  or (ephemeral drive):
+  ln -s /mnt/ workdir
 
 The tutorial dataset is located in our object store. We have also prepared some precomputed results.You can get both here (Group 1)::
 
