@@ -1,6 +1,9 @@
 MinIONQC
-------
-Developed by Rob Lanfear::
+--------
+
+First of all, we will use MinIONQC to quality control our data.
+
+MinIONQC is developed by Rob Lanfear::
 
   R Lanfear, M Schalamun, D Kainer, W Wang, B Schwessinger; MinIONQC: fast and simple quality control for MinION sequencing data, Bioinformatics, , bty654, https://doi.org/10.1093/bioinformatics/bty654
 
