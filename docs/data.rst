@@ -1,37 +1,24 @@
-The Tutorial Data Set
+The Tutorial Data Sets
 ================================
 
-The first thing you need to do is to connect to your virtual machine with the X2Go Client. If you are working with your laptop and haven't installed it yet - you can get it here:
-https://wiki.x2go.org/doku.php/download:start
 
-Enter the IP of your virtual machine, the port, the username "ubuntu" and select your ssh key. When you have successfully connected to your machine, open a terminal.
+We have two tutorial datasets prepared for you. 
+One is a SARS-Cov2 WGS dataset from a patient in Hongkong. We will use that sample for the assembly part of the tutorial. The dataset can also be found in the SRA:
+https://www.ncbi.nlm.nih.gov/sra/SRX8154258
 
-As you have started the VM with a volume attached, this volume needs to be given to the ubuntu user for easy access::
+The other one is our own amplicon based dataset created with ARTIC primers from an outbreak in Guetersloh/Germany. Since we don't have the raw data for the SRA dataset, we will start with the basecalling for our dataset. 
 
-  sudo chown ubuntu:ubuntu /mnt/volume/
 
-When using an ephemeral drive, the "volume" is in /mnt/. Make it owned by the ubuntu user::
+The tutorial dataset is located in our object store. First create a data folder, then download the dataset::
 
-  sudo chown ubuntu:ubuntu /mnt/
+  cd ~/workdir
+  mkdir data_artic
+  cd data_artic
+  TODO: Download data from object store 
+
+
+TODO: modify rest down here
   
-Create a link in your home directory to the mounted volume::
-
-  ln -s /mnt/volume/ workdir 
-  or (ephemeral drive):
-  ln -s /mnt/ workdir
-
-The tutorial dataset is located in our object store. We have also prepared some precomputed results.You can get both here (Group 1)::
-
-  cd ~/workdir
-  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/nanopore_course_data/Data_Group1.tar.gz
-  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/nanopore_course_data/Results_Group1.tar.gz
-
-... and for Group 2::
-
-  cd ~/workdir
-  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/nanopore_course_data/Data_Group2.tar.gz
-  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/nanopore_course_data/Results_Group2.tar.gz
-
 Then, unpack the tar archive::
 
   tar -xzvf Data_Group1.tar.gz
@@ -61,7 +48,3 @@ Have a short look, on what is contained within the data directory::
   drwxr-xr-x 2 ubuntu ubuntu    4096 Aug 30 08:36 illumina
 
 There are three folders with Nanopore fast5 data, a Reference genome for later comparisons and some illumina data.
-
-If you want to disable system beep sounds::
-
-  xset -b
