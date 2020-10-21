@@ -43,5 +43,5 @@ And finally, create a link in your home directory to the mounted volume::
 
 Enter the workdir::
 
-  cd workdir
+  cd ~/workdir
   
