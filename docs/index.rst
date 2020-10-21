@@ -8,6 +8,7 @@ Welcome to the three-day nanopore Hands-On training course. This tutorial will g
 .. toctree::
    :maxdepth: 2
    
+   connect
    data
    basecalling/index
    read_qc/index
