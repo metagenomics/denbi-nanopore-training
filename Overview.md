@@ -36,6 +36,7 @@ Readthedocs??
 - Exercise: start canu with ARTIC dataset
 - Inspect results
 - (optional) Exercise: Map contigs to reference and inspect in IGV/Genomeview
+- Notice, that it didn't work well... -> use other dataset for assembly
 
 ### Read QC WGS dataset
 - Download WGS dataset
