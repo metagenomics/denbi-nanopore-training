@@ -59,7 +59,9 @@ Readthedocs??
 ### ARTIC dataset
 - Exercise: Read filtering
 - Exercise: Run ARTIC pipeline (medaka and nanopolish?)
+- Exercise: Run ARTIC pipeline for all barcodes
 - Evaluation: quast? IGV? ...
+- Load results in nextstrain / phylogenetic tree
 
 ### Bonus?
 Provide old course data and Exercises?
