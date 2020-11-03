@@ -8,28 +8,28 @@ Early downstream analysis components such as barcoding/demultiplexing, adapter t
 
 The command we are using for for basecalling with Guppy is::
 
-  guppy_basecaller
+  guppy_basecaller_cpu
   
 
 Let's have a look at the usage message for read_fast5_basecaller.py::
 
-  guppy_basecaller --help
+  guppy_basecaller_cpu --help
   
   : Guppy Basecalling Software, (C) Oxford Nanopore Technologies, Limited. Version 3.1.5+781ed57
 
   Usage:
 
   With config file:
-    guppy_basecaller -i <input path> -s <save path> -c <config file> [options]
+    guppy_basecaller_cpu -i <input path> -s <save path> -c <config file> [options]
   With flowcell and kit name:
-    guppy_basecaller -i <input path> -s <save path> --flowcell <flowcell name>
+    guppy_basecaller_cpu -i <input path> -s <save path> --flowcell <flowcell name>
       --kit <kit name>
   List supported flowcells and kits:
-    guppy_basecaller --print_workflows
+    guppy_basecaller_cpu --print_workflows
 
 Beside the path of our fast5 files (-i), the basecaller requires an output path (-s) and a config file or the flowcell/kit combination. In order to get a list of possible flowcell/kit combinations and config files, we use::
 
-  guppy_basecaller --print_workflows
+  guppy_basecaller_cpu --print_workflows
   
   Available flowcell + kit combinations are:
   flowcell   kit        barcoding config_name
@@ -168,7 +168,7 @@ We need to specify the following options:
 
 Our complete command line is::
 
-  guppy_basecaller --compress_fastq -i ~/workdir/data/fast5_tiny/ -s ~/workdir/basecall_tiny/ --cpu_threads_per_caller 14 --num_callers 1 -c dna_r9.4.1_450bps_hac.cfg
+  guppy_basecaller_cpu --compress_fastq -i ~/workdir/data/fast5_tiny/ -s ~/workdir/basecall_tiny/ --cpu_threads_per_caller 14 --num_callers 1 -c dna_r9.4.1_450bps_hac.cfg
  
 References
 ^^^^^^^^^^
