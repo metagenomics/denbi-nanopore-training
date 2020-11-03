@@ -34,3 +34,13 @@ Have a short look, on what is contained within the barcode directory::
 
   ls -l ~/workdir/data_artic/barcode01
 
+There are a number of fast5 files::
+
+  total 33703024
+  -rw-rw-r-- 1 ubuntu ubuntu 85000469 Apr  9  2020 FAN22359_pass_barcode01_ca07d29b_0.fast5
+  -rw-rw-r-- 1 ubuntu ubuntu 85265241 Apr  9  2020 FAN22359_pass_barcode01_ca07d29b_1.fast5
+  -rw-rw-r-- 1 ubuntu ubuntu 85383688 Apr  9  2020 FAN22359_pass_barcode01_ca07d29b_10.fast5
+  -rw-rw-r-- 1 ubuntu ubuntu 86318724 Apr  9  2020 FAN22359_pass_barcode01_ca07d29b_100.fast5
+  -rw-rw-r-- 1 ubuntu ubuntu 86630435 Apr  9  2020 FAN22359_pass_barcode01_ca07d29b_101.fast5
+  -rw-rw-r-- 1 ubuntu ubuntu 86527663 Apr  9  2020 FAN22359_pass_barcode01_ca07d29b_102.fast5
+  -rw-rw-r-- 1 ubuntu ubuntu 86645812 Apr  9  2020 FAN22359_pass_barcode01_ca07d29b_103.fast5
