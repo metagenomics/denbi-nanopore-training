@@ -10,16 +10,20 @@ The HDF5 tools can be used to display contents of HDF5 files. We will use two of
   
 In order to get the complete content of a fast5 in readable form, you can use::
 
-  h5dump data/fast5_tiny/GXB01322_20181217_FAK35493_GA10000_sequencing_run_Run00014_MIN106_RBK004_46674_0.fast5 | more
+  h5dump <path to one of your fast5 files>
 
-Inspect the output. The file starts with a root group::
+Inspect the output, you could redirect the quite long output to less or more::
+
+  h5dump <path to one of your fast5 files> | less
+
+The file starts with a root group::
   
   GROUP "/" {
   [...]
   
 followed by the first read::
   
-  GROUP "read_0061d165-af04-4c39-ad5e-8c4ebe3caa80" {
+  GROUP "read_0001fc5e-e2b8-47aa-a20d-6b950611417b" {
   [...]
   
 at some point, the actual data is stored as a dataset::
