@@ -8,43 +8,29 @@ https://www.ncbi.nlm.nih.gov/sra/SRX8154258
 
 The other one is our own amplicon based dataset created with ARTIC primers from an outbreak in Guetersloh/Germany. Since we don't have the raw data for the SRA dataset, we will start with the basecalling for our dataset. 
 
-
-The tutorial dataset is located in our object store. First create a data folder, then download the dataset::
+The tutorial dataset is located in our object store. First create a data folder, and enter it::
 
   cd ~/workdir
   mkdir data_artic
   cd data_artic
-  TODO: Download data from object store 
-
-
-TODO: modify rest down here
   
-Then, unpack the tar archive::
+We have 5 different barcodes available, download 3 of them (use 3 of the commands below)::
 
-  tar -xzvf Data_Group1.tar.gz
-  tar -xzvf Results_Group1.tar.gz
+  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/barcode01.tar.gz
+  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/barcode02.tar.gz
+  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/barcode03.tar.gz
+  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/barcode04.tar.gz
+  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/barcode05.tar.gz
 
-  or
-  
-  tar -xzvf Data_Group2.tar.gz
-  tar -xzvf Results_Group2.tar.gz
+Then, unpack the tar archives::
+
+  tar -xzvf barcode0*.tar.gz
 
 and remove the tar archives::
 
-  rm Data_Group1.tar.gz
-  rm Results_Group1.tar.gz
-  or
-  rm Data_Group2.tar.gz
-  rm Results_Group2.tar.gz
-  
+  rm barcode0*.tar.gz  
 
-Have a short look, on what is contained within the data directory::
+Have a short look, on what is contained within the barcode directory::
 
-  ls -l ~/workdir/data/
-  -rw-r--r-- 1 ubuntu ubuntu 4372654 Aug 30 08:24 Reference.fna
-  drwxr-xr-x 2 ubuntu ubuntu   24576 Aug 30 08:24 fast5
-  drwxrwxr-x 2 ubuntu ubuntu    4096 Sep  5 07:23 fast5_small
-  drwxrwxr-x 2 ubuntu ubuntu    4096 Sep 12 08:01 fast5_tiny
-  drwxr-xr-x 2 ubuntu ubuntu    4096 Aug 30 08:36 illumina
+  ls -l ~/workdir/data_artic/barcode01
 
-There are three folders with Nanopore fast5 data, a Reference genome for later comparisons and some illumina data.
