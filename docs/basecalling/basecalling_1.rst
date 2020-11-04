@@ -230,31 +230,4 @@ Beside the path of our fast5 files (-i), the basecaller requires an output path 
 
 Our dataset was generated using the FLO-MIN106 flowcell, and the LSK109 kit, so we can use the dna_r9.4.1_450bps_hac model.
 
-We need to specify the following options:
-
-+------------------------------------------------------------------------+-------------------------+--------------------------------+
-| What?                                                                  | parameter               | Our value                      |
-+========================================================================+=========================+================================+
-| The config file for our flowcell/kit combination                       | -c                      | dna_r9.4.1_450bps_hac_model.cfg|
-+------------------------------------------------------------------------+-------------------------+--------------------------------+ 
-| Compress the fastq output                                              | --compress_fastq                                         |
-+------------------------------------------------------------------------+-------------------------+--------------------------------+
-| The full path to the directory where the raw read files are located    | -i                      | ~/workdir/data/fast5_small     |
-+------------------------------------------------------------------------+-------------------------+--------------------------------+
-| The full path to the directory where the basecalled files will be saved| -s                      | ~/workdir/basecall_small/      |
-+------------------------------------------------------------------------+-------------------------+--------------------------------+
-| How many worker threads you are using                                  | --cpu_threads_per_caller| 14                             |
-+------------------------------------------------------------------------+-------------------------+--------------------------------+
-| Number of parallel basecallers to create                               | --num_callers           | 1                              |
-+------------------------------------------------------------------------+-------------------------+--------------------------------+
-
-
-Our complete command line is::
-
-  guppy_basecaller_cpu --compress_fastq -i ~/workdir/data/fast5_tiny/ -s ~/workdir/basecall_tiny/ --cpu_threads_per_caller 14 --num_callers 1 -c dna_r9.4.1_450bps_hac.cfg
- 
-References
-^^^^^^^^^^
-
-**guppy** https://nanoporetech.com/
 
