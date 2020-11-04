@@ -14,13 +14,14 @@ The tutorial dataset is located in our object store. First create a data folder,
   mkdir data_artic
   cd data_artic
   
-We have 5 different barcodes available, download 3 of them (use 3 of the commands below)::
+We have 5 different barcodes available. The datasets are highly reduced in order to achieve reasonable runtimes. Download 3 of them (use 3 of the commands below)::
 
-  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/barcode01.tar.gz
-  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/barcode02.tar.gz
-  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/barcode03.tar.gz
-  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/barcode04.tar.gz
-  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/barcode05.tar.gz
+  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/barcode_tiny_01.tar.gz
+  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/barcode_tiny_02.tar.gz
+  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/barcode_tiny_03.tar.gz
+  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/barcode_tiny_04.tar.gz
+  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/barcode_tiny_05.tar.gz
+
 
 Then, unpack the tar archives::
 
@@ -32,9 +33,9 @@ and remove the tar archives::
 
 Have a short look, on what is contained within the barcode directory::
 
-  ls -l ~/workdir/data_artic/barcode01
+  ls -l ~/workdir/data_artic/barcode_tiny_01
 
-There are a number of fast5 files::
+There is only one fast5 file contained in the tiny dataset, usually you have a number of fast5 files like this::
 
   total 33703024
   -rw-rw-r-- 1 ubuntu ubuntu 85000469 Apr  9  2020 FAN22359_pass_barcode01_ca07d29b_0.fast5
