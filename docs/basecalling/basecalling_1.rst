@@ -11,7 +11,7 @@ The command we are using for for basecalling with Guppy is::
   guppy_basecaller_cpu
   
 
-Let's have a look at the usage message for read_fast5_basecaller.py::
+Let's have a look at the usage message for guppy_basecaller_cpu::
 
   guppy_basecaller_cpu --help
   
@@ -228,7 +228,9 @@ Beside the path of our fast5 files (-i), the basecaller requires an output path 
   
 
 
-Our dataset was generated using the FLO-MIN106 flowcell, and the LSK109 kit, so we can use the dna_r9.4.1_450bps_hac model.
+Our dataset was generated using the FLO-MIN106 flowcell, and the LSK109 kit, so we can use the dna_r9.4.1_450bps_hac model. 
+
+**Note:** You need to add ".cfg" to the model name in the command line or the basecaller exits with an error because the .cfg could not be found.
 
 Try to get the basecalling running, use the following optional arguments::
 
@@ -236,7 +238,7 @@ Try to get the basecalling running, use the following optional arguments::
   --num_callers arg                 Number of parallel basecallers to create.
   --cpu_threads_per_caller arg      Number of CPU worker threads per basecaller.
 
-Note that you have 14 CPUs in your virtual machine. The number of callers multiplied with the number of CPU threads per caller should not exceed 14. 
+**Important:** You have 14 CPUs in your virtual machine. The number of callers multiplied with the number of CPU threads per caller should not exceed 14. 
 
 If you are stuck, you can skip to the next page and get help with the command.
 
