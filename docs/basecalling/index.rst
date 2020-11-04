@@ -7,7 +7,8 @@ We will perform a basecalling of the raw data with guppy.
    :maxdepth: 1
 
    inspect_h5
-   basecalling
+   basecalling_1
+   basecalling_2
    inspect
    copy
    merge
