@@ -228,7 +228,7 @@ Beside the path of our fast5 files (-i), the basecaller requires an output path 
   
 
 
-Our dataset was generated using the FLO-MIN106 flowcell, and the LSK109 kit, so we can use the dna_r9.4.1_450bps_hac model. 
+Our dataset was generated using the FLO-MIN106 flowcell, and the LSK109 kit, pick the appropriate model.
 
 **Note:** You need to add ".cfg" to the model name in the command line or the basecaller exits with an error because the .cfg could not be found.
 
