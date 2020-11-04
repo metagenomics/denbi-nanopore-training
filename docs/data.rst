@@ -33,7 +33,7 @@ and remove the tar archives::
 
 Have a short look, on what is contained within the barcode directory::
 
-  ls -l ~/workdir/data_artic/barcode_tiny_01/02/03/04/05
+  ls -l ~/workdir/data_artic/barcode_tiny_<number>
 
 There is only one fast5 file contained in the tiny dataset, usually you have a number of fast5 files like this::
 
