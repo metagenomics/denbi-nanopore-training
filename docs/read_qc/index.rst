@@ -6,6 +6,8 @@ In the following, we will assess the data quality by looking at the sequencing e
 .. toctree::
    :maxdepth: 1
 
-   MinionQC
-   FastQC
+   MinionQC_1
+   MinionQC_2
+   FastQC_1
+   FastQC_2
    ReadMapping
