@@ -21,8 +21,8 @@ In order to get the number of reads in our fastq file, we can count the number o
   
 And to get the number of bases::
 
-   zcat ~/workdir/data_artic/basecall_tiny_<number>.fastq.gz | paste - - - - | cut -f 2 | tr '\n' | wc -c
+   zcat ~/workdir/data_artic/basecall_tiny_<number>.fastq.gz | paste - - - - | cut -f 2 | tr -d '\n' | wc -c
 
 With a genome size of ~30k we get a coverage of::
 
-   zcat ~/workdir/data_artic/basecall_tiny_<number>.fastq.gz | paste - - - - | cut -f 2 | tr '\n' | wc -c | awk '{print $1/30000}'
+   zcat ~/workdir/data_artic/basecall_tiny_<number>.fastq.gz | paste - - - - | cut -f 2 | tr -d '\n' | wc -c | awk '{print $1/30000}'
