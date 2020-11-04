@@ -35,7 +35,7 @@ Have a short look, on what is contained within the barcode directory::
 
   ls -l ~/workdir/data_artic/barcode_tiny_<number>
   
-*Note: From now on, we use the placeholder "<number>" for the number of the dataset, exchange that number accordingly in the example command lines.
+**Note: From now on, we use the placeholder "<number>" for the number of the dataset, exchange that number accordingly in the example command lines.**
 
 There is only one fast5 file contained in the tiny dataset, usually you have a number of fast5 files like this::
 
