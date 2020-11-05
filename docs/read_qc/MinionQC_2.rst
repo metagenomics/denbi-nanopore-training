@@ -1,4 +1,4 @@
-MinIONQC
+MinIONQC(2)
 --------
 
 
