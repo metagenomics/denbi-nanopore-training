@@ -38,4 +38,9 @@ Options:
 	-s SMALLFIGURES, --smallfigures=SMALLFIGURES
 		TRUE or FALSE (the default). When true, MinIONQC will output smaller figures, e.g. suitable for publications or presentations. The default is to produce larger figures optimised for display on screen. Some figures just require small text, and cannot be effectively resized.
 
+Run MinionQC to get some statistics for your data. The output directory should be::
+
+  ~/workdir/data_artic/MinionQC/
+  
+If you are stuck, go to the next page for help with the command.
 
