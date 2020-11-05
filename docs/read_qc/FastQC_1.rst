@@ -9,7 +9,7 @@ We have prepared some Illumina data for comparison with Nanopore data for you. G
   cd ~/workdir
   wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/Illumina.tar.gz
 
-Then unpack and remove the tar file:;
+Then unpack and remove the tar file::
 
   cd ~/workdir/
   tar -xzvf Illumina.tar.gz
@@ -124,9 +124,22 @@ See the `FastQC home page <http://www.bioinformatics.babraham.ac.uk/projects/fas
 QA with FastQC
 ^^^^^^^^^^^^^^
 
-Your task is to run FastQC on the Illumina data and on one of your basecalled samples.
+Your task is to run FastQC on the Illumina data and on your basecalled samples. Create a new directory for the results::
 
+  mkdir ~/workdir/fastqc
   
+The results should be stored in::
+
+  ~/workdir/fastqc/illumina/
+
+and::
+
+  ~/workdir/fastqc/basecall_tiny_<number>
+
+
+If you are stuck, go to the next page to get further help.
+
+
 References
 ^^^^^^^^^^
 
