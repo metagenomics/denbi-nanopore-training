@@ -40,7 +40,7 @@ Options:
 
 Run MinionQC to get some statistics for your data. The output directory should be::
 
-  ~/workdir/data_artic/MinionQC/
+  ~/workdir/data_artic/MinIONQC/
   
 If you are stuck, go to the next page for help with the command.
 
