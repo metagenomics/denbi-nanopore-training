@@ -10,4 +10,7 @@ In the following, we will assess the data quality by looking at the sequencing e
    MinionQC_2
    FastQC_1
    FastQC_2
-   ReadMapping
+   Porechop_1
+   Porechop_2
+   ReadMapping_1
+   ReadMapping_2
