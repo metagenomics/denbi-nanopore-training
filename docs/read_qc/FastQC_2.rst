@@ -1,4 +1,4 @@
-FastQC
+FastQC(2)
 ------
 
 FastQC aims to provide a simple way to do some quality control checks
