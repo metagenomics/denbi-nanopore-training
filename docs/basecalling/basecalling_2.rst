@@ -27,6 +27,9 @@ Our complete command line using these parameters is::
   guppy_basecaller_cpu --compress_fastq -i  ~/workdir/data_artic/barcode_tiny_<number>/ -s ~/workdir/data_artic/basecall_tiny_<number>/ --cpu_threads_per_caller 14 --num_callers 1 -c dna_r9.4.1_450bps_hac.cfg
  
  
+ 
+**Repeat the basecalling for the remaining samples.**
+ 
 References
 ^^^^^^^^^^
 
