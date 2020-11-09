@@ -68,38 +68,18 @@ Porechop is a tool for finding and removing adapters from Oxford Nanopore reads.
     --version                             Show program's version number and exit
 
 
-  cd ~/workdir
-  porechop -i ~/workdir/basecall/basecall.fastq.gz -t 14 -v 2 -o ~/workdir/basecall/basecall_trimmed.fastq.gz > porechop.log
+Use **porechop** on the basecalled dataset (basecall_tiny_<number>.fastq.gz). The results shoud be stored as::
 
-Let's inspect the log file::
+  ~/workdir/data_artic/basecall_tiny_porechopped_<number>.fastq.gz
 
-  more porechop.log 
+Also use the following options::
+
+  -t 14 (to use 14 threads)
+  -v 2 (to get more verbose output)
   
-So here, the following adapters were found and trimmed::
-
-  Trimming adapters from read ends
-    Rapid_adapter: GTTTTCGCATTTATCGTGAAACGCTTTCGCGTTTTTCGTGCGCCGCTTCA
-         BC04_rev: TAGGGAAACACGATAGAATCCGAA
-             BC04: TTCGGATTCTATCGTGTTTCCCTA
-         BC11_rev: TCCATTCCCTCCGATAGATGAAAC
-             BC11: GTTTCATCTATCGGAGGGAATGGA
-             BC06: TTCTCGCAAAGGCAGAAAGTAGTC
-         BC06_rev: GACTACTTTCTGCCTTTGCGAGAA
-
-To see how many reads were trimmed, grep for reads::
-
-  grep reads porechop.log
+ In addition, you should write the output of porechop into a file called "porechop_<number>.log" for later inspection.
   
-  52,536 reads loaded
-  51,299 / 52,536 reads had adapters trimmed from their start (5,257,865 bp removed)
-  4,890 / 52,536 reads had adapters trimmed from their end (47,632 bp removed)
-  794 / 52,536 reads were split based on middle adapters
-
-
-We will again look into the results of FastQC::
-
-  mkdir -p ~/workdir/fastqc/nanopore_fastqc_trimmed/
-  fastqc -t 14 -o  ~/workdir/fastqc/nanopore_fastqc_trimmed/  ~/workdir/basecall/basecall_trimmed.fastq.gz
+ Again - if you are stuck, check the next page for futher help/instructions.
   
 References
 ^^^^^^^^^^
