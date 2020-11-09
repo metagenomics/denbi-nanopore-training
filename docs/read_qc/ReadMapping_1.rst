@@ -1,4 +1,3 @@
-
 Generating Error Profiles
 -------------------------
 
@@ -76,48 +75,95 @@ Get help for minimap2::
                    - splice: long-read spliced alignment
                    - sr: genomic short-read mapping
 
+Create a directory for the mapping results in::
 
-We now use graphmap to align the different read sets to the reference, starting with the nanopore reads::
-
-  cd ~/workdir
-  mkdir ~/workdir/map_to_ref
-  graphmap align -r ~/workdir/data/Reference.fna -t 14 -C -d ~/workdir/basecall/basecall.fastq.gz -o ~/workdir/map_to_ref/nanopore.graphmap.sam >  ~/workdir/map_to_ref/nanopore.graphmap.sam.log 2>&1 
+  ~/workdir/mappings/
   
-For the illumina reads we will use another aligner, as this one is more suited for this kind of data. But before we can do so, we need to create an index structure on the reference::
+The result of your mappings should be named::
+
+  ~/workdir/mappings/basecall_tiny_<number>_vs_wuhan.sam
   
-  bwa index ~/workdir/data/Reference.fna
-  bwa mem -t 14 ~/workdir/data/Reference.fna ~/workdir/data/illumina/Illumina_R1.fastq.gz ~/workdir/data/illumina/Illumina_R2.fastq.gz > ~/workdir/map_to_ref/illumina.bwa.sam
-  
-Inferring error profiles using samtools
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Use the following options::
 
-After mapping the reads on the reference Genome, we can infer various statistics as e.g., number of succesful aligned reads and bases, or number of mismatches and indels, and so on. For this you could easily use the tool collection **samtools**, which offers a range of simple CLI modules all operating on mapping output (SAM and BAM format). We will use the ``stats`` module now::
- 
-  samtools stats -d -@ 14 ~/workdir/map_to_ref/nanopore.graphmap.sam > ~/workdir/map_to_ref/nanopore.graphmap.sam.stats
-  samtools stats -d -@ 14 ~/workdir/map_to_ref/illumina.bwa.sam > ~/workdir/map_to_ref/illumina.bwa.sam.stats
+  -x <appropriate preset>
+  -t <number of threads>
 
-We can inspect these results now by simply view at the top 40 lines of the output::
-  
-  head -n 40 ~/workdir/map_to_ref/nanopore.graphmap.sam.stats
-  head -n 40 ~/workdir/map_to_ref/illumina.bwa.sam.stats
+When you are done (or stuck) try to map the Illumina data before you proceed to the next page.
 
-Enhanced mapping statistics
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+For the Illumina data, we use bwa,  as this one is more suited for this kind of data. But before we can do so, we need to create an index structure on the reference::
 
-To get a more in depth info on the actual accuracy of the data at hand, including the genome coverage, we're going to use a more comprehensive and interactive software comparable to FastQC which is called **Qualimap**.
+  Usage:   bwa index [options] <in.fasta>
 
-First, we convert the SAM files into BAM format and sort them::
+  Options: -a STR    BWT construction algorithm: bwtsw, is or rb2 [auto]
+           -p STR    prefix of the index [same as fasta name]
+           -b INT    block size for the bwtsw algorithm (effective with -a bwtsw) [10000000]
+           -6        index files named as <in.fasta>.64.* instead of <in.fasta>.* 
 
-  cd ~/workdir
-  samtools view -@ 4 -bS  ~/workdir/map_to_ref/nanopore.graphmap.sam | samtools sort - -@ 8 -o ~/workdir/map_to_ref/nanopore.graphmap.sorted.bam
-  samtools view -@ 4 -bS ~/workdir/map_to_ref/illumina.bwa.sam | samtools sort - -@ 8 -o ~/workdir/map_to_ref/illumina.bwa.sorted.bam
+  Warning: `-a bwtsw' does not work for short genomes, while `-a is' and
+           `-a div' do not work not for long genomes.
 
-Then we can run **qualimap** on those BAM files now::
-  
-  qualimap bamqc -bam ~/workdir/map_to_ref/nanopore.graphmap.sorted.bam -nw 5000 -nt 14 -c -outdir ~/workdir/map_to_ref/nanopore.graphmap
-  qualimap bamqc -bam ~/workdir/map_to_ref/illumina.bwa.sorted.bam -nw 5000 -nt 14 -c -outdir ~/workdir/map_to_ref/illumina.graphmap
+Then do the mapping::
 
-Qualimap can also be run interactively.
+  Usage: bwa mem [options] <idxbase> <in1.fq> [in2.fq]
+
+  Algorithm options:
+
+         -t INT        number of threads [1]
+         -k INT        minimum seed length [19]
+         -w INT        band width for banded alignment [100]
+         -d INT        off-diagonal X-dropoff [100]
+         -r FLOAT      look for internal seeds inside a seed longer than {-k} * FLOAT [1.5]
+         -y INT        seed occurrence for the 3rd round seeding [20]
+         -c INT        skip seeds with more than INT occurrences [500]
+         -D FLOAT      drop chains shorter than FLOAT fraction of the longest overlapping chain [0.50]
+         -W INT        discard a chain if seeded bases shorter than INT [0]
+         -m INT        perform at most INT rounds of mate rescues for each read [50]
+         -S            skip mate rescue
+         -P            skip pairing; mate rescue performed unless -S also in use
+
+  Scoring options:
+
+         -A INT        score for a sequence match, which scales options -TdBOELU unless overridden [1]
+         -B INT        penalty for a mismatch [4]
+         -O INT[,INT]  gap open penalties for deletions and insertions [6,6]
+         -E INT[,INT]  gap extension penalty; a gap of size k cost '{-O} + {-E}*k' [1,1]
+         -L INT[,INT]  penalty for 5'- and 3'-end clipping [5,5]
+         -U INT        penalty for an unpaired read pair [17]
+
+         -x STR        read type. Setting -x changes multiple parameters unless overridden [null]
+                       pacbio: -k17 -W40 -r10 -A1 -B1 -O1 -E1 -L0  (PacBio reads to ref)
+                       ont2d: -k14 -W20 -r10 -A1 -B1 -O1 -E1 -L0  (Oxford Nanopore 2D-reads to ref)
+                       intractg: -B9 -O16 -L5  (intra-species contigs to ref)
+
+  Input/output options:
+
+         -p            smart pairing (ignoring in2.fq)
+         -R STR        read group header line such as '@RG\tID:foo\tSM:bar' [null]
+         -H STR/FILE   insert STR to header if it starts with @; or insert lines in FILE [null]
+         -o FILE       sam file to output results to [stdout]
+         -j            treat ALT contigs as part of the primary assembly (i.e. ignore <idxbase>.alt file)
+         -5            for split alignment, take the alignment with the smallest coordinate as primary
+         -q            don't modify mapQ of supplementary alignments
+         -K INT        process INT input bases in each batch regardless of nThreads (for reproducibility) []
+
+         -v INT        verbosity level: 1=error, 2=warning, 3=message, 4+=debugging [3]
+         -T INT        minimum score to output [30]
+         -h INT[,INT]  if there are <INT hits with score >80% of the max score, output all in XA [5,200]
+         -a            output all alignments for SE or unpaired PE
+         -C            append FASTA/FASTQ comment to SAM output
+         -V            output the reference FASTA header in the XR tag
+         -Y            use soft clipping for supplementary alignments
+         -M            mark shorter split hits as secondary
+
+         -I FLOAT[,FLOAT[,INT[,INT]]]
+                       specify the mean, standard deviation (10% of the mean if absent), max
+                       (4 sigma from the mean if absent) and min of the insert size distribution.
+                       FR orientation only. [inferred]
+
+
+
+
+
 
 References
 ^^^^^^^^^^
