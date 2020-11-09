@@ -46,6 +46,8 @@ Look out for the differences between Illumina data und Nanopore data. Is there A
 You should also check out the `FastQC home page <http://www.bioinformatics.babraham.ac.uk/projects/fastqc/>`_ for examples
 of reports including bad data.
 
+**Note: ** When you run fastqc without "-o", the results of fastqc are located in the directory that contains the reads.
+
 TODO: Wird das hier noch gebraucht?? Porechop auf naechster Seite...
 
 Handle adapter contamination
@@ -63,41 +65,6 @@ As we see some strange GC content at the 5' end of our nanopore reads, we can al
 
 So the first bases may indicate an adaptor contamination. For workflows including de novo assembly refined with nanopolish or medaka adaptor trimming is not necessary, but in other workflow scenarios this can be important to do and good there are tools which can handle this, as e.g. **porechop**.
 
-Porechop is a tool for finding and removing adapters from Oxford Nanopore reads. Adapters on the ends of reads are trimmed off, and when a read has an adapter in its middle, it is treated as chimeric and chopped into separate reads. Porechop performs thorough alignments to effectively find adapters, even at low sequence identity::
-
-  cd ~/workdir
-  porechop -i ~/workdir/basecall/basecall.fastq.gz -t 14 -v 2 -o ~/workdir/basecall/basecall_trimmed.fastq.gz > porechop.log
-
-Let's inspect the log file::
-
-  more porechop.log 
-  
-So here, the following adapters were found and trimmed::
-
-  Trimming adapters from read ends
-    Rapid_adapter: GTTTTCGCATTTATCGTGAAACGCTTTCGCGTTTTTCGTGCGCCGCTTCA
-         BC04_rev: TAGGGAAACACGATAGAATCCGAA
-             BC04: TTCGGATTCTATCGTGTTTCCCTA
-         BC11_rev: TCCATTCCCTCCGATAGATGAAAC
-             BC11: GTTTCATCTATCGGAGGGAATGGA
-             BC06: TTCTCGCAAAGGCAGAAAGTAGTC
-         BC06_rev: GACTACTTTCTGCCTTTGCGAGAA
-
-To see how many reads were trimmed, grep for reads::
-
-  grep reads porechop.log
-  
-  52,536 reads loaded
-  51,299 / 52,536 reads had adapters trimmed from their start (5,257,865 bp removed)
-  4,890 / 52,536 reads had adapters trimmed from their end (47,632 bp removed)
-  794 / 52,536 reads were split based on middle adapters
-
-
-We will again look into the results of FastQC::
-
-  mkdir -p ~/workdir/fastqc/nanopore_fastqc_trimmed/
-  fastqc -t 14 -o  ~/workdir/fastqc/nanopore_fastqc_trimmed/  ~/workdir/basecall/basecall_trimmed.fastq.gz
-  
 References
 ^^^^^^^^^^
 
