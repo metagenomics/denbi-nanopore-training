@@ -1,7 +1,7 @@
 Generating Error Profiles
 -------------------------
 
-We will now map the Nanopore reads to the Wuhan reference and generate error profiles from the mappings. Due to mutations, this is, of course not 100% accurate, but gives an impression.
+We will now map the Nanopore and Illumina reads to the Wuhan reference and generate error profiles from the mappings. Due to mutations, this is, of course not 100% accurate, but gives an impression.
 
 Get the reference
 ^^^^^^^^^^^^^^^^^
@@ -160,7 +160,15 @@ Then do the mapping::
                        (4 sigma from the mean if absent) and min of the insert size distribution.
                        FR orientation only. [inferred]
 
+Use::
 
+  -t 14 
+  
+to use 14 threads. No other options, redirect output into a file called::
+
+  ~/workdir/mappings/illumina_vs_wuhan.sam
+  
+Again, if you are stuck, get help on the next page.
 
 
 
@@ -171,7 +179,5 @@ References
 **Minimap2** https://github.com/lh3/minimap2
 
 **BWA** http://bio-bwa.sourceforge.net/
-
-**Samtools** http://samtools.sourceforge.net/
 
 **QualiMap** http://qualimap.bioinfo.cipf.es/doc_html/index.html
