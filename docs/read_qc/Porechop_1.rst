@@ -91,3 +91,5 @@ References
 ^^^^^^^^^^
 
 **Porechop** https://github.com/rrwick/Porechop
+
+**FastQC** https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
