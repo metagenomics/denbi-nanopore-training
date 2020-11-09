@@ -46,7 +46,7 @@ Look out for the differences between Illumina data und Nanopore data. Is there A
 You should also check out the `FastQC home page <http://www.bioinformatics.babraham.ac.uk/projects/fastqc/>`_ for examples
 of reports including bad data.
 
-**Note: ** When you run fastqc without "-o", the results of fastqc are located in the directory that contains the reads.
+**Note:** When you run fastqc without "-o", the results of fastqc are located in the directory that contains the reads.
 
 TODO: Wird das hier noch gebraucht?? Porechop auf naechster Seite...
 
