@@ -10,11 +10,11 @@ and with the following options:
 +------------------------------------------+-------------------------+---------------------------------------------+
 | What?                                    | parameter               | Our value                                   |
 +==========================================+=========================+=============================================+
-| The input directory                      | positional              | ~/workdir/data_artic/barcode_tiny_<number>/ |
+| The input directory                      | positional              | ~/workdir/data_artic/basecall_tiny_<number>/|
 |                                          |                         | or                                          |
 |                                          |                         | ~/workdir/Illumina/*.fastq.gz               |
 +------------------------------------------+-------------------------+---------------------------------------------+ 
-| The output directory                     | -o                      | ~/workdir/fastqc/barcode_tiny<number>/      |
+| The output directory                     | -o                      | ~/workdir/fastqc/basecall_tiny_<number>/    |
 |                                          |                         | or                                          |
 |                                          |                         | ~/workdir/fastqc/illumina/                  |
 +------------------------------------------+-------------------------+---------------------------------------------+
