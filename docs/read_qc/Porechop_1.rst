@@ -77,12 +77,17 @@ Also use the following options::
   -t 14 (to use 14 threads)
   -v 2 (to get more verbose output)
   
- In addition, you should write the output of porechop into a file called "porechop_<number>.log" for later inspection.
-  
- Again - if you are stuck, check the next page for futher help/instructions.
+In addition, you should write the output of porechop into a file called "porechop_<number>.log" for later inspection.
+
+
+When you are done running porechop, run **fastqc** again on the trimmed data for comparison, the results of this fastqc run should be stored in::
+
+  ~/workdir/fastqc/basecall_tiny_porechopped_<number>/
+
+
+Again - if you are stuck, check the next page for futher help/instructions.
   
 References
 ^^^^^^^^^^
-
 
 **Porechop** https://github.com/rrwick/Porechop
