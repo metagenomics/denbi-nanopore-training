@@ -1,7 +1,7 @@
 Porechop(2)
 ------
 
-We need to run the following command:
+We need to run the following command::
 
   porechop
   
@@ -19,39 +19,23 @@ with the following parameters
 | The verbosity                            | -v             | 2                                                                 |
 +------------------------------------------+----------------+-------------------------------------------------------------------+
 
-  cd ~/workdir
-  porechop -i ~/workdir/basecall/basecall.fastq.gz -t 14 -v 2 -o ~/workdir/basecall/basecall_trimmed.fastq.gz > porechop.log
+Go to your data_artic directory first::
 
-Let's inspect the log file::
+  cd ~/workdir/data_artic/
 
-  more porechop.log 
-  
-So here, the following adapters were found and trimmed::
+Then run porechop::
 
-  Trimming adapters from read ends
-    Rapid_adapter: GTTTTCGCATTTATCGTGAAACGCTTTCGCGTTTTTCGTGCGCCGCTTCA
-         BC04_rev: TAGGGAAACACGATAGAATCCGAA
-             BC04: TTCGGATTCTATCGTGTTTCCCTA
-         BC11_rev: TCCATTCCCTCCGATAGATGAAAC
-             BC11: GTTTCATCTATCGGAGGGAATGGA
-             BC06: TTCTCGCAAAGGCAGAAAGTAGTC
-         BC06_rev: GACTACTTTCTGCCTTTGCGAGAA
-
-To see how many reads were trimmed, grep for reads::
-
-  grep reads porechop.log
-  
-  52,536 reads loaded
-  51,299 / 52,536 reads had adapters trimmed from their start (5,257,865 bp removed)
-  4,890 / 52,536 reads had adapters trimmed from their end (47,632 bp removed)
-  794 / 52,536 reads were split based on middle adapters
+  porechop -i ~/workdir/data_artic/basecall_tiny_<number>.fastq.gz -t 14 -v 2 -o ~/workdir/basecall/basecall_tiny_porechopped_<number>.fastq.gz > ~/workdir/data_artic/porechop_<number>.log
 
 
-We will again look into the results of FastQC::
+**Task**: Inspect the log file -have adapters been removed?
 
-  mkdir -p ~/workdir/fastqc/nanopore_fastqc_trimmed/
-  fastqc -t 14 -o  ~/workdir/fastqc/nanopore_fastqc_trimmed/  ~/workdir/basecall/basecall_trimmed.fastq.gz
-  
+And finally, run FastQC again, to compare with the untrimmed data:: 
+
+  mkdir ~/workdir/fastqc/basecall_tiny_trimmed_<number>/
+  fastqc -t 14 -o  ~/workdir/fastqc/basecall_tiny_trimmed_<number> ~/workdir/data_artic/basecall_tiny_porechopped_<number>.fastq.gz
+
+
 References
 ^^^^^^^^^^
 
