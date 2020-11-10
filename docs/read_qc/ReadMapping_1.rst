@@ -87,6 +87,7 @@ Use the following additional options::
 
   -x <appropriate preset>
   -t <number of threads>
+  -a (to get sam output)
 
 When you are done (or stuck) try to map the Illumina data before you proceed to the next page.
 
