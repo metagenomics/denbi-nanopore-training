@@ -131,7 +131,6 @@ In order to read the mapping files into a genome browser, we need to convert the
 For our purpose, we need the options::
 
   -b for sam to bam conversion
-  -T for the reference file
 
 Redirect the output into files with name (or redirect directly to samtools sort - see further below)::
 
