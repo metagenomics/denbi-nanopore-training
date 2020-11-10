@@ -81,7 +81,7 @@ Create a directory for the mapping results in::
   
 The result of your mappings should be named::
 
-  ~/workdir/mappings/basecall_tiny_<number>_vs_wuhan.sam
+  ~/workdir/mappings/basecall_tiny_porechopped_<number>_vs_wuhan.sam
   
 Use the following options::
 
@@ -180,4 +180,3 @@ References
 
 **BWA** http://bio-bwa.sourceforge.net/
 
-**QualiMap** http://qualimap.bioinfo.cipf.es/doc_html/index.html
