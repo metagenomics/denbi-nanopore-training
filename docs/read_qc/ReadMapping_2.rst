@@ -1,5 +1,5 @@
 
-Generating Error Profiles
+Read mapping to a reference (2)
 -------------------------
 
 Mapping the data
