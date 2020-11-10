@@ -133,7 +133,14 @@ For our purpose, we need the options::
   -b for sam to bam conversion
   -T for the reference file
 
-Redirect the output into a file, or pipe it directly to samtools sort::
+Redirect the output into files with name (or redirect directly to samtools sort - see further below)::
+
+  ~/workdir/mappings/basecall_tiny_porechopped_<number>_vs_wuhan.bam
+  or 
+  ~/workdir/mappings/illumina_vs_wuhan.bam
+  
+  
+Then sort the bam file with samtools sort::
 
   Usage: samtools sort [options...] [in.bam]
   Options:
@@ -162,8 +169,13 @@ Redirect the output into a file, or pipe it directly to samtools sort::
         --verbosity INT
                  Set level of verbosity
 
-You don't 
+Your sorted bam files should have the name::
 
+  ~/workdir/mappings/basecall_tiny_porechopped_<number>_vs_wuhan.sorted.bam
+  or 
+  ~/workdir/mappings/illumina_vs_wuhan.sorted.bam
+
+Then index the sorted bam file::
 
   Usage: samtools index [-bc] [-m INT] <in.bam> [out.index]
   Options:
@@ -172,6 +184,7 @@ You don't
     -m INT   Set minimum interval size for CSI indices to 2^INT [14]
     -@ INT   Sets the number of threads [none]
 
+If you are stuck - get help on the next page.
 
 
 References
