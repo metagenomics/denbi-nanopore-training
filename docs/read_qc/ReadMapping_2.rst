@@ -2,20 +2,25 @@
 Read mapping to a reference (2)
 -------------------------
 
-Mapping the data
-^^^^^^^^^^^^^^^^
+Mapping the Nanopore data with Minimap2
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+We use::
+
+  minimap2
+  
+to compute the mapping and add the following parameters
 
 +------------------------------------------+----------------+-------------------------------------------------------------------+
 | What?                                    | parameter      | Our value                                                         |
 +==========================================+================+===================================================================+
-| The input file                           | -i             | ~/workdir/data_artic/basecall_tiny_<number>/.fastq.gz             |
+| The input file                           | -i             | ~/workdir/data_artic/basecall_tiny_porechopped_<number>/.fastq.gz |
 +------------------------------------------+----------------+-------------------------------------------------------------------+ 
-| The output file                          | -o             | ~/workdir/data_artic/basecall_tiny_porechopped_<number>/.fastq.gz |
+| The output file                          | -o             | ~/workdir/mappings/basecall_tiny_porechopped_<number>_vs_wuhan.sam|
 +------------------------------------------+----------------+-------------------------------------------------------------------+
 | The number of threads to be used         | -t             | 14                                                                |
 +------------------------------------------+----------------+-------------------------------------------------------------------+
-| The verbosity                            | -v             | 2                                                                 |
+| The preset for Nanopore reads            | -x             | map-ont                                                           |
 +------------------------------------------+----------------+-------------------------------------------------------------------+
 
 
