@@ -83,7 +83,7 @@ The result of your mappings should be named::
 
   ~/workdir/mappings/basecall_tiny_porechopped_<number>_vs_wuhan.sam
   
-Use the following options::
+Use the following additional options::
 
   -x <appropriate preset>
   -t <number of threads>
