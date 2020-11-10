@@ -1,4 +1,4 @@
-Generating Error Profiles
+Read mapping to a reference
 -------------------------
 
 We will now map the Nanopore and Illumina reads to the Wuhan reference, have a look on the reads and read distribution, and generate error profiles from the mappings. Due to mutations, this is, of course not 100% accurate, but gives an impression.
