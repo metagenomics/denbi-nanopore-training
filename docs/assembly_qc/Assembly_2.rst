@@ -22,17 +22,32 @@ minReadLength=<minimum read length>
 minOverlapLength=<minimum overlap length>
 genomeSize=<size of the target genome, i.e. 50k>
 
-+------------------------------------------+-------------------------+-----------------------------------------------------------------+
-| What?                                    | parameter               | Our value                                                       |
-+==========================================+=========================+=================================================================+
-| The input read file                      | -nanopore-raw           | ~/workdir/data_artic/basecall_tiny_porechopped_<number>.fastq.gz|
-+------------------------------------------+-------------------------+-----------------------------------------------------------------+
-| The output directory                     | -d                      | ~/workdir/assembly/tiny_01/                        |
-+------------------------------------------+-------------------------+-----------------------------------------------------------------+
-| The number of threads to be used         | -t                      | 14                                                              |
-+------------------------------------------+-------------------------+-----------------------------------------------------------------+
++------------------------------------------+-------------------------+------------------------------------------------------------------+
+| What?                                    | parameter               | Our value                                                        |
++==========================================+=========================+==================================================================+
+| The input read file                      | -nanopore-raw           | ~/workdir/data_artic/basecall_small_porechopped_<number>.fastq.gz|
++------------------------------------------+-------------------------+------------------------------------------------------------------+
+| The output directory                     | -d                      | ~/workdir/assembly/small_01                                      |
++------------------------------------------+-------------------------+------------------------------------------------------------------+
+| Prefix for output files                  | -p                      | assembly                                                         |
++------------------------------------------+-------------------------+------------------------------------------------------------------+
+| Use a grid engine                        | useGrid                 | fals                                                             |
++------------------------------------------+-------------------------+------------------------------------------------------------------+
+| Genome Size                              | genomeSize              | 30k                                                              |
++------------------------------------------+-------------------------+------------------------------------------------------------------+
+| Minimum Read Length                      | minReadLength           | 300                                                              |
++------------------------------------------+-------------------------+------------------------------------------------------------------+
+| Minimum Overlap Length                   | minOverlapLength        | 20 or try out different value                                    |
++------------------------------------------+-------------------------+------------------------------------------------------------------+
+| *Optional:* Coverage of corrected reads  | corOutCoverage          | something smaller than our coverage (~600)                       |
++------------------------------------------+-------------------------+------------------------------------------------------------------+
 
-The correction stage selects the best overlaps to use for correction, estimates corrected read lengths, and generates corrected reads::
+The corOutCoverage parameter defines to which coverage the reads are corrected, longest reads are corrected first. It is advisable to set this parameter high, to get more sequences into the assembly.
+
+
+corMinCoverage
+
+The complete command is::
 
   canu -correct -d ~/workdir/correct_small -p assembly genomeSize=3m useGrid=false -nanopore-raw ~/workdir/basecall_small/basecall.fastq.gz
 
