@@ -39,6 +39,11 @@ and for Illumina::
 
   qualimap bamqc -bam ~/workdir/mappings/illumina_vs_wuhan.sorted.bam -nw 5000 -nt 14 -c -outdir ~/workdir/mappings/illumina_vs_wuhan_qualimap/
 
+You can view the results with firefox::
+
+  firefox ~/workdir/mappings/basecall_tiny_porechopped_<number>_vs_wuhan_qualimap/qualimapReport.html
+  or
+  firefox ~/workdir/mappings/illumina_vs_wuhan_qualimap/qualimapReport.html
 
 
 References
