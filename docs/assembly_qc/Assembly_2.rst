@@ -22,30 +22,34 @@ minReadLength=<minimum read length>
 minOverlapLength=<minimum overlap length>
 genomeSize=<size of the target genome, i.e. 50k>
 
-+------------------------------------------+-------------------------+------------------------------------------------------------------+
-| What?                                    | parameter               | Our value                                                        |
-+==========================================+=========================+==================================================================+
-| The input read file                      | -nanopore-raw           | ~/workdir/data_artic/basecall_small_porechopped_<number>.fastq.gz|
-+------------------------------------------+-------------------------+------------------------------------------------------------------+
-| The output directory                     | -d                      | ~/workdir/assembly/small_01                                      |
-+------------------------------------------+-------------------------+------------------------------------------------------------------+
-| Prefix for output files                  | -p                      | assembly                                                         |
-+------------------------------------------+-------------------------+------------------------------------------------------------------+
-| Use a grid engine                        | useGrid                 | fals                                                             |
-+------------------------------------------+-------------------------+------------------------------------------------------------------+
-| Genome Size                              | genomeSize              | 30k                                                              |
-+------------------------------------------+-------------------------+------------------------------------------------------------------+
-| Minimum Read Length                      | minReadLength           | 300                                                              |
-+------------------------------------------+-------------------------+------------------------------------------------------------------+
-| Minimum Overlap Length                   | minOverlapLength        | 20 or try out different value                                    |
-+------------------------------------------+-------------------------+------------------------------------------------------------------+
-| *Optional:* Coverage of corrected reads  | corOutCoverage          | something smaller than our coverage (~600)                       |
-+------------------------------------------+-------------------------+------------------------------------------------------------------+
++----------------------------------------------+-------------------------+------------------------------------------------------------------+
+| What?                                        | parameter               | Our value                                                        |
++==============================================+=========================+==================================================================+
+| The input read file                          | -nanopore-raw           | ~/workdir/data_artic/basecall_small_porechopped_<number>.fastq.gz|
++----------------------------------------------+-------------------------+------------------------------------------------------------------+
+| The output directory                         | -d                      | ~/workdir/assembly/small_01                                      |
++----------------------------------------------+-------------------------+------------------------------------------------------------------+
+| Prefix for output files                      | -p                      | assembly                                                         |
++----------------------------------------------+-------------------------+------------------------------------------------------------------+
+| Use a grid engine                            | useGrid                 | fals                                                             |
++----------------------------------------------+-------------------------+------------------------------------------------------------------+
+| Genome Size                                  | genomeSize              | 30k                                                              |
++----------------------------------------------+-------------------------+------------------------------------------------------------------+
+| Minimum Read Length                          | minReadLength           | 300                                                              |
++----------------------------------------------+-------------------------+------------------------------------------------------------------+
+| Minimum Overlap Length                       | minOverlapLength        | 20 or try out different value                                    |
++----------------------------------------------+-------------------------+------------------------------------------------------------------+
+| *Optional:* Coverage of corrected reads      | corOutCoverage          | something smaller than our coverage (~600)                       |
++----------------------------------------------+-------------------------+------------------------------------------------------------------+
+| *Optional:* Min coverage for corrected reads | corMinCoverage          | 0 to get all                                                     |
++----------------------------------------------+-------------------------+------------------------------------------------------------------+
+| *Optional:* Correction Sensitivity           | corMhapSensitivity      | normal                                                           |
++----------------------------------------------+-------------------------+------------------------------------------------------------------+
 
-The corOutCoverage parameter defines to which coverage the reads are corrected, longest reads are corrected first. It is advisable to set this parameter high, to get more sequences into the assembly.
+
+The corOutCoverage parameter defines to which coverage the reads are corrected, longest reads are corrected first. It is advisable to set this parameter high, to get more sequences into the assembly. corMinCoverage set to low value, will report low covered reads as well and corMhapSensitivity=normal is advised for higher coverage.
 
 
-corMinCoverage
 
 The complete command is::
 
