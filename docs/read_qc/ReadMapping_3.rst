@@ -30,7 +30,7 @@ Then start the genome browser GenomeView::
 
   java -jar ~/genomeview-N42.jar
 
-Load the Wuhan-Reference and the mappings and inspect the mapping results. Have a look on the mapping quality in particular.
+Load the Wuhan-Reference and the mappings and inspect the mapping results. Have a look on the mapping quality in particular. You can load data with: File->Load data... then choose the appropriate files.
 
 
 References
