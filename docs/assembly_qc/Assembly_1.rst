@@ -101,15 +101,23 @@ with the appropriate parameters, which are::
  -nanopore-raw <fastq file with reads>
  -d <directory where the assembly should be stored>
  -p assembly (this will be the prefix for your assembly files)
- 
-and in addition, we need some further parameters::
+
+**Note**: Use the **small** read files as input::
+  
+  ~/workdir/data_artic/basecall_small_porechopped_<number>.fastq.gz
+  
+The output directory should be named::
+
+  ~/workdir/assembly/small_<number>
+
+In addition, we need some further parameters::
   
   useGrid=false (we don't have a cluster)
   minReadLength=<minimum read length>
   minOverlapLength=<minimum overlap length>
   genomeSize=<size of the target genome, i.e. 50k>
-  
-Note, that you need to...
+
+
 Choose minReadLength, minOverlapLength and genomeSize to our needs, if you are unsure, what to set here, have a look in the read and mapping statistics again.
 
 
