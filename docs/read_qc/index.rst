@@ -14,3 +14,7 @@ In the following, we will assess the data quality by looking at the sequencing e
    Porechop_2
    ReadMapping_1
    ReadMapping_2
+   ReadMapping_3
+   Error_profiles_1
+   Error_profiles_2
+   Error_profiles_3
