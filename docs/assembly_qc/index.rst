@@ -7,7 +7,8 @@ We are going to create an assembly with canu and evaluate it with a mapping to t
 .. toctree::
    :maxdepth: 1
 
-   assembly
+   Assembly_1
+   Assembly_2
    quast
    bandage
    mapping
