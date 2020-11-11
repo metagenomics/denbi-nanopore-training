@@ -32,6 +32,7 @@ Then start the genome browser GenomeView::
 
 Load the Wuhan-Reference and the mappings and inspect the mapping results. Have a look on the mapping quality in particular. You can load data with: File->Load data... then choose the appropriate files.
 
+To see not only a fraction of the mappings go to File->Configuration->Short reads and change the "Maxiumum display depth of stacked reads" to a larger value.
 
 References
 ^^^^^^^^^^
