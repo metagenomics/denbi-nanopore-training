@@ -1,5 +1,5 @@
 
-Generating Error Profiles
+Generating Error Profiles(2)
 -------------------------
 
 Inferring error profiles using samtools
