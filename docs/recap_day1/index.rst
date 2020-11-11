@@ -11,11 +11,11 @@ exists. If not, create it::
 
 All you need to go on is the basecalled and porechopped data (choose 3). You can get the data with::
 
-cd ~/workdir/data_artic/
-wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/basecall_small_porechopped_01.fastq.gz
-wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/basecall_small_porechopped_02.fastq.gz
-wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/basecall_small_porechopped_03.fastq.gz
-wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/basecall_small_porechopped_04.fastq.gz
-wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/basecall_small_porechopped_05.fastq.gz
+  cd ~/workdir/data_artic/
+  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/basecall_small_porechopped_01.fastq.gz
+  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/basecall_small_porechopped_02.fastq.gz
+  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/basecall_small_porechopped_03.fastq.gz
+  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/basecall_small_porechopped_04.fastq.gz
+  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/basecall_small_porechopped_05.fastq.gz
 
 When you are done, we can continue with the tutorial for day 2.
