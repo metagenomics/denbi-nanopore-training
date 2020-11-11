@@ -33,15 +33,13 @@ with the following parameters:
 
 The complete commandline is::
 
-  
+  qualimap bamqc -bam ~/workdir/mappings/basecall_tiny_porechopped_<number>_vs_wuhan.sorted.bam -nw 5000 -nt 14 -c -outdir ~/workdir/mappings/basecall_tiny_porechopped_<number>_vs_wuhan_qualimap/
+
+and for Illumina::
+
+  qualimap bamqc -bam ~/workdir/mappings/illumina_vs_wuhan.sorted.bam -nw 5000 -nt 14 -c -outdir ~/workdir/mappings/illumina_vs_wuhan_qualimap/
 
 
-Then we can run **qualimap** on those BAM files now::
-  
-  qualimap bamqc -bam ~/workdir/map_to_ref/nanopore.graphmap.sorted.bam -nw 5000 -nt 14 -c -outdir ~/workdir/map_to_ref/nanopore.graphmap
-  qualimap bamqc -bam ~/workdir/map_to_ref/illumina.bwa.sorted.bam -nw 5000 -nt 14 -c -outdir ~/workdir/map_to_ref/illumina.graphmap
-
-Qualimap can also be run interactively.
 
 References
 ^^^^^^^^^^
