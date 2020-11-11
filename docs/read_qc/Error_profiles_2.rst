@@ -46,7 +46,7 @@ You can use::
 
 to use more than one thread, but this shouldn't be necessary for the size of our dataset.
 
-Forward the output of samtools stat into a file called::
+Forward the output of samtools stats into a file called::
 
   ~/workdir/mappings/basecall_tiny_porechopped_<number>_vs_wuhan.stats
 
