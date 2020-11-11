@@ -1,5 +1,6 @@
 Assembly with canu
 ==================
+
 Canu is a fork of the Celera Assembler, designed for high-noise single-molecule sequencing (such as the PacBio RS II/Sequel or Oxford Nanopore MinION). Documentation can be found here:
 http://canu.readthedocs.io/en/latest/
 
@@ -72,8 +73,12 @@ Get a usage message of canu on how to use the assembler::
       -nanopore-raw       <files>
       -nanopore-corrected <files>
 
-We will run the assembly on the small dataset, to save time. The assembly for the complete dataset will take about one hour.
-We will perform the assembly in two steps:
+
+You can run the complete assembly in one step only. We will run the assembly in two steps:
+(1) Error correction
+(2) Trimming and Assembly
+
+After the Error correction, we will generate an error profile as for the raw reads for comparison.
 
 Error correction with the parameter::
 
