@@ -96,61 +96,63 @@ Usage:
         --fly-index           -    Index will be constructed on the fly, without storing it to disk. If it already
                                    exists on disk, it will be loaded unless --rebuild-index is specified. [false]
 
-  Other options
-    -t, --threads            INT   Number of threads to use. If '-1', number of threads will be equal to min(24, num_cores/2). [-1]
-    -v, --verbose            INT   Verbose level. If equal to 0 nothing except strict output will be placed on stdout. [5]    
-    -h, --help                -    View this help. [false]
- 
 
-We now use graphmap to align the different read sets to the reference, starting with the nanopore reads::
+Generating Error Profiles
+-------------------------
 
-  cd ~/workdir
-  mkdir ~/workdir/map_to_ref
-  graphmap align -r ~/workdir/data/Reference.fna -t 14 -C -d ~/workdir/basecall/basecall.fastq.gz -o ~/workdir/map_to_ref/nanopore.graphmap.sam >  ~/workdir/map_to_ref/nanopore.graphmap.sam.log 2>&1 
-  
-For the illumina reads we will use another aligner, as this one is more suited for this kind of data. But before we can do so, we need to create an index structure on the reference::
-  
-  bwa index ~/workdir/data/Reference.fna
-  bwa mem -t 14 ~/workdir/data/Reference.fna ~/workdir/data/illumina/Illumina_R1.fastq.gz ~/workdir/data/illumina/Illumina_R2.fastq.gz > ~/workdir/map_to_ref/illumina.bwa.sam
-  
 Inferring error profiles using samtools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 After mapping the reads on the reference Genome, we can infer various statistics as e.g., number of succesful aligned reads and bases, or number of mismatches and indels, and so on. For this you could easily use the tool collection **samtools**, which offers a range of simple CLI modules all operating on mapping output (SAM and BAM format). We will use the ``stats`` module now::
  
-  samtools stats -d -@ 14 ~/workdir/map_to_ref/nanopore.graphmap.sam > ~/workdir/map_to_ref/nanopore.graphmap.sam.stats
-  samtools stats -d -@ 14 ~/workdir/map_to_ref/illumina.bwa.sam > ~/workdir/map_to_ref/illumina.bwa.sam.stats
+	Usage: samtools stats [OPTIONS] file.bam
+	       samtools stats [OPTIONS] file.bam chr:from-to
+	Options:
+	    -c, --coverage <int>,<int>,<int>    Coverage distribution min,max,step [1,1000,1]
+	    -d, --remove-dups                   Exclude from statistics reads marked as duplicates
+	    -X, --customized-index-file         Use a customized index file
+	    -f, --required-flag  <str|int>      Required flag, 0 for unset. See also `samtools flags` [0]
+	    -F, --filtering-flag <str|int>      Filtering flag, 0 for unset. See also `samtools flags` [0]
+		--GC-depth <float>              the size of GC-depth bins (decreasing bin size increases memory requirement) [2e4]
+	    -h, --help                          This help message
+	    -i, --insert-size <int>             Maximum insert size [8000]
+	    -I, --id <string>                   Include only listed read group or sample name
+	    -l, --read-length <int>             Include in the statistics only reads with the given read length [-1]
+	    -m, --most-inserts <float>          Report only the main part of inserts [0.99]
+	    -P, --split-prefix <str>            Path or string prefix for filepaths output by -S (default is input filename)
+	    -q, --trim-quality <int>            The BWA trimming parameter [0]
+	    -r, --ref-seq <file>                Reference sequence (required for GC-depth and mismatches-per-cycle calculation).
+	    -s, --sam                           Ignored (input format is auto-detected).
+	    -S, --split <tag>                   Also write statistics to separate files split by tagged field.
+	    -t, --target-regions <file>         Do stats in these regions only. Tab-delimited file chr,from,to, 1-based, inclusive.
+	    -x, --sparse                        Suppress outputting IS rows where there are no insertions.
+	    -p, --remove-overlaps               Remove overlaps of paired-end reads from coverage and base count computations.
+	    -g, --cov-threshold <int>           Only bases with coverage above this value will be included in the target percentage computation [0]
+	      --input-fmt-option OPT[=VAL]
+		       Specify a single input file format option in the form
+		       of OPTION or OPTION=VALUE
+	      --reference FILE
+		       Reference sequence FASTA FILE [null]
+	  -@, --threads INT
+		       Number of additional threads to use [0]
+	      --verbosity INT
+		       Set level of verbosity
 
-We can inspect these results now by simply view at the top 40 lines of the output::
+You can use::
   
-  head -n 40 ~/workdir/map_to_ref/nanopore.graphmap.sam.stats
-  head -n 40 ~/workdir/map_to_ref/illumina.bwa.sam.stats
+  -@ 14
 
-Enhanced mapping statistics
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+to use more than one thread, but this shouldn't be necessary for the size of our dataset.
 
-To get a more in depth info on the actual accuracy of the data at hand, including the genome coverage, we're going to use a more comprehensive and interactive software comparable to FastQC which is called **Qualimap**.
+Forward the output of samtools stats into a file called::
 
-First, we convert the SAM files into BAM format and sort them::
+  ~/workdir/mappings/basecall_tiny_porechopped_<number>_vs_wuhan.stats
 
-  cd ~/workdir
-  samtools view -@ 4 -bS  ~/workdir/map_to_ref/nanopore.graphmap.sam | samtools sort - -@ 8 -o ~/workdir/map_to_ref/nanopore.graphmap.sorted.bam
-  samtools view -@ 4 -bS ~/workdir/map_to_ref/illumina.bwa.sam | samtools sort - -@ 8 -o ~/workdir/map_to_ref/illumina.bwa.sorted.bam
+Inspect the results using less or more. If you are stuck - get help on the next page.
 
-Then we can run **qualimap** on those BAM files now::
-  
-  qualimap bamqc -bam ~/workdir/map_to_ref/nanopore.graphmap.sorted.bam -nw 5000 -nt 14 -c -outdir ~/workdir/map_to_ref/nanopore.graphmap
-  qualimap bamqc -bam ~/workdir/map_to_ref/illumina.bwa.sorted.bam -nw 5000 -nt 14 -c -outdir ~/workdir/map_to_ref/illumina.graphmap
-
-Qualimap can also be run interactively.
 
 References
 ^^^^^^^^^^
 
-**GraphMap** https://github.com/isovic/graphmap
-
-**BWA** http://bio-bwa.sourceforge.net/
-
 **Samtools** http://samtools.sourceforge.net/
 
-**QualiMap** http://qualimap.bioinfo.cipf.es/doc_html/index.html
