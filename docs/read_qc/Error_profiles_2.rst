@@ -20,7 +20,7 @@ Inspect the files with::
 Enhanced mapping statistics
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To get a more in depth info on the actual accuracy of the data at hand, including the genome coverage, we're going to use a more comprehensive and interactive software comparable to FastQC which is called **Qualimap**. Qualimap has a tool "bamqc" for statistics on BAM files.
+To get a more in depth info on the actual accuracy of the data at hand, including the genome coverage, we're going to use a more comprehensive and interactive software comparable to FastQC which is called **Qualimap**. Qualimap has a tool "bamqc" for statistics on BAM files::
 
 
 	usage: qualimap bamqc -bam <arg> [-c] [-gd <arg>] [-gff <arg>] [-hm <arg>] [-ip]
