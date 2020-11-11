@@ -4,53 +4,96 @@ Generating Error Profiles
 
 Inferring error profiles using samtools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The command to run samtools stats is quite simple::
 
-After mapping the reads on the reference Genome, we can infer various statistics as e.g., number of succesful aligned reads and bases, or number of mismatches and indels, and so on. For this you could easily use the tool collection **samtools**, which offers a range of simple CLI modules all operating on mapping output (SAM and BAM format). We will use the ``stats`` module now::
- 
-	Usage: samtools stats [OPTIONS] file.bam
-	       samtools stats [OPTIONS] file.bam chr:from-to
-	Options:
-	    -c, --coverage <int>,<int>,<int>    Coverage distribution min,max,step [1,1000,1]
-	    -d, --remove-dups                   Exclude from statistics reads marked as duplicates
-	    -X, --customized-index-file         Use a customized index file
-	    -f, --required-flag  <str|int>      Required flag, 0 for unset. See also `samtools flags` [0]
-	    -F, --filtering-flag <str|int>      Filtering flag, 0 for unset. See also `samtools flags` [0]
-		--GC-depth <float>              the size of GC-depth bins (decreasing bin size increases memory requirement) [2e4]
-	    -h, --help                          This help message
-	    -i, --insert-size <int>             Maximum insert size [8000]
-	    -I, --id <string>                   Include only listed read group or sample name
-	    -l, --read-length <int>             Include in the statistics only reads with the given read length [-1]
-	    -m, --most-inserts <float>          Report only the main part of inserts [0.99]
-	    -P, --split-prefix <str>            Path or string prefix for filepaths output by -S (default is input filename)
-	    -q, --trim-quality <int>            The BWA trimming parameter [0]
-	    -r, --ref-seq <file>                Reference sequence (required for GC-depth and mismatches-per-cycle calculation).
-	    -s, --sam                           Ignored (input format is auto-detected).
-	    -S, --split <tag>                   Also write statistics to separate files split by tagged field.
-	    -t, --target-regions <file>         Do stats in these regions only. Tab-delimited file chr,from,to, 1-based, inclusive.
-	    -x, --sparse                        Suppress outputting IS rows where there are no insertions.
-	    -p, --remove-overlaps               Remove overlaps of paired-end reads from coverage and base count computations.
-	    -g, --cov-threshold <int>           Only bases with coverage above this value will be included in the target percentage computation [0]
-	      --input-fmt-option OPT[=VAL]
-		       Specify a single input file format option in the form
-		       of OPTION or OPTION=VALUE
-	      --reference FILE
-		       Reference sequence FASTA FILE [null]
-	  -@, --threads INT
-		       Number of additional threads to use [0]
-	      --verbosity INT
-		       Set level of verbosity
+  samtools stats ~/workdir/mappings/basecall_tiny_porechopped_<number>_vs_wuhan.sorted.bam >  ~/workdir/mappings/basecall_tiny_porechopped_<number>_vs_wuhan.stats
 
-You can use::
+and for Illumina::
+
+  samtools stats -@ 14 ~/workdir/mappings/illumina_vs_wuhan.sorted.bam >  ~/workdir/mappings/illumina_vs_wuhan.stats
   
-  -@ 14
+Inspect the files with::
 
-to use more than one thread, but this shouldn't be necessary for the size of our dataset.
+  less ~/workdir/mappings/basecall_tiny_porechopped_<number>_vs_wuhan.stats
+  less ~/workdir/mappings/illumina_vs_wuhan.stats
 
-Forward the output of samtools stats into a file called::
+Enhanced mapping statistics
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-  ~/workdir/mappings/basecall_tiny_porechopped_<number>_vs_wuhan.stats
+To get a more in depth info on the actual accuracy of the data at hand, including the genome coverage, we're going to use a more comprehensive and interactive software comparable to FastQC which is called **Qualimap**. Qualimap has a tool "bamqc" for statistics on BAM files.
 
-Inspect the results using less or more. If you are stuck - get help on the next page.
+
+	usage: qualimap bamqc -bam <arg> [-c] [-gd <arg>] [-gff <arg>] [-hm <arg>] [-ip]
+	       [-nr <arg>] [-nt <arg>] [-nw <arg>] [-oc <arg>] [-os] [-outdir <arg>]
+	       [-outfile <arg>] [-outformat <arg>] [-p <arg>] [-sd] [-sdmode <arg>]
+	 -bam <arg>                           Input mapping file in BAM format
+	 -c,--paint-chromosome-limits         Paint chromosome limits inside charts
+	 -gd,--genome-gc-distr <arg>          Species to compare with genome GC
+					      distribution. Possible values: HUMAN -
+					      hg19; MOUSE - mm9(default), mm10
+	 -gff,--feature-file <arg>            Feature file with regions of interest in
+					      GFF/GTF or BED format
+	 -hm <arg>                            Minimum size for a homopolymer to be
+					      considered in indel analysis (default is
+					      3)
+	 -ip,--collect-overlap-pairs          Activate this option to collect statistics
+					      of overlapping paired-end reads
+	 -nr <arg>                            Number of reads analyzed in a chunk
+					      (default is 1000)
+	 -nt <arg>                            Number of threads (default is 28)
+	 -nw <arg>                            Number of windows (default is 400)
+	 -oc,--output-genome-coverage <arg>   File to save per base non-zero coverage.
+					      Warning: large files are expected for
+					      large genomes
+	 -os,--outside-stats                  Report information for the regions outside
+					      those defined by feature-file  (ignored
+					      when -gff option is not set)
+	 -outdir <arg>                        Output folder for HTML report and raw
+					      data.
+	 -outfile <arg>                       Output file for PDF report (default value
+					      is report.pdf).
+	 -outformat <arg>                     Format of the output report (PDF, HTML or
+					      both PDF:HTML, default is HTML).
+	 -p,--sequencing-protocol <arg>       Sequencing library protocol:
+					      strand-specific-forward,
+					      strand-specific-reverse or
+					      non-strand-specific (default)
+	 -sd,--skip-duplicated                Activate this option to skip duplicated
+					      alignments from the analysis. If the
+					      duplicates are not flagged in the BAM
+					      file, then they will be detected by
+					      Qualimap and can be selected for skipping.
+	 -sdmode,--skip-dup-mode <arg>        Specific type of duplicated alignments to
+					      skip (if this option is activated).
+					      0 : only flagged duplicates (default)
+					      1 : only estimated by Qualimap
+					      2 : both flagged and estimated
+
+
+
+	Special arguments: 
+
+	    --java-mem-size  Use this argument to set Java memory heap size. Example:
+			     qualimap bamqc -bam very_large_alignment.bam --java-mem-size=4G
+
+Run::
+
+  qualimap bamqc
+  
+on the mapping files now (*.sorted.bam - Illumina and Nanopore mappings). Use the following options:;
+
+  -nt 14
+  -nw 50000
+  -bam <input file>
+  -outdir <output directory>
+  
+The output folders should be named::
+  
+  ~/workdir/mappings/basecall_tiny_porechopped_<number>_vs_wuhan_qualimap/
+  and
+  ~/workdir/mappings/illumina_vs_wuhan_qualimap/
+
+Help is available on the next page.
 
 
 References
