@@ -13,7 +13,6 @@ Welcome to the three-day nanopore Hands-On training course. This tutorial will g
    basecalling/index
    read_qc/index
    recap_day1/index
-   assembly/index
    assembly_qc/index
    polishing/index
    recap_day2/index
