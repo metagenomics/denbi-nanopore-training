@@ -1,6 +1,10 @@
 Assembly with canu
 ==================
 
+We will now try to assembly the ARTIC datasets. The dataset is a bit different from usual whole genome shotgun sequencing runs, because we have sequenced amplicons. For Nanopore reads, we have quite short reads that don't overlap not by much and are not evenly distributed across the genome. Let's see, if this gets us into trouble.
+
+Of course, in a real world use case, you can't design amplicons before you have the full genome sequence, so you would usually start with whole genome shotgun sequencing...
+
 Canu is a fork of the Celera Assembler, designed for high-noise single-molecule sequencing (such as the PacBio RS II/Sequel or Oxford Nanopore MinION). Documentation can be found here:
 http://canu.readthedocs.io/en/latest/
 
