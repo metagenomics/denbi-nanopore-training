@@ -57,3 +57,5 @@ References
 ^^^^^^^^^^
 
 **Samtools** http://samtools.sourceforge.net/
+
+**QualiMap** http://qualimap.bioinfo.cipf.es/doc_html/index.html
