@@ -16,7 +16,12 @@ and load the following file::
 and click on "Draw Graph"
 This is the assembly graph of our Nanopore Assembly. You can BLAST your contigs vs each other to identify further assembly problems  by clicking "Create/View BLAST search".
 
+There seem to be problems with overlaps in the assembly and also unequally distributed coverage. canu does not seem to handle our data well. If you want, you can try to get a better assembly. Other parameters you might want to change are mentioned in the canu part, others might be::
 
+  correctedErrorRate (default 0.144)
+  utgErrorRate (default 0.144)
+  
+We will now use a different dataset to get a complete assembly.
 
 References
 ^^^^^^^^^^
