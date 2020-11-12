@@ -17,7 +17,7 @@ with the following parameters:
 +==============================================+=========================+==================================================================+
 | The input read file                          | -nanopore-raw           | ~/workdir/data_artic/basecall_small_porechopped_<number>.fastq.gz|
 +----------------------------------------------+-------------------------+------------------------------------------------------------------+
-| The output directory                         | -d                      | ~/workdir/assembly/small_01_correct                              |
+| The output directory                         | -d                      | ~/workdir/assembly/small_<number>_correct                        |
 +----------------------------------------------+-------------------------+------------------------------------------------------------------+
 | Prefix for output files                      | -p                      | assembly                                                         |
 +----------------------------------------------+-------------------------+------------------------------------------------------------------+
@@ -56,11 +56,11 @@ Let's get some error statistics for the corrected reads. Map the corrected reads
   
 Then run qualimap::
 
-  qualimap bamqc -bam ~/workdir/assembly/small_01_correct/corrected_reads_vs_wuhan.sorted.bam -nw 5000 -nt 14 -c -outdir ~/workdir/assembly/small_<number>_correct/qualimap/
+  qualimap bamqc -bam ~/workdir/assembly/small_<number>_correct/corrected_reads_vs_wuhan.sorted.bam -nw 5000 -nt 14 -c -outdir ~/workdir/assembly/small_<number>_correct/qualimap/
   
 Then open the results in a web browser::
 
-  firefox ~/workdir/assembly/small_01_correct/qualimap/qualimapReport.html
+  firefox ~/workdir/assembly/small_<number>_correct/qualimap/qualimapReport.html
 
 Inspect the results, how much did our error rate decrease?
 
