@@ -108,7 +108,7 @@ with the appropriate parameters, which are::
   
 The output directory should be named::
 
-  ~/workdir/assembly/small_<number>
+  ~/workdir/assembly/small_<number>_correct/
 
 In addition, we need some further parameters::
   
