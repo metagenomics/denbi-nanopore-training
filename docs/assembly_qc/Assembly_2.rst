@@ -100,7 +100,7 @@ References
   
 **Minimap2** https://github.com/lh3/minimap2
 
-**BWA** http://bio-bwa.sourceforge.net/
+**QualiMap** http://qualimap.bioinfo.cipf.es/doc_html/index.html
 
 **samtools** http://www.htslib.org  
 
