@@ -12,16 +12,6 @@ The command to run the canu correction is::
   
 with the following parameters:
 
--nanopore-raw <fastq file with reads>
--d <directory where the assembly should be stored>
--p assembly (this will be the prefix for your assembly files)
-and in addition, we need some further parameters:
-
-useGrid=false (we don't have a cluster)
-minReadLength=<minimum read length>
-minOverlapLength=<minimum overlap length>
-genomeSize=<size of the target genome, i.e. 50k>
-
 +----------------------------------------------+-------------------------+------------------------------------------------------------------+
 | What?                                        | parameter               | Our value                                                        |
 +==============================================+=========================+==================================================================+
