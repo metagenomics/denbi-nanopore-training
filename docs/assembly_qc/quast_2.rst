@@ -5,7 +5,7 @@ We run::
 
   quast.py
   
-with the following parameters::
+with the following parameters:
 
 +------------------------------------------+-------------------------+--------------------------------------------------------------------+
 | What?                                    | parameter               | Our value                                                          |
