@@ -72,35 +72,35 @@ Then open the results in a web browser::
 
   firefox ~/workdir/assembly/small_01_correct/qualimap/qualimapReport.html
 
-
+Inspect the results, how much did our error rate decrease?
 
 Generate and assemble trimmed reads
 -----------------------------------
 
-The trimming stage identifies unsupported regions in the input and trims or splits reads to their longest supported range. The assembly stage makes a final pass to identify sequencing errors; constructs the best overlap graph (BOG); and outputs contigs, an assembly graph, and summary statistics::
+The trimming stage identifies unsupported regions in the input and trims or splits reads to their longest supported range. The assembly stage makes a final pass to identify sequencing errors; constructs the best overlap graph (BOG); and outputs contigs, an assembly graph, and summary statistics.
 
-  canu -trim-assemble -d ~/workdir/assembly_small -p assembly genomeSize=2M useGrid=false -nanopore-corrected ~/workdir/correct_small/assembly.correctedReads.fasta.gz
+Now run the trimming and assembly step using the following command::
 
-After that is done, inspect the results. We can get a quick view on the number of generated contigs with::
+  canu -trim-assemble
+  
+You need to define the following parameters::
 
-  grep '>' ~/workdir/assembly_small/assembly.contigs.fasta
+  -nanopore-corrected <corrected reads file>
+  
+The output directory should be named::
 
-**If there is time**, we start the actual assembly with all data now::
+  ~/workdir/assembly/small_<number>_assembly/
 
-  Group 1:
-  canu -d ~/workdir/assembly -p assembly "genomeSize=4.3M" useGrid=false -nanopore-raw ~/workdir/basecall/basecall_trimmed.fastq.gz
-  Group 2:
-  canu -d ~/workdir/assembly -p assembly "genomeSize=6.8M" useGrid=false -nanopore-raw ~/workdir/basecall/basecall_trimmed.fastq.gz
+In addition, we need some further parameters::
+  
+  useGrid=false (we don't have a cluster)
+  minReadLength=<minimum read length>
+  minOverlapLength=<minimum overlap length>
+  genomeSize=<size of the target genome, i.e. 50k>
+  
+Use the same parameters as before (although you could use different settings here).
 
-**Otherwise**, copy the precomputed assembly with the complete dataset into your working directory::
-
-  cp -r ~/workdir/results/assembly/ ~/workdir/
-
-and have a quick look on the number of contigs::
-
-  grep '>' ~/workdir/assembly/assembly.contigs.fasta
-
-
+Go to the next page, if you need help.
 
 
 References
@@ -108,3 +108,9 @@ References
 
 **Canu** https://github.com/marbl/canu
   
+**Minimap2** https://github.com/lh3/minimap2
+
+**BWA** http://bio-bwa.sourceforge.net/
+
+**samtools** http://www.htslib.org  
+
