@@ -1,7 +1,12 @@
-Get the WGS dataset
-===================
+Get and inspect the WGS dataset
+===============================
 
-The tutorial dataset is located in our object store. Download it with wget::
+Get the data
+------------
+
+The dataset we are going to use is a whole genome shotgun project from an outbreak in Hongkong.
+
+The dataset is located in our object store. Download it with wget::
 
   cd ~/workdir
   mkdir data_wgs
@@ -12,8 +17,13 @@ Since the original dataset is quite large, we reduce it to 10k reads, using seqt
 
   cd ~/workdir/data_wgs
   seqtk sample Cov2_HK_WGS.fastq.gz 10000 | gzip > Cov2_HK_WGS_small.fastq.gz
-  
-We will now inspect the data with some tools for read quality assessment.
+
+
+Map the data and inspect with GenomeView
+----------------------------------------
+
+
+
 
 References
 ^^^^^^^^^^
