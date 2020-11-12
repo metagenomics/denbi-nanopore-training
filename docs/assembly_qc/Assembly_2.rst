@@ -70,7 +70,7 @@ Then run qualimap::
   
 Then open the results in a web browser::
 
-  
+  firefox ~/workdir/assembly/small_01_correct/qualimap/qualimapReport.html
 
 
 
