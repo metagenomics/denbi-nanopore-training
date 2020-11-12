@@ -9,6 +9,7 @@ We are going to create an assembly with canu and evaluate it with a mapping to t
 
    Assembly_1
    Assembly_2
+   Assembly_3
    quast
    bandage
    mapping
