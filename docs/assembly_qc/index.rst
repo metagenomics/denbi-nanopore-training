@@ -14,7 +14,8 @@ We are going to create an assembly with canu and evaluate it with a mapping to t
    bandage
    mapping
    get_data_wgs
-   assembly
+   Assembly_WGS_1
+   Assembly_WGS_2
    quast
    bandage
    mapping
