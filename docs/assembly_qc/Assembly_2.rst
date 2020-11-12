@@ -55,21 +55,6 @@ The complete command is::
 
   canu -correct -d ~/workdir/correct_small -p assembly genomeSize=3m useGrid=false -nanopore-raw ~/workdir/basecall_small/basecall.fastq.gz
 
-It is also possible to run multiple correction rounds to eliminate errors. This has been done on a S. cerevisae dataset in the canu publication. We will not do this in this course due to time limitations, but a script to do this, would look like this::
-
-  COUNT=0
-   NAME=input.fasta
-   for i in `seq 1 10`; do
-   canu -correct -p asm -d round$i \
-   corOutCoverage=500 corMinCoverage=0 corMhapSensitivity=high \
-   genomeSize=12.1m -nanopore-raw $NAME
-   NAME="round$i/asm.correctedReads.fasta.gz"
-   COUNT=`expr $COUNT + 1`
-   done
-   canu -p asm -d asm genomeSize=12.1m -nanopore-corrected $NAME utgGraphDeviation=50
-  batOptions=”-ca 500 -cp 50”
-  done
-
 
 Generate and assemble trimmed reads
 -----------------------------------
