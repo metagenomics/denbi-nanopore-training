@@ -13,10 +13,10 @@ The dataset is located in our object store. Download it with wget::
   cd data_wgs
   wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/Cov2_HK_WGS.fastq.gz
 
-Since the original dataset is quite large, we reduce it to 10k reads, using seqtk, a nice tool for several operations on fasta and fastq files::
+Since the original dataset is quite large, we reduce it to 50k reads, using seqtk, a nice tool for several operations on fasta and fastq files::
 
   cd ~/workdir/data_wgs
-  seqtk sample Cov2_HK_WGS.fastq.gz 10000 | gzip > Cov2_HK_WGS_small.fastq.gz
+  seqtk sample Cov2_HK_WGS.fastq.gz 50000 | gzip > Cov2_HK_WGS_small.fastq.gz
 
 
 Map the data and inspect with GenomeView
