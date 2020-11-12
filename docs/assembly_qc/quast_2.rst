@@ -1,6 +1,24 @@
 Assembly evaluation with QUAST(2)
 ==============================
 
+We run::
+
+  quast.py
+  
+with the following parameters::
+
++------------------------------------------+-------------------------+--------------------------------------------------------------------+
+| What?                                    | parameter               | Our value                                                          |
++==========================================+=========================+====================================================================+
+| The input assembly                       | positional              | ~/workdir/assembly/small_<number>_assembly/assembly.contigs.fasta/ |
++------------------------------------------+-------------------------+--------------------------------------------------------------------+ 
+| The output directory                     | -o                      | ~/workdir/assembly/small_<number>_assembly/quast/                  |
++------------------------------------------+-------------------------+--------------------------------------------------------------------+
+| The number of threads to be used         | -t                      | 14                                                                 |
++------------------------------------------+-------------------------+--------------------------------------------------------------------+
+
+
+
 QUAST stands for QUality ASsessment Tool. The tool evaluates genome
 assemblies by computing various metrics.  You can find all project
 news and the latest version of the tool at `sourceforge
