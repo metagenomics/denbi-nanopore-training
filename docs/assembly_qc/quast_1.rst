@@ -130,6 +130,11 @@ To call ``quast.py`` we have to provide a reference genome and one or more assem
 
 in addition.
   
+The output should be stored in::
+
+  ~/workdir/assembly/small_<number>_assembly/quast/ 
+  
+
 When you are done (or stuck) go to the next page.
 
 
