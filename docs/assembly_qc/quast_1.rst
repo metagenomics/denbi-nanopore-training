@@ -124,11 +124,11 @@ You can start the tool with::
   quast.py
   
 
-To call ``quast.py`` we have to provide a reference genome and one or more assemblies. The reference is the wuhan reference. The parameters we need are::
+To call ``quast.py`` we have to provide a reference genome and one or more assemblies. The reference is the wuhan reference. Find the appropriate parameters in the usage and use::
 
   -t <number of threads>
-  -o <output directory
-  -R <reference>
+
+in addition.
   
 When you are done (or stuck) go to the next page.
 
