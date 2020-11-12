@@ -56,6 +56,12 @@ The complete command is::
   canu -correct -d ~/workdir/data_artic/small_<number>_correct -p assembly useGrid=false -nanopore-raw ~/workdir/data_artic/basecall_small_porechopped_01.fastq.gz genomeSize=30k minReadLength=300 minOverlapLength=20
 
 
+
+Get error statistics
+--------------------
+
+TODO: Wollen wir das noch machen? 
+
 Generate and assemble trimmed reads
 -----------------------------------
 
