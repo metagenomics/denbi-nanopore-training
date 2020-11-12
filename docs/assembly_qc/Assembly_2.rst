@@ -60,7 +60,19 @@ The complete command is::
 Get error statistics
 --------------------
 
-TODO: Wollen wir das noch machen? 
+Let's get some error statistics for the corrected reads. Map the corrected reads to the Wuhan reference::
+
+  minimap2 -a ~/workdir/wuhan.fasta ~/workdir/assembly/small_<number>_correct/assembly.correctedReads.fasta.gz | samtools view -b - | samtools sort - > ~/workdir/assembly/small_<number>_correct/corrected_reads_vs_wuhan.sorted.bam
+  
+Then run qualimap::
+
+  qualimap bamqc -bam ~/workdir/assembly/small_01_correct/corrected_reads_vs_wuhan.sorted.bam -nw 5000 -nt 14 -c -outdir ~/workdir/assembly/small_<number>_correct/qualimap/
+  
+Then open the results in a web browser::
+
+  
+
+
 
 Generate and assemble trimmed reads
 -----------------------------------
