@@ -19,7 +19,8 @@ Load the wuhan reference and the mapping and look at the data - is it more equal
 In the next step, we perform the assembly with canu and the WGS dataset.References
 ^^^^^^^^^^
 
-**LAST** http://last.cbrc.jp/
+
+**Minimap2** https://github.com/lh3/minimap2
 
 **samtools** http://www.htslib.org
 
