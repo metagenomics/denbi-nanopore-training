@@ -2,84 +2,27 @@
 Assembly of WGS dataset
 ==================
 
-Generate corrected reads
-------------------------
+We will now assemble the WGS dataset.
 
+Run assembly
+------------
 
-The command to run the canu correction is::
+The command to run the canu assembly is::
 
-  canu -correct
+  canu
   
-with the following parameters:
-
-+----------------------------------------------+-------------------------+------------------------------------------------------------------+
-| What?                                        | parameter               | Our value                                                        |
-+==============================================+=========================+==================================================================+
-| The input read file                          | -nanopore-raw           | ~/workdir/data_artic/basecall_small_porechopped_<number>.fastq.gz|
-+----------------------------------------------+-------------------------+------------------------------------------------------------------+
-| The output directory                         | -d                      | ~/workdir/assembly/small_<number>_correct                        |
-+----------------------------------------------+-------------------------+------------------------------------------------------------------+
-| Prefix for output files                      | -p                      | assembly                                                         |
-+----------------------------------------------+-------------------------+------------------------------------------------------------------+
-| Use a grid engine                            | useGrid                 | false                                                            |
-+----------------------------------------------+-------------------------+------------------------------------------------------------------+
-| Genome Size                                  | genomeSize              | 30k                                                              |
-+----------------------------------------------+-------------------------+------------------------------------------------------------------+
-| Minimum Read Length                          | minReadLength           | 300                                                              |
-+----------------------------------------------+-------------------------+------------------------------------------------------------------+
-| Minimum Overlap Length                       | minOverlapLength        | 20 or try out different value                                    |
-+----------------------------------------------+-------------------------+------------------------------------------------------------------+
-| *Optional:* Coverage of corrected reads      | corOutCoverage          | something smaller than our coverage (~600)                       |
-+----------------------------------------------+-------------------------+------------------------------------------------------------------+
-| *Optional:* Min coverage for corrected reads | corMinCoverage          | 0 to get all                                                     |
-+----------------------------------------------+-------------------------+------------------------------------------------------------------+
-| *Optional:* Correction Sensitivity           | corMhapSensitivity      | normal                                                           |
-+----------------------------------------------+-------------------------+------------------------------------------------------------------+
+Without -correct or -trim-assemble, the complete assembly will run in one step.
 
 
-The corOutCoverage parameter defines to which coverage the reads are corrected, longest reads are corrected first. It is advisable to set this parameter high, to get more sequences into the assembly. corMinCoverage set to low value, will report low covered reads as well and corMhapSensitivity=normal is advised for higher coverage.
+Use the appropriate parameters, which are::
 
-
-
-The complete command is::
-
-  canu -correct -d ~/workdir/data_artic/small_<number>_correct -p assembly useGrid=false -nanopore-raw ~/workdir/data_artic/basecall_small_porechopped_01.fastq.gz genomeSize=30k minReadLength=300 minOverlapLength=20
-
-
-
-Get error statistics
---------------------
-
-Let's get some error statistics for the corrected reads. Map the corrected reads to the Wuhan reference::
-
-  minimap2 -a ~/workdir/wuhan.fasta ~/workdir/assembly/small_<number>_correct/assembly.correctedReads.fasta.gz | samtools view -b - | samtools sort - > ~/workdir/assembly/small_<number>_correct/corrected_reads_vs_wuhan.sorted.bam
-  
-Then run qualimap::
-
-  qualimap bamqc -bam ~/workdir/assembly/small_<number>_correct/corrected_reads_vs_wuhan.sorted.bam -nw 5000 -nt 14 -c -outdir ~/workdir/assembly/small_<number>_correct/qualimap/
-  
-Then open the results in a web browser::
-
-  firefox ~/workdir/assembly/small_<number>_correct/qualimap/qualimapReport.html
-
-Inspect the results, how much did our error rate decrease?
-
-Generate and assemble trimmed reads
------------------------------------
-
-The trimming stage identifies unsupported regions in the input and trims or splits reads to their longest supported range. The assembly stage makes a final pass to identify sequencing errors; constructs the best overlap graph (BOG); and outputs contigs, an assembly graph, and summary statistics.
-
-Now run the trimming and assembly step using the following command::
-
-  canu -trim-assemble
-  
-You need to define the following parameters::
-
-  -nanopore-corrected <corrected reads file>
+ -nanopore-raw <fastq file with reads>
+ -d <directory where the assembly should be stored>
+ -p assembly (this will be the prefix for your assembly files)
   
 The output directory should be named::
 
-  ~/workdir/assembly/small_<number>_assembly/
+  ~/workdir/assembly/assembly_wgs/
 
 In addition, we need some further parameters::
   
@@ -88,19 +31,13 @@ In addition, we need some further parameters::
   minOverlapLength=<minimum overlap length>
   genomeSize=<size of the target genome, i.e. 50k>
   
-Use the same parameters as before (although you could use different settings here).
+You already know these parameters from our previous assembly. We don't have amplicon data now, but the reads are still quite short (for Nanopore reads). The default minReadLength is 1000, this might remove quite a bit of our reads, so choose something smaller. minOverlapLength does not need to be as small as for the amplicon dataset, since we have larger overlaps now. It still needs to be smaller than the minReadLength. 
 
-Go to the next page, if you need help.
+Try parameters, that you think, make sense. If your assembly sucks - try again. Or check the next page for parameters that should work.
 
 
 References
 ^^^^^^^^^^
 
 **Canu** https://github.com/marbl/canu
-  
-**Minimap2** https://github.com/lh3/minimap2
-
-**QualiMap** http://qualimap.bioinfo.cipf.es/doc_html/index.html
-
-**samtools** http://www.htslib.org  
 
