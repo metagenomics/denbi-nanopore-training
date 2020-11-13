@@ -20,6 +20,8 @@ Use the appropriate parameters, which are::
  -d <directory where the assembly should be stored>
  -p assembly (this will be the prefix for your assembly files)
   
+Make sure, to use the porechopped reads as input!
+
 The output directory should be named::
 
   ~/workdir/assembly/assembly_wgs/
