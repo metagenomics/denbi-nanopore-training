@@ -13,12 +13,12 @@ We are going to create an assembly with canu and evaluate it with a mapping to t
    Quast_1
    Quast_2
    Bandage
-   get_data_wgs
+   Get_Data_WGS
    Assembly_WGS_1
    Assembly_WGS_2
    Quast_WGS_1
    Quast_WGS_2
    Bandage_WGS
-   Mapping_1
-   Mapping_2
+   Mapping_WGS_1
+   Mapping_WGS_2
 
