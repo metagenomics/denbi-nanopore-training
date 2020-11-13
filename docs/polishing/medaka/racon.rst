@@ -152,7 +152,25 @@ The options::
   -m 8 -x -6 -g -8 -w 500
   
 are used, because they were also used for the training of medaka and we want to have similar error profiles of the draft. 
-  
+
+
+Racon Problems
+^^^^^^^^^^^^^^^^^^^^^
+
+If you are having trouble running racon and get a "Core dumped" message, try reinstalling with the following commands::
+
+  sudo rm /usr/local/bin/racon
+  git clone --recursive https://github.com/lbcb-sci/racon.git racon
+  cd racon
+  mkdir build
+  cd build
+  cmake -DCMAKE_BUILD_TYPE=Release ..
+  make
+  sudo make install
+  rm ~/racon/
+
+
+
 References
 ^^^^^^^^^^
 
