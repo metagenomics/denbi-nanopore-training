@@ -1,7 +1,7 @@
-Assembly evaluation with QUAST
+WGS Assembly evaluation with QUAST
 ==============================
 
-We will evaluate our assembly with the tool QUAST.
+We will evaluate our WGS assembly with the tool QUAST.
 
 QUAST stands for QUality ASsessment Tool. The tool evaluates genome
 assemblies by computing various metrics.  You can find all project
@@ -123,7 +123,6 @@ You can start the tool with::
 
   quast.py
   
-
 To call ``quast.py`` we have to provide a reference genome and one or more assemblies. The reference is the wuhan reference. Find the appropriate parameters in the usage and use::
 
   -t <number of threads>
@@ -132,7 +131,7 @@ in addition.
   
 The output should be stored in::
 
-  ~/workdir/assembly/small_<number>_assembly/quast/ 
+  ~/workdir/assembly/assembly_wgs/quast
   
 
 When you are done (or stuck) go to the next page.
