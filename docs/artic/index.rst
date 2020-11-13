@@ -6,6 +6,6 @@ ARTIC pipeline text
 .. toctree::
    :maxdepth: 1
 
-   Step1
-   Step2
-   etc
+   artic_pipeline/index
+   pilon/index
+   nextstrain/index
