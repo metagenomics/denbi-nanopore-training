@@ -26,7 +26,7 @@ QUAST generates HTML reports including a number of interactive graphics. To acce
 
   firefox ~/workdir/assembly/small_<number>_assembly/quast/report.html
   
-Inspect the results - are satisfied with the assembly?
+Inspect the results - are you satisfied with the assembly?
 
 References
 ^^^^^^^^^^
