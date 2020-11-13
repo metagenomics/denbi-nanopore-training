@@ -9,4 +9,4 @@ We will perform a basecalling of the raw data with guppy.
    basecalling_1
    basecalling_2
    inspect
-   merge
+
