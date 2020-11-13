@@ -1,4 +1,4 @@
-Basecalling with Guppy
+Basecalling with Guppy(2)
 -------------------------
 
 We need to specify the following options:
