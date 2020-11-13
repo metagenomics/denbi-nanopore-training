@@ -1,18 +1,23 @@
 Assembly polishing
 ==================
 
-We are going to do 2 polishings to optimize our assembly:
-1. Polishing with pilon using Illumina data
-2. Polishing with racon and medaka using Nanopore data
+There are two general strategies for polishing:
+1. Polish with Illumina data 
+2. Polishing with Nanopore data
 
-If there is time we are also going to polish the racon/medaka polished assembly with Pilon and Illumina data.
+For the first the tool ``Pilon`` can be used. Since we don't have Illumina data for our WGS assembly, we can't do that here. We have Illumina data, for the ARTIC datasets, so we will repeat this part on the last day, where we generate consensus sequences using the ARTIC pipeline.
 
-A possible polishing with nanopolish is also included in this docs, but we are not going to use it in this course.
+However, we can do the second polishing. There are 2 widely used tools to do that::
+
+1. Nanopolish (works on raw fast5 files)
+2. medaka (works with fastq files)
+
+We only have fastq files, so we need to stick to the medaka polishing, which works better in practice most of the times anyway. However, we leave an example Nanopolish call in the tutorial for reference.
+
 
 .. toctree::
    :maxdepth: 1
 
-   pilon/index.rst
    medaka/index.rst
    nanopolish/index.rst
 
