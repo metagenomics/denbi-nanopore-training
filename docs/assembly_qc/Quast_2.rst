@@ -22,7 +22,7 @@ The complete commandline is::
 
   quast.py -t 14 -o ~/workdir/assembly/small_<number>_assembly/quast/ -r ~/workdir/wuhan.fasta ~/workdir/assembly/small_<number>_assembly/assembly.contigs.fasta 
 
-QUAST generates HTML reports including a number of interactive graphics. To access these reports, open them using a file browser.
+QUAST generates HTML reports including a number of interactive graphics. To access these reports, open them using a file browser::
 
   firefox ~/workdir/assembly/small_<number>_assembly/quast/report.html
   
