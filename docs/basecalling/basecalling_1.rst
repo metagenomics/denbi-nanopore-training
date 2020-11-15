@@ -6,7 +6,7 @@ Guppy is a data processing toolkit that contains the Oxford Nanopore Technologie
 
 Early downstream analysis components such as barcoding/demultiplexing, adapter trimming and alignment are contained within Guppy. Furthermore, Guppy now performs modified basecalling (5mC, 6mA and CpG) from the raw signal data, producing an additional FAST5 file of modified base probabilities.
 
-The command we are using for for basecalling with Guppy is::
+The command we are using for basecalling with Guppy is::
 
   guppy_basecaller_cpu
   
