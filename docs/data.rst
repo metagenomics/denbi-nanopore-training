@@ -25,11 +25,11 @@ We have 5 different barcodes available. The datasets are highly reduced in order
 
 Then, unpack the tar archives::
 
-  tar -xzvf barcode0*.tar.gz
+  ls | xargs -n 1 tar -xzvf
 
 and remove the tar archives::
 
-  rm barcode0*.tar.gz  
+  rm barcode_tiny_0*.tar.gz  
 
 Have a short look, on what is contained within the barcode directory::
 
