@@ -238,6 +238,10 @@ Try to get the basecalling running, use the following optional arguments::
   --num_callers arg                 Number of parallel basecallers to create.
   --cpu_threads_per_caller arg      Number of CPU worker threads per basecaller.
 
+Don't forget to create a new folder for the results::
+
+  mkdir basecalling
+
 **Important:** You have 14 CPUs in your virtual machine. The number of callers multiplied with the number of CPU threads per caller should not exceed 14. 
 
 If you are stuck, you can skip to the next page and get help with the command.
