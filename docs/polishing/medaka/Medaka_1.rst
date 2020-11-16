@@ -7,68 +7,52 @@ In earlier courses, we used nanopolish for polishing but it is outperformed by m
 
 As input medaka accepts a sorted and indexed BAM mapping file. It requires a draft assembly as a .fasta.
 
-Before running medaka, we need to map the reads to the racon polished assembly::
+Medaka hast 3 steps / subtools:
 
-  minimap2 -a -t 14 ~/workdir/assembly/assembly_wgs/racon.fasta ~/workdir/data_wgs/Cov2_HK_WGS_small_porechopped.fastq.gz | samtools view -b - | samtools sort - > ~/workdir/mappings/Cov2_HK_WGS_small_porechopped_vs_racon.sorted.bam
+ mini_align (basically runs a minimap2 mapping)
+ medaka consensus (generates a consensus, you can do that for subparts of the assembly to improve runtime)
+ medaka stitch (to stitch the subparts together, or generate a fasta from the results from medaka consensus)
+
+However, for smaller assemblies, we can just use ``medaka_consensus`` that performs all the steps above::
+
+medaka 1.2.0
+------------
+
+Assembly polishing via neural networks. The input assembly should be
+preprocessed with racon.
+
+medaka_consensus [-h] -i <fastx>
+
+    -h  show this help text.
+    -i  fastx input basecalls (required).
+    -d  fasta input assembly (required).
+    -o  output folder (default: medaka).
+    -g  don't fill gaps in consensus with draft sequence.
+    -m  medaka model, (default: r941_min_high_g360).
+        Available: r103_min_high_g345, r103_min_high_g360, r103_prom_high_g360, r103_prom_snp_g3210, r103_prom_variant_g3210, r10_min_high_g303, r10_min_high_g340, r941_min_fast_g303, r941_min_high_g303, r941_min_high_g330, r941_min_high_g340_rle, r941_min_high_g344, r941_min_high_g351, r941_min_high_g360, r941_prom_fast_g303, r941_prom_high_g303, r941_prom_high_g330, r941_prom_high_g344, r941_prom_high_g360, r941_prom_high_g4011, r941_prom_snp_g303, r941_prom_snp_g322, r941_prom_snp_g360, r941_prom_variant_g303, r941_prom_variant_g322, r941_prom_variant_g360.
+        Alternatively a .hdf file from 'medaka train'.
+    -f  Force overwrite of outputs (default will reuse existing outputs).
+    -t  number of threads with which to create features (default: 1).
+    -b  batchsize, controls memory use (default: 100).
+
+-i must be specified.
+
+
+We need to define the following parameters::
+  -i <input fastq>
+  -d <racon reference assembly>
+  -o <output folder>, should be: ~/workdir/assembly/assembly_wgs/medaka/
+  -t <threads>
+  -m <the appropriate medaka model>
   
-And index  the BAM file::
+The model are named with the following scheme::
 
-  samtools index ~/workdir/mappings/Cov2_HK_WGS_small_porechopped_vs_racon.sorted.bam
-
-
-Then we check the usage of medaka_consensus::
-
-  usage: medaka consensus [-h] [--debug | --quiet] [--batch_size BATCH_SIZE] [--chunk_len CHUNK_LEN] [--chunk_ovlp CHUNK_OVLP] [--regions REGIONS [REGIONS ...]] [--model MODEL] [--RG READGROUP]
-                          [--threads THREADS] [--check_output] [--save_features] [--tag_name TAG_NAME] [--tag_value TAG_VALUE] [--tag_keep_missing]
-                          bam output
-
-  positional arguments:
-    bam                   Input alignments.
-    output                Output file.
-
-  optional arguments:
-    -h, --help            show this help message and exit
-    --debug               Verbose logging of debug information. (default: 20)
-    --quiet               Minimal logging; warnings only). (default: 20)
-    --batch_size BATCH_SIZE
-                          Inference batch size. (default: 100)
-    --chunk_len CHUNK_LEN
-                          Chunk length of samples. (default: 10000)
-    --chunk_ovlp CHUNK_OVLP
-                          Overlap of chunks. (default: 1000)
-    --regions REGIONS [REGIONS ...]
-                          Genomic regions to analyse, or a bed file. (default: None)
-    --model MODEL         Model to use. {r103_min_high_g345, r103_min_high_g360, r103_prom_high_g360, r103_prom_snp_g3210, r103_prom_variant_g3210, r10_min_high_g303, r10_min_high_g340, r941_min_fast_g303,
-                          r941_min_high_g303, r941_min_high_g330, r941_min_high_g340_rle, r941_min_high_g344, r941_min_high_g351, r941_min_high_g360, r941_prom_fast_g303, r941_prom_high_g303,
-                          r941_prom_high_g330, r941_prom_high_g344, r941_prom_high_g360, r941_prom_high_g4011, r941_prom_snp_g303, r941_prom_snp_g322, r941_prom_snp_g360, r941_prom_variant_g303,
-                          r941_prom_variant_g322, r941_prom_variant_g360} (default: r941_min_high_g360)
-    --threads THREADS     Number of threads used by inference. (default: 1)
-    --check_output        Verify integrity of output file after inference. (default: False)
-    --save_features       Save features with consensus probabilities. (default: False)
-
-  read group:
-    Filtering alignments the read group (RG) tag, expected to be string value.
-
-    --RG READGROUP        Read group to select. (default: None)
-
-  filter tag:
-    Filtering alignments by an integer valued tag.
-
-    --tag_name TAG_NAME   Two-letter tag name. (default: None)
-    --tag_value TAG_VALUE
-                          Value of tag. (default: None)
-    --tag_keep_missing    Keep alignments when tag is missing. (default: False)
+  {pore}_{device}_{caller variant}_{caller version}
+  
+Our pore is r941, the device is MinION (min), we take the high-accuracy model (high), and our guppy version was 4.15. Choose the model, that is closest to that basecaller version.
 
 
-
-For comparison, we run medaka on our inital assembly and on the one polished with racon.
-
-
-We use the model r941_min_high_g360 (for R941 flowcell, MinION model, high accuracy, basecalled with guppy version3.60 - since this is the highest version available; we used guppy version 4.15). So we can call medaka on the racon polished assembly with::
-
-  medaka_consensus --threads 14 --model r941_min_high_g360 ~/workdir/mappings/Cov2_HK_WGS_small_porechopped_vs_racon.sorted.bam ~/assembly/assembly_wgs/medaka
-    
-Next, we are going to have a short look on assembly results.
+If you are stuck, get help on the next page.
 
 
 References
