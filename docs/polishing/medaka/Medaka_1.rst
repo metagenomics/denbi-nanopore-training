@@ -5,9 +5,18 @@ Medaka is a tool to create a consensus sequence of nanopore sequencing data. Thi
 
 In earlier courses, we used nanopolish for polishing but it is outperformed by medaka in both runtime and accuracy.
 
-As input medaka accepts reads in either a .fasta or a .fastq file. It requires a draft assembly as a .fasta.
+As input medaka accepts a sorted and indexed BAM mapping file. It requires a draft assembly as a .fasta.
 
-Check the usage of medaka_consensus::
+Before running medaka, we need to map the reads to the racon polished assembly::
+
+  minimap2 -a -t 14 ~/workdir/assembly/assembly_wgs/racon.fasta ~/workdir/data_wgs/Cov2_HK_WGS_small_porechopped.fastq.gz | samtools view -b - | samtools sort - > ~/workdir/mappings/Cov2_HK_WGS_small_porechopped_vs_racon.sorted.bam
+  
+And index  the BAM file::
+
+  samtools index ~/workdir/mappings/Cov2_HK_WGS_small_porechopped_vs_racon.sorted.bam
+
+
+Then we check the usage of medaka_consensus::
 
   usage: medaka consensus [-h] [--debug | --quiet] [--batch_size BATCH_SIZE] [--chunk_len CHUNK_LEN] [--chunk_ovlp CHUNK_OVLP] [--regions REGIONS [REGIONS ...]] [--model MODEL] [--RG READGROUP]
                           [--threads THREADS] [--check_output] [--save_features] [--tag_name TAG_NAME] [--tag_value TAG_VALUE] [--tag_keep_missing]
@@ -54,9 +63,6 @@ Check the usage of medaka_consensus::
 
 For comparison, we run medaka on our inital assembly and on the one polished with racon.
 
-First, mapping with minimap2 to the racon polished assembly::
-
-  minimap2 -a -t 14 ~/workdir/assembly/assembly_wgs/racon.fasta ~/workdir/data_wgs/Cov2_HK_WGS_small_porechopped.fastq.gz | samtools view -b - | samtools sort - > ~/workdir/mappings/Cov2_HK_WGS_small_porechopped_vs_racon.sorted.bam
 
 We use the model r941_min_high_g360 (for R941 flowcell, MinION model, high accuracy, basecalled with guppy version3.60 - since this is the highest version available; we used guppy version 4.15). So we can call medaka on the racon polished assembly with::
 
