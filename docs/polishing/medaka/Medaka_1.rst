@@ -53,15 +53,11 @@ Check the usage of medaka_consensus::
 
 
 For comparison, we run medaka on our inital assembly and on the one polished with racon.
-We use the model r941_min_high_g360 (for R941 flowcell, MinION model, high accuracy, basecalled with guppy version3.60 - since this is the highest version available; we used guppy version 4.15). So we can call medaka with::
+We use the model r941_min_high_g360 (for R941 flowcell, MinION model, high accuracy, basecalled with guppy version3.60 - since this is the highest version available; we used guppy version 4.15). So we can call medaka on the racon polished assembly with::
 
-  medaka_consensus -i basecall/basecall_trimmed.fastq.gz -d assembly/assembly.contigs.fasta -o medaka -t 14 -m r941_min_high
-  
-To run medaka on the racon polished assembly::
-
-  medaka_consensus -i basecall/basecall_trimmed.fastq.gz -d racon/racon.fasta -o racon_medaka -t 14 -m r941_min_high
-
-Next, we are going to have a short look on assembly results and further polish with pilon.
+  medaka_consensus -t 14 -m r941_min_high_g360 -i ~/workdir/data_wgs/Cov2_HK_WGS_small_porechopped.fastq.gz -d ~/workdir/assembly/assembly_wgs/racon.fasta -o ~/assembly/assembly_wgs/medaka
+    
+Next, we are going to have a short look on assembly results.
 
 
 References
