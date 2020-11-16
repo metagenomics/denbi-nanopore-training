@@ -3,11 +3,11 @@ Quality control by mapping(2)
 
 Map the data to the Wuhan reference::
 
-  minimap2 -a -t 14 ~/workdir/wuhan.fasta ~/workdir/data_wgs/Cov2_HK_WGS_small_porechopped.fastq.gz | samtools view -b - | samtools sort - > ~/workdir/mappings/Cov2_HK_WGS_small_porechopped_vs_wuhan.sorted.bam
+  minimap2 -a -t 14 ~/workdir/wuhan.fasta ~/workdir/assembly/assembly_wgs/assembly.contigs.fasta | samtools view -b - | samtools sort - > ~/workdir/mappings/assembly_wgs_vs_wuhan.sorted.bam
   
 Create the index::
 
-  samtools index ~/workdir/mappings/Cov2_HK_WGS_small_porechopped_vs_wuhan.sorted.bam
+  samtools index ~/workdir/mappings/assembly_wgs_vs_wuhan.sorted.bam
   
 Load GenomeView with::
 
