@@ -100,7 +100,8 @@ If you are having trouble running racon and get a "Illegal instruction (core dum
   cmake -DCMAKE_BUILD_TYPE=Release ..
   make
   sudo make install
-  rm ~/racon/
+  cd
+  rm -rf ~/racon/
 
 
 
