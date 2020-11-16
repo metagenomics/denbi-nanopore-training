@@ -19,10 +19,6 @@ Map the data to the Wuhan reference::
 
   minimap2 -a -t 14 ~/workdir/wuhan.fasta ~/workdir/data_wgs/Cov2_HK_WGS_small_porechopped.fastq.gz  > ~/workdir/mappings/Cov2_HK_WGS_small_porechopped_vs_wuhan.sam
   
-Create the index::
-
-  samtools index ~/workdir/mappings/Cov2_HK_WGS_small_porechopped_vs_wuhan.sorted.bam
-
 Run racon
 ^^^^^^^^^^^^^^^^^^^^^
 
