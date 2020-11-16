@@ -38,6 +38,11 @@ The run fastqc for Illumina data::
   fastqc -t 14 -o ~/workdir/fastqc/basecall_tiny_<number> ~/workdir/data_artic/basecall_tiny_<number>.fastq.gz
 
 After that, you can load the reports in your web browser. Open a file browser, go to your workdir/fastqc/ directory and double click the html file.
+Or use the command line::
+
+  firefox ~/workdir/fastqc/illumina*.html
+
+  firefox ~/workdir/fastqc/basecall_tiny_<number>/*.html
 
 
 Look out for the differences between Illumina data und Nanopore data. Is there Addapter contamination in your read data?
