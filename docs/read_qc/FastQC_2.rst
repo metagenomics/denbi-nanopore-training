@@ -53,21 +53,6 @@ of reports including bad data.
 
 **Note:** When you run fastqc without "-o", the results of fastqc are located in the directory that contains the reads.
 
-TODO: Wird das hier noch gebraucht?? Porechop auf naechster Seite...
-
-Handle adapter contamination
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-As we see some strange GC content at the 5' end of our nanopore reads, we can alter the way the plots are generated and turn off the grouping of reads into bins. Notice, this will generate very huge plots! To avoid this, we will first trim our reads to the first 100 base positions and do the analysis only on that::
-
-  cd ~/workdir
-  mkdir -p ~/workdir/fastqc/nanopore_fastqc_nogroup
-  zcat ~/workdir/basecall/basecall.fastq.gz  | perl -ne '{chomp; if ($.%2) {print $_."\n"} else {print substr($_,0,100)."\n"} }' | gzip > ~/workdir/basecall/basecall_100.fastq.gz
-  fastqc -t 14 -o ~/workdir/fastqc/nanopore_fastqc_nogroup --nogroup --extract ~/workdir/basecall/basecall_100.fastq.gz
-  grep -A 100 "Per base sequence" ~/workdir/fastqc/nanopore_fastqc_nogroup/basecall_100_fastqc/fastqc_data.txt 
-
-
-
 So the first bases may indicate an adaptor contamination. For workflows including de novo assembly refined with nanopolish or medaka adaptor trimming is not necessary, but in other workflow scenarios this can be important to do and good there are tools which can handle this, as e.g. **porechop**.
 
 References
