@@ -90,7 +90,7 @@ And in addition the following parameters::
 Racon Problems
 ^^^^^^^^^^^^^^^^^^^^^
 
-If you are having trouble running racon and get a "Core dumped" message, try reinstalling with the following commands::
+If you are having trouble running racon and get a "Illegal instruction (core dumped)" message, try reinstalling with the following commands::
 
   sudo rm /usr/local/bin/racon
   git clone --recursive https://github.com/lbcb-sci/racon.git racon
