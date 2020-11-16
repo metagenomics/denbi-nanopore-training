@@ -11,10 +11,3 @@ We are going to polish our assembly using racon and medaka now.
  Medaka_1
  Medaka_2
  quast
- quast_after_pilon
-  
-  
-  
-  
-
-
