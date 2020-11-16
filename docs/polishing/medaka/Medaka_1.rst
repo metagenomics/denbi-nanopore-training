@@ -53,9 +53,14 @@ Check the usage of medaka_consensus::
 
 
 For comparison, we run medaka on our inital assembly and on the one polished with racon.
+
+First, mapping with minimap2 to the racon polished assembly::
+
+  minimap2 -a -t 14 ~/workdir/assembly/assembly_wgs/racon.fasta ~/workdir/data_wgs/Cov2_HK_WGS_small_porechopped.fastq.gz | samtools view -b - | samtools sort - > ~/workdir/mappings/Cov2_HK_WGS_small_porechopped_vs_racon.sorted.bam
+
 We use the model r941_min_high_g360 (for R941 flowcell, MinION model, high accuracy, basecalled with guppy version3.60 - since this is the highest version available; we used guppy version 4.15). So we can call medaka on the racon polished assembly with::
 
-  medaka_consensus -t 14 -m r941_min_high_g360 -i ~/workdir/data_wgs/Cov2_HK_WGS_small_porechopped.fastq.gz -d ~/workdir/assembly/assembly_wgs/racon.fasta -o ~/assembly/assembly_wgs/medaka
+  medaka_consensus --threads 14 --model r941_min_high_g360 ~/workdir/mappings/Cov2_HK_WGS_small_porechopped_vs_racon.sorted.bam ~/assembly/assembly_wgs/medaka
     
 Next, we are going to have a short look on assembly results.
 
