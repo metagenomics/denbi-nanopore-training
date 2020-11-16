@@ -9,23 +9,51 @@ As input medaka accepts reads in either a .fasta or a .fastq file. It requires a
 
 Check the usage of medaka_consensus::
 
-  medaka_consensus [-h] -i <fastx>
+  usage: medaka consensus [-h] [--debug | --quiet] [--batch_size BATCH_SIZE] [--chunk_len CHUNK_LEN] [--chunk_ovlp CHUNK_OVLP] [--regions REGIONS [REGIONS ...]] [--model MODEL] [--RG READGROUP]
+                          [--threads THREADS] [--check_output] [--save_features] [--tag_name TAG_NAME] [--tag_value TAG_VALUE] [--tag_keep_missing]
+                          bam output
 
-    -h  show this help text.
-    -i  fastx input basecalls (required).
-    -d  fasta input assembly (required). 
-    -o  output folder (default: medaka).
-    -m  medaka model, (default: r941_min_high).
-        Available: r941_trans, r941_flip213, r941_flip235, r941_min_fast, r941_min_high, r941_prom_fast, r941_prom_high.
-        Alternatively a .hdf file from 'medaka train'. 
-    -t  number of threads with which to create features (default: 1).
-    -b  batchsize, controls memory use (default: 200).
+  positional arguments:
+    bam                   Input alignments.
+    output                Output file.
 
-  -i must be specified.
+  optional arguments:
+    -h, --help            show this help message and exit
+    --debug               Verbose logging of debug information. (default: 20)
+    --quiet               Minimal logging; warnings only). (default: 20)
+    --batch_size BATCH_SIZE
+                          Inference batch size. (default: 100)
+    --chunk_len CHUNK_LEN
+                          Chunk length of samples. (default: 10000)
+    --chunk_ovlp CHUNK_OVLP
+                          Overlap of chunks. (default: 1000)
+    --regions REGIONS [REGIONS ...]
+                          Genomic regions to analyse, or a bed file. (default: None)
+    --model MODEL         Model to use. {r103_min_high_g345, r103_min_high_g360, r103_prom_high_g360, r103_prom_snp_g3210, r103_prom_variant_g3210, r10_min_high_g303, r10_min_high_g340, r941_min_fast_g303,
+                          r941_min_high_g303, r941_min_high_g330, r941_min_high_g340_rle, r941_min_high_g344, r941_min_high_g351, r941_min_high_g360, r941_prom_fast_g303, r941_prom_high_g303,
+                          r941_prom_high_g330, r941_prom_high_g344, r941_prom_high_g360, r941_prom_high_g4011, r941_prom_snp_g303, r941_prom_snp_g322, r941_prom_snp_g360, r941_prom_variant_g303,
+                          r941_prom_variant_g322, r941_prom_variant_g360} (default: r941_min_high_g360)
+    --threads THREADS     Number of threads used by inference. (default: 1)
+    --check_output        Verify integrity of output file after inference. (default: False)
+    --save_features       Save features with consensus probabilities. (default: False)
+
+  read group:
+    Filtering alignments the read group (RG) tag, expected to be string value.
+
+    --RG READGROUP        Read group to select. (default: None)
+
+  filter tag:
+    Filtering alignments by an integer valued tag.
+
+    --tag_name TAG_NAME   Two-letter tag name. (default: None)
+    --tag_value TAG_VALUE
+                          Value of tag. (default: None)
+    --tag_keep_missing    Keep alignments when tag is missing. (default: False)
+
 
 
 For comparison, we run medaka on our inital assembly and on the one polished with racon.
-We use the model r941_min_high. So we can call medaka with::
+We use the model r941_min_high_g360 (for R941 flowcell, MinION model, high accuracy, basecalled with guppy version3.60 - since this is the highest version available; we used guppy version 4.15). So we can call medaka with::
 
   medaka_consensus -i basecall/basecall_trimmed.fastq.gz -d assembly/assembly.contigs.fasta -o medaka -t 14 -m r941_min_high
   
