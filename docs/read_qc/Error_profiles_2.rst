@@ -80,7 +80,7 @@ Run::
 
   qualimap bamqc
   
-on the mapping files now (*.sorted.bam - Illumina and Nanopore mappings). Use the following options:;
+on the mapping files now (*.sorted.bam - Illumina and Nanopore mappings). Use the following options::
 
   -nt 14
   -nw 50000
