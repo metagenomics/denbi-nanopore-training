@@ -1,6 +1,8 @@
 Generating consensus sequence (2)
 ----------------
 
+artic minion --medaka --normalise 200 --threads 4 --scheme-directory ~/artic-ncov2019/primer_schemes --read-file basecall_small_filtered_01.fastq nCoV-2019/V1 samplename
+
 First of all, if not active, activate the artic-ncov2019 conda environment::
 
   conda activate artic-ncov2019
