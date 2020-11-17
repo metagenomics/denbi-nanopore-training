@@ -53,9 +53,20 @@ Check the usage for artic minion::
     --no-indels
     --dry-run
 
-Run the ``artic minion`` command using medaka, use 14 threads, you can normalise to 200fold coverage to save runtime if you want. 
+Run the ``artic minion`` command using medaka, use 14 threads, you can normalise to 200fold coverage to save runtime if you want. You need to set the correct scheme directory (containing primer sequences), which is::
 
-artic minion --medaka --normalise 200 --threads 4 --scheme-directory ~/artic-ncov2019/primer_schemes --read-file run_name_barcode01.fastq nCoV-2019/V1 samplename
+  ~/artic-ncov2019/primer_schemes
+  
+And as positional arguments, you need to provide::
+
+  (1) the exact primer sequences:
+  nCov2019/V1
+  
+  (2) The samplename:
+  barcode_<number>
+  
+If you are stuck, get help on the next page.
+
 
 References
 ^^^^^^^^^^
