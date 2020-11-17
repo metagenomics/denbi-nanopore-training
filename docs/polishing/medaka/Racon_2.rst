@@ -16,9 +16,9 @@ with the following parameters::
 +==============================================+=========================+=============================================================================+
 | The input read file                          | positional (1)          | ~/workdir/data_wgs/Cov2_HK_WGS_small_porechopped.fastq.gz                   |
 +----------------------------------------------+-------------------------+-----------------------------------------------------------------------------+
-| The mapping file                             | positional (2)          | ~/workdir/mappings/Cov2_HK_WGS_small_porechopped_vs_wuhan.sam               |
+| The mapping file                             | positional (2)          | ~/workdir/mappings/Cov2_HK_WGS_small_porechopped_vs_assembly_wgs.sam        |
 +----------------------------------------------+-------------------------+-----------------------------------------------------------------------------+
-| The reference file                           | positional (3)          | ~/workdir/wuhan.fasta                                                       |
+| The reference file                           | positional (3)          | ~/workdir/assemmbly/assembly_wgs/assemby.contigs.fasta                      |
 +----------------------------------------------+-------------------------+-----------------------------------------------------------------------------+
 | Number of threads                            | -t                      | 14                                                                          |
 +----------------------------------------------+-------------------------+-----------------------------------------------------------------------------+
@@ -30,7 +30,7 @@ with the following parameters::
 
 Then we can call racon with our mapping, the read file and the assembly file. We use 14 threads to do this::
 
-  racon -m 8 -x -6 -g -8 -w 500 -t 14~/workdir/data_wgs/Cov2_HK_WGS_small_porechopped.fastq.gz  ~/workdir/mappings/Cov2_HK_WGS_small_porechopped_vs_wuhan.sam ~/workdir/wuhan.fasta > ~/workdir/assembly/assembly_wgs/racon.fasta
+  racon -m 8 -x -6 -g -8 -w 500 -t 14~/workdir/data_wgs/Cov2_HK_WGS_small_porechopped.fastq.gz  ~/workdir/mappings/Cov2_HK_WGS_small_porechopped_vs_assembly_wgs.sam ~/workdir/assemmbly/assembly_wgs/assemby.contigs.fasta > ~/workdir/assembly/assembly_wgs/racon.fasta
   
 
 References
