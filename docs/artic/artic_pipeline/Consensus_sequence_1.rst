@@ -53,20 +53,9 @@ Check the usage for artic minion::
     --no-indels
     --dry-run
 
+Run the ``artic minion`` command using medaka, use 14 threads, you can normalise to 200fold coverage to save runtime if you want. 
 
-Since the quality check has been done along with the basecalling, we can use the flag ``--skip-quality-check``. That will improve runtime, but does not really change much.
-
-To perform the filtering for one dataset, we can use the following command::
-
-  artic guppyplex --skip-quality-check --min-length 400 --max-length 700 --directory ~/workdir/data_artic/basecall_small_<number>/ --output ~/workdir/data_artic/basecall_small_filtered_<number>.fastq
-  
-Repeat that for all datasets. You could also do that in a loop::
-
-  for i in {1..5}
-  do artic guppyplex --skip-quality-check --min-length 400 --max-length 700 --directory ~/workdir/data_artic/basecall_small_0$i --output ~/workdir/data_artic/basecall_small_filtered_0$i.fastq
-  done
-  
-In the next step, we use the filtered reads to generate consensus sequences.
+artic minion --medaka --normalise 200 --threads 4 --scheme-directory ~/artic-ncov2019/primer_schemes --read-file run_name_barcode01.fastq nCoV-2019/V1 samplename
 
 References
 ^^^^^^^^^^
