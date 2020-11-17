@@ -34,7 +34,7 @@ to perform a length filtering on the basecalled data and combine all reads into 
     --prefix PREFIX       Prefix for guppyplex files
     --output output       FASTQ file to write
 
-**Task**: Use ``artic guupyplex`` to filter for reads with a minimum size of 400 and a maximum size of 700. Your output files should be named::
+**Task**: Use ``artic guppyplex`` to filter for reads with a minimum size of 400 and a maximum size of 700. Your output files should be named::
 
   ~/workdir/data_artic/basecall_small_filtered_<number>.fastq
   
