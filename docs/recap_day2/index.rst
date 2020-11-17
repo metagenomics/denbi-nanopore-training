@@ -7,10 +7,8 @@ Today, we are working with the ARTIC datasets again. Please go to your data_arti
 
   cd ~/workdir/data_artic/
 
-  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/basecall_small.fastq.gz
-  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/basecall_small.fastq.gz
-  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/basecall_small.fastq.gz
-  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/basecall_small.fastq.gz
-  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/basecall_small.fastq.gz
-  
-
+  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/basecall_small.tar.gz
+  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/basecall_small.tar.gz
+  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/basecall_small.tar.gz
+  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/basecall_small.tar.gz
+  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/basecall_small.tar.gz
