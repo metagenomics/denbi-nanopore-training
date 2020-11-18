@@ -1,7 +1,11 @@
 Call pilon
 ----------
 
-In the next step, we call pilon with the mappings to polish our assembly::
+In the next step, we call pilon with the mappings to polish our consensus sequences.
+
+Check the usage of Pilon::
+
+  java -jar ~/...
   
   cd ~/workdir/
   mkdir pilon
