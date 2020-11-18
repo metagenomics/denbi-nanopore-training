@@ -38,7 +38,7 @@ and the following parameters:
 
 The complete commandline for bwa mem is::
 
-  bwa mem -t 14  ~/workdir/results_artic/barcode_<number>.consensus.fasta  ~/workdir/data_artic/Illumina_<number>/B000<number>_S<number>_L001_R1_001.fastq.gz ~/workdir/data_artic/Illumina_<number>/B000<number>_S<number>_L001_Rw_001.fastq.gz > ~/workdir/mappings/Illumina_vs_consensus_<number>.sam
+  bwa mem -t 14  ~/workdir/results_artic/barcode_<number>.consensus.fasta  ~/workdir/data_artic/Illumina_<number>/B000<number>_S<number>_L001_R1_001.fastq.gz ~/workdir/data_artic/Illumina_<number>/B000<number>_S<number>_L001_R2_001.fastq.gz > ~/workdir/mappings/Illumina_vs_consensus_<number>.sam
   
 Then convert to BAM (if you didn't created a sorted BAM file directly)::
 
