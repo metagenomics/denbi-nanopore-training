@@ -1,37 +1,40 @@
+Call Pilon (2)
+----------
+
+Start Pilon with::
+
+  java -Xmx32G -jar pilon-1.23.jar
+
+and the following parameters:
+
++------------------------------------------+----------------+-------------------------------------------------------------------+
+| What?                                    | parameter      | Our value                                                         |
++==========================================+================+===================================================================+
+| The consensus sequence                   | --genome       | ~/workdir/results_artic/barcode_<number>.consensus.fasta          |
++------------------------------------------+----------------+-------------------------------------------------------------------+
+| The input mapping                        | --frags        | ~/workdir/mappings/Illumina_vs_consensus_<number>.sorted.bam       |
++------------------------------------------+----------------+-------------------------------------------------------------------+ 
+| The output prefix                        | --output       | ~/workdir/results_artic/barcode_<number>_pilon                    |
++------------------------------------------+----------------+-------------------------------------------------------------------+
+| The number of threads to be used         | --threads      | 14                                                                |
++------------------------------------------+----------------+-------------------------------------------------------------------+
+| Generate a file with changes             | --changes                                                                          |
++------------------------------------------+----------------+-------------------------------------------------------------------+
+
+The complete command is:;
+
+  java -Xmx32G -jar ~/pilon-1.23.jar --genome ~/workdir/results_artic/barcode_<number>.consensus.fasta --changes --frags ~/workdir/mappings/Illumina_vs_consensus_<number>.sorted.bam --threads 14 --output ~/workdir/results_artic/barcode_<number>_pilon
+  
+And a loop to do that for all samples::
+
+  for i in {1..5}
+  do
+  java -Xmx32G -jar ~/pilon-1.23.jar --genome ~/workdir/results_artic/barcode_0$i.consensus.fasta --changes --frags ~/workdir/mappings/Illumina_vs_consensus_0$i.sorted.bam --threads 14 --output ~/workdir/results_artic/barcode_0$i_pilon
+  done
 
 
+References
+^^^^^^^^^^
 
-  cd ~/workdir/
-  mkdir pilon
-  java -Xmx32G -jar ~/pilon-1.22.jar --genome ~/workdir/assembly/assembly.contigs.fasta --fix all --changes --frags ~/workdir/illumina_mapping/mapping.sorted.bam --threads 14 --output ~/workdir/pilon/pilon_round1 | tee ~/workdir/pilon/round1.pilon
-  
-You can repeat this for several rounds like this::
-  
-  Round2:
+**pilon** https://github.com/broadinstitute/pilon/wiki
 
-  bwa index ~/workdir/pilon/pilon_round1.fasta
-  bwa mem -t 14 ~/workdir/pilon/pilon_round1.fasta ~/workdir/data/illumina/Illumina_R1.fastq.gz ~/workdir/data/illumina/Illumina_R2.fastq.gz | samtools view - -Sb | samtools sort - -@14 -o ~/workdir/illumina_mapping/mapping_pilon1.sorted.bam
-  samtools index ~/workdir/illumina_mapping/mapping_pilon1.sorted.bam
-  java -Xmx32G -jar ~/pilon-1.22.jar --genome ~/workdir/pilon/pilon_round1.fasta --fix all --changes --frags ~/workdir/illumina_mapping/mapping_pilon1.sorted.bam --threads 14 --output ~/workdir/pilon/pilon_round2 | tee ~/workdir/pilon/round2.pilon
-  
-  
-  Round3:
-  
-  bwa index ~/workdir/pilon/pilon_round2.fasta
-  bwa mem -t 14 ~/workdir/pilon/pilon_round2.fasta ~/workdir/data/illumina/Illumina_R1.fastq.gz ~/workdir/data/illumina/Illumina_R2.fastq.gz | samtools view - -Sb | samtools sort - -@14 -o ~/workdir/illumina_mapping/mapping_pilon2.sorted.bam
-  samtools index ~/workdir/illumina_mapping/mapping_pilon2.sorted.bam
-  java -Xmx32G -jar ~/pilon-1.22.jar --genome ~/workdir/pilon/pilon_round2.fasta --fix all --changes --frags ~/workdir/illumina_mapping/mapping_pilon2.sorted.bam --threads 14 --output ~/workdir/pilon/pilon_round3 | tee ~/workdir/pilon/round3.pilon
-  
-  
-  Round4:
-  
-  bwa index ~/workdir/pilon/pilon_round3.fasta
-  bwa mem -t 14 ~/workdir/pilon/pilon_round3.fasta ~/workdir/data/illumina/Illumina_R1.fastq.gz ~/workdir/data/illumina/Illumina_R2.fastq.gz | samtools view - -Sb | samtools sort - -@14 -o ~/workdir/illumina_mapping/mapping_pilon3.sorted.bam
-  samtools index ~/workdir/illumina_mapping/mapping_pilon3.sorted.bam
-  java -Xmx32G -jar ~/pilon-1.22.jar --genome ~/workdir/pilon/pilon_round3.fasta --fix all --changes --frags ~/workdir/illumina_mapping/mapping_pilon3.sorted.bam --threads 14 --output ~/workdir/pilon/pilon_round4 | tee ~/workdir/pilon/round4.pilon
-
-You can inspect the ``Pilon_roundX.changes`` file to see if there are changes to the previous round.
-
-In case, you don't want to do these steps for yourself, we have precomputed some pilon rounds for you. You can copy those rounds from the precomputed Result directory to your workdir::
-
-  cp -r ~/workdir/results/pilon/pilon_round{2..4}* ~/workdir/pilon/.
