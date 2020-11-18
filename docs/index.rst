@@ -17,4 +17,5 @@ Welcome to the three-day nanopore Hands-On training course. This tutorial will g
    polishing/index
    recap_day2/index
    artic/index
+   outlook/index
 
