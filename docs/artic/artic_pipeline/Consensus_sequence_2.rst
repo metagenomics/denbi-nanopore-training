@@ -1,16 +1,6 @@
 Generating consensus sequence (2)
 ----------------
 
-Commands::
-
-  artic minion --medaka --normalise 200 --threads 4 --scheme-directory ~/artic-ncov2019/primer_schemes --read-file basecall_small_filtered_01.fastq nCoV-2019/V1 samplename
-
-  for i in {1..5} 
-  do
-  artic minion --medaka --normalise 200 --threads 14 --scheme-directory ~/artic-ncov2019/primer_schemes --read-file basecall_small_filtered_0$i.fastq nCoV-2019/V1 barcode_0$i
-  done
-
-
 First of all, if not active, activate the artic-ncov2019 conda environment::
 
   conda activate artic-ncov2019
@@ -24,30 +14,30 @@ with the following parameters:
 +------------------------------------------+-------------------------+--------------------------------------------------------------------+
 | What?                                    | parameter               | Our value                                                          |
 +==========================================+=========================+====================================================================+
-| The input directory containing the reads | --directory             | ~/workdir/data_artic/basecall_small_<number>/                      |
+| Use medaka                               | --medaka                                                                                     |
 +------------------------------------------+-------------------------+--------------------------------------------------------------------+ 
-| The output file                          | --output                | ~/workdir/data_artic/basecall_small_filtered.fastq                 |
+| The directory containing primer schemes  | --scheme-directory      | ~/artic-ncov2019/primer_schemes                                    |
++------------------------------------------+-------------------------+--------------------------------------------------------------------+ 
+| The input read file                      | --read-file             | ~/workdir/data_artic/basecall_filtered_<number>.fastq              |
 +------------------------------------------+-------------------------+--------------------------------------------------------------------+
-| Minimum read length                      | --min-length            | 400                                                                |
+| Number of threads to use                 | --threads               | 14                                                                 |
 +------------------------------------------+-------------------------+--------------------------------------------------------------------+
-| Maximum read length                      | --max-length            | 700                                                                |
+| Normalise to max 200fold coverage        | --normalise             | 200                                                                |
 +------------------------------------------+-------------------------+--------------------------------------------------------------------+
-| *(optional)* Skip quality check          | --skip-quality-check                                                                         |
+| The primer scheme to use                 | positional (1)          | nCoV-2019/V3                                                       |
++------------------------------------------+-------------------------+--------------------------------------------------------------------+
+| The sample name (prefix for output)      | positional (2)          | barcode_<nubmer>                                                   |
 +------------------------------------------+-------------------------+--------------------------------------------------------------------+
 
-Since the quality check has been done along with the basecalling, we can use the flag ``--skip-quality-check``. That will improve runtime, but does not really change much.
+Commands::
 
-To perform the filtering for one dataset, we can use the following command::
+  artic minion --medaka --normalise 200 --threads 4 --scheme-directory ~/artic-ncov2019/primer_schemes --read-file ~/workdir/data_artic/basecall_small_filtered_01.fastq nCoV-2019/V3 samplename
 
-  artic guppyplex --skip-quality-check --min-length 400 --max-length 700 --directory ~/workdir/data_artic/basecall_small_<number>/ --output ~/workdir/data_artic/basecall_small_filtered_<number>.fastq
-  
-Repeat that for all datasets. You could also do that in a loop::
-
-  for i in {1..5}
-  do artic guppyplex --skip-quality-check --min-length 400 --max-length 700 --directory ~/workdir/data_artic/basecall_small_0$i --output ~/workdir/data_artic/basecall_small_filtered_0$i.fastq
+  for i in {1..5} 
+  do
+  artic minion --medaka --normalise 200 --threads 14 --scheme-directory ~/artic-ncov2019/primer_schemes --read-file ~/workdir/data_artic/basecall_small_filtered_0$i.fastq nCoV-2019/V3 barcode_0$i
   done
   
-In the next step, we use the filtered reads to generate consensus sequences.
 
 References
 ^^^^^^^^^^
