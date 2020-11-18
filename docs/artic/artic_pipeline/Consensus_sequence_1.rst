@@ -53,7 +53,12 @@ Check the usage for artic minion::
     --no-indels
     --dry-run
 
-Run the ``artic minion`` command using medaka, use 14 threads, you can normalise to 200fold coverage to save runtime if you want. You need to set the correct scheme directory (containing primer sequences), which is::
+Create a directory for the results and cd into it:: 
+
+  mkdir ~/workdir/results/artic/
+  cd ~/workdir/results/artic/
+
+Then run the ``artic minion`` command using medaka, use 14 threads, you can normalise to 200fold coverage to save runtime if you want. You need to set the correct scheme directory (containing primer sequences), which is::
 
   ~/artic-ncov2019/primer_schemes
   
