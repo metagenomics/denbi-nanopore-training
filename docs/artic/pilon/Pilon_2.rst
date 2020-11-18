@@ -21,7 +21,7 @@ and the following parameters:
 | Generate a file with changes             | --changes                                                                          |
 +------------------------------------------+----------------+-------------------------------------------------------------------+
 
-The complete command is:;
+The complete command is::
 
   java -Xmx32G -jar ~/pilon-1.23.jar --genome ~/workdir/results_artic/barcode_<number>.consensus.fasta --changes --frags ~/workdir/mappings/Illumina_vs_consensus_<number>.sorted.bam --threads 14 --output ~/workdir/results_artic/barcode_<number>_pilon
   
