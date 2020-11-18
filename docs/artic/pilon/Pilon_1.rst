@@ -1,4 +1,4 @@
-Call pilon
+Call Pilon
 ----------
 
 In the next step, we call pilon with the mappings to polish our consensus sequences.
