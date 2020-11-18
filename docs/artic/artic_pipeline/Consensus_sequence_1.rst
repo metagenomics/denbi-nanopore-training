@@ -55,8 +55,8 @@ Check the usage for artic minion::
 
 Create a directory for the results and cd into it:: 
 
-  mkdir ~/workdir/results/artic/
-  cd ~/workdir/results/artic/
+  mkdir ~/workdir/results_artic/
+  cd ~/workdir/results_artic/
 
 Then run the ``artic minion`` command using medaka, use 14 threads, you can normalise to 200fold coverage to save runtime if you want. You need to set the correct scheme directory (containing primer sequences), which is::
 
