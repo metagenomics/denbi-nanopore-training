@@ -29,14 +29,27 @@ with the following parameters:
 | The sample name (prefix for output)      | positional (2)          | barcode_<nubmer>                                                   |
 +------------------------------------------+-------------------------+--------------------------------------------------------------------+
 
-Commands::
 
-  artic minion --medaka --normalise 200 --threads 4 --scheme-directory ~/artic-ncov2019/primer_schemes --read-file ~/workdir/data_artic/basecall_small_filtered_01.fastq nCoV-2019/V3 samplename
+Enter the newly created results directory first::
+
+  cd ~/workdir/results_artic/
+
+Then you can run the ARTIC pipeline one by one using::
+
+  artic minion --medaka --normalise 200 --threads 14 --scheme-directory ~/artic-ncov2019/primer_schemes --read-file ~/workdir/data_artic/basecall_small_filtered_<number>.fastq nCoV-2019/V3 barcode_<number>
+
+Or use a loop to do that::
 
   for i in {1..5} 
   do
   artic minion --medaka --normalise 200 --threads 14 --scheme-directory ~/artic-ncov2019/primer_schemes --read-file ~/workdir/data_artic/basecall_small_filtered_0$i.fastq nCoV-2019/V3 barcode_0$i
   done
+  
+When you are done, consensus files have been generated::
+
+  ~/workdir/results_artic/barcode_<number>.consensus.fasta
+  
+If you want, you can map the consensus to the Wuhan reference and view the results in GenomeView, or use QUAST, to compare the sequences.
   
 
 References
