@@ -14,9 +14,9 @@ with the following parameters:
 +------------------------------------------+-------------------------+--------------------------------------------------------------------+
 | What?                                    | parameter               | Our value                                                          |
 +==========================================+=========================+====================================================================+
-| The input directory containing the reads | --directory             | ~/workdir/data_artic/basecall_small_<number>/                      |
+| The input directory containing the reads | --directory             | ~/workdir/data_artic/basecall_<number>/                            |
 +------------------------------------------+-------------------------+--------------------------------------------------------------------+ 
-| The output file                          | --output                | ~/workdir/data_artic/basecall_small_filtered.fastq                 |
+| The output file                          | --output                | ~/workdir/data_artic/basecall_filtered.fastq                       |
 +------------------------------------------+-------------------------+--------------------------------------------------------------------+
 | Minimum read length                      | --min-length            | 400                                                                |
 +------------------------------------------+-------------------------+--------------------------------------------------------------------+
@@ -29,12 +29,12 @@ Since the quality check has been done along with the basecalling, we can use the
 
 To perform the filtering for one dataset, we can use the following command::
 
-  artic guppyplex --skip-quality-check --min-length 400 --max-length 700 --directory ~/workdir/data_artic/basecall_small_<number>/ --output ~/workdir/data_artic/basecall_small_filtered_<number>.fastq
+  artic guppyplex --skip-quality-check --min-length 400 --max-length 700 --directory ~/workdir/data_artic/basecall_<number>/ --output ~/workdir/data_artic/basecall_filtered_<number>.fastq
   
 Repeat that for all datasets. You could also do that in a loop::
 
   for i in {1..5}
-  do artic guppyplex --skip-quality-check --min-length 400 --max-length 700 --directory ~/workdir/data_artic/basecall_small_0$i --output ~/workdir/data_artic/basecall_small_filtered_0$i.fastq
+  do artic guppyplex --skip-quality-check --min-length 400 --max-length 700 --directory ~/workdir/data_artic/basecall_0$i --output ~/workdir/data_artic/basecall_filtered_0$i.fastq
   done
   
 In the next step, we use the filtered reads to generate consensus sequences.
