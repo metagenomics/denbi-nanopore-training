@@ -17,6 +17,12 @@ Then start the auspice server::
   cd ~/workdir/ncov
   nextstrain view auspice/
   
-And view the results in a browser at::
+The output should tell you, where to find the results. You can start   
 
-  
+And view the results in a browser with::
+
+  firefox http://127.0.0.1:4000
+
+If you are done inspecting the results, terminate the auspice server with ``Ctrl+C`` .
+
+We will now include our own data and recompute the analysis.
