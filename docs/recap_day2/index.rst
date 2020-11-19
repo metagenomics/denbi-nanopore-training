@@ -10,8 +10,8 @@ Today, we are working with the ARTIC datasets again. Please go to your data_arti
   for i in {1..5} 
   do 
   wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/basecall_0$i.tar.gz
-  tar -xzvf basecall_small_0$i.tar.gz
-  rm basecall_small_0$i.tar.gz
+  tar -xzvf basecall_0$i.tar.gz
+  rm basecall_0$i.tar.gz
   done
 
 We also have some Illumina data fitting to our samples::
