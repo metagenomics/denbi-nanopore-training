@@ -20,12 +20,12 @@ Then open the sequence file in an editor::
   
 and give short names to the sequences like
 
-  Germany/NRW-B0001/2020
-  Germany/NRW-B0002/2020
-  Germany/NRW-B0003/2020
-  Germany/NRW-B0004/2020
-  Germany/NRW-B0005/2020
-
+  Germany/OWL-B0001/2020
+  Germany/OWL-B0002/2020
+  Germany/OWL-B0003/2020
+  Germany/OWL-B0004/2020
+  Germany/OWL-B0005/2020
+  
 Then append the fasta file to the example sequences with::
   
   cat  ~/workdir/ncov/data/consensus_sequences.fasta >> ~/workdir/ncov/data/example_sequences.fasta
@@ -33,22 +33,25 @@ Then append the fasta file to the example sequences with::
   
 Add metadata
 ^^^^^^^^^^^^^^^^^^^
-  
-Open the metadata file with::
 
-  gedit ~/workdir/ncov/data/example_metadata.tsv
+Download the metadata for our samples::
   
-And add metadata lines for our data.
+  cd ~/workdir/ncov/
+  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/metadata.tsv
 
+Append it to the example metadata file::
+
+  cat ~/workdir/ncov/metadata.tsv >> ~/workdir/ncov/data/example_metadata.tsv
+  
 
 Rerun analysis
 ^^^^^^^^^^^^^^
 
 Then make sure, the nextstrain environment is active::
 
-  conda activate nextstrain\
+  conda activate nextstrain
 
-Run the basic nextstrain worflow with::
+Run the basic nextstrain workflow with::
 
   cd ~/workdir/ncov/
   snakemake --cores 14 --profile ./my_profiles/getting_started
