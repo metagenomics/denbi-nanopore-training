@@ -24,3 +24,9 @@ Extract the data fasta file, located in the repository::
   gunzip ~/ncov/data/example_sequences.fasta.gz
   
 In the next step, we run the nextstrain basic workflow.
+
+
+References
+^^^^^^^^^^
+
+**Nextstrain SARS Cov2 Tutorial** https://nextstrain.github.io/ncov/ 
