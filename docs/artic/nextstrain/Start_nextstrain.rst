@@ -1,26 +1,22 @@
 Start nextstrain
 ----------------
 
-We will download the tutorial dataset for SARS-Cov2 provided by nextstrain. First, enter your workdir::
+As with the ARTIC pipeline, nextstrain is also installed in a conda environment. Activate it with::
 
-  cd ~/workdir/
+  conda activate nextstrain
   
-Then clone the repository::
+Make sure, the conda environment is active during the next steps.
 
-  git clone https://github.com/nextstrain/ncov.git
+Run the basic nextstrain worflow with::
 
-The data is contained in the directory::
+  cd ~/workdir/ncov/
+  snakemake --cores 14 --profile ./my_profiles/getting_started
 
-  ls -l ~/workdir/ncov/data/
+Then start the auspice server::
 
-  total 1724
-  -rwxrwxr-x 1 ubuntu ubuntu  171914 Nov 19 09:26 example_metadata.tsv
-  -rwxrwxr-x 1 ubuntu ubuntu 1589835 Nov 19 09:26 example_sequences.fasta.gz
-
-There is a fasta file and a metadata file containing information about each sequence.
-
-Extract the data fasta file, located in the repository::
-
-  gunzip ~/ncov/data/example_sequences.fasta.gz
+  cd ~/workdir/ncov
+  nextstrain view auspice/
   
-In the next step, we run the nextstrain basic workflow.
+And view the results in a browser at::
+
+  
