@@ -36,13 +36,13 @@ Enter the newly created results directory first::
 
 Then you can run the ARTIC pipeline one by one using::
 
-  artic minion --medaka --normalise 200 --threads 14 --scheme-directory ~/artic-ncov2019/primer_schemes --read-file ~/workdir/data_artic/basecall_small_filtered_<number>.fastq nCoV-2019/V3 barcode_<number>
+  artic minion --medaka --normalise 200 --threads 14 --scheme-directory ~/artic-ncov2019/primer_schemes --read-file ~/workdir/data_artic/basecall_filtered_<number>.fastq nCoV-2019/V3 barcode_<number>
 
 Or use a loop to do that::
 
   for i in {1..5} 
   do
-  artic minion --medaka --normalise 200 --threads 14 --scheme-directory ~/artic-ncov2019/primer_schemes --read-file ~/workdir/data_artic/basecall_small_filtered_0$i.fastq nCoV-2019/V3 barcode_0$i
+  artic minion --medaka --normalise 200 --threads 14 --scheme-directory ~/artic-ncov2019/primer_schemes --read-file ~/workdir/data_artic/basecall_filtered_0$i.fastq nCoV-2019/V3 barcode_0$i
   done
   
 When you are done, consensus files have been generated::
