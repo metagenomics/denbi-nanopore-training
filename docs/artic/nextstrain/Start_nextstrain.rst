@@ -26,3 +26,10 @@ And view the results in a browser with::
 If you are done inspecting the results, terminate the auspice server with ``Ctrl+C`` .
 
 We will now include our own data and recompute the analysis.
+
+
+
+References
+^^^^^^^^^^
+
+**Nextstrain SARS Cov2 Tutorial** https://nextstrain.github.io/ncov/ 
