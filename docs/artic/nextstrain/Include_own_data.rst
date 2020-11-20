@@ -18,7 +18,7 @@ Then open the sequence file in an editor::
   
   gedit ~/workdir/ncov/data/consensus_sequences.fasta
   
-and give short names to the sequences like
+and give short names to the sequences::
 
   Germany/OWL-B0001/2020
   Germany/OWL-B0002/2020
