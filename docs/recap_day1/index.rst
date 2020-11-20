@@ -9,7 +9,7 @@ exists. If not, create it::
 
   mkdir ~/workdir/data_artic/
 
-All you need to go on is the basecalled and porechopped data (choose 3). You can get the data with::
+All you need to go on is the basecalled and porechopped data (choose 1). You can get the data with::
 
   cd ~/workdir/data_artic/
   wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/basecall_small_porechopped_01.fastq.gz
