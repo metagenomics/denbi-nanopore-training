@@ -25,7 +25,9 @@ and give short names to the sequences::
   Germany/OWL-B0003/2020
   Germany/OWL-B0004/2020
   Germany/OWL-B0005/2020
-  
+
+**Attention:** Please use exactly the names above, since these are the names, we provide in the metadata file below.
+
 Then append the fasta file to the example sequences with::
   
   cat  ~/workdir/ncov/data/consensus_sequences.fasta >> ~/workdir/ncov/data/example_sequences.fasta
