@@ -68,7 +68,7 @@ Porechop is a tool for finding and removing adapters from Oxford Nanopore reads.
     --version                             Show program's version number and exit
 
 
-Use **porechop** on the basecalled dataset (basecall_tiny_<number>.fastq.gz). The results shoud be stored as::
+Use **porechop** on the basecalled dataset (basecall_tiny_<number>.fastq.gz). The results should be stored as::
 
   ~/workdir/data_artic/basecall_tiny_porechopped_<number>.fastq.gz
 
