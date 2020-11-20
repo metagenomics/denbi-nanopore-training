@@ -14,7 +14,7 @@ The tutorial dataset is located in our object store. First create a data folder,
   mkdir data_artic
   cd data_artic
   
-We have 5 different barcodes available. The datasets are highly reduced in order to achieve reasonable runtimes. Download 3 of them (use 3 of the commands below)::
+We have 5 different barcodes available. The datasets are highly reduced in order to achieve reasonable runtimes. Download one of them (use 1 of the commands below)::
 
   wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/barcode_tiny_01.tar.gz
   wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/barcode_tiny_02.tar.gz
@@ -29,14 +29,18 @@ Then, unpack the tar archives::
 
 and remove the tar archives::
 
-  rm barcode_tiny_0*.tar.gz  
+  rm barcode_tiny_0*.tar.gz
+  
+and rename the directory, such that everyone of you has the same directory name::
+
+  mv ~/workdir/data_artic/barcode_tiny_<number> ~/workdir/data_artic/barcode_tiny/
+
+**Note: Use the placeholder "<number>" for the number of the dataset, exchange that number accordingly in the example command line.**
 
 Have a short look, on what is contained within the barcode directory::
 
-  ls -l ~/workdir/data_artic/barcode_tiny_<number>
+  ls -l ~/workdir/data_artic/barcode_tiny/
   
-**Note: From now on, we use the placeholder "<number>" for the number of the dataset, exchange that number accordingly in the example command lines.**
-
 There is only one fast5 file contained in the tiny dataset, usually you have a number of fast5 files like this::
 
   total 33703024
