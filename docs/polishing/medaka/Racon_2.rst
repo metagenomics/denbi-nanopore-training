@@ -30,8 +30,7 @@ with the following parameters::
 
 Then we can call racon with our mapping, the read file and the assembly file. We use 14 threads to do this::
 
-  racon -m 8 -x -6 -g -8 -w 500 -t 14 ~/workdir/data_wgs/Cov2_HK_WGS_small_porechopped.fastq.gz  ~/workdir/mappings/Cov2_HK_WGS_small_porechopped_vs_assembly_wgs.sam ~/workdir/assemmbly/assembly_wgs/assemby.contigs.fasta > ~/workdir/assembly/assembly_wgs/racon.fasta
-  
+  racon -m 8 -x -6 -g -8 -w 500 -t 14 ~/workdir/data_wgs/Cov2_HK_WGS_small_porechopped.fastq.gz  ~/workdir/mappings/Cov2_HK_WGS_small_porechopped_vs_assembly_wgs.sam ~/workdir/assembly/assembly_wgs/assembly.contigs.fasta > ~/workdir/assembly/assembly_wgs/racon.fasta
 
 References
 ^^^^^^^^^^
