@@ -42,7 +42,7 @@ The corOutCoverage parameter defines to which coverage the reads are corrected, 
 
 The complete command is::
 
-  canu -trim-assemble -d ~/workdir/data_artic/small_<number>_assemblu -p assembly useGrid=false -nanopore-raw ~/workdir/assembly/small_<number>_correct/assembly.correctedReads.fasta.gz genomeSize=30k minReadLength=300 minOverlapLength=20
+  canu -trim-assemble -d ~/workdir/assembly/small_<number>_assembly -p assembly useGrid=false -nanopore-corrected ~/workdir/assembly/small_<number>_correct/assembly.correctedReads.fasta.gz genomeSize=30k minReadLength=300 minOverlapLength=20
 
 In the next step, we will evaluate our assembly.
 
