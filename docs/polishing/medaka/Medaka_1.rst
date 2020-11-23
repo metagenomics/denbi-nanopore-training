@@ -39,6 +39,7 @@ However, for smaller assemblies, we can just use ``medaka_consensus`` that perfo
 
 
 We need to define the following parameters::
+
   -i <input fastq>
   -d <racon reference assembly>
   -o <output folder>, should be: ~/workdir/assembly/assembly_wgs/medaka/
