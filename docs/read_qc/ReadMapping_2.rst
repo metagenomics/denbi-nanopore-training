@@ -64,8 +64,7 @@ and the following parameters:
 
 The complete commandline for bwa mem is::
 
-  bwa mem -t 14  ~/workdir/wuhan.fasta  ~/workdir/Illumina/D0003_S3_L001_R1_001.fastq.gz ~/workdir/illumina/D0003_S3_L001_R2_001.fastq.gz > ~/workdir/mappings/illumina_vs_wuhan.sam
-  
+  bwa mem -t 14  ~/workdir/wuhan.fasta  ~/workdir/Illumina/D0003_S3_L001_R1_001.fastq.gz ~/workdir/Illumina/D0003_S3_L001_R2_001.fastq.gz > ~/workdir/mappings/illumina_vs_wuhan.sam
 
 
 Converting sam files to sorted and indexed bam files
