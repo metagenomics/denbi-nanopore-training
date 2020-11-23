@@ -20,7 +20,7 @@ with the following parameters:
 
 The complete commandline is::
 
-  quast.py -t 14 -o ~/workdir/assembly/assembly_wgs/quast/ -r ~/workdir/wuhan.fasta ~/workdir/assembly/assembly_wgs/assembly.contigs.fasta/  
+  quast.py -t 14 -o ~/workdir/assembly/assembly_wgs/quast/ -r ~/workdir/wuhan.fasta ~/workdir/assembly/assembly_wgs/assembly.contigs.fasta  
 
 QUAST generates HTML reports including a number of interactive graphics. To access these reports, open them using a file browser::
 
