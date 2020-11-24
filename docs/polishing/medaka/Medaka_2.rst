@@ -27,6 +27,9 @@ The complete commandline is::
     
 In a next step, we will use quast to compare our assemblies.
 
+If medaka_consensus fails with an error massage try the following an re-run the command above::
+
+  pip install tensorflow
 
 References
 ^^^^^^^^^^
