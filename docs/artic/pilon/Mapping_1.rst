@@ -48,8 +48,7 @@ And finally, no matter how you created the sorted BAM file, create an index on i
 
   samtools index ~/workdir/mappings/Illumina_vs_consensus_<number>.sorted.bam
 
-
-Repeat that for all samples. Or: write a loop, that performs all these steps for you. The solution for this task can be found on the next page, but don't be lazy. ;)
+**Perform that step for one dataset only to save time. Do the other datasets later, when there is time left.**
 
 
 References
