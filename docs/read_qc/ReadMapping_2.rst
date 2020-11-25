@@ -27,6 +27,10 @@ to compute the mapping and add the following parameters:
 | Get sam output                           | -a                                                                                 |
 +------------------------------------------+----------------+-------------------------------------------------------------------+
 
+Create the mapping folder first::
+
+  mkdir ~/workdir/mappings/
+
 The complete commandline for minimap2 is::
 
   minimap2 -t 14 -x map-ont -a -o ~/workdir/mappings/basecall_tiny_porechopped_<number>_vs_wuhan.sam ~/workdir/wuhan.fasta ~/workdir/data_artic/basecall_tiny_porechopped_<number>/.fastq.gz
