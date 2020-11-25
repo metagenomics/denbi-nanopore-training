@@ -16,8 +16,8 @@ Complete manual can be looked up at: https://github.com/roblanf/minion_qc
 
 Usage::
   
- Rscript ~/MinIONQC.R --help
- Usage: /home/ubuntu/MinIONQC.R [options]
+ MinIONQC.R --help
+ Usage: MinIONQC.R [options]
 
 Options:
 	-h, --help
