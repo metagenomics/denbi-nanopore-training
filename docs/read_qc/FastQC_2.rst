@@ -53,7 +53,7 @@ of reports including bad data.
 
 **Note:** When you run fastqc without "-o", the results of fastqc are located in the directory that contains the reads.
 
-So the first bases may indicate an adaptor contamination. For workflows including de novo assembly refined with nanopolish or medaka adaptor trimming is not necessary, but in other workflow scenarios this can be important to do and good there are tools which can handle this, as e.g. **porechop**.
+So the first bases may indicate an adapter contamination. For workflows including *de novo* assembly refined with nanopolish or medaka adapter trimming is not necessary, but in other workflow scenarios this can be important to do and good there are tools which can handle this, as e.g. **porechop**.
 
 References
 ^^^^^^^^^^
