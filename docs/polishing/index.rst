@@ -12,12 +12,14 @@ However, we can do the second polishing. There are 2 widely used tools to do tha
 1. Nanopolish (works on raw fast5 files)
 2. medaka (works with fastq files)
 
-We only have fastq files, so we need to stick to the medaka polishing, which works better in practice most of the times anyway. However, we leave an example Nanopolish call in the tutorial for reference.
+We only have fastq files, so we need to stick to the medaka polishing, which works better in practice most of the times anyway. 
 
+We have used nanopolish in previous courses. If you are interested in an example call, check out the old documentation::
+
+https://denbi-nanopore-training-course.readthedocs.io/en/latest/polishing/nanopolish/index.html
 
 .. toctree::
    :maxdepth: 1
 
    medaka/index.rst
-   nanopolish/index.rst
 
