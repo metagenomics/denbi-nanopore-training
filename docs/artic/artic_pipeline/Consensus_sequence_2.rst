@@ -7,7 +7,7 @@ First of all, if not active, activate the artic-ncov2019 conda environment::
   
 Then use the command::
 
-  artic guppyplex 
+  artic minion 
 
 with the following parameters:
 
