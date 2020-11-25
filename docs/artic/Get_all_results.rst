@@ -14,10 +14,10 @@ with::
 Then download the remaining results (pick the commands accordingly)::
   
   cd ~/workdir/results_artic/
-  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/basecall_01.fasta
-  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/basecall_02.fasta
-  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/basecall_03.fasta
-  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/basecall_04.fasta
-  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/basecall_05.fasta
+  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/barcode_01.fasta
+  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/barcode_02.fasta
+  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/barcode_03.fasta
+  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/barcode_04.fasta
+  wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/barcode_05.fasta
 
 Now we can start to use nextstrain.
