@@ -25,6 +25,16 @@ Extract the data fasta file, located in the repository::
   
 In the next step, we run the nextstrain basic workflow.
 
+Inspect the data files with less or more::
+
+  less example_sequences.fasta
+  
+and::
+
+  less example_metadata.tsv
+  
+... to get an impression of what data needs to be provided for nextstrain.
+
 
 References
 ^^^^^^^^^^
