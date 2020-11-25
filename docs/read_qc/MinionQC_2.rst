@@ -3,7 +3,7 @@ MinIONQC(2)
 
 We need to run Rscript with MinIONQC.R::
 
-  Rscript ~/MinIONQC.R
+  MinIONQC.R
 
 ... and specify the following options:
 
@@ -21,7 +21,7 @@ We need to run Rscript with MinIONQC.R::
 The complete command is::
   
   cd ~/workdir/data_artic/
-  Rscript ~/MinIONQC.R -i basecall_tiny_<number> -o MinIONQC -p 14
+  MinIONQC.R -i basecall_tiny_<number> -o MinIONQC -p 14
     
 This will create several analysis plots. After that, you can load the plots in your web browser by using a file browser. You could use::
 
