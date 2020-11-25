@@ -19,24 +19,24 @@ Usage::
  MinIONQC.R --help
  Usage: MinIONQC.R [options]
 
-Options:
-	-h, --help
-		Show this help message and exit
+	Options:
+		-h, --help
+			Show this help message and exit
 
-	-i INPUT, --input=INPUT
-		Input file or directory (required). Either a full path to a sequence_summary.txt file, or a full path to a directory containing one or more such files. In the latter case the directory is searched recursively.
+		-i INPUT, --input=INPUT
+			Input file or directory (required). Either a full path to a sequence_summary.txt file, or a full path to a directory containing one or more such files. In the latter case the directory is searched recursively.
 
-	-o OUTPUTDIRECTORY, --outputdirectory=OUTPUTDIRECTORY
-		Output directory (optional, default is the same as the input directory). If a single sequencing_summary.txt file is passed as input, then the output directory will contain just the plots associated with that file. If a directory containing more than one sequencing_summary.txt files is passed as input, then the plots will be put into sub-directories that have the same names as the parent directories of each sequencing_summary.txt file
+		-o OUTPUTDIRECTORY, --outputdirectory=OUTPUTDIRECTORY
+			Output directory (optional, default is the same as the input directory). If a single sequencing_summary.txt file is passed as input, then the output directory will contain just the plots associated with that file. If a directory containing more than one sequencing_summary.txt files is passed as input, then the plots will be put into sub-directories that have the same names as the parent directories of each sequencing_summary.txt file
 
-	-q QSCORE_CUTOFF, --qscore_cutoff=QSCORE_CUTOFF
-		The cutoff value for the mean Q score of a read (default 7). Used to create separate plots for reads above and below this threshold
+		-q QSCORE_CUTOFF, --qscore_cutoff=QSCORE_CUTOFF
+			The cutoff value for the mean Q score of a read (default 7). Used to create separate plots for reads above and below this threshold
 
-	-p PROCESSORS, --processors=PROCESSORS
-		Number of processors to use for the anlaysis (default 1). Only helps when you are analysing more than one sequencing_summary.txt file at a time
+		-p PROCESSORS, --processors=PROCESSORS
+			Number of processors to use for the anlaysis (default 1). Only helps when you are analysing more than one sequencing_summary.txt file at a time
 
-	-s SMALLFIGURES, --smallfigures=SMALLFIGURES
-		TRUE or FALSE (the default). When true, MinIONQC will output smaller figures, e.g. suitable for publications or presentations. The default is to produce larger figures optimised for display on screen. Some figures just require small text, and cannot be effectively resized.
+		-s SMALLFIGURES, --smallfigures=SMALLFIGURES
+			TRUE or FALSE (the default). When true, MinIONQC will output smaller figures, e.g. suitable for publications or presentations. The default is to produce larger figures optimised for display on screen. Some figures just require small text, and cannot be effectively resized.
 
 Run MinionQC to get some statistics for your data. The output directory should be::
 
