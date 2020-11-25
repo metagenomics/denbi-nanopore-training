@@ -23,7 +23,7 @@ with the following parameters:
 
 The complete commandline is::
 
-  medaka_consensus -t 14 -m r941_min_high_g360 -i data_wgs/Cov2_HK_WGS_small_porechopped.fastq.gz  -d assembly/assembly_wgs/racon.fasta -o assembly/assembly_wgs/medaka
+  medaka_consensus -t 14 -m r941_min_high_g360 -i ~/workdir/data_wgs/Cov2_HK_WGS_small_porechopped.fastq.gz  -d ~/workdir/assembly/assembly_wgs/racon.fasta -o assembly/assembly_wgs/medaka
     
 In a next step, we will use quast to compare our assemblies.
 
