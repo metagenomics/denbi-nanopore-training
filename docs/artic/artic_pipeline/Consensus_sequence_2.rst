@@ -34,11 +34,13 @@ Enter the newly created results directory first::
 
   cd ~/workdir/results_artic/
 
-Then you can run the ARTIC pipeline one by one using::
+Then you can run the ARTIC pipeline for one dataset::
 
   artic minion --medaka --normalise 200 --threads 14 --scheme-directory ~/artic-ncov2019/primer_schemes --read-file ~/workdir/data_artic/basecall_filtered_<number>.fastq nCoV-2019/V3 barcode_<number>
 
-Or use a loop to do that::
+**Perform that step for one dataset only to save time. Do the other datasets later, when there is time left.**
+
+A loop to process all datasets would look like this::
 
   for i in {1..5} 
   do
