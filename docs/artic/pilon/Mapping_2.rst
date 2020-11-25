@@ -1,6 +1,8 @@
 Mapping of Illumina reads to assembly (2)
 -------------------------------------
 
+This is just a loop-solution to map all samples. You have already mapped one sample, skip this for the moment and come back later, if there is time left.
+
 A loop, to to the indexing of the consensus sequence, mapping and SAM to BAM conversion for you would look like this::
 
   for i in {1..5}
