@@ -137,6 +137,8 @@ and::
   ~/workdir/fastqc/basecall_tiny_<number>
 
 
+You need to create the result directories before runnnig FastQC, because FastQC will note create them.
+
 If you are stuck, go to the next page to get further help.
 
 
