@@ -12,13 +12,13 @@ Add fasta sequences
 
 Copy the consensus sequences to the data folder::
 
-  cat ~/workdir/results_artic/barcode*consensus.fasta > ~/workdir/ncov/data/consensus_sequences.fasta
+  cat ~/workdir/results_artic/barcode_0?.fasta > ~/workdir/ncov/data/consensus_sequences.fasta
   
 Then open the sequence file in an editor::
   
   gedit ~/workdir/ncov/data/consensus_sequences.fasta
   
-and give short names to the sequences::
+and give the following short names to the sequences::
 
   Germany/OWL-B0001/2020
   Germany/OWL-B0002/2020
@@ -44,12 +44,12 @@ Download the metadata for our samples::
 Append it to the example metadata file::
 
   cat ~/workdir/ncov/metadata.tsv >> ~/workdir/ncov/data/example_metadata.tsv
-  
+
 
 Rerun analysis
 ^^^^^^^^^^^^^^
 
-Then make sure, the nextstrain environment is active::
+Then make sure, the nextstrain environment is active. If not::
 
   conda activate nextstrain
 
@@ -63,9 +63,9 @@ Then start the auspice server::
   cd ~/workdir/ncov
   nextstrain view auspice/
   
-The output should tell you, where to find the results. You can start   
+The output should tell you, where to find the results.
 
-And view the results in a browser with::
+View the results in a browser with::
 
   firefox http://127.0.0.1:4000
 
