@@ -21,7 +21,7 @@ There is a fasta file and a metadata file containing information about each sequ
 
 Extract the data fasta file, located in the repository::
 
-  gunzip ~/ncov/data/example_sequences.fasta.gz
+  gunzip ~/workdir/ncov/data/example_sequences.fasta.gz
   
 In the next step, we run the nextstrain basic workflow.
 
