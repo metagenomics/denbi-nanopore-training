@@ -9,4 +9,5 @@ As a final step, we will run Nextstrain with example SARS-Cov2 data and include 
 
    artic_pipeline/index
    pilon/index
+   Get_all_results
    nextstrain/index
