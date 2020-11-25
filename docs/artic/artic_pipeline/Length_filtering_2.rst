@@ -31,7 +31,9 @@ To perform the filtering for one dataset, we can use the following command::
 
   artic guppyplex --skip-quality-check --min-length 400 --max-length 700 --directory ~/workdir/data_artic/basecall_<number>/ --output ~/workdir/data_artic/basecall_filtered_<number>.fastq
   
-Repeat that for all datasets. You could also do that in a loop::
+**Perform that step for one dataset only to save time. Do the other datasets later, when there is time left.**
+
+If you wanted to do that for all datasaets, you could do that in a loop::
 
   for i in {1..5}
   do artic guppyplex --skip-quality-check --min-length 400 --max-length 700 --directory ~/workdir/data_artic/basecall_0$i --output ~/workdir/data_artic/basecall_filtered_0$i.fastq
