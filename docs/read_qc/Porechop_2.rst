@@ -25,7 +25,7 @@ Go to your data_artic directory first::
 
 Then run porechop::
 
-  porechop -i ~/workdir/data_artic/basecall_tiny_<number>.fastq.gz -t 14 -v 2 -o ~/workdir/data_artic/basecall_tiny_porechopped_<number>.fastq.gz > ~/workdir/data_artic/porechop_<number>.log
+  porechop -i ~/workdir/data_artic/basecall_tiny_<number>.fastq.gz -t 14 -v 2 -o ~/workdir/data_artic/basecall_tiny_porechopped_<number>.fastq.gz |tee ~/workdir/data_artic/porechop_<number>.log
 
 
 **Task**: Inspect the log file -have adapters been removed?
