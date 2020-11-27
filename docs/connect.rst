@@ -12,7 +12,9 @@ There is an ssh command like::
 
 This is the IP and Port-Number you need to enter in the X2Go Interface.
 
-Start a terminal. If you want to disable the annoying system beeps::
+Start a terminal. 
+
+If you want to disable the annoying system beeps::
 
   xset -b
 
