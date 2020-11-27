@@ -240,6 +240,10 @@ Try to get the basecalling running, use the following optional arguments::
 
 **Important:** You have 14 CPUs in your virtual machine. The number of callers multiplied with the number of CPU threads per caller should not exceed 14. 
 
+The output directory should be named::
+
+  ~/workdir/data_artic/basecall_tiny/
+
 If you are stuck, you can skip to the next page and get help with the command.
 
 References
