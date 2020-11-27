@@ -6,7 +6,7 @@ Inferring error profiles using samtools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The command to run samtools stats is quite simple::
 
-  samtools stats ~/workdir/mappings/basecall_tiny_porechopped_<number>_vs_wuhan.sorted.bam >  ~/workdir/mappings/basecall_tiny_porechopped_<number>_vs_wuhan.stats
+  samtools stats ~/workdir/mappings/basecall_tiny_porechopped_vs_wuhan.sorted.bam >  ~/workdir/mappings/basecall_tiny_porechopped_vs_wuhan.stats
 
 and for Illumina::
 
@@ -14,7 +14,7 @@ and for Illumina::
   
 Inspect the files with::
 
-  less ~/workdir/mappings/basecall_tiny_porechopped_<number>_vs_wuhan.stats
+  less ~/workdir/mappings/basecall_tiny_porechopped_vs_wuhan.stats
   less ~/workdir/mappings/illumina_vs_wuhan.stats
 
 Enhanced mapping statistics
@@ -89,7 +89,7 @@ on the mapping files now (*.sorted.bam - Illumina and Nanopore mappings). Use th
   
 The output folders should be named::
   
-  ~/workdir/mappings/basecall_tiny_porechopped_<number>_vs_wuhan_qualimap/
+  ~/workdir/mappings/basecall_tiny_porechopped_vs_wuhan_qualimap/
   and
   ~/workdir/mappings/illumina_vs_wuhan_qualimap/
 
