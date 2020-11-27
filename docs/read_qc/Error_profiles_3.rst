@@ -18,11 +18,11 @@ with the following parameters:
 +------------------------------------------+-------------------------+---------------------------------------------------------------------------+
 | What?                                    | parameter               | Our value                                                                 |
 +==========================================+=========================+===========================================================================+
-| The input directory                      | -bam                    | ~/workdir/mappings/basecall_tiny_porechopped_<number>_vs_wuhan.sorted.bam |
+| The input directory                      | -bam                    | ~/workdir/mappings/basecall_tiny_porechopped_vs_wuhan.sorted.bam |
 |                                          |                         | or                                                                        |
 |                                          |                         | ~/workdir/mappings/illumina_vs_wuhan.sorted.bam                           |
 +------------------------------------------+-------------------------+---------------------------------------------------------------------------+ 
-| The output directory                     | -outdir                 | ~/workdir/mappings/basecall_tiny_porechopped_<number>_vs_wuhan_qualimap/  |
+| The output directory                     | -outdir                 | ~/workdir/mappings/basecall_tiny_porechopped_vs_wuhan_qualimap/  |
 |                                          |                         | or                                                                        |
 |                                          |                         | ~/workdir/mappings/illumina_vs_wuhan_qualimap/                            |
 +------------------------------------------+-------------------------+---------------------------------------------------------------------------+
@@ -33,7 +33,7 @@ with the following parameters:
 
 The complete commandline is::
 
-  qualimap bamqc -bam ~/workdir/mappings/basecall_tiny_porechopped_<number>_vs_wuhan.sorted.bam -nw 5000 -nt 14 -c -outdir ~/workdir/mappings/basecall_tiny_porechopped_<number>_vs_wuhan_qualimap/
+  qualimap bamqc -bam ~/workdir/mappings/basecall_tiny_porechopped_vs_wuhan.sorted.bam -nw 5000 -nt 14 -c -outdir ~/workdir/mappings/basecall_tiny_porechopped_vs_wuhan_qualimap/
 
 and for Illumina::
 
@@ -41,7 +41,7 @@ and for Illumina::
 
 You can view the results with firefox::
 
-  firefox ~/workdir/mappings/basecall_tiny_porechopped_<number>_vs_wuhan_qualimap/qualimapReport.html
+  firefox ~/workdir/mappings/basecall_tiny_porechopped_vs_wuhan_qualimap/qualimapReport.html
   or
   firefox ~/workdir/mappings/illumina_vs_wuhan_qualimap/qualimapReport.html
 
