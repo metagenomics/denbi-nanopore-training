@@ -10,7 +10,7 @@ We need to run Rscript with MinIONQC.R::
 +------------------------------------------+-------------------------+----------------------------------------------+
 | What?                                    | parameter               | Our value                                    |
 +==========================================+=========================+==============================================+
-| The input directory                      | -i                      | ~/workdir/data_artic/basecall_tiny_<number>/ |
+| The input directory                      | -i                      | ~/workdir/data_artic/basecall_tiny/          |
 +------------------------------------------+-------------------------+----------------------------------------------+ 
 | The output directory                     | -o                      | ~/workdir/data_artic/MinIONQC/               |
 +------------------------------------------+-------------------------+----------------------------------------------+
@@ -21,11 +21,11 @@ We need to run Rscript with MinIONQC.R::
 The complete command is::
   
   cd ~/workdir/data_artic/
-  MinIONQC.R -i basecall_tiny_<number> -o MinIONQC -p 14
+  MinIONQC.R -i basecall_tiny -o MinIONQC -p 14
     
 This will create several analysis plots. After that, you can load the plots in your web browser by using a file browser. You could use::
 
-  firefox ~/workdir/data_artic/MinIONQC/basecall_tiny_<number>/*.png
+  firefox ~/workdir/data_artic/MinIONQC/basecall_tiny/*.png
   
 to load all images at once in firefox.
   
