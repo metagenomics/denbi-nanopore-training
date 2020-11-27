@@ -5,7 +5,9 @@ The first thing you need to do is to connect to your virtual machine with the X2
 https://wiki.x2go.org/doku.php/download:start
 
 
-Enter the IP of your virtual machine, the port (ssh port), the username "ubuntu" and select your ssh key. When you have successfully connected to your machine, open a terminal. You can get all the information in the cloud portal under Overview->Instances. Then go to your virtual machine and click "How to connect".
+Enter the IP of your virtual machine, the port (ssh port), the username "ubuntu" and select your ssh key. When you have successfully connected to your machine, open a terminal.
+
+You can get all the information in the cloud portal under Overview->Instances. Then go to your virtual machine and click "How to connect".
 There is an ssh command like::
 
   ssh -p PORT_NUMBER -i /path/to/your/ssh/private/key ubuntu@IP
