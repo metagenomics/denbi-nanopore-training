@@ -134,7 +134,7 @@ The results should be stored in::
 
 and::
 
-  ~/workdir/fastqc/basecall_tiny_<number>
+  ~/workdir/fastqc/basecall_tiny
 
 
 You need to create the result directories before runnnig FastQC, because FastQC will note create them.
