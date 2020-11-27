@@ -47,7 +47,7 @@ to use more than one thread, but this shouldn't be necessary for the size of our
 
 Forward the output of samtools stats into a file called::
 
-  ~/workdir/mappings/basecall_tiny_porechopped_<number>_vs_wuhan.stats
+  ~/workdir/mappings/basecall_tiny_porechopped_vs_wuhan.stats
 
 Inspect the results using less or more. If you are stuck - get help on the next page.
 
