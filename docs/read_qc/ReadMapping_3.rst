@@ -7,7 +7,7 @@ SAM to BAM conversion with samtools
 
 To create a sorted BAM file from a SAM file we can use::
 
-  samtools view -b ~/workdir/mappings/basecall_tiny_porechopped_<number>_vs_wuhan.sam | samtools sort - > ~/workdir/mappings/basecall_tiny_porechopped_<number>_vs_wuhan.sorted.bam
+  samtools view -b ~/workdir/mappings/basecall_tiny_porechopped_vs_wuhan.sam | samtools sort - > ~/workdir/mappings/basecall_tiny_porechopped_vs_wuhan.sorted.bam
   
 And for the Illumina data::
 
@@ -16,7 +16,7 @@ And for the Illumina data::
 
 Then create indizes on the sorted BAM files::
 
-  samtools index ~/workdir/mappings/basecall_tiny_porechopped_<number>_vs_wuhan.sorted.bam
+  samtools index ~/workdir/mappings/basecall_tiny_porechopped_vs_wuhan.sorted.bam
   and 
   samtools index ~/workdir/mappings/illumina_vs_wuhan.sorted.bam
   
