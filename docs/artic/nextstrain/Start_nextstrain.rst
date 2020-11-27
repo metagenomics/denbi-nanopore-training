@@ -16,8 +16,6 @@ Then start the auspice server::
 
   cd ~/workdir/ncov
   nextstrain view auspice/
-  
-The output should tell you, where to find the results. You can start   
 
 And view the results in a browser with::
 
