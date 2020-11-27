@@ -81,7 +81,7 @@ Create a directory for the mapping results in::
   
 The result of your mappings should be named::
 
-  ~/workdir/mappings/basecall_tiny_porechopped_<number>_vs_wuhan.sam
+  ~/workdir/mappings/basecall_tiny_porechopped_vs_wuhan.sam
   
 Use the following additional options::
 
