@@ -10,11 +10,11 @@ and with the following options:
 +------------------------------------------+-------------------------+---------------------------------------------+
 | What?                                    | parameter               | Our value                                   |
 +==========================================+=========================+=============================================+
-| The input directory                      | positional              | ~/workdir/data_artic/basecall_tiny_<number>/|
+| The input directory                      | positional              | ~/workdir/data_artic/basecall_tiny/         |
 |                                          |                         | or                                          |
 |                                          |                         | ~/workdir/Illumina/*.fastq.gz               |
 +------------------------------------------+-------------------------+---------------------------------------------+ 
-| The output directory                     | -o                      | ~/workdir/fastqc/basecall_tiny_<number>/    |
+| The output directory                     | -o                      | ~/workdir/fastqc/basecall_tiny/             |
 |                                          |                         | or                                          |
 |                                          |                         | ~/workdir/fastqc/illumina/                  |
 +------------------------------------------+-------------------------+---------------------------------------------+
@@ -28,21 +28,21 @@ Go to your workdir fist::
   
 Then create folders for the results (fastqc will not create them)::
 
-  mkdir -p ~/workdir/fastqc/basecall_tiny_<number>
+  mkdir -p ~/workdir/fastqc/basecall_tiny
   mkdir -p ~/workdir/fastqc/illumina
   
 The run fastqc for Illumina data::  
 
   fastqc -t 14 -o ~/workdir/fastqc/illumina ~/workdir/Illumina/*.fastq.gz
 
-  fastqc -t 14 -o ~/workdir/fastqc/basecall_tiny_<number> ~/workdir/data_artic/basecall_tiny_<number>.fastq.gz
+  fastqc -t 14 -o ~/workdir/fastqc/basecall_tiny ~/workdir/data_artic/basecall_tiny.fastq.gz
 
 After that, you can load the reports in your web browser. Open a file browser, go to your workdir/fastqc/ directory and double click the html file.
 Or use the command line::
 
   firefox ~/workdir/fastqc/illumina*.html
 
-  firefox ~/workdir/fastqc/basecall_tiny_<number>/*.html
+  firefox ~/workdir/fastqc/basecall_tiny/*.html
 
 
 Look out for the differences between Illumina data und Nanopore data. Is there Addapter contamination in your read data?
