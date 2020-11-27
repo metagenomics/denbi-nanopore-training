@@ -68,21 +68,21 @@ Porechop is a tool for finding and removing adapters from Oxford Nanopore reads.
     --version                             Show program's version number and exit
 
 
-Use **porechop** on the basecalled dataset (basecall_tiny_<number>.fastq.gz). The results should be stored as::
+Use **porechop** on the basecalled dataset (basecall_tiny.fastq.gz). The results should be stored as::
 
-  ~/workdir/data_artic/basecall_tiny_porechopped_<number>.fastq.gz
+  ~/workdir/data_artic/basecall_tiny_porechopped.fastq.gz
 
 Also use the following options::
 
   -t 14 (to use 14 threads)
   -v 2 (to get more verbose output)
   
-In addition, you should write the output of porechop into a file called "porechop_<number>.log" for later inspection.
+In addition, you should write the output of porechop into a file called "porechop.log" for later inspection.
 
 
 When you are done running porechop, run **fastqc** again on the trimmed data for comparison, the results of this fastqc run should be stored in::
 
-  ~/workdir/fastqc/basecall_tiny_porechopped_<number>/
+  ~/workdir/fastqc/basecall_tiny_porechopped/
 
 
 Again - if you are stuck, check the next page for futher help/instructions.
