@@ -68,7 +68,7 @@ And as positional arguments, you need to provide::
   nCov2019/V1
   
   (2) The samplename:
-  barcode_<number>
+  barcode_01
   
 If you are stuck, get help on the next page.
 
