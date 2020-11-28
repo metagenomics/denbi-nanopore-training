@@ -38,7 +38,7 @@ Then you can run the ARTIC pipeline for one dataset::
 
   artic minion --medaka --normalise 200 --threads 14 --scheme-directory ~/artic-ncov2019/primer_schemes --read-file ~/workdir/data_artic/basecall_filtered_01.fastq nCoV-2019/V3 barcode_01
 
-**Perform that step for one dataset only to save time. Do the other datasets later, when there is time left.**
+**Perform that step for the first (01) dataset only to save time. Do the other datasets later, when there is time left.**
 
 A loop to process all datasets would look like this::
 
