@@ -70,6 +70,9 @@ And as positional arguments, you need to provide::
   (2) The samplename:
   barcode_01
   
+
+**Perform that step for the first (01) dataset only to save time. Do the other datasets later, when there is time left.**  
+
 If you are stuck, get help on the next page.
 
 
