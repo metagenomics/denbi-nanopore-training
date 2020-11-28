@@ -18,7 +18,7 @@ with the following parameters:
 +------------------------------------------+-------------------------+--------------------------------------------------------------------+ 
 | The directory containing primer schemes  | --scheme-directory      | ~/artic-ncov2019/primer_schemes                                    |
 +------------------------------------------+-------------------------+--------------------------------------------------------------------+ 
-| The input read file                      | --read-file             | ~/workdir/data_artic/basecall_filtered_<number>.fastq              |
+| The input read file                      | --read-file             | ~/workdir/data_artic/basecall_filtered_01.fastq                    |
 +------------------------------------------+-------------------------+--------------------------------------------------------------------+
 | Number of threads to use                 | --threads               | 14                                                                 |
 +------------------------------------------+-------------------------+--------------------------------------------------------------------+
@@ -26,7 +26,7 @@ with the following parameters:
 +------------------------------------------+-------------------------+--------------------------------------------------------------------+
 | The primer scheme to use                 | positional (1)          | nCoV-2019/V3                                                       |
 +------------------------------------------+-------------------------+--------------------------------------------------------------------+
-| The sample name (prefix for output)      | positional (2)          | barcode_<nubmer>                                                   |
+| The sample name (prefix for output)      | positional (2)          | barcode_01                                                         |
 +------------------------------------------+-------------------------+--------------------------------------------------------------------+
 
 
@@ -36,7 +36,7 @@ Enter the newly created results directory first::
 
 Then you can run the ARTIC pipeline for one dataset::
 
-  artic minion --medaka --normalise 200 --threads 14 --scheme-directory ~/artic-ncov2019/primer_schemes --read-file ~/workdir/data_artic/basecall_filtered_<number>.fastq nCoV-2019/V3 barcode_<number>
+  artic minion --medaka --normalise 200 --threads 14 --scheme-directory ~/artic-ncov2019/primer_schemes --read-file ~/workdir/data_artic/basecall_filtered_01.fastq nCoV-2019/V3 barcode_01
 
 **Perform that step for one dataset only to save time. Do the other datasets later, when there is time left.**
 
@@ -49,7 +49,7 @@ A loop to process all datasets would look like this::
   
 When you are done, consensus files have been generated::
 
-  ~/workdir/results_artic/barcode_<number>.consensus.fasta
+  ~/workdir/results_artic/barcode_01.consensus.fasta
   
 If you want, you can map the consensus to the Wuhan reference and view the results in GenomeView, or use QUAST, to compare the sequences.
   
