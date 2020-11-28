@@ -132,7 +132,7 @@ in addition.
   
 The output should be stored in::
 
-  ~/workdir/assembly/small_<number>_assembly/quast/ 
+  ~/workdir/assembly/small_assembly/quast/ 
   
 
 When you are done (or stuck) go to the next page.
