@@ -104,11 +104,11 @@ with the appropriate parameters, which are::
 
 **Note**: Use the **small** read files as input::
   
-  ~/workdir/data_artic/basecall_small_porechopped_<number>.fastq.gz
+  ~/workdir/data_artic/basecall_small_porechopped.fastq.gz
   
 The output directory should be named::
 
-  ~/workdir/assembly/small_<number>_correct/
+  ~/workdir/assembly/small_correct/
 
 In addition, we need some further parameters::
   
