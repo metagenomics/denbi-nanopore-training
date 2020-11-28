@@ -14,9 +14,9 @@ with the following parameters:
 +----------------------------------------------+-------------------------+-----------------------------------------------------------------------------+
 | What?                                        | parameter               | Our value                                                                   |
 +==============================================+=========================+=============================================================================+
-| The input read file                          | -nanopore-corrected     | ~/workdir/assembly/small_<number>_correct/assembly.correctedReads.fasta.gz  |
+| The input read file                          | -nanopore-corrected     | ~/workdir/assembly/small_correct/assembly.correctedReads.fasta.gz           |
 +----------------------------------------------+-------------------------+-----------------------------------------------------------------------------+
-| The output directory                         | -d                      | ~/workdir/assembly/small_<number>_assembly                                  |
+| The output directory                         | -d                      | ~/workdir/assembly/small_assembly                                           |
 +----------------------------------------------+-------------------------+-----------------------------------------------------------------------------+
 | Prefix for output files                      | -p                      | assembly                                                                    |
 +----------------------------------------------+-------------------------+-----------------------------------------------------------------------------+
@@ -42,7 +42,7 @@ The corOutCoverage parameter defines to which coverage the reads are corrected, 
 
 The complete command is::
 
-  canu -trim-assemble -d ~/workdir/assembly/small_<number>_assembly -p assembly useGrid=false -nanopore-corrected ~/workdir/assembly/small_<number>_correct/assembly.correctedReads.fasta.gz genomeSize=30k minReadLength=300 minOverlapLength=20
+  canu -trim-assemble -d ~/workdir/assembly/small_assembly -p assembly useGrid=false -nanopore-corrected ~/workdir/assembly/small_correct/assembly.correctedReads.fasta.gz genomeSize=30k minReadLength=300 minOverlapLength=20
 
 In the next step, we will evaluate our assembly.
 
