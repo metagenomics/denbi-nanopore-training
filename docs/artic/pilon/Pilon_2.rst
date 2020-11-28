@@ -10,11 +10,11 @@ and the following parameters:
 +------------------------------------------+----------------+-------------------------------------------------------------------+
 | What?                                    | parameter      | Our value                                                         |
 +==========================================+================+===================================================================+
-| The consensus sequence                   | --genome       | ~/workdir/results_artic/barcode_<number>.consensus.fasta          |
+| The consensus sequence                   | --genome       | ~/workdir/results_artic/barcode_01.consensus.fasta                |
 +------------------------------------------+----------------+-------------------------------------------------------------------+
-| The input mapping                        | --frags        | ~/workdir/mappings/Illumina_vs_consensus_<number>.sorted.bam       |
+| The input mapping                        | --frags        | ~/workdir/mappings/Illumina_vs_consensus_01.sorted.bam            |
 +------------------------------------------+----------------+-------------------------------------------------------------------+ 
-| The output prefix                        | --output       | ~/workdir/results_artic/barcode_<number>_pilon                    |
+| The output prefix                        | --output       | ~/workdir/results_artic/barcode_01_pilon                          |
 +------------------------------------------+----------------+-------------------------------------------------------------------+
 | The number of threads to be used         | --threads      | 14                                                                |
 +------------------------------------------+----------------+-------------------------------------------------------------------+
@@ -27,7 +27,7 @@ Make sure, to enter the resuls_artic directory first::
 
 The complete command is::
 
-  java -Xmx32G -jar ~/pilon-1.23.jar --genome ~/workdir/results_artic/barcode_<number>.consensus.fasta --changes --frags ~/workdir/mappings/Illumina_vs_consensus_<number>.sorted.bam --threads 14 --output ~/workdir/results_artic/barcode_<number>_pilon
+  java -Xmx32G -jar ~/pilon-1.23.jar --genome ~/workdir/results_artic/barcode_01.consensus.fasta --changes --frags ~/workdir/mappings/Illumina_vs_consensus_01.sorted.bam --threads 14 --output ~/workdir/results_artic/barcode_01_pilon
   
 **Perform that step for one dataset only to save time. Do the other datasets later, when there is time left.**
 
@@ -38,7 +38,7 @@ A loop to do that for all samples would look like this::
   java -Xmx32G -jar ~/pilon-1.23.jar --genome ~/workdir/results_artic/barcode_0$i.consensus.fasta --changes --frags ~/workdir/mappings/Illumina_vs_consensus_0$i.sorted.bam --threads 14 --output ~/workdir/results_artic/barcode_0$i_pilon
   done
 
-Inspect the ``barcode_<number>_pilon.changes`` file to see what has been corrected. Usually, you would do several rounds of Pilon until there are no further changes in the changes file. You would need to map the Illumina reads again vs the Pilon-polished consensus sequene, run Pilon, map again, and so on.
+Inspect the ``barcode_01_pilon.changes`` file to see what has been corrected. Usually, you would do several rounds of Pilon until there are no further changes in the changes file. You would need to map the Illumina reads again vs the Pilon-polished consensus sequene, run Pilon, map again, and so on.
 
 We will now just use our first round Pilon polished consensus sequences and put them into nextstrain.
 
