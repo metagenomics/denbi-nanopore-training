@@ -18,4 +18,8 @@ All you need to go on is the basecalled and porechopped data (choose 1). You can
   wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/basecall_small_porechopped_04.fastq.gz
   wget https://openstack.cebitec.uni-bielefeld.de:8080/swift/v1/coursedata2020/basecall_small_porechopped_05.fastq.gz
 
+Then rename your choice with::
+
+  mv ~/workdir/data_artic/basecall_small_porechopped_<number>.fastq.gz ~/workdir/data_artic/basecall_small_porechopped.fastq.gz
+
 When you are done, we can continue with the tutorial for day 2.
