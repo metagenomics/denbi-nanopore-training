@@ -9,7 +9,7 @@ Please rename the result file you have generated to::
 
 with::
 
-  mv ~/workdir/results_artic/barcode_<number>_pilon.fasta  ~/workdir/results_artic/barcode_<number>.fasta
+  mv ~/workdir/results_artic/barcode_01_pilon.fasta  ~/workdir/results_artic/barcode_01.fasta
   
 Then download the remaining results (pick the commands accordingly, you don't need barcode_01.fasta, if you succeeded in the previous steps)::
   
