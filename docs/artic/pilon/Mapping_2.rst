@@ -14,8 +14,6 @@ A loop, to to the indexing of the consensus sequence, mapping and SAM to BAM con
 
 We will use the mappings now to call Pilon.
 
-**Note:** The mappings will run for quite a while. Get a coffee and relax. :)
-
 
 References
 ^^^^^^^^^^
