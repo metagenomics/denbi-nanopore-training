@@ -14,9 +14,9 @@ with the following parameters:
 +------------------------------------------+-------------------------+--------------------------------------------------------------------+
 | What?                                    | parameter               | Our value                                                          |
 +==========================================+=========================+====================================================================+
-| The input directory containing the reads | --directory             | ~/workdir/data_artic/basecall_<number>/                            |
+| The input directory containing the reads | --directory             | ~/workdir/data_artic/basecall_01/                            |
 +------------------------------------------+-------------------------+--------------------------------------------------------------------+ 
-| The output file                          | --output                | ~/workdir/data_artic/basecall_filtered_<number>.fastq              |
+| The output file                          | --output                | ~/workdir/data_artic/basecall_filtered_01.fastq              |
 +------------------------------------------+-------------------------+--------------------------------------------------------------------+
 | Minimum read length                      | --min-length            | 400                                                                |
 +------------------------------------------+-------------------------+--------------------------------------------------------------------+
@@ -29,9 +29,9 @@ Since the quality check has been done along with the basecalling, we can use the
 
 To perform the filtering for one dataset, we can use the following command::
 
-  artic guppyplex --skip-quality-check --min-length 400 --max-length 700 --directory ~/workdir/data_artic/basecall_<number>/ --output ~/workdir/data_artic/basecall_filtered_<number>.fastq
+  artic guppyplex --skip-quality-check --min-length 400 --max-length 700 --directory ~/workdir/data_artic/basecall_01/ --output ~/workdir/data_artic/basecall_filtered_01.fastq
   
-**Perform that step for one dataset only to save time. Do the other datasets later, when there is time left.**
+**Perform that step for the first (01) dataset only to save time. Do the other datasets later, when there is time left.**
 
 If you wanted to do that for all datasaets, you could do that in a loop::
 
