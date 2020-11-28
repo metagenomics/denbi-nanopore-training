@@ -29,7 +29,7 @@ The complete command is::
 
   java -Xmx32G -jar ~/pilon-1.23.jar --genome ~/workdir/results_artic/barcode_01.consensus.fasta --changes --frags ~/workdir/mappings/Illumina_vs_consensus_01.sorted.bam --threads 14 --output ~/workdir/results_artic/barcode_01_pilon
   
-**Perform that step for one dataset only to save time. Do the other datasets later, when there is time left.**
+**Perform that step for the first (01) dataset only to save time. Do the other datasets later, when there is time left.**
 
 A loop to do that for all samples would look like this::
 
