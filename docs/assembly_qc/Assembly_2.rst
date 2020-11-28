@@ -15,9 +15,9 @@ with the following parameters:
 +----------------------------------------------+-------------------------+------------------------------------------------------------------+
 | What?                                        | parameter               | Our value                                                        |
 +==============================================+=========================+==================================================================+
-| The input read file                          | -nanopore-raw           | ~/workdir/data_artic/basecall_small_porechopped_<number>.fastq.gz|
+| The input read file                          | -nanopore-raw           | ~/workdir/data_artic/basecall_small_porechopped.fastq.gz         |
 +----------------------------------------------+-------------------------+------------------------------------------------------------------+
-| The output directory                         | -d                      | ~/workdir/assembly/small_<number>_correct                        |
+| The output directory                         | -d                      | ~/workdir/assembly/small_correct                                 |
 +----------------------------------------------+-------------------------+------------------------------------------------------------------+
 | Prefix for output files                      | -p                      | assembly                                                         |
 +----------------------------------------------+-------------------------+------------------------------------------------------------------+
@@ -43,7 +43,7 @@ The corOutCoverage parameter defines to which coverage the reads are corrected, 
 
 The complete command is::
 
-  canu -correct -d ~/workdir/assembly/small_<number>_correct -p assembly useGrid=false -nanopore-raw ~/workdir/data_artic/basecall_small_porechopped_01.fastq.gz genomeSize=30k minReadLength=300 minOverlapLength=20
+  canu -correct -d ~/workdir/assembly/small_correct -p assembly useGrid=false -nanopore-raw ~/workdir/data_artic/basecall_small_porechopped.fastq.gz genomeSize=30k minReadLength=300 minOverlapLength=20
 
 
 
@@ -52,15 +52,15 @@ Get error statistics
 
 Let's get some error statistics for the corrected reads. Map the corrected reads to the Wuhan reference::
 
-  minimap2 -a ~/workdir/wuhan.fasta ~/workdir/assembly/small_<number>_correct/assembly.correctedReads.fasta.gz | samtools view -b - | samtools sort - > ~/workdir/assembly/small_<number>_correct/corrected_reads_vs_wuhan.sorted.bam
+  minimap2 -a ~/workdir/wuhan.fasta ~/workdir/assembly/small_correct/assembly.correctedReads.fasta.gz | samtools view -b - | samtools sort - > ~/workdir/assembly/small_correct/corrected_reads_vs_wuhan.sorted.bam
   
 Then run qualimap::
 
-  qualimap bamqc -bam ~/workdir/assembly/small_<number>_correct/corrected_reads_vs_wuhan.sorted.bam -nw 5000 -nt 14 -c -outdir ~/workdir/assembly/small_<number>_correct/qualimap/
+  qualimap bamqc -bam ~/workdir/assembly/small_correct/corrected_reads_vs_wuhan.sorted.bam -nw 5000 -nt 14 -c -outdir ~/workdir/assembly/small_correct/qualimap/
   
 Then open the results in a web browser::
 
-  firefox ~/workdir/assembly/small_<number>_correct/qualimap/qualimapReport.html
+  firefox ~/workdir/assembly/small_correct/qualimap/qualimapReport.html
 
 Inspect the results, how much did our error rate decrease?
 
@@ -79,7 +79,7 @@ You need to define the following parameters::
   
 The output directory should be named::
 
-  ~/workdir/assembly/small_<number>_assembly/
+  ~/workdir/assembly/small_assembly/
 
 In addition, we need some further parameters::
   
