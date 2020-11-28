@@ -126,7 +126,7 @@ Start java with 32G memory::
 
 Specify a genome sequence, the BAM file with fragment paired end alignments, select the option to generate a file with all changes, and use 14 threads. The output prefix should be::
 
-  ~/workdir/results_artic/barcode_<number>_pilon
+  ~/workdir/results_artic/barcode_01_pilon
 
 As usual, you can get help on the next page.
 
