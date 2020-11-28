@@ -28,7 +28,7 @@ and give the following short names to the sequences::
 
 **Attention:** Please use exactly the names above, since these are the names, we provide in the metadata file below.
 
-Then append the fasta file to the example sequences with::
+Then append the fasta file to the example sequences with (maybe inspect it with ``less`` or ``more`` before)::
   
   cat  ~/workdir/ncov/data/consensus_sequences.fasta >> ~/workdir/ncov/data/example_sequences.fasta
   
