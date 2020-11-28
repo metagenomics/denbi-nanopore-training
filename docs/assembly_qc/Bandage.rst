@@ -11,7 +11,7 @@ You can start Bandage with::
 
 and load the following file::
 
-   ~/workdir/assembly/small_<number>_assembly/assembly.contigs.gfa
+   ~/workdir/assembly/small_assembly/assembly.contigs.gfa
 
 and click on "Draw Graph"
 This is the assembly graph of our Nanopore Assembly. You can BLAST your contigs vs each other to identify further assembly problems  by clicking "Create/View BLAST search".
