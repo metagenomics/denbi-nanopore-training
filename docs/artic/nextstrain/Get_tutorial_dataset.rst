@@ -27,11 +27,11 @@ In the next step, we run the nextstrain basic workflow.
 
 Inspect the data files with less or more::
 
-  less example_sequences.fasta
+  less ~/workdir/ncov/data/example_sequences.fasta
   
 and::
 
-  less example_metadata.tsv
+  less ~/workdir/ncov/data/example_metadata.tsv
   
 ... to get an impression of what data needs to be provided for nextstrain.
 
