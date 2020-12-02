@@ -31,7 +31,7 @@ Then create folders for the results (fastqc will not create them)::
   mkdir -p ~/workdir/fastqc/basecall_tiny
   mkdir -p ~/workdir/fastqc/illumina
   
-The run fastqc for Illumina data::  
+The run fastqc for Illumina data and on Nanopore data::  
 
   fastqc -t 14 -o ~/workdir/fastqc/illumina ~/workdir/Illumina/*.fastq.gz
 
