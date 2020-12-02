@@ -15,7 +15,7 @@ Mapping of Nanopore reads to the assembly
 
 In order to use racon, we need a mapping of the reads to the assembly. We use ``minimap2`` for this task.
 
-Map the data to the Wuhan reference::
+Map the data to the assembly::
 
   minimap2 -a -t 14 ~/workdir/assembly/assembly_wgs/assembly.contigs.fasta ~/workdir/data_wgs/Cov2_HK_WGS_small_porechopped.fastq.gz  > ~/workdir/mappings/Cov2_HK_WGS_small_porechopped_vs_assembly_wgs.sam
   
