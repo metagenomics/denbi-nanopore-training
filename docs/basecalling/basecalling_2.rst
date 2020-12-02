@@ -28,7 +28,6 @@ Our complete command line using these parameters is::
  
  
  
-**Repeat the basecalling for the remaining samples.**
  
 References
 ^^^^^^^^^^
