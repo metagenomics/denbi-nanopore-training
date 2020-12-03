@@ -33,12 +33,12 @@ Map the data to the Wuhan reference::
   
 We also map the small dataset to the Wuhan reference since we haven't done that yet::
 
-  minimap2 -t 14 -x map-ont -a  ~/workdir/wuhan.fasta ~/workdir/data_artic/basecall_small_porechopped.fastq.gz | samtools view -b - | samtools sort - > ~/workdir/mappings/basecall_small_porechopped_vs_wuhan.sam
+  minimap2 -t 14 -x map-ont -a  ~/workdir/wuhan.fasta ~/workdir/data_artic/basecall_small_porechopped.fastq.gz | samtools view -b - | samtools sort - > ~/workdir/mappings/basecall_small_porechopped_vs_wuhan.sorted.bam
 
 Create the indizes::
 
   samtools index ~/workdir/mappings/Cov2_HK_WGS_small_porechopped_vs_wuhan.sorted.bam
-  samtools index ~/workdir/mappings/basecall_small_porechopped_vs_wuhan.sam
+  samtools index ~/workdir/mappings/basecall_small_porechopped_vs_wuhan.sorted.bam
 
 
 Load GenomeView with::
