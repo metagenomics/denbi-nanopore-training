@@ -65,7 +65,7 @@ Then run the ``artic minion`` command using medaka, use 14 threads, you can norm
 And as positional arguments, you need to provide::
 
   (1) the exact primer sequences:
-  nCov2019/V1
+  nCov2019/V3
   
   (2) The samplename:
   barcode_01
