@@ -1,6 +1,9 @@
 Assembly evaluation with quast
 ------------------------------
 
+
+TODO: anpassen
+
 We are going to evaluate our polished assembly. To call ``quast.py`` we have to provide a reference genome and an assembly as before. We will include our original canu assembly for comparison::
    
   quast.py -t 14 -o ~/workdir/quast_nanopolished_assembly -R ~/workdir/Data/Reference/CXERO_10272017.fna ~/workdir/polishedContig.fasta ~/workdir/canu_assembly/largestContig.fasta

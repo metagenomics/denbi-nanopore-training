@@ -1,6 +1,8 @@
 Merge fastqs
 ------------
 
+TODO: Anpassen oder raus.
+
 And again, we are merging all fastq files::
 
   cat ~/workdir/basecall/*runid*.fastq.gz > ~/workdir/basecall/basecall.fastq.gz

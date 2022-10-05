@@ -1,6 +1,9 @@
 MinIONQC
-------
-Developed by Rob Lanfear::
+--------
+
+First of all, we will use MinIONQC to quality control our data.
+
+MinIONQC is developed by Rob Lanfear::
 
   R Lanfear, M Schalamun, D Kainer, W Wang, B Schwessinger; MinIONQC: fast and simple quality control for MinION sequencing data, Bioinformatics, , bty654, https://doi.org/10.1093/bioinformatics/bty654
 
@@ -13,8 +16,8 @@ Complete manual can be looked up at: https://github.com/roblanf/minion_qc
 
 Usage::
   
- Rscript ~/MinIONQC.R --help
- Usage: /home/ubuntu/MinIONQC.R [options]
+ MinIONQC.R --help
+ Usage: MinIONQC.R [options]
 
 Options:
 	-h, --help
@@ -35,18 +38,9 @@ Options:
 	-s SMALLFIGURES, --smallfigures=SMALLFIGURES
 		TRUE or FALSE (the default). When true, MinIONQC will output smaller figures, e.g. suitable for publications or presentations. The default is to produce larger figures optimised for display on screen. Some figures just require small text, and cannot be effectively resized.
 
+Run MinionQC to get some statistics for your data. The output directory should be::
 
-Fast and effective quality control for MinION sequencing data
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Run MinIONQC on nanopore data::
-
-  cd ~/workdir
-  mkdir -p ~/workdir/MinIONQC  
-  Rscript ~/MinIONQC.R -i basecall -q 12 -o MinIONQC -p 14
-    
-This will create several analysis plots. After that, you can load the plots in your web browser by using a file browser.
+  ~/workdir/data_artic/MinIONQC/
   
-We will inspect the results together now ...
+If you are stuck, go to the next page for help with the command.
 
-Again, check out the corresponding home page to learn more about all generated results: https://github.com/roblanf/minion_qc
