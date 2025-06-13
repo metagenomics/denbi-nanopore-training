@@ -1,5 +1,10 @@
 Assembly with canu
 ==================
+
+We will now try to assembly the ARTIC datasets. The dataset is a bit different from usual whole genome shotgun sequencing runs, because we have sequenced amplicons. For Nanopore reads, we have quite short reads that don't overlap by much and are not evenly distributed across the genome. Let's see, if this gets us into trouble.
+
+Of course, in a real world use case, you can't design amplicons before you have the full genome sequence, so you would usually start with whole genome shotgun sequencing...
+
 Canu is a fork of the Celera Assembler, designed for high-noise single-molecule sequencing (such as the PacBio RS II/Sequel or Oxford Nanopore MinION). Documentation can be found here:
 http://canu.readthedocs.io/en/latest/
 
@@ -72,69 +77,51 @@ Get a usage message of canu on how to use the assembler::
       -nanopore-raw       <files>
       -nanopore-corrected <files>
 
-We will run the assembly on the small dataset, to save time. The assembly for the complete dataset will take about one hour.
-We will perform the assembly in two steps:
 
-Error correction with the parameter::
+You can run the complete assembly in one step only. We will run the assembly in two steps:
+(1) Error correction
+(2) Trimming and Assembly
 
-  -correct       - generate corrected reads
-  
-followed by trimming and assembly with the following parameters::
-
-  -trim-assemble - generate trimmed reads and then assemble them
-
-You could also run the assembly completely in one step by leaving out both of these parameters. Running it in two steps has the advantage, that both steps can be tested individually for good parameters without running both each time again.
+After the Error correction, we will generate an error profile as for the raw reads for comparison.
 
 
 Generate corrected reads
 ------------------------
 
-The correction stage selects the best overlaps to use for correction, estimates corrected read lengths, and generates corrected reads::
+**Task**: Run the error correction with canu. First of all, create a directory, for your assemblies::
 
-  canu -correct -d ~/workdir/correct_small -p assembly genomeSize=3m useGrid=false -nanopore-raw ~/workdir/basecall_small/basecall.fastq.gz
+  mkdir ~/workdir/assembly/
+  
+Then run::
 
-It is also possible to run multiple correction rounds to eliminate errors. This has been done on a S. cerevisae dataset in the canu publication. We will not do this in this course due to time limitations, but a script to do this, would look like this::
+  canu -correct
+  
+with the appropriate parameters, which are::
 
-  COUNT=0
-   NAME=input.fasta
-   for i in `seq 1 10`; do
-   canu -correct -p asm -d round$i \
-   corOutCoverage=500 corMinCoverage=0 corMhapSensitivity=high \
-   genomeSize=12.1m -nanopore-raw $NAME
-   NAME="round$i/asm.correctedReads.fasta.gz"
-   COUNT=`expr $COUNT + 1`
-   done
-   canu -p asm -d asm genomeSize=12.1m -nanopore-corrected $NAME utgGraphDeviation=50
-  batOptions=”-ca 500 -cp 50”
-  done
+ -nanopore-raw <fastq file with reads>
+ -d <directory where the assembly should be stored>
+ -p assembly (this will be the prefix for your assembly files)
+
+**Note**: Use the **small** read files as input::
+  
+  ~/workdir/data_artic/basecall_small_porechopped.fastq.gz
+  
+The output directory should be named::
+
+  ~/workdir/assembly/small_correct/
+
+In addition, we need some further parameters::
+  
+  useGrid=false (we don't have a cluster)
+  minReadLength=<minimum read length>
+  minOverlapLength=<minimum overlap length>
+  genomeSize=<size of the target genome, i.e. 50k>
 
 
-Generate and assemble trimmed reads
------------------------------------
+Choose minReadLength, minOverlapLength and genomeSize to our needs, if you are unsure, what to set here, have a look in the read and mapping statistics again.
 
-The trimming stage identifies unsupported regions in the input and trims or splits reads to their longest supported range. The assembly stage makes a final pass to identify sequencing errors; constructs the best overlap graph (BOG); and outputs contigs, an assembly graph, and summary statistics::
 
-  canu -trim-assemble -d ~/workdir/assembly_small -p assembly genomeSize=2M useGrid=false -nanopore-corrected ~/workdir/correct_small/assembly.correctedReads.fasta.gz
-
-After that is done, inspect the results. We can get a quick view on the number of generated contigs with::
-
-  grep '>' ~/workdir/assembly_small/assembly.contigs.fasta
-
-**If there is time**, we start the actual assembly with all data now::
-
-  Group 1:
-  canu -d ~/workdir/assembly -p assembly "genomeSize=4.3M" useGrid=false -nanopore-raw ~/workdir/basecall/basecall_trimmed.fastq.gz
-  Group 2:
-  canu -d ~/workdir/assembly -p assembly "genomeSize=6.8M" useGrid=false -nanopore-raw ~/workdir/basecall/basecall_trimmed.fastq.gz
-
-**Otherwise**, copy the precomputed assembly with the complete dataset into your working directory::
-
-  cp -r ~/workdir/results/assembly/ ~/workdir/
-
-and have a quick look on the number of contigs::
-
-  grep '>' ~/workdir/assembly/assembly.contigs.fasta
-
+If you are stuck for too long, check out the next page for help, but try your best to get the assembly running, before you do that.
 
 
 
@@ -143,3 +130,5 @@ References
 
 **Canu** https://github.com/marbl/canu
   
+
+

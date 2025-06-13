@@ -6,14 +6,8 @@ We are going to polish our assembly using racon and medaka now.
 .. toctree::
  :maxdepth: 1
 
- racon
- medaka
+ Racon_1
+ Racon_2
+ Medaka_1
+ Medaka_2
  quast
- pilon
- quast_after_pilon
-  
-  
-  
-  
-
-

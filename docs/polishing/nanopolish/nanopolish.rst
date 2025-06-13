@@ -1,6 +1,8 @@
 Call nanopolish
 ---------------
 
+TODO: anpassen
+
 Now that all pieces are together, we can call nanopolish with:
 
 - our assembly
